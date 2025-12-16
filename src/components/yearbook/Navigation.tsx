@@ -67,7 +67,7 @@ export function Navigation() {
             onClick={() => scrollToSection("cover")}
           >
             <span className="text-primary">Netcore</span>
-            <span className="text-foreground/60 ml-1 text-sm font-medium">2024</span>
+            <span className="text-foreground/60 ml-1 text-sm font-medium">2025</span>
           </motion.div>
 
           {/* Desktop Navigation */}

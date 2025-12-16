@@ -61,7 +61,7 @@ export function LearningsSection() {
           <h2 className="section-heading text-foreground mb-6">Biggest Learnings</h2>
           <p className="body-large text-foreground/60 max-w-2xl mx-auto">
             We don't just celebrate wins—we learn from what didn't work. 
-            Here are the lessons that shaped how we'll work in 2025.
+            Here are the lessons that shaped how we'll work in 2026.
           </p>
         </motion.div>
 

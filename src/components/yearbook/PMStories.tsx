@@ -31,12 +31,12 @@ const caseStudies = [
 ];
 
 const newMemberQuotes = [
-  { quote: "I thought I knew product. Then I joined Netcore.", author: "[Name]", joined: "Q1 2024" },
-  { quote: "The codebase is... character building.", author: "[Name]", joined: "Q2 2024" },
-  { quote: "Everyone warned me about the Slack channels. They were right.", author: "[Name]", joined: "Q2 2024" },
-  { quote: "First week: 47 acronyms. Still learning.", author: "[Name]", joined: "Q3 2024" },
-  { quote: "The coffee machine and I have bonded.", author: "[Name]", joined: "Q3 2024" },
-  { quote: "Standups that actually stand up? Revolutionary.", author: "[Name]", joined: "Q4 2024" },
+  { quote: "I thought I knew product. Then I joined Netcore.", author: "[Name]", joined: "Q1 2025" },
+  { quote: "The codebase is... character building.", author: "[Name]", joined: "Q2 2025" },
+  { quote: "Everyone warned me about the Slack channels. They were right.", author: "[Name]", joined: "Q2 2025" },
+  { quote: "First week: 47 acronyms. Still learning.", author: "[Name]", joined: "Q3 2025" },
+  { quote: "The coffee machine and I have bonded.", author: "[Name]", joined: "Q3 2025" },
+  { quote: "Standups that actually stand up? Revolutionary.", author: "[Name]", joined: "Q4 2025" },
 ];
 
 const lifeInProduct = [

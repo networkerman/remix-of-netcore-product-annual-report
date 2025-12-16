@@ -105,7 +105,7 @@ export function YearAtGlance() {
           <span className="caption text-primary mb-4 block">Everything We Shipped</span>
           <h2 className="section-heading text-foreground mb-6">Year at a Glance</h2>
           <p className="body-large text-foreground/60 max-w-2xl mx-auto">
-            Month by month, feature by feature. Here's the complete timeline of what we built in 2024.
+            Month by month, feature by feature. Here's the complete timeline of what we built in 2025.
           </p>
         </motion.div>
 

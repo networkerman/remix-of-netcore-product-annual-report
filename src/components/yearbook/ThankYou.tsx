@@ -63,7 +63,7 @@ export function ThankYou() {
             className="text-xl text-cream-300/80 leading-relaxed mb-12"
           >
             To everyone who shipped, designed, documented, debated, and cared enough 
-            to make 2024 remarkable—this yearbook is for you. Every feature, every fix, 
+            to make 2025 remarkable—this yearbook is for you. Every feature, every fix, 
             every late night and early morning has led us here.
           </motion.p>
 
@@ -129,8 +129,8 @@ export function ThankYou() {
               className="mt-8 p-6 rounded-2xl bg-teal-500/20 border border-teal-500/30"
             >
               <p className="text-teal-300 font-medium">
-                🎊 Congratulations on exploring the entire 2024 Product Yearbook! 
-                Here's to an even better 2025.
+                🎊 Congratulations on exploring the entire 2025 Product Yearbook! 
+                Here's to an even better 2026.
               </p>
             </motion.div>
           )}
@@ -146,7 +146,7 @@ export function ThankYou() {
               Made with ❤️ by the Product Team
             </p>
             <p className="text-cream-600 text-xs mt-2">
-              Netcore Product Yearbook 2024 • Internal Use Only
+              Netcore Product Yearbook 2025 • Internal Use Only
             </p>
           </motion.div>
         </div>

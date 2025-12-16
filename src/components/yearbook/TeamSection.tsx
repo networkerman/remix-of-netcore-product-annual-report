@@ -65,7 +65,7 @@ export function TeamSection() {
           <h2 className="section-heading mb-6">Meet the Team</h2>
           <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
             Product, Design, and Documentation—the trio that turns ideas into reality. 
-            Here's who made 2024 happen.
+            Here's who made 2025 happen.
           </p>
         </motion.div>
 

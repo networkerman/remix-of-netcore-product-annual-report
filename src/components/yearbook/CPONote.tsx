@@ -62,7 +62,7 @@ export function CPONote() {
 
             <div className="space-y-6 text-foreground/70 body-large">
               <p>
-                <strong className="text-foreground">The Year in Review:</strong> 2024 was a year of transformation. 
+                <strong className="text-foreground">The Year in Review:</strong> 2025 was a year of transformation. 
                 We shipped more features than ever, tackled technical debt that had haunted us for years, 
                 and built foundations that will serve us for the decade ahead.
               </p>
