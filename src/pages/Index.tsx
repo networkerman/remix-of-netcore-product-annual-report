@@ -1,12 +1,36 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Navigation } from "@/components/yearbook/Navigation";
+import { ScrollProgress } from "@/components/yearbook/ScrollProgress";
+import { HeroSection } from "@/components/yearbook/HeroSection";
+import { CPONote } from "@/components/yearbook/CPONote";
+import { TeamSection } from "@/components/yearbook/TeamSection";
+import { YearAtGlance } from "@/components/yearbook/YearAtGlance";
+import { ImpactSection } from "@/components/yearbook/ImpactSection";
+import { ProductCraft } from "@/components/yearbook/ProductCraft";
+import { PMStories } from "@/components/yearbook/PMStories";
+import { LearningsSection } from "@/components/yearbook/LearningsSection";
+import { HeroProducts } from "@/components/yearbook/HeroProducts";
+import { LookingAhead } from "@/components/yearbook/LookingAhead";
+import { ThankYou } from "@/components/yearbook/ThankYou";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <ScrollProgress />
+      
+      <main>
+        <HeroSection />
+        <CPONote />
+        <TeamSection />
+        <YearAtGlance />
+        <ImpactSection />
+        <ProductCraft />
+        <PMStories />
+        <LearningsSection />
+        <HeroProducts />
+        <LookingAhead />
+        <ThankYou />
+      </main>
     </div>
   );
 };
