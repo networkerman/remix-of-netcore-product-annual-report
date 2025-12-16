@@ -1,0 +1,153 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
+
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  team: "Product" | "Design" | "Docs";
+  funFact: string;
+  outsideWork: string;
+}
+
+const teamMembers: TeamMember[] = [
+  { id: 1, name: "[Name]", role: "Product Manager", team: "Product", funFact: "Ships features at 2am", outsideWork: "Amateur astronomer" },
+  { id: 2, name: "[Name]", role: "Senior PM", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Sourdough enthusiast" },
+  { id: 3, name: "[Name]", role: "Product Lead", team: "Product", funFact: "Never misses a standup", outsideWork: "Marathon runner" },
+  { id: 4, name: "[Name]", role: "UX Designer", team: "Design", funFact: "Pixel perfect or bust", outsideWork: "Plant parent (42 plants)" },
+  { id: 5, name: "[Name]", role: "Product Designer", team: "Design", funFact: "Figma shortcuts wizard", outsideWork: "Vinyl collector" },
+  { id: 6, name: "[Name]", role: "Design Lead", team: "Design", funFact: "Color theory debates", outsideWork: "Pottery class regular" },
+  { id: 7, name: "[Name]", role: "Technical Writer", team: "Docs", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster" },
+  { id: 8, name: "[Name]", role: "Docs Lead", team: "Docs", funFact: "API docs speedrunner", outsideWork: "Weekend DJ" },
+];
+
+const teamColors = {
+  Product: "from-teal-500 to-teal-600",
+  Design: "from-coral-400 to-coral-500",
+  Docs: "from-accent to-amber-500",
+};
+
+const teamBadgeColors = {
+  Product: "bg-teal-500/10 text-teal-600 border-teal-500/20",
+  Design: "bg-coral-400/10 text-coral-600 border-coral-400/20",
+  Docs: "bg-accent/20 text-amber-700 border-accent/30",
+};
+
+export function TeamSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [filter, setFilter] = useState<"All" | "Product" | "Design" | "Docs">("All");
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+
+  const filteredMembers = filter === "All" 
+    ? teamMembers 
+    : teamMembers.filter(m => m.team === filter);
+
+  return (
+    <section
+      id="team"
+      ref={ref}
+      className="py-32 bg-gradient-dark text-cream-100 relative overflow-hidden"
+    >
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <span className="caption text-teal-400 mb-4 block">The Humans Behind the Product</span>
+          <h2 className="section-heading mb-6">Meet the Team</h2>
+          <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
+            Product, Design, and Documentation—the trio that turns ideas into reality. 
+            Here's who made 2024 happen.
+          </p>
+        </motion.div>
+
+        {/* Filter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center gap-2 mb-12"
+        >
+          {["All", "Product", "Design", "Docs"].map((team) => (
+            <button
+              key={team}
+              onClick={() => setFilter(team as typeof filter)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                filter === team
+                  ? "bg-cream-100 text-navy-800"
+                  : "bg-cream-100/10 text-cream-200 hover:bg-cream-100/20"
+              }`}
+            >
+              {team}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Team Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {filteredMembers.map((member, index) => (
+            <motion.div
+              key={member.id}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 * index }}
+              onMouseEnter={() => setHoveredId(member.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              className="group relative"
+            >
+              <div className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden card-hover">
+                {/* Gradient Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${teamColors[member.team]} opacity-20 group-hover:opacity-30 transition-opacity`} />
+                
+                {/* Photo Placeholder */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full bg-cream-100/10 flex items-center justify-center text-4xl">
+                    👤
+                  </div>
+                </div>
+
+                {/* Content Overlay */}
+                <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
+                  <span className={`inline-flex self-start px-3 py-1 rounded-full text-xs font-medium border mb-3 ${teamBadgeColors[member.team]}`}>
+                    {member.team}
+                  </span>
+                  <h3 className="font-bold text-lg text-cream-100 mb-1">{member.name}</h3>
+                  <p className="text-cream-300/70 text-sm mb-2">{member.role}</p>
+                  <p className="text-cream-300/50 text-xs italic">"{member.funFact}"</p>
+                </div>
+
+                {/* Hover Reveal */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={hoveredId === member.id ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  className="absolute inset-0 bg-navy-800/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center"
+                >
+                  <span className="text-teal-400 text-xs uppercase tracking-wider mb-2">Outside Work</span>
+                  <p className="text-cream-100 font-medium text-lg">{member.outsideWork}</p>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Team Count */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.8 }}
+          className="text-center mt-16 text-cream-400/50"
+        >
+          <p className="text-sm">Showing {filteredMembers.length} of {teamMembers.length} team members</p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
