@@ -7,7 +7,7 @@ const heroes = [
   {
     function: "Product",
     title: "[Hero Product Feature]",
-    month: "March 2024",
+    month: "March 2025",
     why: "This feature didn't just ship—it transformed how customers think about engagement. It's the kind of work that makes competitors take notice.",
     links: [
       { label: "Documentation", url: "#" },
@@ -20,7 +20,7 @@ const heroes = [
   {
     function: "Design",
     title: "[Hero Design System]",
-    month: "June 2024",
+    month: "June 2025",
     why: "A complete visual overhaul that unified three products under one design language. 200+ components, infinite possibilities, zero confusion.",
     links: [
       { label: "Design System Docs", url: "#" },
@@ -33,7 +33,7 @@ const heroes = [
   {
     function: "Documentation",
     title: "[Hero Docs Project]",
-    month: "September 2024",
+    month: "September 2025",
     why: "Interactive API documentation that lets developers test endpoints without leaving the page. Support tickets dropped 30% in the first month.",
     links: [
       { label: "API Reference", url: "#" },
@@ -75,7 +75,7 @@ export function HeroProducts() {
           <span className="caption text-accent mb-4 block">Excellence Recognized</span>
           <h2 className="section-heading mb-6">Hero Products of the Year</h2>
           <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
-            Every year, certain projects stand out. These are the heroes that defined 2024—
+            Every year, certain projects stand out. These are the heroes that defined 2025—
             one from each function, each a testament to what focused excellence can achieve.
           </p>
         </motion.div>

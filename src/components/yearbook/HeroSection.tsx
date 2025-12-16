@@ -50,7 +50,7 @@ export function HeroSection() {
               Yearbook
             </span>
             <br />
-            2024
+            2025
           </motion.h1>
 
           {/* Subtitle */}

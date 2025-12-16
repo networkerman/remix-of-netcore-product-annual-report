@@ -51,7 +51,7 @@ export function LookingAhead() {
             <Telescope className="text-primary" size={32} />
           </div>
           <span className="caption text-primary mb-4 block">A Glimpse of Tomorrow</span>
-          <h2 className="section-heading text-foreground mb-6">Looking Ahead to 2025</h2>
+          <h2 className="section-heading text-foreground mb-6">Looking Ahead to 2026</h2>
           <p className="body-large text-foreground/60 max-w-2xl mx-auto">
             These aren't commitments—they're directions. Where we're pointing, 
             what we're excited about, and the bets we're making on the future.
@@ -110,7 +110,7 @@ export function LookingAhead() {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
                 <Sparkles className="mx-auto text-cream-200 mb-4" size={40} />
-                <p className="text-cream-200 text-2xl font-bold mb-2">2025</p>
+                <p className="text-cream-200 text-2xl font-bold mb-2">2026</p>
                 <p className="text-cream-300/70">The best is yet to come</p>
               </div>
             </div>
