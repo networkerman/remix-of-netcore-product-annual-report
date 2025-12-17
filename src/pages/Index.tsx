@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/yearbook/Navigation";
 import { ScrollProgress } from "@/components/yearbook/ScrollProgress";
 import { HeroSection } from "@/components/yearbook/HeroSection";
+import { TestimonialsCarousel } from "@/components/yearbook/TestimonialsCarousel";
 import { CPONote } from "@/components/yearbook/CPONote";
 import { TeamSection } from "@/components/yearbook/TeamSection";
 import { YearAtGlance } from "@/components/yearbook/YearAtGlance";
@@ -20,6 +21,7 @@ const Index = () => {
       
       <main>
         <HeroSection />
+        <TestimonialsCarousel />
         <CPONote />
         <TeamSection />
         <YearAtGlance />
