@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 // Import comic images
 import kedarImg from "@/assets/team/kedar-parikh.png";
@@ -14,13 +19,14 @@ interface TeamMember {
   id: number;
   name: string;
   role: string;
-  team: "Product" | "Design" | "Docs";
+  team: "Product" | "Design" | "Documentation";
   funFact: string;
   outsideWork: string;
   image?: string;
 }
 
 const teamMembers: TeamMember[] = [
+  // Product Team
   { id: 1, name: "Kedar", role: "Chief Product Officer", team: "Product", funFact: "Chief Sense-Maker", outsideWork: "Trekking enthusiast", image: kedarImg },
   { id: 2, name: "Yogesh", role: "Product Lead", team: "Product", funFact: "Ships features at 2am", outsideWork: "Marathon runner" },
   { id: 3, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
@@ -36,29 +42,42 @@ const teamMembers: TeamMember[] = [
   { id: 13, name: "Parth", role: "PM", team: "Product", funFact: "Strategic Innovation Architect", outsideWork: "AI enthusiast", image: parthImg },
   { id: 14, name: "Kush", role: "Product Manager", team: "Product", funFact: "Figma shortcuts wizard", outsideWork: "Sourdough baker" },
   { id: 15, name: "Tanishq", role: "Product Manager", team: "Product", funFact: "Feature velocity champion", outsideWork: "Weekend DJ" },
+  
+  // Design Team
+  { id: 16, name: "Kirit Lakhani", role: "Head of Product Design", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 17, name: "Amit Sharma", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 18, name: "Harshita Rajawat", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 19, name: "Dhairya Vora", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 20, name: "Hardikya Gupta", role: "Associate Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 21, name: "Yash Zendekar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 22, name: "Taiyub Afsar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  
+  // Documentation Team
+  { id: 23, name: "Gargi Mukherjee", role: "Manager Product Documentation", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 24, name: "Aishwarya Sinha", role: "Senior Technical Writer", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 25, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
 ];
 
 const teamColors = {
   Product: "from-teal-500 to-teal-600",
   Design: "from-coral-400 to-coral-500",
-  Docs: "from-accent to-amber-500",
+  Documentation: "from-accent to-amber-500",
 };
 
 const teamBadgeColors = {
   Product: "bg-teal-500/10 text-teal-600 border-teal-500/20",
   Design: "bg-coral-400/10 text-coral-600 border-coral-400/20",
-  Docs: "bg-accent/20 text-amber-700 border-accent/30",
+  Documentation: "bg-accent/20 text-amber-700 border-accent/30",
 };
 
 export function TeamSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [filter, setFilter] = useState<"All" | "Product" | "Design" | "Docs">("All");
+  const [filter, setFilter] = useState<"Product" | "Design" | "Documentation">("Product");
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  const filteredMembers = filter === "All" 
-    ? teamMembers 
-    : teamMembers.filter(m => m.team === filter);
+  const filteredMembers = teamMembers.filter(m => m.team === filter);
 
   return (
     <section
@@ -92,7 +111,7 @@ export function TeamSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center gap-2 mb-12"
         >
-          {["All", "Product", "Design", "Docs"].map((team) => (
+          {["Product", "Design", "Documentation"].map((team) => (
             <button
               key={team}
               onClick={() => setFilter(team as typeof filter)}
@@ -123,12 +142,13 @@ export function TeamSection() {
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${teamColors[member.team]} opacity-20 group-hover:opacity-30 transition-opacity`} />
                 
-                {/* Photo or Placeholder */}
+                {/* Photo or Placeholder - Clickable */}
                 {member.image ? (
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover cursor-pointer"
+                    onClick={() => setSelectedMember(member)}
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -172,6 +192,28 @@ export function TeamSection() {
           <p className="text-sm">Showing {filteredMembers.length} of {teamMembers.length} team members</p>
         </motion.div>
       </div>
+
+      {/* Image Expand Dialog */}
+      <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
+        <DialogContent className="max-w-3xl p-0 bg-navy-800 border-cream-100/10 overflow-hidden">
+          <DialogTitle className="sr-only">
+            {selectedMember?.name} - Full Image
+          </DialogTitle>
+          {selectedMember?.image && (
+            <div className="relative">
+              <img
+                src={selectedMember.image}
+                alt={selectedMember.name}
+                className="w-full h-auto max-h-[80vh] object-contain"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-900 to-transparent p-6">
+                <h3 className="text-2xl font-bold text-cream-100">{selectedMember.name}</h3>
+                <p className="text-cream-300/70">{selectedMember.role}</p>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
