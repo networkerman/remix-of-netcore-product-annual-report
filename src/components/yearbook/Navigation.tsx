@@ -61,16 +61,10 @@ export function Navigation() {
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="font-bold text-lg tracking-tight cursor-pointer"
-            onClick={() => scrollToSection("cover")}
-          >
-            <span className="text-primary">Netcore</span>
-            <span className="text-foreground/60 ml-1 text-sm font-medium">2025</span>
-          </motion.div>
-
-          {/* Desktop Navigation */}
+          {/* Empty div for spacing on mobile */}
+          <div className="lg:hidden w-10" />
+          
+          {/* Desktop Navigation - Centered */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <button

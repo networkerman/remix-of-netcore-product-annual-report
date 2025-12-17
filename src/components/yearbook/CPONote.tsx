@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown, ChevronUp, Quote } from "lucide-react";
+import kedarCpoPhoto from "@/assets/kedar-cpo-photo.png";
 
 export function CPONote() {
   const ref = useRef(null);
@@ -26,20 +27,13 @@ export function CPONote() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            {/* Abstract Portrait Placeholder */}
-            <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-navy-700 via-navy-800 to-navy-900 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,180,180,0.3),transparent_60%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(239,130,100,0.2),transparent_60%)]" />
-              
-              {/* Placeholder for CPO Photo */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-32 h-32 rounded-full bg-cream-200/10 mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-4xl">👤</span>
-                  </div>
-                  <p className="text-cream-200/60 text-sm font-medium">[CPO Photo]</p>
-                </div>
-              </div>
+            {/* CPO Photo */}
+            <div className="aspect-[4/5] rounded-3xl overflow-hidden">
+              <img 
+                src={kedarCpoPhoto} 
+                alt="Kedar Parikh - Chief Product Officer" 
+                className="w-full h-full object-cover object-top"
+              />
             </div>
 
             {/* Quote Decoration */}

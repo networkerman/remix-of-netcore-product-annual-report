@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
+// Import comic images
+import kedarImg from "@/assets/team/kedar-parikh.png";
+import jibranImg from "@/assets/team/jibran-dalvi.png";
+import satishImg from "@/assets/team/satish-kokate.png";
+import paragImg from "@/assets/team/parag-mantri.png";
+import tejasImg from "@/assets/team/tejas-thakur.png";
+import parthImg from "@/assets/team/parth-shukla.png";
+
 interface TeamMember {
   id: number;
   name: string;
@@ -9,17 +17,25 @@ interface TeamMember {
   team: "Product" | "Design" | "Docs";
   funFact: string;
   outsideWork: string;
+  image?: string;
 }
 
 const teamMembers: TeamMember[] = [
-  { id: 1, name: "[Name]", role: "Product Manager", team: "Product", funFact: "Ships features at 2am", outsideWork: "Amateur astronomer" },
-  { id: 2, name: "[Name]", role: "Senior PM", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Sourdough enthusiast" },
-  { id: 3, name: "[Name]", role: "Product Lead", team: "Product", funFact: "Never misses a standup", outsideWork: "Marathon runner" },
-  { id: 4, name: "[Name]", role: "UX Designer", team: "Design", funFact: "Pixel perfect or bust", outsideWork: "Plant parent (42 plants)" },
-  { id: 5, name: "[Name]", role: "Product Designer", team: "Design", funFact: "Figma shortcuts wizard", outsideWork: "Vinyl collector" },
-  { id: 6, name: "[Name]", role: "Design Lead", team: "Design", funFact: "Color theory debates", outsideWork: "Pottery class regular" },
-  { id: 7, name: "[Name]", role: "Technical Writer", team: "Docs", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster" },
-  { id: 8, name: "[Name]", role: "Docs Lead", team: "Docs", funFact: "API docs speedrunner", outsideWork: "Weekend DJ" },
+  { id: 1, name: "Kedar", role: "Chief Product Officer", team: "Product", funFact: "Chief Sense-Maker", outsideWork: "Trekking enthusiast", image: kedarImg },
+  { id: 2, name: "Yogesh", role: "Product Lead", team: "Product", funFact: "Ships features at 2am", outsideWork: "Marathon runner" },
+  { id: 3, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
+  { id: 4, name: "Satish", role: "AVP Product Management", team: "Product", funFact: "Full-Time Firefighter", outsideWork: "Tea connoisseur", image: satishImg },
+  { id: 5, name: "Vrinda", role: "Product Manager", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent" },
+  { id: 6, name: "Ravi", role: "Product Manager", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Weekend photographer" },
+  { id: 7, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector" },
+  { id: 8, name: "Parag", role: "Sr PM", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
+  { id: 9, name: "Tejas", role: "PM", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
+  { id: 10, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast" },
+  { id: 11, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular" },
+  { id: 12, name: "Karan", role: "Product Manager", team: "Product", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster" },
+  { id: 13, name: "Parth", role: "PM", team: "Product", funFact: "Strategic Innovation Architect", outsideWork: "AI enthusiast", image: parthImg },
+  { id: 14, name: "Kush", role: "Product Manager", team: "Product", funFact: "Figma shortcuts wizard", outsideWork: "Sourdough baker" },
+  { id: 15, name: "Tanishq", role: "Product Manager", team: "Product", funFact: "Feature velocity champion", outsideWork: "Weekend DJ" },
 ];
 
 const teamColors = {
@@ -92,13 +108,13 @@ export function TeamSection() {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
           {filteredMembers.map((member, index) => (
             <motion.div
               key={member.id}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
+              transition={{ duration: 0.6, delay: 0.1 * (index % 8) }}
               onMouseEnter={() => setHoveredId(member.id)}
               onMouseLeave={() => setHoveredId(null)}
               className="group relative"
@@ -107,12 +123,20 @@ export function TeamSection() {
                 {/* Gradient Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${teamColors[member.team]} opacity-20 group-hover:opacity-30 transition-opacity`} />
                 
-                {/* Photo Placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-cream-100/10 flex items-center justify-center text-4xl">
-                    👤
+                {/* Photo or Placeholder */}
+                {member.image ? (
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-24 h-24 rounded-full bg-cream-100/10 flex items-center justify-center text-4xl">
+                      👤
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Content Overlay */}
                 <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">

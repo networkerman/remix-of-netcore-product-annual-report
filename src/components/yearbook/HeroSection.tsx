@@ -1,7 +1,13 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
+import netcoreLogo from "@/assets/netcore-logo.png";
 export function HeroSection() {
   return <section id="cover" className="min-h-screen relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-navy-800 via-navy-900 to-navy-800">
+      {/* Netcore Logo - Top Center */}
+      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20">
+        <img src={netcoreLogo} alt="Netcore" className="h-10 w-auto" />
+      </div>
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div animate={{
@@ -49,9 +55,9 @@ export function HeroSection() {
         }} transition={{
           duration: 0.8,
           delay: 0.2
-        }} className="editorial-heading text-cream-100 mb-6">2025
-PRODUCT
-WRAPPED<br />
+        }} className="editorial-heading text-cream-100 mb-6">
+            Product
+            <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-teal-300 to-coral-400">
               Yearbook
             </span>
@@ -82,7 +88,7 @@ WRAPPED<br />
           duration: 1,
           delay: 0.6
         }} className="flex justify-center gap-8 mb-16">
-            {["CE", "CPaaS", "Unbxd"].map((product, index) => <motion.div key={product} initial={{
+            {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => <motion.div key={product} initial={{
             opacity: 0,
             y: 20
           }} animate={{
