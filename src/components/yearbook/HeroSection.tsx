@@ -56,13 +56,9 @@ export function HeroSection() {
           duration: 0.8,
           delay: 0.2
         }} className="editorial-heading text-cream-100 mb-6">
-            Product
-            <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-teal-300 to-coral-400">
-              Yearbook
+              2025
             </span>
-            <br />
-            2025
           </motion.h1>
 
           {/* Subtitle */}
