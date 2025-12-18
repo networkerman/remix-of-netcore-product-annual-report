@@ -5,7 +5,7 @@ import { TestimonialsCarousel } from "@/components/yearbook/TestimonialsCarousel
 import { CPONote } from "@/components/yearbook/CPONote";
 import { TeamSection } from "@/components/yearbook/TeamSection";
 import { YearAtGlance } from "@/components/yearbook/YearAtGlance";
-import { ImpactSection } from "@/components/yearbook/ImpactSection";
+
 import { ProductCraft } from "@/components/yearbook/ProductCraft";
 import { PMStories } from "@/components/yearbook/PMStories";
 import { LearningsSection } from "@/components/yearbook/LearningsSection";
@@ -26,7 +26,6 @@ const Index = () => {
         <CPONote />
         <TeamSection />
         <YearAtGlance />
-        <ImpactSection />
         <LeaderVoices />
         <ProductCraft />
         <PMStories />
