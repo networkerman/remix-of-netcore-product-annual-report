@@ -12,6 +12,7 @@ import { LearningsSection } from "@/components/yearbook/LearningsSection";
 import { HeroProducts } from "@/components/yearbook/HeroProducts";
 import { LookingAhead } from "@/components/yearbook/LookingAhead";
 import { ThankYou } from "@/components/yearbook/ThankYou";
+import { LeaderVoices } from "@/components/yearbook/LeaderVoices";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
         <TeamSection />
         <YearAtGlance />
         <ImpactSection />
+        <LeaderVoices />
         <ProductCraft />
         <PMStories />
         <LearningsSection />
