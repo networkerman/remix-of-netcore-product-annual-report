@@ -28,7 +28,7 @@ const craftSections: CraftSection[] = [
     color: "teal",
     stories: [
       {
-        title: "Act I: When Specs Took a Backseat",
+        title: "When Specs Took a Backseat",
         preview: "We stopped writing specs. And started watching users.",
         content: `At the beginning of the year, we made a quiet but radical move.
 
