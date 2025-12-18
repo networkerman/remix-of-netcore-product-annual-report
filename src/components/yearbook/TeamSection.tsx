@@ -172,7 +172,7 @@ export function TeamSection() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={hoveredId === member.id ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  className="absolute inset-0 bg-navy-800/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center"
+                  className="absolute inset-0 bg-navy-800/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center pointer-events-none"
                 >
                   <span className="text-teal-400 text-xs uppercase tracking-wider mb-2">Outside Work</span>
                   <p className="text-cream-100 font-medium text-lg">{member.outsideWork}</p>
