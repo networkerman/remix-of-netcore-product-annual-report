@@ -3,6 +3,8 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight, Lightbulb, Palette, FileText, Sparkles, Award, ExternalLink } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
+import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
 
 interface Story {
   title: string;
@@ -384,12 +386,10 @@ export function ProductCraft() {
                 className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow"
               >
                 {/* Brand Header */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center">
-                    {/* Logo placeholder */}
-                    <span className="text-xs font-bold text-foreground/40">PJ</span>
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="h-10 flex items-center">
+                    <img src={pepeJeansLogo} alt="Pepe Jeans" className="h-8 w-auto object-contain" />
                   </div>
-                  <h4 className="font-bold text-xl text-foreground">Pepe Jeans</h4>
                 </div>
                 
                 {/* Outcome Headline */}
@@ -421,12 +421,10 @@ export function ProductCraft() {
                 className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow"
               >
                 {/* Brand Header */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center">
-                    {/* Logo placeholder */}
-                    <span className="text-xs font-bold text-foreground/40">PG</span>
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="h-10 flex items-center">
+                    <img src={plumGoodnessLogo} alt="Plum Goodness" className="h-8 w-auto object-contain" />
                   </div>
-                  <h4 className="font-bold text-xl text-foreground">Plum Goodness</h4>
                 </div>
                 
                 {/* Outcome Headline */}
