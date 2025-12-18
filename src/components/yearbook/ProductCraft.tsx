@@ -510,46 +510,55 @@ export function ProductCraft() {
               })}
             </div>
             
-            {/* Navigation Between Stories */}
-            {currentSection.stories.length > 1 && (
-              <div className="flex items-center justify-between mt-12 pt-8 border-t border-foreground/10">
-                {(() => {
-                  const currentIndex = currentSection.stories.findIndex(s => s.title === selectedStory?.title);
-                  const prevStory = currentIndex > 0 ? currentSection.stories[currentIndex - 1] : null;
-                  const nextStory = currentIndex < currentSection.stories.length - 1 ? currentSection.stories[currentIndex + 1] : null;
-                  
-                  return (
-                    <>
-                      <button
-                        onClick={() => prevStory && setSelectedStory(prevStory)}
-                        disabled={!prevStory}
-                        className={`text-sm font-medium transition-colors ${
-                          prevStory 
-                            ? 'text-foreground/60 hover:text-primary cursor-pointer' 
-                            : 'text-foreground/20 cursor-default'
-                        }`}
-                      >
-                        ← Previous
-                      </button>
-                      <span className="text-foreground/30 text-sm">
-                        {currentIndex + 1} of {currentSection.stories.length}
-                      </span>
-                      <button
-                        onClick={() => nextStory && setSelectedStory(nextStory)}
-                        disabled={!nextStory}
-                        className={`text-sm font-medium transition-colors ${
-                          nextStory 
-                            ? 'text-foreground/60 hover:text-primary cursor-pointer' 
-                            : 'text-foreground/20 cursor-default'
-                        }`}
-                      >
-                        Next →
-                      </button>
-                    </>
-                  );
-                })()}
-              </div>
-            )}
+            {/* Navigation Between Stories - Across All Acts */}
+            {(() => {
+              // Flatten all stories across all sections with their section info
+              const allStories = craftSections.flatMap(section => 
+                section.stories.map(story => ({ story, sectionId: section.id }))
+              );
+              const currentGlobalIndex = allStories.findIndex(item => item.story.title === selectedStory?.title);
+              const prevItem = currentGlobalIndex > 0 ? allStories[currentGlobalIndex - 1] : null;
+              const nextItem = currentGlobalIndex < allStories.length - 1 ? allStories[currentGlobalIndex + 1] : null;
+              
+              const handleNavigate = (item: { story: Story; sectionId: string } | null) => {
+                if (item) {
+                  setSelectedStory(item.story);
+                  if (item.sectionId !== activeSection) {
+                    setActiveSection(item.sectionId);
+                  }
+                }
+              };
+              
+              return (
+                <div className="flex items-center justify-between mt-12 pt-8 border-t border-foreground/10">
+                  <button
+                    onClick={() => handleNavigate(prevItem)}
+                    disabled={!prevItem}
+                    className={`text-sm font-medium transition-colors ${
+                      prevItem 
+                        ? 'text-foreground/60 hover:text-primary cursor-pointer' 
+                        : 'text-foreground/20 cursor-default'
+                    }`}
+                  >
+                    ← Previous
+                  </button>
+                  <span className="text-foreground/30 text-sm">
+                    {currentGlobalIndex + 1} of {allStories.length}
+                  </span>
+                  <button
+                    onClick={() => handleNavigate(nextItem)}
+                    disabled={!nextItem}
+                    className={`text-sm font-medium transition-colors ${
+                      nextItem 
+                        ? 'text-foreground/60 hover:text-primary cursor-pointer' 
+                        : 'text-foreground/20 cursor-default'
+                    }`}
+                  >
+                    Next →
+                  </button>
+                </div>
+              );
+            })()}
           </div>
         </DialogContent>
       </Dialog>
