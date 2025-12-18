@@ -142,33 +142,27 @@ interface SpotlightProduct {
 
 const spotlightProducts: SpotlightProduct[] = [
   {
-    product: "CE Analytics",
-    tagline: "From Insight to Action",
-    story: "Analytics usage became habitual, not occasional. Hero capabilities led the adoption charge, transforming how marketers understand their audience.",
+    product: "RFM",
+    tagline: "RFM",
+    story: "RFM became the foundation for retention and lifecycle strategies, helping teams identify loyal, at-risk, and high-value customers with clarity.",
     highlights: [
-      { text: "RFM: 50+ customers using", link: "https://cedocs.netcorecloud.com/docs/rfm" },
-      { text: "Funnel: 30+ customers using", link: "https://cedocs.netcorecloud.com/docs/funnel-analytics" },
-      { text: "Cohort: 10+ customers using", link: "https://cedocs.netcorecloud.com/docs/cohorts" },
+      { text: "50+ customers actively using RFM", link: "https://cedocs.netcorecloud.com/docs/rfm" },
     ],
   },
   {
-    product: "CPaaS APIs",
-    tagline: "Platform as a superpower",
-    story: "APIs aren't just endpoints—they're promises. This year we delivered on the promise of letting developers build anything they imagine on our platform.",
+    product: "Funnel",
+    tagline: "Funnel",
+    story: "Funnels enabled teams to move beyond surface metrics by identifying drop-offs, understanding conversion friction, and acting on insights.",
     highlights: [
-      { text: "99.99% uptime", link: "" },
-      { text: "Sub-100ms latency", link: "" },
-      { text: "10x throughput", link: "" },
+      { text: "30+ customers actively using Funnels", link: "https://cedocs.netcorecloud.com/docs/funnel-analytics" },
     ],
   },
   {
-    product: "Unbxd Shopify",
-    tagline: "E-commerce, elevated",
-    story: "The Shopify ecosystem is crowded. We carved out a space by focusing obsessively on search quality and personalization that actually converts.",
+    product: "Cohort",
+    tagline: "Cohort",
+    story: "Cohort analysis helped teams track behavior over time, compare user groups, and measure long-term engagement and retention patterns.",
     highlights: [
-      { text: "One-click install", link: "" },
-      { text: "AI recommendations", link: "" },
-      { text: "Real-time sync", link: "" },
+      { text: "10+ customers actively using Cohorts", link: "https://cedocs.netcorecloud.com/docs/cohorts" },
     ],
   },
 ];
