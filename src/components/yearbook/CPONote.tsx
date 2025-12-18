@@ -16,7 +16,7 @@ export function CPONote() {
       className="py-32 bg-cream-100 relative overflow-hidden"
     >
       {/* Decorative Background */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-teal-500/5 to-transparent" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-teal-500/5 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-6">
         <AnimatePresence mode="wait">
