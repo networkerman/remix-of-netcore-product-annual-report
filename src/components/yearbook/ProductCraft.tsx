@@ -144,7 +144,7 @@ const spotlightProducts: SpotlightProduct[] = [
   {
     product: "RFM",
     tagline: "RFM",
-    story: "RFM became the foundation for retention and lifecycle strategies, helping teams identify loyal, at-risk, and high-value customers with clarity.",
+    story: "RFM became the foundation for 50+ retention and lifecycle strategies, helping teams identify loyal, at-risk, and high-value customers with clarity.",
     highlights: [
       { text: "50+ customers actively using RFM", link: "https://cedocs.netcorecloud.com/docs/rfm" },
     ],
