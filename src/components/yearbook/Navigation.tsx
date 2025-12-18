@@ -7,7 +7,7 @@ const navItems = [
   { id: "cpo-note", label: "CPO Note" },
   { id: "team", label: "Team" },
   { id: "year-glance", label: "Year at a Glance" },
-  { id: "impact", label: "Impact" },
+  { id: "leader-voices", label: "Leadership" },
   { id: "craft", label: "Product Craft" },
   { id: "stories", label: "PM Stories" },
   { id: "learnings", label: "Learnings" },

@@ -247,6 +247,7 @@ export function LeaderVoices() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
+          <span className="caption text-primary mb-4 block">Outcomes & Recognition</span>
           <h2 className="section-heading mb-6">Leadership Speaks</h2>
           <p className="body-large text-muted-foreground max-w-2xl mx-auto">
             We asked leaders across the company to share their honest reflections on the Product Team this year.
