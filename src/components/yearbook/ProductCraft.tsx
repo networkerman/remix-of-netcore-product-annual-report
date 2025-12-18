@@ -67,7 +67,7 @@ This is where Funnel and RFM emerged as hero capabilities:
     color: "coral",
     stories: [
       {
-        title: "Act IV: Design Tames the Complexity",
+        title: "Design Tames the Complexity",
         preview: "Analytics had data. What it needed was clarity.",
         content: `Analytics has no shortage of data. What it needed was clarity.
 
