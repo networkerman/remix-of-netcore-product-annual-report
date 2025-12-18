@@ -43,7 +43,7 @@ It was about clarity.
 Because if we were going to rebuild Analytics, we wanted to rebuild it right.`,
       },
       {
-        title: "Act II: Choosing to Be Late (and Better)",
+        title: "Choosing to Be Late (and Better)",
         preview: "We chose to rebuild Analytics from the ground up.",
         content: `Patching the existing system would've been faster.
 But it wouldn't have solved the real problem.
