@@ -331,36 +331,124 @@ export function ProductCraft() {
             </div>
           </div>
 
-          {/* NPS Callout */}
+        {/* NPS Callout - Celebratory Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.5 }}
             className="text-center mb-16"
           >
-            <div className="inline-block px-8 py-6 rounded-2xl bg-gradient-to-r from-teal-500/10 to-coral-400/10 border border-foreground/10">
-              <div className="text-4xl font-bold text-primary mb-2">1 → 10</div>
-              <p className="text-foreground/70">Analytics NPS Score Improvement</p>
-              <p className="text-sm text-foreground/50 mt-1">Now among the highest-rated modules on the platform</p>
+            <div className="relative inline-block">
+              {/* Outer glow effect */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-teal-500/20 via-primary/10 to-coral-400/20 blur-xl scale-110" />
+              
+              {/* Main badge container */}
+              <div className="relative px-12 py-10 rounded-3xl bg-gradient-to-br from-cream-50 to-cream-100 border-2 border-primary/20 shadow-xl">
+                {/* Decorative corner accents */}
+                <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-primary/40 rounded-tl-lg" />
+                <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-primary/40 rounded-tr-lg" />
+                <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-primary/40 rounded-bl-lg" />
+                <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-primary/40 rounded-br-lg" />
+                
+                {/* Primary metric with directional flow */}
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <span className="text-3xl md:text-4xl font-bold text-foreground/40">1</span>
+                  <div className="flex items-center gap-1">
+                    <div className="w-8 h-0.5 bg-gradient-to-r from-foreground/20 to-primary/60 rounded-full" />
+                    <div className="w-3 h-3 border-t-2 border-r-2 border-primary rotate-45 -ml-1" />
+                  </div>
+                  <span className="text-5xl md:text-6xl font-black text-primary">10</span>
+                </div>
+                
+                {/* Label */}
+                <p className="font-semibold text-foreground/80 text-lg mb-2">Analytics NPS Score Improvement</p>
+                
+                {/* Subtle divider */}
+                <div className="w-16 h-0.5 bg-primary/30 mx-auto mb-3 rounded-full" />
+                
+                {/* Context line */}
+                <p className="text-sm text-foreground/60 italic">Now among the highest-rated modules on the platform</p>
+              </div>
             </div>
           </motion.div>
 
-          {/* Customer Impact Table */}
+          {/* Customer Impact Section */}
           <div className="mb-16">
-            <h3 className="text-xl font-bold text-foreground mb-6 text-center">Customer Impact</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {customerImpact.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="p-6 rounded-2xl bg-card border border-border"
-                >
-                  <h4 className="font-bold text-lg text-foreground mb-3">{item.brand}</h4>
-                  <p className="text-foreground/70 text-sm leading-relaxed">{item.impact}</p>
-                </motion.div>
-              ))}
+            <h3 className="text-xl font-bold text-foreground mb-8 text-center">Customer Impact</h3>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Pepe Jeans Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.6 }}
+                className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow"
+              >
+                {/* Brand Header */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center">
+                    {/* Logo placeholder */}
+                    <span className="text-xs font-bold text-foreground/40">PJ</span>
+                  </div>
+                  <h4 className="font-bold text-xl text-foreground">Pepe Jeans</h4>
+                </div>
+                
+                {/* Outcome Headline */}
+                <p className="font-semibold text-primary text-base mb-4">
+                  From broad targeting to precision journeys
+                </p>
+                
+                {/* Divider */}
+                <div className="w-full h-px bg-border mb-4" />
+                
+                {/* Description */}
+                <p className="text-foreground/70 text-sm leading-relaxed mb-5">
+                  Shifted from mass campaigns to data-driven precision, improving conversion efficiency with smarter repeat purchase strategies.
+                </p>
+                
+                {/* Impact Highlight */}
+                <div className="px-4 py-3 rounded-xl bg-teal-500/10 border border-teal-500/20">
+                  <p className="text-sm font-medium text-teal-700">
+                    ✦ Recognized as MartecAI early adopter
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Plum Goodness Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.7 }}
+                className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow"
+              >
+                {/* Brand Header */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-lg bg-foreground/5 border border-foreground/10 flex items-center justify-center">
+                    {/* Logo placeholder */}
+                    <span className="text-xs font-bold text-foreground/40">PG</span>
+                  </div>
+                  <h4 className="font-bold text-xl text-foreground">Plum Goodness</h4>
+                </div>
+                
+                {/* Outcome Headline */}
+                <p className="font-semibold text-primary text-base mb-4">
+                  RFM and cohort-driven growth
+                </p>
+                
+                {/* Divider */}
+                <div className="w-full h-px bg-border mb-4" />
+                
+                {/* Description */}
+                <p className="text-foreground/70 text-sm leading-relaxed mb-5">
+                  Leveraged RFM segmentation and cohort analysis to identify high-value customers and optimize retention campaigns.
+                </p>
+                
+                {/* Impact Highlight */}
+                <div className="px-4 py-3 rounded-xl bg-coral-400/10 border border-coral-400/20">
+                  <p className="text-sm font-medium text-coral-600">
+                    ✦ 1.4× repeat purchases · 1.7× revenue uplift
+                  </p>
+                </div>
+              </motion.div>
             </div>
           </div>
 
