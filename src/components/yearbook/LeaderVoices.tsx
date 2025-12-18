@@ -88,15 +88,15 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: typeof leader
       transition={{ duration: 0.4 }}
       className={`flex-shrink-0 w-[320px] md:w-[400px] p-8 rounded-2xl border transition-all duration-300 ${
         isActive
-          ? "bg-card border-primary/20 shadow-lg"
-          : "bg-card/50 border-border/30"
+          ? "bg-background/10 border-primary/30 shadow-lg backdrop-blur-sm"
+          : "bg-background/5 border-border/20"
       }`}
     >
-      <p className="text-lg md:text-xl leading-relaxed text-foreground mb-6">
+      <p className="text-lg md:text-xl leading-relaxed text-background mb-6">
         "{testimonial.quote}"
       </p>
-      <div className="text-muted-foreground">
-        <span className="font-medium text-foreground">— {testimonial.name}</span>
+      <div className="text-background/70">
+        <span className="font-medium text-background">— {testimonial.name}</span>
         <span className="text-sm">, {testimonial.role}</span>
       </div>
     </motion.div>
@@ -155,7 +155,7 @@ function WordMap() {
   return (
     <div
       ref={mapRef}
-      className="relative w-full h-[400px] md:h-[450px] rounded-2xl bg-gradient-to-br from-muted/30 to-muted/10 border border-border/30 overflow-hidden"
+      className="relative w-full h-[400px] md:h-[450px] rounded-2xl bg-background/5 border border-background/10 overflow-hidden"
     >
       {positionedWords.map((wordData, index) => (
         <motion.span
@@ -173,7 +173,7 @@ function WordMap() {
           className={`font-semibold cursor-default transition-all duration-300 whitespace-nowrap ${
             hoveredWord === wordData.word
               ? "text-primary scale-110 z-10"
-              : "text-foreground/70 hover:text-primary/80"
+              : "text-background/80 hover:text-primary/80"
           }`}
           onMouseEnter={() => setHoveredWord(wordData.word)}
           onMouseLeave={() => setHoveredWord(null)}
@@ -187,9 +187,9 @@ function WordMap() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-card border border-border rounded-lg shadow-lg"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-background border border-border rounded-lg shadow-lg"
         >
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-foreground/70">
             <span className="font-medium text-foreground">{hoveredWord}</span>
             {" — "}
             {wordMapData.find((w) => w.word === hoveredWord)?.frequency} mentions
@@ -231,12 +231,12 @@ export function LeaderVoices() {
     <section
       id="leader-voices"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-background relative overflow-hidden"
+      className="py-24 md:py-32 bg-muted text-muted-foreground relative overflow-hidden"
     >
-      {/* Subtle background elements */}
+      {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/3 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -248,8 +248,8 @@ export function LeaderVoices() {
           className="text-center mb-16"
         >
           <span className="caption text-primary mb-4 block">Outcomes & Recognition</span>
-          <h2 className="section-heading mb-6">Leadership Speaks</h2>
-          <p className="body-large text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="section-heading text-background mb-6">Leadership Speaks</h2>
+          <p className="body-large text-background/70 max-w-2xl mx-auto">
             We asked leaders across the company to share their honest reflections on the Product Team this year.
           </p>
         </motion.div>
@@ -282,7 +282,7 @@ export function LeaderVoices() {
             <button
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className="p-3 rounded-full border border-border bg-card hover:bg-muted transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              className="p-3 rounded-full border border-background/20 bg-background/10 hover:bg-background/20 text-background transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronLeft size={20} />
             </button>
@@ -296,7 +296,7 @@ export function LeaderVoices() {
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex
                       ? "bg-primary w-6"
-                      : "bg-border hover:bg-muted-foreground"
+                      : "bg-background/30 hover:bg-background/50"
                   }`}
                 />
               ))}
@@ -305,7 +305,7 @@ export function LeaderVoices() {
             <button
               onClick={handleNext}
               disabled={currentIndex === leaderTestimonials.length - 1}
-              className="p-3 rounded-full border border-border bg-card hover:bg-muted transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+              className="p-3 rounded-full border border-background/20 bg-background/10 hover:bg-background/20 text-background transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <ChevronRight size={20} />
             </button>
@@ -320,10 +320,10 @@ export function LeaderVoices() {
           className="max-w-4xl mx-auto"
         >
           <div className="text-center mb-8">
-            <p className="text-sm text-muted-foreground uppercase tracking-widest mb-2">
+            <p className="text-sm text-background/60 uppercase tracking-widest mb-2">
               Company-wide Survey
             </p>
-            <h3 className="text-xl md:text-2xl font-semibold text-foreground">
+            <h3 className="text-xl md:text-2xl font-semibold text-background">
               "Describe the Product team in 3 words"
             </h3>
           </div>
@@ -335,7 +335,7 @@ export function LeaderVoices() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.8 }}
-            className="text-center mt-10 text-muted-foreground italic"
+            className="text-center mt-10 text-background/70 italic"
           >
             Different voices. A shared sense of trust.
           </motion.p>
