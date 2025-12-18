@@ -10,7 +10,7 @@ const navItems = [
   { id: "leader-voices", label: "Leadership" },
   { id: "craft", label: "Product Craft" },
   { id: "stories", label: "PM Stories" },
-  { id: "learnings", label: "Learnings" },
+  
   { id: "heroes", label: "Hero Products" },
   { id: "looking-ahead", label: "Looking Ahead" },
 ];

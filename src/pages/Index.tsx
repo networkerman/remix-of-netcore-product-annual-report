@@ -8,7 +8,7 @@ import { YearAtGlance } from "@/components/yearbook/YearAtGlance";
 
 import { ProductCraft } from "@/components/yearbook/ProductCraft";
 import { PMStories } from "@/components/yearbook/PMStories";
-import { LearningsSection } from "@/components/yearbook/LearningsSection";
+
 import { HeroProducts } from "@/components/yearbook/HeroProducts";
 import { LookingAhead } from "@/components/yearbook/LookingAhead";
 import { ThankYou } from "@/components/yearbook/ThankYou";
@@ -29,7 +29,6 @@ const Index = () => {
         <LeaderVoices />
         <ProductCraft />
         <PMStories />
-        <LearningsSection />
         <HeroProducts />
         <LookingAhead />
         <ThankYou />
