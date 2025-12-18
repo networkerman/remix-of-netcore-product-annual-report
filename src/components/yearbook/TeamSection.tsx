@@ -159,7 +159,7 @@ export function TeamSection() {
                 )}
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
+                <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent pointer-events-none">
                   <span className={`inline-flex self-start px-3 py-1 rounded-full text-xs font-medium border mb-3 ${teamBadgeColors[member.team]}`}>
                     {member.team}
                   </span>
