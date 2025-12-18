@@ -1,71 +1,127 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ChevronRight, Zap } from "lucide-react";
+import { ChevronRight, ExternalLink } from "lucide-react";
 
-interface Feature {
-  month: string;
-  features: {
-    name: string;
-    product: "CE" | "CPaaS" | "Unbxd";
-    highlight?: boolean;
-  }[];
+interface FeatureItem {
+  name: string;
+  product: "CE" | "CPaaS" | "Unbxd";
+  link: string;
 }
 
-const yearData: Feature[] = [
+interface MonthData {
+  month: string;
+  features: FeatureItem[];
+}
+
+const yearData: MonthData[] = [
   { month: "Jan", features: [
-    { name: "Analytics Dashboard v2", product: "CE", highlight: true },
-    { name: "Webhook Enhancements", product: "CPaaS" },
+    { name: "Event Actions", product: "CE", link: "https://cedocs.netcorecloud.com/docs/events#create-event" },
+    { name: "Error Console", product: "CE", link: "https://cedocs.netcorecloud.com/docs/error-console" },
+    { name: "Add Custom Parameters", product: "CE", link: "https://cedocs.netcorecloud.com/docs/global-advanced-settings#add-custom-parameters" },
   ]},
   { month: "Feb", features: [
-    { name: "Email Template Builder", product: "CE" },
-    { name: "Rate Limiting APIs", product: "CPaaS" },
-    { name: "Search Analytics", product: "Unbxd" },
+    { name: "Two-Factor Authentication (2FA)", product: "CE", link: "https://cedocs.netcorecloud.com/docs/two-factor-authentication" },
+    { name: "Journey Triggers", product: "CE", link: "https://cedocs.netcorecloud.com/docs/journey-triggers#activity" },
+    { name: "Journey-Level Frequency Capping", product: "CE", link: "https://cedocs.netcorecloud.com/docs/create-a-journey" },
+    { name: "In-App Campaign with Unified Content Editor", product: "CE", link: "https://cedocs.netcorecloud.com/docs/create-in-app-campaign-with-unified-content-editor-diy" },
+    { name: "WhatsApp Payments", product: "CPaaS", link: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/i4xuhn8p0lbof-whats-app-payments" },
   ]},
   { month: "Mar", features: [
-    { name: "Journey Builder 3.0", product: "CE", highlight: true },
-    { name: "WhatsApp Business API", product: "CPaaS" },
+    { name: "Attribute Data Masking", product: "CE", link: "https://cedocs.netcorecloud.com/docs/attributes-2#attribute-masking" },
+    { name: "Progress Bar Enhancement", product: "CE", link: "https://cedocs.netcorecloud.com/docs/app-push-template#content" },
+    { name: "Amazon S3 Integration for Contact Imports", product: "CE", link: "https://cedocs.netcorecloud.com/docs/amazon-s3-import" },
+    { name: "Advanced Segmentation with Aggregation", product: "CE", link: "https://cedocs.netcorecloud.com/docs/ability-to-add-conditions-based-on-aggregation-operations" },
+    { name: "Custom Data Deletion & Retention Period", product: "CE", link: "https://cedocs.netcorecloud.com/docs/events#create-event" },
+    { name: "Dynamic & Static Product Picker", product: "CE", link: "https://cedocs.netcorecloud.com/docs/product-picker" },
+    { name: "Segmentation Autosuggest", product: "CE", link: "https://cedocs.netcorecloud.com/docs/segments#create-a-segment" },
+    { name: "WhatsApp Template", product: "CE", link: "https://cedocs.netcorecloud.com/docs/whatsapp-template#link-tracking" },
+    { name: "WhatsApp Template Management", product: "CE", link: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/branches/main/w6j0vuk1n77t8-whats-app-template-management#link-tracking" },
+    { name: "WhatsApp in Unified Campaign Flow", product: "CE", link: "https://cedocs.netcorecloud.com/docs/whatsapp-in-unified-campaign-flow#link-tracking-in-whatsapp" },
+    { name: "Brand Kit", product: "CE", link: "https://cedocs.netcorecloud.com/docs/brand-kit-1" },
   ]},
   { month: "Apr", features: [
-    { name: "Segment Sync", product: "CE" },
-    { name: "SMS Templates", product: "CPaaS" },
-    { name: "Shopify App v2", product: "Unbxd", highlight: true },
+    { name: "Web Message Template Generator", product: "CE", link: "https://cedocs.netcorecloud.com/docs/co-marketer-template-generator" },
+    { name: "Vector Search", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/vector-search#/" },
+    { name: "Measurement Search", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/measurement-search#/" },
+    { name: "Website Preview", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/ai-meta-data" },
   ]},
   { month: "May", features: [
-    { name: "AI Recommendations", product: "CE" },
-    { name: "Voice API Beta", product: "CPaaS" },
+    { name: "Unbxd-Powered Recommendations for Email", product: "CE", link: "https://cedocs.netcorecloud.com/docs/recommendations-using-netcore" },
+    { name: "Funnel Enhancements", product: "CE", link: "https://cedocs.netcorecloud.com/docs/funnel-analytics" },
+    { name: "Attribute Deletion & Audit Logs", product: "CE", link: "https://cedocs.netcorecloud.com/docs/attributes-2#delete-attribute" },
+    { name: "SSO on CE", product: "CE", link: "https://cedocs.netcorecloud.com/docs/sso-single-sign-on" },
+    { name: "Facebook Lead Ads Integration", product: "CE", link: "https://cedocs.netcorecloud.com/docs/integrate-facebook-lead-ads-with-netcore" },
+    { name: "Addressable Anonymous", product: "CE", link: "https://cedocs.netcorecloud.com/docs/addressable-anonymous" },
+    { name: "CE Dashboard vs User-Level Reports", product: "CE", link: "https://cedocs.netcorecloud.com/docs/reports-nomenclature#ce-dashboard-data-vs-user-level-detailed-report" },
+    { name: "Metrics & Formula Guide", product: "CE", link: "https://cedocs.netcorecloud.com/docs/reports-nomenclature#metrics-and-formulas-for-ui-pages--reports" },
+    { name: "Link Tracking for RCS", product: "CPaaS", link: "https://cedocs.netcorecloud.com/docs/link-tracking-in-rcs" },
+    { name: "AI-Suggested Similar Queries", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/promotions-optional#/ai-suggested-queries" },
+    { name: "Visual Search", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/visual-search#/" },
+    { name: "Product Card Mapping", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/product-card-mapping#/" },
+    { name: "Bulk Export/Import Field Configurations", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/field-properties#/ability-to-bulk-exportimport-field-configurations" },
   ]},
   { month: "Jun", features: [
-    { name: "Cross-Platform Analytics", product: "CE", highlight: true },
-    { name: "RCS Messaging", product: "CPaaS" },
-    { name: "Visual Search", product: "Unbxd" },
+    { name: "Jio Integration for RCS", product: "CPaaS", link: "https://cedocs.netcorecloud.com/docs/multi-vendor-support-with-jio-integration" },
+    { name: "Multiple Bot Support", product: "CPaaS", link: "https://netcorecloud.stoplight.io/docs/netcore-google-rcs-api-documentation/i6juemkp769g9-multibot-support-for-c-paa-s" },
+    { name: "AI Suggested Redirects", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/redirects#/" },
+    { name: "Product Insights", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/ai-meta-data#/product-insights" },
+    { name: "Enhanced Filter & Boost Conditions", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/ui-terminologies#/" },
   ]},
   { month: "Jul", features: [
-    { name: "Campaign Automation", product: "CE" },
-    { name: "Two-Factor Auth API", product: "CPaaS" },
+    { name: "UCE for WhatsApp", product: "CE", link: "https://cedocs.netcorecloud.com/docs/whatsapp-template" },
+    { name: "Enhanced STO Support for WhatsApp", product: "CE", link: "https://cedocs.netcorecloud.com/docs/send-time-optimisation-sto" },
+    { name: "Web Push Notifications (Android)", product: "CE", link: "https://cedocs.netcorecloud.com/docs/google-chrome-spam-filter" },
+    { name: "Modify Event Payload Data Types", product: "CE", link: "https://cedocs.netcorecloud.com/docs/events#modify-event-payload-data-types" },
+    { name: "WhatsApp Flows Integration", product: "CPaaS", link: "https://cedocs.netcorecloud.com/docs/flows-whatsapp" },
+    { name: "Manage Autosuggest", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/autosuggest-1#/" },
+    { name: "Two-Factor Authentication", product: "Unbxd", link: "https://unbxdocs.readme.io/docs/two-factor-authentication#/" },
+    { name: "Catalog Plugin Support", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/catalog-plugin#/" },
   ]},
   { month: "Aug", features: [
-    { name: "Customer 360 View", product: "CE" },
-    { name: "Number Masking", product: "CPaaS" },
-    { name: "Personalization Engine", product: "Unbxd", highlight: true },
+    { name: "In-App GIFs & Countdown Timers in UCE", product: "CE", link: "https://cedocs.netcorecloud.com/docs/create-in-app-with-uce#widgets" },
+    { name: "RFM State Transitions", product: "CE", link: "https://cedocs.netcorecloud.com/docs/rfm-transitions" },
+    { name: "App Content Personalization", product: "CE", link: "https://cedocs.netcorecloud.com/docs/app-content-personalization" },
+    { name: "Merchandising Strategies with A/B Reports", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/ab-testing-reporting#/" },
+    { name: "PDP Viewer", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/product-display-page-viewer" },
+    { name: "Activity History", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/user-profile#/activity-history" },
   ]},
   { month: "Sep", features: [
-    { name: "Predictive Analytics", product: "CE", highlight: true },
-    { name: "WhatsApp Commerce", product: "CPaaS" },
+    { name: "Global Widgets for Reusable Content", product: "CE", link: "https://cedocs.netcorecloud.com/docs/create-email-template-with-uce#saved-blocks" },
+    { name: "My Boards", product: "CE", link: "https://cedocs.netcorecloud.com/docs/analytics-custom-board" },
+    { name: "Campaign Insight Generator", product: "CE", link: "#" },
+    { name: "Event Tracking with Analytics", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/user-profile#/activity-history" },
+    { name: "Product Badging", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/product-badges#/" },
+    { name: "Shopping Agent", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/shopping-assistant" },
   ]},
   { month: "Oct", features: [
-    { name: "Real-time Triggers", product: "CE" },
-    { name: "Video API", product: "CPaaS" },
-    { name: "AI Merchandising", product: "Unbxd" },
+    { name: "Enhanced Custom Push Notification Layouts", product: "CE", link: "https://cedocs.netcorecloud.com/docs/campaign-insight-generator" },
+    { name: "Doc Bot", product: "CE", link: "https://cedocs.netcorecloud.com/" },
+    { name: "Journey Path Optimizer", product: "CE", link: "#" },
+    { name: "Inline Widgets (Web Personalisation)", product: "CE", link: "https://cedocs.netcorecloud.com/docs/inline-widgets" },
+    { name: "WhatsApp Product Carousel Template", product: "CPaaS", link: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/iwcg4ar30nmgw-product-card-carousel-templates" },
   ]},
   { month: "Nov", features: [
-    { name: "Attribution Modeling", product: "CE" },
-    { name: "Chat SDK v3", product: "CPaaS", highlight: true },
+    { name: "Infobip Integration for WhatsApp Journeys", product: "CE", link: "https://cedocs.netcorecloud.com/docs/infobip" },
+    { name: "Report Documentation", product: "CE", link: "https://cedocs.netcorecloud.com/docs/on-site-messages-report" },
+    { name: "Recommendations in App Push", product: "CE", link: "https://cedocs.netcorecloud.com/docs/product-recommendation-in-app-push" },
+    { name: "Manage Multiple RCS Bots", product: "CE", link: "https://cedocs.netcorecloud.com/docs/ce-multibot-support" },
+    { name: "Activity API", product: "CE", link: "https://developer.netcorecloud.com/docs/activity-api" },
+    { name: "UTM Tracking Across Channels", product: "CE", link: "https://cedocs.netcorecloud.com/docs/create-in-app" },
+    { name: "PII Hashing", product: "CPaaS", link: "https://emaildocs.netcorecloud.com/docs/settings-2#personally-identifiable-information-pii-hashing" },
+    { name: "Encryption in Transit", product: "CPaaS", link: "https://cpaasdocs.netcorecloud.com/docs/netcore-sms/b183f973525f3-encryption-keys" },
+    { name: "On-Click Field Rule", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/on-click-facet-rule#/" },
+    { name: "Variant Locking", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/variant-locking#/" },
+    { name: "Merchandising Strategies with Date Fields", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/ui-terminologies#/" },
+    { name: "Product Freshness", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/product-freshness#/" },
+    { name: "AI-Based Complete the Look", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/recommendation-ai-based-complete-the-look#/" },
   ]},
   { month: "Dec", features: [
-    { name: "Year-End Reports", product: "CE" },
-    { name: "API v3 Launch", product: "CPaaS" },
-    { name: "Holiday Readiness Suite", product: "Unbxd" },
+    { name: "Contact Create API", product: "CE", link: "https://developer.netcorecloud.com/reference/contact-create" },
+    { name: "WhatsApp Limited-Time Offer Templates", product: "CE", link: "https://cedocs.netcorecloud.com/docs/whatsapp-limited-time-offer" },
+    { name: "Dynamic Blocks in UCE", product: "CE", link: "https://cedocs.netcorecloud.com/docs/email-dynamic-block-in-unified-content-editor" },
+    { name: "Segment on Segment", product: "CE", link: "https://cedocs.netcorecloud.com/docs/segment-inclusion-exclusion" },
+    { name: "Set Limit", product: "CPaaS", link: "https://cedocs.netcorecloud.com/docs/create-rcs-campaign-copy#contact-limit" },
   ]},
 ];
 
@@ -73,6 +129,19 @@ const productColors = {
   CE: { bg: "bg-teal-500/10", text: "text-teal-500", border: "border-teal-500/30" },
   CPaaS: { bg: "bg-coral-400/10", text: "text-coral-500", border: "border-coral-400/30" },
   Unbxd: { bg: "bg-accent/20", text: "text-amber-600", border: "border-accent/40" },
+};
+
+// Calculate metrics dynamically
+const getTotalFeatures = () => {
+  return yearData.reduce((total, month) => total + month.features.length, 0);
+};
+
+const getCrossProductLaunches = () => {
+  // Count months where multiple products shipped features together
+  return yearData.filter(month => {
+    const products = new Set(month.features.map(f => f.product));
+    return products.size >= 2;
+  }).length;
 };
 
 export function YearAtGlance() {
@@ -87,6 +156,9 @@ export function YearAtGlance() {
       ? month.features 
       : month.features.filter(f => f.product === productFilter)
   }));
+
+  const totalFeatures = getTotalFeatures();
+  const crossProductLaunches = getCrossProductLaunches();
 
   return (
     <section
@@ -104,8 +176,12 @@ export function YearAtGlance() {
         >
           <span className="caption text-primary mb-4 block">Everything We Shipped</span>
           <h2 className="section-heading text-foreground mb-6">Year at a Glance</h2>
-          <p className="body-large text-foreground/60 max-w-2xl mx-auto">
-            Month by month, feature by feature. Here's the complete timeline of what we built in 2025.
+          <p className="body-large text-foreground/60 max-w-2xl mx-auto mb-4">
+            A chronological view of the features, launches, and platform bets that shaped our product year.
+          </p>
+          <p className="text-sm text-foreground/40 flex items-center justify-center gap-2">
+            <ChevronRight size={14} />
+            Click on a month to see features
           </p>
         </motion.div>
 
@@ -174,24 +250,25 @@ export function YearAtGlance() {
                 >
                   <div className="space-y-2 pt-2">
                     {month.features.map((feature, fIndex) => (
-                      <div
+                      <a
                         key={fIndex}
-                        className={`p-3 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} ${
-                          feature.highlight ? "ring-2 ring-primary/20" : ""
-                        }`}
+                        href={feature.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`block p-3 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200`}
                       >
                         <div className="flex items-start gap-2">
-                          {feature.highlight && (
-                            <Zap size={14} className="text-primary mt-0.5 flex-shrink-0" />
-                          )}
-                          <div>
-                            <p className="text-sm font-medium text-foreground leading-tight">{feature.name}</p>
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-foreground leading-tight flex items-center gap-1">
+                              {feature.name}
+                              <ExternalLink size={10} className="text-foreground/40 flex-shrink-0" />
+                            </p>
                             <span className={`text-xs ${productColors[feature.product].text}`}>
                               {feature.product}
                             </span>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     ))}
                   </div>
                 </motion.div>
@@ -205,13 +282,12 @@ export function YearAtGlance() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+          className="mt-20 grid grid-cols-3 gap-6 max-w-3xl mx-auto"
         >
           {[
-            { label: "Total Features", value: "47+" },
-            { label: "Cross-Product Launches", value: "8" },
+            { label: "Total Features", value: `${totalFeatures}+` },
+            { label: "Cross-Product Launches", value: `${crossProductLaunches}` },
             { label: "Major Releases", value: "12" },
-            { label: "Highlight Moments", value: "9" },
           ].map((stat, index) => (
             <div key={index} className="text-center p-6 rounded-2xl bg-card border border-border">
               <p className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</p>
@@ -219,12 +295,6 @@ export function YearAtGlance() {
             </div>
           ))}
         </motion.div>
-
-        {/* Click Hint */}
-        <p className="text-center text-sm text-foreground/40 mt-8 flex items-center justify-center gap-2">
-          <ChevronRight size={14} />
-          Click on a month to see features
-        </p>
       </div>
     </section>
   );
