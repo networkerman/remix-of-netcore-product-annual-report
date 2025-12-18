@@ -447,12 +447,109 @@ export function ProductCraft() {
 
       {/* Story Modal */}
       <Dialog open={!!selectedStory} onOpenChange={() => setSelectedStory(null)}>
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-cream-100 border-foreground/10">
-          <DialogTitle className="text-2xl font-bold text-foreground">
-            {selectedStory?.title}
-          </DialogTitle>
-          <div className="text-foreground/70 leading-relaxed mt-4 whitespace-pre-line">
-            {selectedStory?.content}
+        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto bg-cream-100 border-foreground/10 p-0">
+          <div className="px-8 pt-8 pb-10 md:px-12 md:pt-10 md:pb-12">
+            {/* Visual Anchor Line */}
+            <div className="w-12 h-1 bg-primary/60 rounded-full mb-8" />
+            
+            {/* Title - Chapter Heading Style */}
+            <DialogTitle className="text-2xl md:text-3xl font-bold text-foreground tracking-tight mb-8 leading-tight">
+              {selectedStory?.title}
+            </DialogTitle>
+            
+            {/* Content with Editorial Styling */}
+            <div className="max-w-prose">
+              {selectedStory?.content.split('\n\n').map((paragraph, pIndex) => {
+                // Check if this is a bullet list
+                if (paragraph.includes('• ')) {
+                  const lines = paragraph.split('\n');
+                  return (
+                    <ul key={pIndex} className="my-8 space-y-4">
+                      {lines.map((line, lIndex) => (
+                        <li 
+                          key={lIndex} 
+                          className="flex items-start gap-3 text-foreground/70 leading-relaxed"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/60 mt-2.5 flex-shrink-0" />
+                          <span>{line.replace('• ', '')}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
+                
+                // Check for key narrative moments (short impactful lines)
+                const isKeyMoment = 
+                  paragraph.startsWith('So we chose') ||
+                  paragraph.startsWith('This is where') ||
+                  paragraph.startsWith('The result?') ||
+                  paragraph.startsWith('Design shaped the how') ||
+                  (paragraph.startsWith('We stopped') && paragraph.includes('watching users')) ||
+                  paragraph.startsWith('Complexity didn\'t disappear');
+                
+                if (isKeyMoment) {
+                  return (
+                    <p 
+                      key={pIndex} 
+                      className="my-10 text-lg md:text-xl font-medium text-foreground leading-relaxed"
+                    >
+                      {paragraph}
+                    </p>
+                  );
+                }
+                
+                // Regular paragraphs
+                return (
+                  <p 
+                    key={pIndex} 
+                    className="text-foreground/70 leading-[1.8] mb-6 last:mb-0"
+                  >
+                    {paragraph}
+                  </p>
+                );
+              })}
+            </div>
+            
+            {/* Navigation Between Stories */}
+            {currentSection.stories.length > 1 && (
+              <div className="flex items-center justify-between mt-12 pt-8 border-t border-foreground/10">
+                {(() => {
+                  const currentIndex = currentSection.stories.findIndex(s => s.title === selectedStory?.title);
+                  const prevStory = currentIndex > 0 ? currentSection.stories[currentIndex - 1] : null;
+                  const nextStory = currentIndex < currentSection.stories.length - 1 ? currentSection.stories[currentIndex + 1] : null;
+                  
+                  return (
+                    <>
+                      <button
+                        onClick={() => prevStory && setSelectedStory(prevStory)}
+                        disabled={!prevStory}
+                        className={`text-sm font-medium transition-colors ${
+                          prevStory 
+                            ? 'text-foreground/60 hover:text-primary cursor-pointer' 
+                            : 'text-foreground/20 cursor-default'
+                        }`}
+                      >
+                        ← Previous
+                      </button>
+                      <span className="text-foreground/30 text-sm">
+                        {currentIndex + 1} of {currentSection.stories.length}
+                      </span>
+                      <button
+                        onClick={() => nextStory && setSelectedStory(nextStory)}
+                        disabled={!nextStory}
+                        className={`text-sm font-medium transition-colors ${
+                          nextStory 
+                            ? 'text-foreground/60 hover:text-primary cursor-pointer' 
+                            : 'text-foreground/20 cursor-default'
+                        }`}
+                      >
+                        Next →
+                      </button>
+                    </>
+                  );
+                })()}
+              </div>
+            )}
           </div>
         </DialogContent>
       </Dialog>
