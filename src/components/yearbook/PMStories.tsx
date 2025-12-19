@@ -192,12 +192,8 @@ export function PMStories() {
                     }}
                   />
                   
-                  {/* Fallback for missing image */}
-                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 flex items-center justify-center">
-                    <span className="text-cream-100 font-bold text-4xl opacity-50">
-                      {intern.name.charAt(0)}
-                    </span>
-                  </div>
+                  {/* Fallback background for missing image */}
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 -z-10" />
                   
                   {/* Gradient overlay with name & one-liner */}
                   <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
