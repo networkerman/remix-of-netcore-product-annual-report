@@ -276,56 +276,6 @@ export function ProductCraft() {
           transition={{ delay: 0.4 }}
           className="max-w-5xl mx-auto mb-24"
         >
-          {/* Success Triangle Visual */}
-          <div className="text-center mb-16">
-            <h3 className="text-2xl font-bold text-foreground mb-4">The Success Triangle</h3>
-            <p className="text-foreground/60 mb-10 max-w-xl mx-auto">
-              Analytics succeeded because all three moved together. None worked in isolation.
-            </p>
-            
-            <div className="flex justify-center items-center">
-              <div className="relative w-80 h-72">
-                {/* SVG Triangle Lines */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 320 288">
-                  <path
-                    d="M160 40 L60 240 L260 240 Z"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="text-foreground/20"
-                    strokeDasharray="8 4"
-                  />
-                </svg>
-                
-                {/* Product - Top */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 text-center">
-                  <div className="w-16 h-16 rounded-full bg-teal-500/20 border-2 border-teal-500 flex items-center justify-center mb-2 mx-auto">
-                    <Lightbulb className="text-teal-500" size={24} />
-                  </div>
-                  <span className="font-bold text-teal-600">Product</span>
-                  <p className="text-xs text-foreground/60">Strategy</p>
-                </div>
-                
-                {/* Design - Bottom Left */}
-                <div className="absolute bottom-0 left-0 text-center">
-                  <div className="w-16 h-16 rounded-full bg-coral-400/20 border-2 border-coral-400 flex items-center justify-center mb-2 mx-auto">
-                    <Palette className="text-coral-500" size={24} />
-                  </div>
-                  <span className="font-bold text-coral-600">Design</span>
-                  <p className="text-xs text-foreground/60">Usability</p>
-                </div>
-                
-                {/* Docs - Bottom Right */}
-                <div className="absolute bottom-0 right-0 text-center">
-                  <div className="w-16 h-16 rounded-full bg-amber-500/20 border-2 border-amber-500 flex items-center justify-center mb-2 mx-auto">
-                    <FileText className="text-amber-600" size={24} />
-                  </div>
-                  <span className="font-bold text-amber-700">Documentation</span>
-                  <p className="text-xs text-foreground/60">Adoption</p>
-                </div>
-              </div>
-            </div>
-          </div>
 
         {/* NPS Callout - Celebratory Badge */}
           <motion.div
