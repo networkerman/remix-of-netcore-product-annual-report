@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Sparkles, Coffee, Heart } from "lucide-react";
+import { Sparkles, Rocket, Heart } from "lucide-react";
 
 const aiStories = [
   {
@@ -25,13 +25,39 @@ const aiStories = [
 ];
 
 
-const newMemberQuotes = [
-  { quote: "I thought I knew product. Then I joined Netcore.", author: "[Name]", joined: "Q1 2025" },
-  { quote: "The codebase is... character building.", author: "[Name]", joined: "Q2 2025" },
-  { quote: "Everyone warned me about the Slack channels. They were right.", author: "[Name]", joined: "Q2 2025" },
-  { quote: "First week: 47 acronyms. Still learning.", author: "[Name]", joined: "Q3 2025" },
-  { quote: "The coffee machine and I have bonded.", author: "[Name]", joined: "Q3 2025" },
-  { quote: "Standups that actually stand up? Revolutionary.", author: "[Name]", joined: "Q4 2025" },
+const internCards = [
+  {
+    name: "PARTH",
+    title: "The Tech Decoder 🧠",
+    ohShit: "First grooming call felt like a foreign language class. Drowned in acronyms (SDKs? RAGs?).",
+    glitch: "Confused \"cool\" with \"valuable.\" Learned novelty ≠ a problem statement.",
+    thirdLabel: "Myth Busted",
+    thirdContent: "Expected serious nerds. Found super smart party animals instead (confirmed after 🍻).",
+  },
+  {
+    name: "DHAIRYA",
+    title: "The Design System Rebel 🎨",
+    ohShit: "Terrified of being \"The Fire Guy\" triggering prod alarms while panicking over deadlines.",
+    glitch: "Went rogue on the Design System. Built new components instead of reusing existing ones (sorry boss!).",
+    thirdLabel: "Version History",
+    thirdContent: "Day 1: \"Wtf???\" 🤯 → Now: \"Oh ok. Cool.\" 😎",
+  },
+  {
+    name: "KUSH",
+    title: "The Strategic Nodder 🤝",
+    ohShit: "Survived first grooming using \"strategic nodding\" and praying for zero follow-up questions.",
+    glitch: "Assumed silence = agreement. Learned \"I think we're aligned\" means absolutely no one is.",
+    thirdLabel: "Vibe Shift",
+    thirdContent: "Then: Khoon Choos Le 🩸 → Now: Safarnama ✈️",
+  },
+  {
+    name: "TANISHQ",
+    title: "The Happy-Path Hunter 🎯",
+    ohShit: "Leading groomings in week one while barely understanding what product we were building.",
+    glitch: "Designed only the \"Happy Path.\" Learned that edge cases eat best cases for breakfast.",
+    thirdLabel: "Vibe Shift",
+    thirdContent: "Then: Apna Time Aayega 🎤 → Now: Bhaag Milkha Bhaag 🏃",
+  },
 ];
 
 const lifeInProduct = [
@@ -104,31 +130,57 @@ export function PMStories() {
         </motion.div>
 
 
-        {/* New Member Quotes */}
+        {/* Deployed to Production */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.5 }}
           className="mb-24"
         >
-          <div className="flex items-center gap-3 mb-8">
-            <Coffee className="text-accent" size={24} />
-            <h3 className="text-xl font-bold">One-Liners from New Members</h3>
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Rocket className="text-teal-400" size={28} />
+              <h3 className="text-2xl font-bold text-cream-100">Deployed to Production 🚀</h3>
+            </div>
+            <p className="text-cream-300/70 max-w-3xl mx-auto">
+              Great products start as messy prototypes. Our interns graduated from "Staging" to the high-stakes world of "Production." Here is their version history—bugs, patches, and major upgrades included.
+            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {newMemberQuotes.map((item, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {internCards.map((intern, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.6 + index * 0.05 }}
-                className="p-5 rounded-xl bg-cream-100/5 border border-cream-100/10 hover:bg-cream-100/10 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-500/30 transition-colors"
               >
-                <p className="text-cream-200 text-sm italic mb-3">"{item.quote}"</p>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-cream-400">{item.author}</span>
-                  <span className="text-teal-400">{item.joined}</span>
+                {/* Avatar and Name */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-cream-300 font-bold text-lg">
+                    {intern.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-cream-100">{intern.name}</h4>
+                    <p className="text-sm text-teal-400">{intern.title}</p>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="space-y-3 text-sm">
+                  <p className="text-gray-300">
+                    <span className="font-bold text-cream-100">"Oh S#t": </span>
+                    {intern.ohShit}
+                  </p>
+                  <p className="text-gray-300">
+                    <span className="font-bold text-cream-100">The Glitch: </span>
+                    {intern.glitch}
+                  </p>
+                  <p className="text-gray-300">
+                    <span className="font-bold text-cream-100">{intern.thirdLabel}: </span>
+                    {intern.thirdContent}
+                  </p>
                 </div>
               </motion.div>
             ))}
