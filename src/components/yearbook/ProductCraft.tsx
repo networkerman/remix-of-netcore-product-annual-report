@@ -128,42 +128,21 @@ Making the complex simple, one page at a time.`,
   },
 ];
 
-interface Highlight {
-  text: string;
-  link: string;
-}
-
-interface SpotlightProduct {
-  product: string;
-  tagline: string;
-  story: string;
-  highlights: Highlight[];
-}
-
-const spotlightProducts: SpotlightProduct[] = [
+const spotlightProducts = [
   {
     product: "RFM",
-    tagline: "RFM",
-    story: "RFM became the foundation for 50+ retention and lifecycle strategies, helping teams identify loyal, at-risk, and high-value customers with clarity.",
-    highlights: [
-      { text: "50+ customers actively using RFM", link: "https://cedocs.netcorecloud.com/docs/rfm" },
-    ],
+    adoption: "Customer adoption: 50+",
+    docLink: "https://cedocs.netcorecloud.com/docs/rfm",
   },
   {
     product: "Funnel",
-    tagline: "Funnel",
-    story: "Funnels enabled teams to move beyond surface metrics by identifying drop-offs, understanding conversion friction, and acting on insights.",
-    highlights: [
-      { text: "30+ customers actively using Funnels", link: "https://cedocs.netcorecloud.com/docs/funnel-analytics" },
-    ],
+    adoption: "Customer adoption: 30+",
+    docLink: "https://cedocs.netcorecloud.com/docs/funnel-analytics",
   },
   {
     product: "Cohort",
-    tagline: "Cohort",
-    story: "Cohort analysis helped teams track behavior over time, compare user groups, and measure long-term engagement and retention patterns.",
-    highlights: [
-      { text: "10+ customers actively using Cohorts", link: "https://cedocs.netcorecloud.com/docs/cohorts" },
-    ],
+    adoption: "Customer adoption: 10+",
+    docLink: "https://cedocs.netcorecloud.com/docs/cohorts",
   },
 ];
 
@@ -431,40 +410,24 @@ export function ProductCraft() {
                 className="group relative"
               >
                 <div className="p-8 rounded-3xl bg-gradient-to-br from-navy-800 to-navy-900 text-cream-100 h-full">
-                  {/* Header */}
+                  {/* Product Name */}
                   <div className="mb-6">
-                    <span className="text-teal-400 text-sm font-medium">{product.product}</span>
-                    <h4 className="text-2xl font-bold mt-2">{product.tagline}</h4>
+                    <h4 className="text-2xl font-bold text-teal-400">{product.product}</h4>
                   </div>
 
-                  {/* Story */}
-                  <p className="text-cream-300/70 leading-relaxed mb-6">
-                    {product.story}
-                  </p>
+                  {/* Customer Adoption */}
+                  <p className="text-cream-300/80 mb-6">{product.adoption}</p>
 
-                  {/* Highlights with links */}
-                  <div className="space-y-2">
-                    {product.highlights.map((highlight, hIndex) => (
-                      highlight.link ? (
-                        <a
-                          key={hIndex}
-                          href={highlight.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 text-sm text-cream-200 hover:text-teal-400 transition-colors group/link"
-                        >
-                          <ArrowRight size={14} className="text-teal-400" />
-                          {highlight.text}
-                          <ExternalLink size={12} className="opacity-0 group-hover/link:opacity-100 transition-opacity" />
-                        </a>
-                      ) : (
-                        <div key={hIndex} className="flex items-center gap-2 text-sm text-cream-200">
-                          <ArrowRight size={14} className="text-teal-400" />
-                          {highlight.text}
-                        </div>
-                      )
-                    ))}
-                  </div>
+                  {/* Doc Link */}
+                  <a
+                    href={product.docLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 text-sm transition-colors"
+                  >
+                    <span>Doc link</span>
+                    <ExternalLink size={14} />
+                  </a>
 
                   {/* Decorative Element */}
                   <div className="absolute top-4 right-4 w-20 h-20 rounded-full bg-teal-500/10 blur-2xl group-hover:bg-teal-500/20 transition-colors pointer-events-none" />
