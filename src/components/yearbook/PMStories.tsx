@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Sparkles, MessageCircle, Coffee, Heart } from "lucide-react";
+import { Sparkles, Coffee, Heart } from "lucide-react";
 
 const aiStories = [
   {
@@ -24,11 +24,6 @@ const aiStories = [
   },
 ];
 
-const caseStudies = [
-  { name: "Affinity Project", tag: "Cross-Team", status: "Placeholder for case study content" },
-  { name: "WhatsApp UCE Editor", tag: "Engineering", status: "Placeholder for case study content" },
-  { name: "Analytics GTM", tag: "Go-to-Market", status: "Placeholder for case study content" },
-];
 
 const newMemberQuotes = [
   { quote: "I thought I knew product. Then I joined Netcore.", author: "[Name]", joined: "Q1 2025" },
@@ -108,33 +103,6 @@ export function PMStories() {
           </div>
         </motion.div>
 
-        {/* Case Studies */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.4 }}
-          className="mb-24"
-        >
-          <div className="flex items-center gap-3 mb-8">
-            <MessageCircle className="text-coral-400" size={24} />
-            <h3 className="text-xl font-bold">Case Studies (Coming Soon)</h3>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {caseStudies.map((study, index) => (
-              <div
-                key={index}
-                className="p-6 rounded-2xl border-2 border-dashed border-cream-100/20 text-center"
-              >
-                <span className="inline-block px-3 py-1 rounded-full bg-coral-400/20 text-coral-400 text-xs font-medium mb-4">
-                  {study.tag}
-                </span>
-                <h4 className="font-bold text-lg text-cream-100 mb-2">{study.name}</h4>
-                <p className="text-cream-400 text-sm">{study.status}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* New Member Quotes */}
         <motion.div
