@@ -181,8 +181,8 @@ export function PMStories() {
                   hover:shadow-lg hover:shadow-teal-500/5"
               >
                 {/* Header: Image + Name + Persona */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-teal-500/30 flex-shrink-0">
+                <div className="flex flex-col items-center text-center py-2">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-500/30 mb-3">
                     <img 
                       src={intern.image} 
                       alt={intern.name}
@@ -198,39 +198,15 @@ export function PMStories() {
                       {intern.name.charAt(0)}
                     </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-cream-100 text-base">{intern.name}</h4>
-                    <p className="text-xs text-teal-400/90 font-medium">{intern.persona}</p>
+                  <h4 className="font-semibold text-cream-100 text-base mb-1">{intern.name}</h4>
+                  <p className="text-xs text-teal-400/90 font-medium">{intern.persona}</p>
+                  
+                  {/* Expand hint */}
+                  <div className="mt-4 pt-3 border-t border-cream-100/5 w-full">
+                    <span className="text-xs text-teal-400/60 font-medium">
+                      Click to expand
+                    </span>
                   </div>
-                </div>
-
-                {/* Reality Check */}
-                <div className="mb-4">
-                  <div className="flex items-center gap-1.5 mb-1.5">
-                    <AlertCircle className="text-coral-400/80" size={13} />
-                    <span className="text-xs font-semibold text-coral-400/90 uppercase tracking-wide">Reality Check</span>
-                  </div>
-                  <p className="text-cream-300/70 text-sm leading-relaxed line-clamp-2">
-                    {intern.realityCheck}
-                  </p>
-                </div>
-
-                {/* What Broke */}
-                <div className="mb-4">
-                  <div className="flex items-center gap-1.5 mb-1.5">
-                    <Wrench className="text-amber-400/80" size={13} />
-                    <span className="text-xs font-semibold text-amber-400/90 uppercase tracking-wide">What Broke</span>
-                  </div>
-                  <p className="text-cream-300/70 text-sm leading-relaxed line-clamp-2">
-                    {intern.whatBroke}
-                  </p>
-                </div>
-
-                {/* Expand hint */}
-                <div className="pt-3 border-t border-cream-100/5 text-center">
-                  <span className="text-xs text-teal-400/60 font-medium">
-                    Click to expand
-                  </span>
                 </div>
               </motion.div>
             ))}
