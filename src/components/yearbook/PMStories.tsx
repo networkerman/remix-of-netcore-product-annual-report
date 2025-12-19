@@ -10,6 +10,15 @@ import dhairyaImg from "@/assets/team/interns/dhairya.png";
 import kushImg from "@/assets/team/interns/kush.png";
 import tanishqImg from "@/assets/team/interns/tanishq.png";
 
+// Life in Product Team images
+import lifeImg1 from "@/assets/team/life/life-1.png";
+import lifeImg2 from "@/assets/team/life/life-2.jpg";
+import lifeImg3 from "@/assets/team/life/life-3.jpg";
+import lifeImg4 from "@/assets/team/life/life-4.jpg";
+import lifeImg5 from "@/assets/team/life/life-5.jpg";
+import lifeImg6 from "@/assets/team/life/life-6.jpg";
+import lifeImg7 from "@/assets/team/life/life-7.jpg";
+
 const aiStories = [
   {
     leader: "[Leader Name]",
@@ -80,54 +89,48 @@ const internCards: InternCard[] = [
   },
 ];
 
-const timelineEvents = [
+const cultureVersions = [
   {
-    tag: "v1.0: Work Hard, Play Hard 💼",
-    tagColor: "bg-teal-500",
-    caption: "Successfully deployed to the beach. Zero bugs found.",
-    position: "left" as const
+    version: "V1.0",
+    title: "Work Hard, Play Hard",
+    oneLiner: "Shipped features by day, stories by night.",
+    image: lifeImg1
   },
   {
-    tag: "v2.0: Goa Offsite Patch 🌴",
-    tagColor: "bg-emerald-500",
-    caption: "Stress testing our karaoke skills. Results: mixed.",
-    position: "right" as const
+    version: "V2.0",
+    title: "Out of Office, Still Aligned",
+    oneLiner: "Stand-ups paused. Team spirit upgraded.",
+    image: lifeImg2
   },
   {
-    tag: "Hotfix: Emergency Pizza 🍕",
-    tagColor: "bg-orange-500",
-    caption: "Critical deployment of carbs. Zero rollbacks.",
-    position: "left" as const
+    version: "V3.0",
+    title: "Culture Release",
+    oneLiner: "Low-latency laughs, high-trust shipped.",
+    image: lifeImg3
   },
   {
-    tag: "v3.1: Diwali Feature Drop 🪔",
-    tagColor: "bg-amber-500",
-    caption: "Shipped memories, not code. PRs pending.",
-    position: "right" as const
+    version: "V4.0",
+    title: "Team Sync IRL",
+    oneLiner: "No agendas. Stronger alignment.",
+    image: lifeImg4
   },
   {
-    tag: "Beta Test: Cricket League 🏏",
-    tagColor: "bg-blue-500",
-    caption: "Unexpected dependencies discovered. Morale unaffected.",
-    position: "left" as const
+    version: "V5.0",
+    title: "Patch Notes: People Edition",
+    oneLiner: "Bonding fixes applied. Morale improved.",
+    image: lifeImg5
   },
   {
-    tag: "v4.0: The Retro Party 🎉",
-    tagColor: "bg-pink-500",
-    caption: "Rolled back productivity. Shipped vibes instead.",
-    position: "right" as const
+    version: "V6.0",
+    title: "Culture, Scaled",
+    oneLiner: "Shared wins. Stronger ownership.",
+    image: lifeImg6
   },
   {
-    tag: "v5.0: Year-End Sync 🎊",
-    tagColor: "bg-purple-500",
-    caption: "Final push to production. Hearts deployed.",
-    position: "left" as const
-  },
-  {
-    tag: "Stable Release: Team Bond 💪",
-    tagColor: "bg-coral-500",
-    caption: "All tests passed. Culture: 100% coverage.",
-    position: "right" as const
+    version: "V7.0",
+    title: "Still Shipping Together",
+    oneLiner: "Different moments. Same team.",
+    image: lifeImg7
   }
 ];
 
@@ -339,7 +342,7 @@ export function PMStories() {
           </DialogContent>
         </Dialog>
 
-        {/* Life in Product - Winding Timeline */}
+        {/* Life in the Product Team - Culture Versions */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -347,154 +350,102 @@ export function PMStories() {
           className="relative"
         >
           {/* Section Header */}
-          <div className="flex items-center gap-3 mb-12">
-            <Heart className="text-coral-400" size={24} />
-            <h3 className="text-xl font-bold">Life in the Product Team</h3>
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Heart className="text-coral-400" size={24} />
+              <h3 className="text-xl font-bold">Life in the Product Team</h3>
+            </div>
+            <p className="text-cream-300/70 text-base max-w-2xl">
+              Not everything we shipped was code. Some of it was culture, which we discovered when we stepped away from the backlog.
+            </p>
           </div>
 
-          {/* Background decorations - confetti & doodles */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {/* Confetti particles */}
-            {[...Array(25)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 rounded-full"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  backgroundColor: ['#14b8a6', '#f97316', '#eab308', '#ec4899', '#8b5cf6'][i % 5]
-                }}
-                animate={{ opacity: [0.15, 0.4, 0.15], scale: [1, 1.2, 1] }}
-                transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, delay: i * 0.15 }}
-              />
-            ))}
-            
-            {/* Hand-drawn doodles SVG */}
-            <svg className="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none" viewBox="0 0 800 1200">
-              {/* Stars */}
-              <path d="M100 150 l5 15 l15 5 l-15 5 l-5 15 l-5 -15 l-15 -5 l15 -5 z" fill="currentColor" className="text-teal-400" />
-              <path d="M700 300 l4 12 l12 4 l-12 4 l-4 12 l-4 -12 l-12 -4 l12 -4 z" fill="currentColor" className="text-coral-400" />
-              <path d="M150 800 l5 15 l15 5 l-15 5 l-5 15 l-5 -15 l-15 -5 l15 -5 z" fill="currentColor" className="text-amber-400" />
-              <path d="M650 950 l4 12 l12 4 l-12 4 l-4 12 l-4 -12 l-12 -4 l12 -4 z" fill="currentColor" className="text-pink-400" />
-              {/* Squiggles */}
-              <path d="M50 400 Q70 380, 90 400 Q110 420, 130 400" stroke="currentColor" strokeWidth="2" fill="none" className="text-teal-400" />
-              <path d="M720 600 Q740 580, 760 600 Q780 620, 800 600" stroke="currentColor" strokeWidth="2" fill="none" className="text-orange-400" />
-              {/* Arrows */}
-              <path d="M80 650 L100 670 L80 690 M100 670 L60 670" stroke="currentColor" strokeWidth="2" fill="none" className="text-emerald-400" />
-              <path d="M720 150 L740 170 L720 190 M740 170 L700 170" stroke="currentColor" strokeWidth="2" fill="none" className="text-purple-400" />
-            </svg>
-          </div>
-
-          {/* Desktop: Winding Timeline */}
-          <div className="hidden md:block relative">
-            {/* SVG Winding Timeline Path */}
-            <svg className="absolute left-1/2 top-0 h-full w-40 -translate-x-1/2 pointer-events-none" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#f97316" />
-                  <stop offset="50%" stopColor="#eab308" />
-                  <stop offset="100%" stopColor="#f97316" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              <path 
-                d="M80 0 Q 30 100, 80 200 Q 130 300, 80 400 Q 30 500, 80 600 Q 130 700, 80 800 Q 30 900, 80 1000 Q 130 1100, 80 1200 Q 30 1300, 80 1400 Q 130 1500, 80 1600"
-                stroke="url(#timelineGradient)"
-                strokeWidth="3"
-                strokeDasharray="12 6"
-                fill="none"
-                filter="url(#glow)"
-                className="opacity-60"
-              />
-            </svg>
-
-            {/* Timeline Cards */}
-            <div className="relative z-10 space-y-16">
-              {timelineEvents.map((event, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: event.position === 'left' ? -40 : 40 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.8 + index * 0.12, duration: 0.5 }}
-                  className={`flex items-center ${event.position === 'left' ? 'justify-start pr-[52%]' : 'justify-end pl-[52%]'}`}
-                >
-                  {/* Connector dot */}
-                  <div 
-                    className="absolute left-1/2 w-4 h-4 -translate-x-1/2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-orange-500/40 z-20"
-                    style={{ boxShadow: '0 0 20px rgba(249, 115, 22, 0.5)' }}
-                  />
-                  
-                  {/* Card */}
-                  <div className="w-full max-w-sm rounded-2xl bg-navy-800/70 backdrop-blur-sm border border-cream-100/10 overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10 group">
-                    {/* Image placeholder */}
-                    <div className="aspect-[4/3] bg-gradient-to-br from-navy-700 via-navy-800 to-navy-700 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%)] bg-[length:20px_20px]" />
-                      <span className="text-cream-400/20 text-sm font-medium">Image placeholder</span>
-                    </div>
-                    
-                    {/* Release tag */}
-                    <div className="px-4 pt-4">
-                      <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold text-white ${event.tagColor} shadow-lg`}>
-                        {event.tag}
+          {/* Desktop: Dense 4+3 Grid */}
+          <div className="hidden md:block">
+            <div className="rounded-3xl overflow-hidden shadow-2xl shadow-navy-900/50">
+              {/* Row 1: 4 images */}
+              <div className="grid grid-cols-4">
+                {cultureVersions.slice(0, 4).map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.8 + index * 0.1 }}
+                    className="group relative aspect-[4/3] overflow-hidden"
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        {item.version} · {item.title}
                       </span>
+                      <p className="text-cream-100 text-sm font-medium">
+                        {item.oneLiner}
+                      </p>
                     </div>
-                    
-                    {/* Caption */}
-                    <p className="px-4 pb-4 pt-3 text-cream-300/80 text-sm leading-relaxed">
-                      {event.caption}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
+              {/* Row 2: 3 images (stretched equally) */}
+              <div className="grid grid-cols-3">
+                {cultureVersions.slice(4, 7).map((item, index) => (
+                  <motion.div
+                    key={index + 4}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 1.2 + index * 0.1 }}
+                    className="group relative aspect-[4/3] overflow-hidden"
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        {item.version} · {item.title}
+                      </span>
+                      <p className="text-cream-100 text-sm font-medium">
+                        {item.oneLiner}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Mobile: Vertical Timeline */}
-          <div className="md:hidden relative pl-8">
-            {/* Vertical line on left */}
-            <div className="absolute left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-500 via-yellow-500 to-orange-500 rounded-full opacity-60" style={{ boxShadow: '0 0 15px rgba(249, 115, 22, 0.4)' }} />
-            
-            {/* Cards */}
-            <div className="space-y-8">
-              {timelineEvents.map((event, index) => (
+          {/* Mobile: Horizontal Swipe Carousel */}
+          <div className="md:hidden -mx-6">
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-6 pb-4 scrollbar-hide">
+              {cultureVersions.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                  className="relative"
+                  transition={{ delay: 0.8 + index * 0.08 }}
+                  className="flex-shrink-0 w-[85%] snap-start"
                 >
-                  {/* Connector dot */}
-                  <div 
-                    className="absolute left-[-22px] top-8 w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg"
-                    style={{ boxShadow: '0 0 12px rgba(249, 115, 22, 0.5)' }}
-                  />
-                  
-                  {/* Card */}
-                  <div className="rounded-2xl bg-navy-800/70 backdrop-blur-sm border border-cream-100/10 overflow-hidden">
-                    {/* Image placeholder */}
-                    <div className="aspect-[4/3] bg-gradient-to-br from-navy-700 via-navy-800 to-navy-700 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%)] bg-[length:20px_20px]" />
-                      <span className="text-cream-400/20 text-sm font-medium">Image placeholder</span>
-                    </div>
-                    
-                    {/* Release tag */}
-                    <div className="px-4 pt-4">
-                      <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold text-white ${event.tagColor} shadow-lg`}>
-                        {event.tag}
+                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* Always visible overlay on mobile */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent flex flex-col justify-end p-4">
+                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        {item.version} · {item.title}
                       </span>
+                      <p className="text-cream-100 text-sm font-medium">
+                        {item.oneLiner}
+                      </p>
                     </div>
-                    
-                    {/* Caption */}
-                    <p className="px-4 pb-4 pt-3 text-cream-300/80 text-sm leading-relaxed">
-                      {event.caption}
-                    </p>
                   </div>
                 </motion.div>
               ))}
