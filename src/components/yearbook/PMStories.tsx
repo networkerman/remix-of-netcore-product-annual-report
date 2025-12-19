@@ -176,36 +176,33 @@ export function PMStories() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.6 + index * 0.1 }}
                 onClick={() => setSelectedIntern(intern)}
-                className="p-5 rounded-2xl bg-navy-800/60 backdrop-blur-sm border border-cream-100/10 
-                  hover:border-teal-500/40 hover:bg-navy-700/60 transition-all duration-300 cursor-pointer
-                  hover:shadow-lg hover:shadow-teal-500/5"
+                className="group relative cursor-pointer"
               >
-                {/* Header: Image + Name + Persona */}
-                <div className="flex flex-col items-center text-center py-2">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-500/30 mb-3">
-                    <img 
-                      src={intern.image} 
-                      alt={intern.name}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        target.style.display = 'none';
-                        const fallback = target.nextElementSibling as HTMLElement;
-                        if (fallback) fallback.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="hidden w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 flex items-center justify-center text-cream-100 font-bold text-lg">
-                      {intern.name.charAt(0)}
-                    </div>
-                  </div>
-                  <h4 className="font-semibold text-cream-100 text-base mb-1">{intern.name}</h4>
-                  <p className="text-xs text-teal-400/90 font-medium">{intern.persona}</p>
+                <div className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden 
+                  border border-cream-100/10 hover:border-teal-500/40 
+                  transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/10">
+                  {/* Full-bleed image */}
+                  <img 
+                    src={intern.image} 
+                    alt={intern.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.style.display = 'none';
+                    }}
+                  />
                   
-                  {/* Expand hint */}
-                  <div className="mt-4 pt-3 border-t border-cream-100/5 w-full">
-                    <span className="text-xs text-teal-400/60 font-medium">
-                      Click to expand
+                  {/* Fallback for missing image */}
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 flex items-center justify-center">
+                    <span className="text-cream-100 font-bold text-4xl opacity-50">
+                      {intern.name.charAt(0)}
                     </span>
+                  </div>
+                  
+                  {/* Gradient overlay with name & one-liner */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
+                    <h4 className="font-bold text-lg text-cream-100 mb-1">{intern.name}</h4>
+                    <p className="text-teal-400/90 text-sm font-medium">{intern.persona}</p>
                   </div>
                 </div>
               </motion.div>
