@@ -80,19 +80,60 @@ const internCards: InternCard[] = [
   },
 ];
 
-const lifeInProduct = [
-  { image: "🎉", caption: "Ship day celebrations (featuring too much cake)" },
-  { image: "💻", caption: "The infamous 'quick sync' that lasted 3 hours" },
-  { image: "🍕", caption: "Friday retrospective fuel" },
-  { image: "🎮", caption: "Post-launch decompression session" },
-  { image: "☕", caption: "The only meeting room that matters" },
-  { image: "🌙", caption: "Deadline mode: activated" },
+const timelineEvents = [
+  {
+    tag: "v1.0: Work Hard, Play Hard 💼",
+    tagColor: "bg-teal-500",
+    caption: "Successfully deployed to the beach. Zero bugs found.",
+    position: "left" as const
+  },
+  {
+    tag: "v2.0: Goa Offsite Patch 🌴",
+    tagColor: "bg-emerald-500",
+    caption: "Stress testing our karaoke skills. Results: mixed.",
+    position: "right" as const
+  },
+  {
+    tag: "Hotfix: Emergency Pizza 🍕",
+    tagColor: "bg-orange-500",
+    caption: "Critical deployment of carbs. Zero rollbacks.",
+    position: "left" as const
+  },
+  {
+    tag: "v3.1: Diwali Feature Drop 🪔",
+    tagColor: "bg-amber-500",
+    caption: "Shipped memories, not code. PRs pending.",
+    position: "right" as const
+  },
+  {
+    tag: "Beta Test: Cricket League 🏏",
+    tagColor: "bg-blue-500",
+    caption: "Unexpected dependencies discovered. Morale unaffected.",
+    position: "left" as const
+  },
+  {
+    tag: "v4.0: The Retro Party 🎉",
+    tagColor: "bg-pink-500",
+    caption: "Rolled back productivity. Shipped vibes instead.",
+    position: "right" as const
+  },
+  {
+    tag: "v5.0: Year-End Sync 🎊",
+    tagColor: "bg-purple-500",
+    caption: "Final push to production. Hearts deployed.",
+    position: "left" as const
+  },
+  {
+    tag: "Stable Release: Team Bond 💪",
+    tagColor: "bg-coral-500",
+    caption: "All tests passed. Culture: 100% coverage.",
+    position: "right" as const
+  }
 ];
 
 export function PMStories() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [easterEggFound, setEasterEggFound] = useState(false);
   const [selectedIntern, setSelectedIntern] = useState<InternCard | null>(null);
 
   return (
@@ -298,58 +339,167 @@ export function PMStories() {
           </DialogContent>
         </Dialog>
 
-        {/* Life in Product */}
+        {/* Life in Product - Winding Timeline */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.7 }}
+          className="relative"
         >
-          <div className="flex items-center gap-3 mb-8">
+          {/* Section Header */}
+          <div className="flex items-center gap-3 mb-12">
             <Heart className="text-coral-400" size={24} />
             <h3 className="text-xl font-bold">Life in the Product Team</h3>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {lifeInProduct.map((item, index) => (
+          {/* Background decorations - confetti & doodles */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Confetti particles */}
+            {[...Array(25)].map((_, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.8 + index * 0.05 }}
-                className="group relative aspect-square rounded-2xl bg-navy-700/50 border border-cream-100/10 overflow-hidden cursor-pointer"
-                onClick={() => index === 2 && setEasterEggFound(true)}
-              >
-                {/* Placeholder Image */}
-                <div className="absolute inset-0 flex items-center justify-center text-6xl">
-                  {item.image}
-                </div>
-
-                {/* Caption Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent flex items-end p-4">
-                  <p className="text-cream-200 text-sm">{item.caption}</p>
-                </div>
-
-                {/* Easter Egg */}
-                {index === 2 && easterEggFound && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="absolute inset-0 bg-teal-500 flex items-center justify-center"
-                  >
-                    <div className="text-center">
-                      <span className="text-4xl">🎉</span>
-                      <p className="text-teal-50 font-bold mt-2">You found it!</p>
-                    </div>
-                  </motion.div>
-                )}
-              </motion.div>
+                key={i}
+                className="absolute w-2 h-2 rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  backgroundColor: ['#14b8a6', '#f97316', '#eab308', '#ec4899', '#8b5cf6'][i % 5]
+                }}
+                animate={{ opacity: [0.15, 0.4, 0.15], scale: [1, 1.2, 1] }}
+                transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, delay: i * 0.15 }}
+              />
             ))}
+            
+            {/* Hand-drawn doodles SVG */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none" viewBox="0 0 800 1200">
+              {/* Stars */}
+              <path d="M100 150 l5 15 l15 5 l-15 5 l-5 15 l-5 -15 l-15 -5 l15 -5 z" fill="currentColor" className="text-teal-400" />
+              <path d="M700 300 l4 12 l12 4 l-12 4 l-4 12 l-4 -12 l-12 -4 l12 -4 z" fill="currentColor" className="text-coral-400" />
+              <path d="M150 800 l5 15 l15 5 l-15 5 l-5 15 l-5 -15 l-15 -5 l15 -5 z" fill="currentColor" className="text-amber-400" />
+              <path d="M650 950 l4 12 l12 4 l-12 4 l-4 12 l-4 -12 l-12 -4 l12 -4 z" fill="currentColor" className="text-pink-400" />
+              {/* Squiggles */}
+              <path d="M50 400 Q70 380, 90 400 Q110 420, 130 400" stroke="currentColor" strokeWidth="2" fill="none" className="text-teal-400" />
+              <path d="M720 600 Q740 580, 760 600 Q780 620, 800 600" stroke="currentColor" strokeWidth="2" fill="none" className="text-orange-400" />
+              {/* Arrows */}
+              <path d="M80 650 L100 670 L80 690 M100 670 L60 670" stroke="currentColor" strokeWidth="2" fill="none" className="text-emerald-400" />
+              <path d="M720 150 L740 170 L720 190 M740 170 L700 170" stroke="currentColor" strokeWidth="2" fill="none" className="text-purple-400" />
+            </svg>
           </div>
 
-          {/* Easter Egg Hint */}
-          <p className="text-center text-cream-400/40 text-xs mt-6">
-            Psst... there might be an easter egg hidden somewhere above 👀
-          </p>
+          {/* Desktop: Winding Timeline */}
+          <div className="hidden md:block relative">
+            {/* SVG Winding Timeline Path */}
+            <svg className="absolute left-1/2 top-0 h-full w-40 -translate-x-1/2 pointer-events-none" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#f97316" />
+                  <stop offset="50%" stopColor="#eab308" />
+                  <stop offset="100%" stopColor="#f97316" />
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <path 
+                d="M80 0 Q 30 100, 80 200 Q 130 300, 80 400 Q 30 500, 80 600 Q 130 700, 80 800 Q 30 900, 80 1000 Q 130 1100, 80 1200 Q 30 1300, 80 1400 Q 130 1500, 80 1600"
+                stroke="url(#timelineGradient)"
+                strokeWidth="3"
+                strokeDasharray="12 6"
+                fill="none"
+                filter="url(#glow)"
+                className="opacity-60"
+              />
+            </svg>
+
+            {/* Timeline Cards */}
+            <div className="relative z-10 space-y-16">
+              {timelineEvents.map((event, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: event.position === 'left' ? -40 : 40 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.8 + index * 0.12, duration: 0.5 }}
+                  className={`flex items-center ${event.position === 'left' ? 'justify-start pr-[52%]' : 'justify-end pl-[52%]'}`}
+                >
+                  {/* Connector dot */}
+                  <div 
+                    className="absolute left-1/2 w-4 h-4 -translate-x-1/2 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg shadow-orange-500/40 z-20"
+                    style={{ boxShadow: '0 0 20px rgba(249, 115, 22, 0.5)' }}
+                  />
+                  
+                  {/* Card */}
+                  <div className="w-full max-w-sm rounded-2xl bg-navy-800/70 backdrop-blur-sm border border-cream-100/10 overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10 group">
+                    {/* Image placeholder */}
+                    <div className="aspect-[4/3] bg-gradient-to-br from-navy-700 via-navy-800 to-navy-700 flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%)] bg-[length:20px_20px]" />
+                      <span className="text-cream-400/20 text-sm font-medium">Image placeholder</span>
+                    </div>
+                    
+                    {/* Release tag */}
+                    <div className="px-4 pt-4">
+                      <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold text-white ${event.tagColor} shadow-lg`}>
+                        {event.tag}
+                      </span>
+                    </div>
+                    
+                    {/* Caption */}
+                    <p className="px-4 pb-4 pt-3 text-cream-300/80 text-sm leading-relaxed">
+                      {event.caption}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile: Vertical Timeline */}
+          <div className="md:hidden relative pl-8">
+            {/* Vertical line on left */}
+            <div className="absolute left-3 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-500 via-yellow-500 to-orange-500 rounded-full opacity-60" style={{ boxShadow: '0 0 15px rgba(249, 115, 22, 0.4)' }} />
+            
+            {/* Cards */}
+            <div className="space-y-8">
+              {timelineEvents.map((event, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.8 + index * 0.1 }}
+                  className="relative"
+                >
+                  {/* Connector dot */}
+                  <div 
+                    className="absolute left-[-22px] top-8 w-3 h-3 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 shadow-lg"
+                    style={{ boxShadow: '0 0 12px rgba(249, 115, 22, 0.5)' }}
+                  />
+                  
+                  {/* Card */}
+                  <div className="rounded-2xl bg-navy-800/70 backdrop-blur-sm border border-cream-100/10 overflow-hidden">
+                    {/* Image placeholder */}
+                    <div className="aspect-[4/3] bg-gradient-to-br from-navy-700 via-navy-800 to-navy-700 flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.02)_50%,transparent_75%)] bg-[length:20px_20px]" />
+                      <span className="text-cream-400/20 text-sm font-medium">Image placeholder</span>
+                    </div>
+                    
+                    {/* Release tag */}
+                    <div className="px-4 pt-4">
+                      <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-bold text-white ${event.tagColor} shadow-lg`}>
+                        {event.tag}
+                      </span>
+                    </div>
+                    
+                    {/* Caption */}
+                    <p className="px-4 pb-4 pt-3 text-cream-300/80 text-sm leading-relaxed">
+                      {event.caption}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
