@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Sparkles, Rocket, Heart } from "lucide-react";
+import { Sparkles, Rocket, Heart, AlertCircle, Wrench, TrendingUp, Lightbulb, Clock } from "lucide-react";
 
 const aiStories = [
   {
@@ -24,39 +24,38 @@ const aiStories = [
   },
 ];
 
-
 const internCards = [
   {
-    name: "PARTH",
-    title: "The Tech Decoder 🧠",
-    ohShit: "First grooming call felt like a foreign language class. Drowned in acronyms (SDKs? RAGs?).",
-    glitch: "Confused \"cool\" with \"valuable.\" Learned novelty ≠ a problem statement.",
-    thirdLabel: "Myth Busted",
-    thirdContent: "Expected serious nerds. Found super smart party animals instead (confirmed after 🍻).",
+    name: "Parth",
+    persona: "The Tech Decoder",
+    realityCheck: "First grooming call felt like a foreign language class—drowning in acronyms like SDKs, RAGs, and CTRs.",
+    whatBroke: "Confused 'cool tech' with 'valuable product.' Learned that novelty alone doesn't solve user problems.",
+    whatChanged: { then: "Nodding along, hoping no one asks", now: "Actually following the conversation" },
+    shippedLearning: "Technical fluency comes from asking 'dumb' questions early and often.",
   },
   {
-    name: "DHAIRYA",
-    title: "The Design System Rebel 🎨",
-    ohShit: "Terrified of being \"The Fire Guy\" triggering prod alarms while panicking over deadlines.",
-    glitch: "Went rogue on the Design System. Built new components instead of reusing existing ones (sorry boss!).",
-    thirdLabel: "Version History",
-    thirdContent: "Day 1: \"Wtf???\" 🤯 → Now: \"Oh ok. Cool.\" 😎",
+    name: "Dhairya",
+    persona: "The Design System Rebel",
+    realityCheck: "Terrified of being 'The Fire Guy'—the one who triggers production alarms while everyone's asleep.",
+    whatBroke: "Went rogue on the Design System. Built custom components instead of reusing existing ones.",
+    whatChanged: { then: "Panic at every deploy", now: "Confident with the release checklist" },
+    shippedLearning: "Consistency beats creativity when building at scale.",
   },
   {
-    name: "KUSH",
-    title: "The Strategic Nodder 🤝",
-    ohShit: "Survived first grooming using \"strategic nodding\" and praying for zero follow-up questions.",
-    glitch: "Assumed silence = agreement. Learned \"I think we're aligned\" means absolutely no one is.",
-    thirdLabel: "Vibe Shift",
-    thirdContent: "Then: Khoon Choos Le 🩸 → Now: Safarnama ✈️",
+    name: "Kush",
+    persona: "The Strategic Nodder",
+    realityCheck: "Survived first grooming with 'strategic nodding' and praying no one asked follow-up questions.",
+    whatBroke: "Assumed silence meant agreement. Learned 'I think we're aligned' often means the opposite.",
+    whatChanged: { then: "Hoping to blend in", now: "Speaking up with confidence" },
+    shippedLearning: "Alignment requires active confirmation, not passive assumption.",
   },
   {
-    name: "TANISHQ",
-    title: "The Happy-Path Hunter 🎯",
-    ohShit: "Leading groomings in week one while barely understanding what product we were building.",
-    glitch: "Designed only the \"Happy Path.\" Learned that edge cases eat best cases for breakfast.",
-    thirdLabel: "Vibe Shift",
-    thirdContent: "Then: Apna Time Aayega 🎤 → Now: Bhaag Milkha Bhaag 🏃",
+    name: "Tanishq",
+    persona: "The Happy-Path Hunter",
+    realityCheck: "Leading grooming sessions in week one while barely understanding what we were building.",
+    whatBroke: "Designed only for the 'happy path.' Learned that edge cases devour best-case scenarios.",
+    whatChanged: { then: "Planning for success only", now: "Designing for failure too" },
+    shippedLearning: "Great products handle the unexpected as gracefully as the expected.",
   },
 ];
 
@@ -73,6 +72,7 @@ export function PMStories() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [easterEggFound, setEasterEggFound] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   return (
     <section
@@ -137,53 +137,116 @@ export function PMStories() {
           transition={{ delay: 0.5 }}
           className="mb-24"
         >
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <Rocket className="text-teal-400" size={28} />
-              <h3 className="text-2xl font-bold text-cream-100">Deployed to Production 🚀</h3>
+              <h3 className="text-2xl font-bold text-cream-100">Deployed to Production</h3>
             </div>
-            <p className="text-cream-300/70 max-w-3xl mx-auto">
-              Great products start as messy prototypes. Our interns graduated from "Staging" to the high-stakes world of "Production." Here is their version history—bugs, patches, and major upgrades included.
+            <p className="text-cream-300/80 max-w-2xl mx-auto leading-relaxed">
+              A look at how our interns moved from first-day confusion to shipping with confidence in real production environments.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {internCards.map((intern, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.6 + index * 0.1 }}
-                className="p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-teal-500/30 transition-colors"
-              >
-                {/* Avatar and Name */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-cream-300 font-bold text-lg">
-                    {intern.name.charAt(0)}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {internCards.map((intern, index) => {
+              const isExpanded = expandedCard === index;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6 + index * 0.1 }}
+                  onClick={() => setExpandedCard(isExpanded ? null : index)}
+                  className={`p-5 rounded-2xl bg-navy-800/60 backdrop-blur-sm border border-cream-100/10 
+                    hover:border-teal-500/40 hover:bg-navy-700/60 transition-all duration-300 cursor-pointer
+                    ${isExpanded ? 'ring-1 ring-teal-500/30' : ''}`}
+                >
+                  {/* Header: Avatar + Name + Persona */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-teal-600/30 to-navy-600 flex items-center justify-center text-cream-100 font-bold text-base border border-teal-500/20">
+                      {intern.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-cream-100">{intern.name}</h4>
+                      <p className="text-xs text-teal-400/90">{intern.persona}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-cream-100">{intern.name}</h4>
-                    <p className="text-sm text-teal-400">{intern.title}</p>
-                  </div>
-                </div>
 
-                {/* Content */}
-                <div className="space-y-3 text-sm">
-                  <p className="text-gray-300">
-                    <span className="font-bold text-cream-100">"Oh S#t": </span>
-                    {intern.ohShit}
-                  </p>
-                  <p className="text-gray-300">
-                    <span className="font-bold text-cream-100">The Glitch: </span>
-                    {intern.glitch}
-                  </p>
-                  <p className="text-gray-300">
-                    <span className="font-bold text-cream-100">{intern.thirdLabel}: </span>
-                    {intern.thirdContent}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                  {/* Timeline Tag */}
+                  <div className="flex items-center gap-1.5 mb-4">
+                    <Clock className="text-cream-400/50" size={12} />
+                    <span className="text-[10px] text-cream-400/60 uppercase tracking-wider font-medium">
+                      Week 1 → End of Internship
+                    </span>
+                  </div>
+
+                  {/* Reality Check */}
+                  <div className="mb-3">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <AlertCircle className="text-coral-400/80" size={13} />
+                      <span className="text-xs font-semibold text-coral-400/90 uppercase tracking-wide">Reality Check</span>
+                    </div>
+                    <p className={`text-cream-300/70 text-xs leading-relaxed ${!isExpanded ? 'line-clamp-2' : ''}`}>
+                      {intern.realityCheck}
+                    </p>
+                  </div>
+
+                  {/* What Broke */}
+                  <div className="mb-3">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <Wrench className="text-amber-400/80" size={13} />
+                      <span className="text-xs font-semibold text-amber-400/90 uppercase tracking-wide">What Broke</span>
+                    </div>
+                    <p className={`text-cream-300/70 text-xs leading-relaxed ${!isExpanded ? 'line-clamp-2' : ''}`}>
+                      {intern.whatBroke}
+                    </p>
+                  </div>
+
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        {/* What Changed */}
+                        <div className="mb-3">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <TrendingUp className="text-teal-400/80" size={13} />
+                            <span className="text-xs font-semibold text-teal-400/90 uppercase tracking-wide">What Changed</span>
+                          </div>
+                          <div className="text-cream-300/70 text-xs leading-relaxed">
+                            <span className="text-cream-400/50">Then:</span> {intern.whatChanged.then}
+                            <span className="mx-2 text-cream-400/30">→</span>
+                            <span className="text-cream-400/50">Now:</span> {intern.whatChanged.now}
+                          </div>
+                        </div>
+
+                        {/* Shipped Learning */}
+                        <div className="pt-3 border-t border-cream-100/5">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <Lightbulb className="text-emerald-400/80" size={13} />
+                            <span className="text-xs font-semibold text-emerald-400/90 uppercase tracking-wide">Shipped Learning</span>
+                          </div>
+                          <p className="text-cream-200/80 text-xs leading-relaxed italic">
+                            "{intern.shippedLearning}"
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Expand hint */}
+                  <div className="mt-3 text-center">
+                    <span className="text-[10px] text-cream-400/40">
+                      {isExpanded ? 'Click to collapse' : 'Click to expand'}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
 
