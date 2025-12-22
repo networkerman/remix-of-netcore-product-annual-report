@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Sparkles, Rocket, Heart, AlertCircle, Wrench, TrendingUp, Lightbulb, X } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { Sparkles, Rocket, AlertCircle, Wrench, TrendingUp, Lightbulb, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 // Intern images
@@ -18,6 +18,17 @@ import lifeImg4 from "@/assets/team/life/life-4.jpg";
 import lifeImg5 from "@/assets/team/life/life-5.jpg";
 import lifeImg6 from "@/assets/team/life/life-6.jpg";
 import lifeImg7 from "@/assets/team/life/life-7.jpg";
+
+// Scrapbook captions in order
+const scrapbookCaptions = [
+  "Late nights, bright ideas",
+  "Some meetings turned into memories",
+  "Built together, laughed louder",
+  "Chaos, but the good kind",
+  "Post-launch smiles",
+  "Team energy > caffeine",
+  "Ideas everywhere",
+];
 
 const aiStories = [
   {
@@ -134,10 +145,27 @@ const cultureVersions = [
   }
 ];
 
+// Life photos array for scrapbook
+const lifePhotos = [lifeImg1, lifeImg2, lifeImg3, lifeImg4, lifeImg5, lifeImg6, lifeImg7];
+
 export function PMStories() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedIntern, setSelectedIntern] = useState<InternCard | null>(null);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  // Auto-flip every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentPage((prev) => (prev + 1) % lifePhotos.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Click to flip
+  const handleFlip = () => {
+    setCurrentPage((prev) => (prev + 1) % lifePhotos.length);
+  };
 
   return (
     <section
@@ -173,7 +201,7 @@ export function PMStories() {
         >
           <div className="flex items-center gap-3 mb-8">
             <Sparkles className="text-teal-400" size={24} />
-            <h3 className="text-xl font-bold">Leader-Led AI Use Cases</h3>
+            <h3 className="text-xl font-bold">Product Leaders Speak</h3>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -212,19 +240,19 @@ export function PMStories() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
             {internCards.map((intern, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.6 + index * 0.1 }}
-                onClick={() => setSelectedIntern(intern)}
                 className="group relative cursor-pointer"
               >
-                <div className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden 
-                  border border-cream-100/10 hover:border-teal-500/40 
-                  transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/10">
+                <div 
+                  className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden 
+                    border border-cream-100/10 transition-all duration-300"
+                >
                   {/* Full-bleed image */}
                   <img 
                     src={intern.image} 
@@ -243,6 +271,16 @@ export function PMStories() {
                   <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
                     <h4 className="font-bold text-lg text-cream-100 mb-1">{intern.name}</h4>
                     <p className="text-teal-400/90 text-sm font-medium">{intern.persona}</p>
+                  </div>
+
+                  {/* Hover CTA Overlay */}
+                  <div 
+                    onClick={() => setSelectedIntern(intern)}
+                    className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                  >
+                    <span className="px-4 py-2 bg-teal-500 text-navy-900 font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                      View Story
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -342,114 +380,86 @@ export function PMStories() {
           </DialogContent>
         </Dialog>
 
-        {/* Life in the Product Team - Culture Versions */}
+        {/* Life in the Product Team - Scrapbook Flipbook */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.7 }}
           className="relative"
         >
-          {/* Section Header */}
-          <div className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <Heart className="text-coral-400" size={24} />
-              <h3 className="text-xl font-bold">Life in the Product Team</h3>
-            </div>
-            <p className="text-cream-300/70 text-base max-w-2xl">
-              Not everything we shipped was code. Some of it was culture, which we discovered when we stepped away from the backlog.
-            </p>
-          </div>
+          {/* Scrapbook Container */}
+          <div 
+            onClick={handleFlip}
+            className="relative max-w-2xl mx-auto cursor-pointer select-none"
+          >
+            {/* Textured Paper Background */}
+            <div 
+              className="relative rounded-lg overflow-hidden shadow-2xl"
+              style={{
+                background: 'linear-gradient(135deg, #faf6f1 0%, #f5ebe0 50%, #ebe3d5 100%)',
+                padding: '24px',
+              }}
+            >
+              {/* Paper texture overlay */}
+              <div 
+                className="absolute inset-0 opacity-30 pointer-events-none"
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+                }}
+              />
 
-          {/* Desktop: Dense 4+3 Grid */}
-          <div className="hidden md:block">
-            <div className="rounded-3xl overflow-hidden shadow-2xl shadow-navy-900/50">
-              {/* Row 1: 4 images */}
-              <div className="grid grid-cols-4">
-                {cultureVersions.slice(0, 4).map((item, index) => (
+              {/* Photo with page flip animation */}
+              <div className="relative aspect-[4/3] rounded overflow-hidden shadow-lg transform rotate-[-0.5deg]">
+                <AnimatePresence mode="wait">
                   <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                    className="group relative aspect-[4/3] overflow-hidden"
+                    key={currentPage}
+                    initial={{ rotateY: -90, opacity: 0 }}
+                    animate={{ rotateY: 0, opacity: 1 }}
+                    exit={{ rotateY: 90, opacity: 0 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      ease: [0.4, 0, 0.2, 1]
+                    }}
+                    className="absolute inset-0"
+                    style={{ transformStyle: 'preserve-3d' }}
                   >
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    <img
+                      src={lifePhotos[currentPage]}
+                      alt={`Team memory ${currentPage + 1}`}
+                      className="w-full h-full object-cover"
                     />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
-                        {item.version} · {item.title}
-                      </span>
-                      <p className="text-cream-100 text-sm font-medium">
-                        {item.oneLiner}
-                      </p>
-                    </div>
+                    
+                    {/* Soft shadow under photo */}
+                    <div className="absolute inset-0 shadow-inner pointer-events-none" />
                   </motion.div>
-                ))}
+                </AnimatePresence>
               </div>
-              {/* Row 2: 3 images (stretched equally) */}
-              <div className="grid grid-cols-3">
-                {cultureVersions.slice(4, 7).map((item, index) => (
-                  <motion.div
-                    key={index + 4}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 1.2 + index * 0.1 }}
-                    className="group relative aspect-[4/3] overflow-hidden"
-                  >
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
-                        {item.version} · {item.title}
-                      </span>
-                      <p className="text-cream-100 text-sm font-medium">
-                        {item.oneLiner}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
 
-          {/* Mobile: Horizontal Swipe Carousel */}
-          <div className="md:hidden -mx-6">
-            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-6 pb-4 scrollbar-hide">
-              {cultureVersions.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.8 + index * 0.08 }}
-                  className="flex-shrink-0 w-[85%] snap-start"
-                >
-                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    {/* Always visible overlay on mobile */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent flex flex-col justify-end p-4">
-                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
-                        {item.version} · {item.title}
-                      </span>
-                      <p className="text-cream-100 text-sm font-medium">
-                        {item.oneLiner}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+              {/* Handwritten Caption */}
+              <motion.p
+                key={`caption-${currentPage}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.4 }}
+                className="mt-4 text-center text-navy-700/80 text-sm italic"
+                style={{
+                  fontFamily: "'Caveat', 'Segoe Script', 'Bradley Hand', cursive",
+                  fontSize: '1.25rem',
+                }}
+              >
+                "{scrapbookCaptions[currentPage % scrapbookCaptions.length]}"
+              </motion.p>
             </div>
+
+            {/* Subtle paper depth effect */}
+            <div 
+              className="absolute -bottom-1 left-2 right-2 h-2 rounded-b-lg -z-10"
+              style={{ background: 'rgba(0,0,0,0.08)' }}
+            />
+            <div 
+              className="absolute -bottom-2 left-4 right-4 h-2 rounded-b-lg -z-20"
+              style={{ background: 'rgba(0,0,0,0.04)' }}
+            />
           </div>
         </motion.div>
       </div>
