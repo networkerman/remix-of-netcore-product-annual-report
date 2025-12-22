@@ -4,12 +4,13 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { id: "cover", label: "Cover" },
+  { id: "testimonials", label: "Customer Love" },
   { id: "cpo-note", label: "CPO Note" },
-  { id: "team", label: "Team" },
+  { id: "team", label: "Meet the Team" },
   { id: "year-glance", label: "Year at a Glance" },
-  { id: "craft", label: "Product Craft" },
-  { id: "heroes", label: "Hero Products" },
-  { id: "leader-voices", label: "Leadership" },
+  { id: "craft", label: "Behind the Build" },
+  { id: "heroes", label: "Hero of the Year" },
+  { id: "leader-voices", label: "Recognition" },
   { id: "stories", label: "PM Stories" },
   { id: "looking-ahead", label: "Looking Ahead" },
 ];
@@ -56,7 +57,7 @@ export function Navigation() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
             ? "bg-background/90 backdrop-blur-xl border-b border-border/50 py-3"
-            : "bg-transparent py-6"
+            : "bg-background/70 backdrop-blur-md py-4"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
