@@ -26,10 +26,10 @@ const Index = () => {
         <CPONote />
         <TeamSection />
         <YearAtGlance />
-        <LeaderVoices />
         <ProductCraft />
-        <PMStories />
         <HeroProducts />
+        <LeaderVoices />
+        <PMStories />
         <LookingAhead />
         <ThankYou />
       </main>
