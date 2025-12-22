@@ -10,14 +10,13 @@ import dhairyaImg from "@/assets/team/interns/dhairya.png";
 import kushImg from "@/assets/team/interns/kush.png";
 import tanishqImg from "@/assets/team/interns/tanishq.png";
 
-// Life in Product Team images
-import lifeImg1 from "@/assets/team/life/life-1.png";
-import lifeImg2 from "@/assets/team/life/life-2.jpg";
-import lifeImg3 from "@/assets/team/life/life-3.jpg";
-import lifeImg4 from "@/assets/team/life/life-4.jpg";
-import lifeImg5 from "@/assets/team/life/life-5.jpg";
-import lifeImg6 from "@/assets/team/life/life-6.jpg";
-import lifeImg7 from "@/assets/team/life/life-7.jpg";
+// Life in Product Team images - new photos
+import lifeImg1 from "@/assets/team/life/team-event.jpg";
+import lifeImg2 from "@/assets/team/life/sports-night.jpg";
+import lifeImg3 from "@/assets/team/life/festival-celebration.jpg";
+import lifeImg4 from "@/assets/team/life/team-dinner.jpg";
+import lifeImg5 from "@/assets/team/life/annual-day.jpg";
+import lifeImg6 from "@/assets/team/life/office-festive.jpg";
 
 // Scrapbook captions in order - mapped to photo sequence
 const scrapbookCaptions = [
@@ -27,7 +26,6 @@ const scrapbookCaptions = [
   "Some ideas started here.",
   "Not everything had a deadline.",
   "Good days, great people.",
-  "This one felt special.",
 ];
 
 const aiStories = [
@@ -136,17 +134,11 @@ const cultureVersions = [
     title: "Culture, Scaled",
     oneLiner: "Shared wins. Stronger ownership.",
     image: lifeImg6
-  },
-  {
-    version: "V7.0",
-    title: "Still Shipping Together",
-    oneLiner: "Different moments. Same team.",
-    image: lifeImg7
   }
 ];
 
 // Life photos array for scrapbook
-const lifePhotos = [lifeImg1, lifeImg2, lifeImg3, lifeImg4, lifeImg5, lifeImg6, lifeImg7];
+const lifePhotos = [lifeImg1, lifeImg2, lifeImg3, lifeImg4, lifeImg5, lifeImg6];
 
 export function PMStories() {
   const ref = useRef(null);
