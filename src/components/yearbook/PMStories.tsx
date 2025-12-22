@@ -1,16 +1,44 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Rocket, X, AlertCircle, Wrench, TrendingUp, Lightbulb, Heart, Star, Sparkles } from "lucide-react";
+import { Sparkles, Rocket, Heart, AlertCircle, Wrench, TrendingUp, Lightbulb, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { ScrapbookGallery } from "./scrapbook/ScrapbookGallery";
-import { ProductLeadersSpeak } from "./scrapbook/ProductLeadersSpeak";
 
 // Intern images
 import parthImg from "@/assets/team/interns/parth.png";
 import dhairyaImg from "@/assets/team/interns/dhairya.png";
 import kushImg from "@/assets/team/interns/kush.png";
 import tanishqImg from "@/assets/team/interns/tanishq.png";
+
+// Life in Product Team images
+import lifeImg1 from "@/assets/team/life/life-1.png";
+import lifeImg2 from "@/assets/team/life/life-2.jpg";
+import lifeImg3 from "@/assets/team/life/life-3.jpg";
+import lifeImg4 from "@/assets/team/life/life-4.jpg";
+import lifeImg5 from "@/assets/team/life/life-5.jpg";
+import lifeImg6 from "@/assets/team/life/life-6.jpg";
+import lifeImg7 from "@/assets/team/life/life-7.jpg";
+
+const aiStories = [
+  {
+    leader: "[Leader Name]",
+    title: "How AI Changed My Workflow",
+    story: "Started using AI for spec writing. Now I can't imagine going back. It's not about replacing thinking—it's about amplifying it.",
+    avatar: "🧠",
+  },
+  {
+    leader: "[Leader Name]",
+    title: "The AI Debugging Incident",
+    story: "At 2am, Claude helped me find a bug that had haunted us for weeks. Turns out it was a single misplaced comma. AI: 1, Human: 0.",
+    avatar: "🐛",
+  },
+  {
+    leader: "[Leader Name]",
+    title: "AI in Customer Research",
+    story: "We fed 10,000 support tickets into an AI summarizer. The insights were brutal but honest. Sometimes you need a machine to tell you the truth.",
+    avatar: "📊",
+  },
+];
 
 interface InternCard {
   name: string;
@@ -61,6 +89,51 @@ const internCards: InternCard[] = [
   },
 ];
 
+const cultureVersions = [
+  {
+    version: "V1.0",
+    title: "Work Hard, Play Hard",
+    oneLiner: "Shipped features by day, stories by night.",
+    image: lifeImg1
+  },
+  {
+    version: "V2.0",
+    title: "Out of Office, Still Aligned",
+    oneLiner: "Stand-ups paused. Team spirit upgraded.",
+    image: lifeImg2
+  },
+  {
+    version: "V3.0",
+    title: "Culture Release",
+    oneLiner: "Low-latency laughs, high-trust shipped.",
+    image: lifeImg3
+  },
+  {
+    version: "V4.0",
+    title: "Team Sync IRL",
+    oneLiner: "No agendas. Stronger alignment.",
+    image: lifeImg4
+  },
+  {
+    version: "V5.0",
+    title: "Patch Notes: People Edition",
+    oneLiner: "Bonding fixes applied. Morale improved.",
+    image: lifeImg5
+  },
+  {
+    version: "V6.0",
+    title: "Culture, Scaled",
+    oneLiner: "Shared wins. Stronger ownership.",
+    image: lifeImg6
+  },
+  {
+    version: "V7.0",
+    title: "Still Shipping Together",
+    oneLiner: "Different moments. Same team.",
+    image: lifeImg7
+  }
+];
+
 export function PMStories() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -70,58 +143,59 @@ export function PMStories() {
     <section
       id="stories"
       ref={ref}
-      className="py-20 md:py-32 relative overflow-hidden"
-      style={{
-        background: "linear-gradient(180deg, hsl(45 30% 96%) 0%, hsl(40 25% 92%) 100%)",
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E")`,
-      }}
+      className="py-32 bg-gradient-dark text-cream-100 relative overflow-hidden"
     >
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 text-coral-400/20 rotate-12">
-        <Heart size={60} fill="currentColor" />
-      </div>
-      <div className="absolute top-20 right-16 text-teal-400/20 -rotate-12">
-        <Star size={50} fill="currentColor" />
-      </div>
-      <div className="absolute bottom-20 left-1/4 text-yellow-400/20 rotate-6">
-        <Sparkles size={40} />
-      </div>
+      {/* Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px]" />
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Hero Section - Cover Page */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="font-handwritten text-5xl md:text-7xl lg:text-8xl text-navy-800 mb-6 leading-tight">
-            Life in the Product Team
-          </h2>
-          <p className="font-caveat text-xl md:text-2xl text-navy-600/80 max-w-2xl mx-auto leading-relaxed">
-            Not everything we shipped was code. Some of it was culture, which we discovered 
-            when we stepped away from the backlog.
+          <span className="caption text-coral-400 mb-4 block">The Real Stories</span>
+          <h2 className="section-heading mb-6">PM Stories & Culture</h2>
+          <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
+            The fun, the chaos, the late nights, and the wins. This is what it's really like 
+            to be part of the Product team at Netcore.
           </p>
-          
-          {/* Decorative stickers */}
-          <div className="flex justify-center gap-4 mt-6">
-            <span className="inline-block transform rotate-[-5deg] text-3xl">❤️</span>
-            <span className="inline-block transform rotate-[3deg] text-3xl">⭐</span>
-            <span className="inline-block transform rotate-[-2deg] text-3xl">→</span>
-          </div>
         </motion.div>
 
-        {/* Scrapbook Gallery Section */}
+        {/* AI Stories */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2 }}
           className="mb-24"
         >
-          <ScrapbookGallery />
+          <div className="flex items-center gap-3 mb-8">
+            <Sparkles className="text-teal-400" size={24} />
+            <h3 className="text-xl font-bold">Leader-Led AI Use Cases</h3>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {aiStories.map((story, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 + index * 0.1 }}
+                className="p-6 rounded-2xl bg-navy-700/50 border border-cream-100/10 hover:border-teal-500/30 transition-colors"
+              >
+                <div className="text-4xl mb-4">{story.avatar}</div>
+                <h4 className="font-bold text-lg text-cream-100 mb-2">{story.title}</h4>
+                <p className="text-cream-300/70 text-sm leading-relaxed mb-4">{story.story}</p>
+                <p className="text-teal-400 text-sm font-medium">{story.leader}</p>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Deployed to Production - Intern Stories */}
+
+        {/* Deployed to Production */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -130,17 +204,15 @@ export function PMStories() {
         >
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Rocket className="text-coral-500" size={28} />
-              <h3 className="font-handwritten text-3xl md:text-4xl text-navy-800">
-                Deployed to Production
-              </h3>
+              <Rocket className="text-teal-400" size={28} />
+              <h3 className="text-2xl font-bold text-cream-100">Deployed to Production</h3>
             </div>
-            <p className="font-caveat text-xl text-navy-600/80 max-w-2xl mx-auto leading-relaxed">
-              A look at how our interns moved from first-day confusion to shipping with confidence
+            <p className="text-cream-300/80 max-w-2xl mx-auto leading-relaxed">
+              A look at how our interns moved from first-day confusion to shipping with confidence in real production environments.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {internCards.map((intern, index) => (
               <motion.div
                 key={index}
@@ -150,33 +222,28 @@ export function PMStories() {
                 onClick={() => setSelectedIntern(intern)}
                 className="group relative cursor-pointer"
               >
-                <div 
-                  className="bg-white p-3 pb-14 shadow-lg hover:shadow-xl transition-all duration-300"
-                  style={{ 
-                    transform: `rotate(${(index % 2 === 0 ? -2 : 2)}deg)`,
-                  }}
-                >
-                  {/* Photo */}
-                  <div className="aspect-[3/4] overflow-hidden bg-cream-200">
-                    <img 
-                      src={intern.image} 
-                      alt={intern.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
+                <div className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden 
+                  border border-cream-100/10 hover:border-teal-500/40 
+                  transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/10">
+                  {/* Full-bleed image */}
+                  <img 
+                    src={intern.image} 
+                    alt={intern.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.style.display = 'none';
+                    }}
+                  />
                   
-                  {/* Caption */}
-                  <div className="absolute bottom-3 left-0 right-0 text-center">
-                    <p className="font-handwritten text-lg text-navy-700">{intern.name}</p>
-                    <p className="font-caveat text-coral-500">{intern.persona}</p>
+                  {/* Fallback background for missing image */}
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 -z-10" />
+                  
+                  {/* Gradient overlay with name & one-liner */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
+                    <h4 className="font-bold text-lg text-cream-100 mb-1">{intern.name}</h4>
+                    <p className="text-teal-400/90 text-sm font-medium">{intern.persona}</p>
                   </div>
-                </div>
-                
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="bg-navy-800/80 text-cream-100 font-handwritten px-4 py-2 rounded-full text-lg">
-                    Read Story ✨
-                  </span>
                 </div>
               </motion.div>
             ))}
@@ -185,13 +252,7 @@ export function PMStories() {
 
         {/* Intern Modal */}
         <Dialog open={!!selectedIntern} onOpenChange={(open) => !open && setSelectedIntern(null)}>
-          <DialogContent 
-            className="border-0 text-navy-800 max-w-lg p-0 overflow-hidden"
-            style={{
-              background: "hsl(45 30% 96%)",
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`,
-            }}
-          >
+          <DialogContent className="bg-navy-800 border-cream-100/10 text-cream-100 max-w-lg p-0 overflow-hidden">
             <DialogTitle className="sr-only">
               {selectedIntern?.name} - {selectedIntern?.persona}
             </DialogTitle>
@@ -201,15 +262,15 @@ export function PMStories() {
                 {/* Close button */}
                 <button
                   onClick={() => setSelectedIntern(null)}
-                  className="absolute top-4 right-4 z-10 p-1.5 rounded-full bg-cream-200/80 hover:bg-cream-300 transition-colors"
+                  className="absolute top-4 right-4 z-10 p-1.5 rounded-full bg-navy-700/80 hover:bg-navy-600 transition-colors"
                 >
-                  <X size={18} className="text-navy-600" />
+                  <X size={18} className="text-cream-300" />
                 </button>
 
                 {/* Header with image */}
-                <div className="p-6 pb-4 border-b border-cream-300">
+                <div className="p-6 pb-4 border-b border-cream-100/10 bg-gradient-to-br from-navy-700/50 to-navy-800">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-coral-400 flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-500/40 flex-shrink-0">
                       <img 
                         src={selectedIntern.image} 
                         alt={selectedIntern.name}
@@ -217,8 +278,8 @@ export function PMStories() {
                       />
                     </div>
                     <div>
-                      <h3 className="font-handwritten text-2xl text-navy-800">{selectedIntern.name}</h3>
-                      <p className="font-caveat text-lg text-coral-500">{selectedIntern.persona}</p>
+                      <h3 className="font-bold text-xl text-cream-100">{selectedIntern.name}</h3>
+                      <p className="text-sm text-teal-400 font-medium">{selectedIntern.persona}</p>
                     </div>
                   </div>
                 </div>
@@ -229,9 +290,9 @@ export function PMStories() {
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       <AlertCircle className="text-coral-400" size={16} />
-                      <span className="font-handwritten text-lg text-coral-500">Reality Check</span>
+                      <span className="text-sm font-semibold text-coral-400 uppercase tracking-wide">Reality Check</span>
                     </div>
-                    <p className="text-navy-600 text-sm leading-relaxed">
+                    <p className="text-cream-300/80 text-sm leading-relaxed">
                       {selectedIntern.realityCheck}
                     </p>
                   </div>
@@ -239,10 +300,10 @@ export function PMStories() {
                   {/* What Broke */}
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <Wrench className="text-amber-500" size={16} />
-                      <span className="font-handwritten text-lg text-amber-600">What Broke</span>
+                      <Wrench className="text-amber-400" size={16} />
+                      <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">What Broke</span>
                     </div>
-                    <p className="text-navy-600 text-sm leading-relaxed">
+                    <p className="text-cream-300/80 text-sm leading-relaxed">
                       {selectedIntern.whatBroke}
                     </p>
                   </div>
@@ -250,28 +311,28 @@ export function PMStories() {
                   {/* What Changed */}
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp className="text-teal-500" size={16} />
-                      <span className="font-handwritten text-lg text-teal-600">What Changed</span>
+                      <TrendingUp className="text-teal-400" size={16} />
+                      <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">What Changed</span>
                     </div>
-                    <div className="text-navy-600 text-sm leading-relaxed">
+                    <div className="text-cream-300/80 text-sm leading-relaxed">
                       <div className="flex items-start gap-2 mb-1">
-                        <span className="text-navy-400 text-xs uppercase mt-0.5">Then:</span>
+                        <span className="text-cream-400/60 text-xs uppercase mt-0.5">Then:</span>
                         <span>{selectedIntern.whatChanged.then}</span>
                       </div>
                       <div className="flex items-start gap-2">
-                        <span className="text-navy-400 text-xs uppercase mt-0.5">Now:</span>
-                        <span className="text-navy-800 font-medium">{selectedIntern.whatChanged.now}</span>
+                        <span className="text-cream-400/60 text-xs uppercase mt-0.5">Now:</span>
+                        <span className="text-cream-100">{selectedIntern.whatChanged.now}</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Shipped Learning */}
-                  <div className="pt-4 border-t border-cream-300">
+                  <div className="pt-4 border-t border-cream-100/10">
                     <div className="flex items-center gap-2 mb-2">
-                      <Lightbulb className="text-emerald-500" size={16} />
-                      <span className="font-handwritten text-lg text-emerald-600">Shipped Learning</span>
+                      <Lightbulb className="text-emerald-400" size={16} />
+                      <span className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Shipped Learning</span>
                     </div>
-                    <p className="text-navy-700 text-sm leading-relaxed italic pl-4 border-l-2 border-emerald-400/30">
+                    <p className="text-cream-200/90 text-sm leading-relaxed italic pl-4 border-l-2 border-emerald-400/30">
                       "{selectedIntern.shippedLearning}"
                     </p>
                   </div>
@@ -281,25 +342,115 @@ export function PMStories() {
           </DialogContent>
         </Dialog>
 
-        {/* Product Leaders Speak */}
+        {/* Life in the Product Team - Culture Versions */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.7 }}
+          className="relative"
         >
-          <ProductLeadersSpeak />
-        </motion.div>
+          {/* Section Header */}
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Heart className="text-coral-400" size={24} />
+              <h3 className="text-xl font-bold">Life in the Product Team</h3>
+            </div>
+            <p className="text-cream-300/70 text-base max-w-2xl">
+              Not everything we shipped was code. Some of it was culture, which we discovered when we stepped away from the backlog.
+            </p>
+          </div>
 
-        {/* Footer Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.9 }}
-          className="text-center mt-20 pt-10 border-t border-cream-300/50"
-        >
-          <p className="font-handwritten text-2xl text-navy-600/70">
-            Built with ❤️ by the Product Team
-          </p>
+          {/* Desktop: Dense 4+3 Grid */}
+          <div className="hidden md:block">
+            <div className="rounded-3xl overflow-hidden shadow-2xl shadow-navy-900/50">
+              {/* Row 1: 4 images */}
+              <div className="grid grid-cols-4">
+                {cultureVersions.slice(0, 4).map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.8 + index * 0.1 }}
+                    className="group relative aspect-[4/3] overflow-hidden"
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        {item.version} · {item.title}
+                      </span>
+                      <p className="text-cream-100 text-sm font-medium">
+                        {item.oneLiner}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              {/* Row 2: 3 images (stretched equally) */}
+              <div className="grid grid-cols-3">
+                {cultureVersions.slice(4, 7).map((item, index) => (
+                  <motion.div
+                    key={index + 4}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 1.2 + index * 0.1 }}
+                    className="group relative aspect-[4/3] overflow-hidden"
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        {item.version} · {item.title}
+                      </span>
+                      <p className="text-cream-100 text-sm font-medium">
+                        {item.oneLiner}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Horizontal Swipe Carousel */}
+          <div className="md:hidden -mx-6">
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory px-6 pb-4 scrollbar-hide">
+              {cultureVersions.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.8 + index * 0.08 }}
+                  className="flex-shrink-0 w-[85%] snap-start"
+                >
+                  <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* Always visible overlay on mobile */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent flex flex-col justify-end p-4">
+                      <span className="text-teal-400 text-xs font-bold uppercase tracking-wider mb-1">
+                        {item.version} · {item.title}
+                      </span>
+                      <p className="text-cream-100 text-sm font-medium">
+                        {item.oneLiner}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

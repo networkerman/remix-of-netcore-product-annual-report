@@ -105,8 +105,6 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Inter', 'system-ui', 'sans-serif'],
-        handwritten: ['Patrick Hand', 'Caveat', 'cursive'],
-        caveat: ['Caveat', 'cursive'],
       },
       borderRadius: {
         lg: "var(--radius)",
