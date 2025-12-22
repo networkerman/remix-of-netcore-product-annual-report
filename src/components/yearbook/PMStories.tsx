@@ -389,17 +389,17 @@ export function PMStories() {
             </p>
           </div>
 
-          {/* Scrapbook Container */}
+          {/* Scrapbook Container - Wide for landscape photos */}
           <div 
             onClick={handleFlip}
-            className="relative max-w-2xl mx-auto cursor-pointer select-none"
+            className="relative w-full max-w-5xl mx-auto cursor-pointer select-none px-4 md:px-8"
           >
             {/* Textured Paper Background */}
             <div 
               className="relative rounded-lg overflow-hidden shadow-2xl"
               style={{
                 background: 'linear-gradient(135deg, #faf6f1 0%, #f5ebe0 50%, #ebe3d5 100%)',
-                padding: '24px',
+                padding: '20px',
               }}
             >
               {/* Paper texture overlay */}
@@ -410,8 +410,17 @@ export function PMStories() {
                 }}
               />
 
-              {/* Photo with page flip animation */}
-              <div className="relative aspect-[4/3] rounded overflow-hidden shadow-lg transform rotate-[-0.5deg]">
+              {/* Photo container - auto height, no fixed aspect ratio */}
+              <div 
+                className="relative rounded overflow-hidden shadow-lg transform rotate-[-0.3deg]"
+                style={{ 
+                  minHeight: '280px',
+                  maxHeight: '500px',
+                }}
+              >
+                {/* Background for letterboxing */}
+                <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300" />
+                
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentPage}
@@ -422,13 +431,18 @@ export function PMStories() {
                       duration: 0.5, 
                       ease: [0.4, 0, 0.2, 1]
                     }}
-                    className="absolute inset-0"
-                    style={{ transformStyle: 'preserve-3d' }}
+                    className="relative w-full h-full flex items-center justify-center"
+                    style={{ 
+                      transformStyle: 'preserve-3d',
+                      minHeight: '280px',
+                      maxHeight: '500px',
+                    }}
                   >
+                    {/* Image with object-fit: contain - NO CROPPING */}
                     <img
                       src={lifePhotos[currentPage]}
                       alt={`Team memory ${currentPage + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto max-h-[500px] object-contain"
                     />
                     
                     {/* Soft shadow under photo */}
