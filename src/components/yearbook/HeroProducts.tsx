@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Award, ExternalLink, Star, ChevronLeft, ChevronRight } from "lucide-react";
+
+type SectionType = "Product" | "Design" | "Documentation";
 
 const heroSections = [
   {
-    function: "Product",
+    function: "Product" as SectionType,
     icon: "🚀",
     gradient: "from-teal-500 to-teal-600",
     heroes: [
@@ -41,7 +43,7 @@ const heroSections = [
     ],
   },
   {
-    function: "Design",
+    function: "Design" as SectionType,
     icon: "🎨",
     gradient: "from-coral-400 to-coral-500",
     heroes: [
@@ -76,7 +78,7 @@ const heroSections = [
     ],
   },
   {
-    function: "Documentation",
+    function: "Documentation" as SectionType,
     icon: "📚",
     gradient: "from-accent to-amber-500",
     heroes: [
@@ -106,9 +108,10 @@ const heroSections = [
 export function HeroProducts() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeSection, setActiveSection] = useState<SectionType>("Product");
 
-  const scrollContainer = (containerId: string, direction: "left" | "right") => {
-    const container = document.getElementById(containerId);
+  const scrollContainer = (direction: "left" | "right") => {
+    const container = document.getElementById(`scroll-${activeSection}`);
     if (container) {
       const scrollAmount = direction === "left" ? -340 : 340;
       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
@@ -146,107 +149,126 @@ export function HeroProducts() {
           </p>
         </motion.div>
 
-        {/* Hero Sections */}
-        <div className="space-y-16 max-w-7xl mx-auto">
-          {heroSections.map((section, sectionIndex) => (
-            <motion.div
+        {/* Section Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center gap-3 mb-12"
+        >
+          {heroSections.map((section) => (
+            <button
               key={section.function}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: sectionIndex * 0.2 }}
+              onClick={() => setActiveSection(section.function)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeSection === section.function
+                  ? "bg-cream-100 text-navy-900"
+                  : "bg-cream-100/10 text-cream-300 hover:bg-cream-100/20"
+              }`}
             >
-              {/* Section Header */}
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-4">
-                  <span className="text-4xl">{section.icon}</span>
-                  <h3 className="text-2xl font-bold text-cream-100">{section.function}</h3>
+              <span>{section.icon}</span>
+              <span>{section.function}</span>
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Active Section Content */}
+        <div className="max-w-7xl mx-auto">
+          {heroSections
+            .filter((section) => section.function === activeSection)
+            .map((section) => (
+              <motion.div
+                key={section.function}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                {/* Scroll Navigation */}
+                <div className="flex items-center justify-between mb-6">
                   <span className="px-3 py-1 rounded-full bg-cream-100/10 text-cream-300 text-sm">
                     {section.heroes.length} heroes
                   </span>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => scrollContainer("left")}
+                      className="p-2 rounded-full bg-cream-100/10 hover:bg-cream-100/20 transition-colors"
+                      aria-label="Scroll left"
+                    >
+                      <ChevronLeft size={20} className="text-cream-300" />
+                    </button>
+                    <button
+                      onClick={() => scrollContainer("right")}
+                      className="p-2 rounded-full bg-cream-100/10 hover:bg-cream-100/20 transition-colors"
+                      aria-label="Scroll right"
+                    >
+                      <ChevronRight size={20} className="text-cream-300" />
+                    </button>
+                  </div>
                 </div>
-                
-                {/* Scroll Navigation */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => scrollContainer(`scroll-${section.function}`, "left")}
-                    className="p-2 rounded-full bg-cream-100/10 hover:bg-cream-100/20 transition-colors"
-                    aria-label="Scroll left"
-                  >
-                    <ChevronLeft size={20} className="text-cream-300" />
-                  </button>
-                  <button
-                    onClick={() => scrollContainer(`scroll-${section.function}`, "right")}
-                    className="p-2 rounded-full bg-cream-100/10 hover:bg-cream-100/20 transition-colors"
-                    aria-label="Scroll right"
-                  >
-                    <ChevronRight size={20} className="text-cream-300" />
-                  </button>
-                </div>
-              </div>
 
-              {/* Horizontally Scrollable Cards */}
-              <div
-                id={`scroll-${section.function}`}
-                className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                {section.heroes.map((hero, heroIndex) => (
-                  <motion.div
-                    key={heroIndex}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.5, delay: sectionIndex * 0.2 + heroIndex * 0.1 }}
-                    className="group relative flex-shrink-0 w-80 snap-start"
-                  >
-                    {/* Card */}
-                    <div className="relative h-full rounded-2xl overflow-hidden">
-                      {/* Gradient Background */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
-                      
-                      {/* Content */}
-                      <div className="relative p-6 h-full flex flex-col bg-navy-800/80 backdrop-blur-sm border border-cream-100/10 rounded-2xl min-h-[360px]">
-                        {/* Month Badge */}
-                        <div className="flex items-center justify-between mb-4">
-                          <span className="text-cream-400 text-sm">{hero.month}</span>
-                        </div>
-
-                        {/* Title */}
-                        <h4 className="text-xl font-bold text-cream-100 mb-4">{hero.title}</h4>
-
-                        {/* Why It Matters */}
-                        <div className="mb-6 flex-grow">
-                          <div className="flex items-center gap-2 text-teal-400 mb-2">
-                            <Star size={14} />
-                            <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+                {/* Horizontally Scrollable Cards */}
+                <div
+                  id={`scroll-${section.function}`}
+                  className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                >
+                  {section.heroes.map((hero, heroIndex) => (
+                    <motion.div
+                      key={heroIndex}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: heroIndex * 0.1 }}
+                      className="group relative flex-shrink-0 w-80 snap-start"
+                    >
+                      {/* Card */}
+                      <div className="relative h-full rounded-2xl overflow-hidden">
+                        {/* Gradient Background */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
+                        
+                        {/* Content */}
+                        <div className="relative p-6 h-full flex flex-col bg-navy-800/80 backdrop-blur-sm border border-cream-100/10 rounded-2xl min-h-[360px]">
+                          {/* Month Badge */}
+                          <div className="flex items-center justify-between mb-4">
+                            <span className="text-cream-400 text-sm">{hero.month}</span>
                           </div>
-                          <p className="text-cream-300/80 leading-relaxed text-sm">
-                            {hero.why}
-                          </p>
-                        </div>
 
-                        {/* Links */}
-                        <div className="space-y-2 pt-4 border-t border-cream-100/10">
-                          {hero.links.map((link, lIndex) => (
-                            <a
-                              key={lIndex}
-                              href={link.url}
-                              className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
-                            >
-                              <span>{link.label}</span>
-                              <ExternalLink size={14} />
-                            </a>
-                          ))}
+                          {/* Title */}
+                          <h4 className="text-xl font-bold text-cream-100 mb-4">{hero.title}</h4>
+
+                          {/* Why It Matters */}
+                          <div className="mb-6 flex-grow">
+                            <div className="flex items-center gap-2 text-teal-400 mb-2">
+                              <Star size={14} />
+                              <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+                            </div>
+                            <p className="text-cream-300/80 leading-relaxed text-sm">
+                              {hero.why}
+                            </p>
+                          </div>
+
+                          {/* Links */}
+                          <div className="space-y-2 pt-4 border-t border-cream-100/10">
+                            {hero.links.map((link, lIndex) => (
+                              <a
+                                key={lIndex}
+                                href={link.url}
+                                className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
+                              >
+                                <span>{link.label}</span>
+                                <ExternalLink size={14} />
+                              </a>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Glow Effect on Hover */}
-                    <div className={`absolute -inset-0.5 bg-gradient-to-br ${section.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`} />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                      {/* Glow Effect on Hover */}
+                      <div className={`absolute -inset-0.5 bg-gradient-to-br ${section.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`} />
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
         </div>
 
         {/* Honorable Mentions */}
