@@ -19,15 +19,15 @@ import lifeImg5 from "@/assets/team/life/life-5.jpg";
 import lifeImg6 from "@/assets/team/life/life-6.jpg";
 import lifeImg7 from "@/assets/team/life/life-7.jpg";
 
-// Scrapbook captions in order
+// Scrapbook captions in order - mapped to photo sequence
 const scrapbookCaptions = [
-  "Late nights, bright ideas",
-  "Some meetings turned into memories",
-  "Built together, laughed louder",
-  "Chaos, but the good kind",
-  "Post-launch smiles",
-  "Team energy > caffeine",
-  "Ideas everywhere",
+  "Teams that celebrate together, stay together.",
+  "A little competition, a lot of team spirit.",
+  "Same people, different backdrop.",
+  "Some ideas started here.",
+  "Not everything had a deadline.",
+  "Good days, great people.",
+  "This one felt special.",
 ];
 
 const aiStories = [
@@ -387,6 +387,16 @@ export function PMStories() {
           transition={{ delay: 0.7 }}
           className="relative"
         >
+          {/* Section Title & Subtitle - MUST KEEP */}
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-cream-100 mb-4">
+              Life in the Product Team
+            </h3>
+            <p className="text-cream-300/80 max-w-2xl mx-auto leading-relaxed">
+              Not everything we shipped was code. Some of it was culture, which we discovered when we stepped away from the backlog.
+            </p>
+          </div>
+
           {/* Scrapbook Container */}
           <div 
             onClick={handleFlip}
