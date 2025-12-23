@@ -308,7 +308,7 @@ export function PMStories() {
             <h3 className="text-xl font-bold">Product Leaders Speak</h3>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6 max-w-7xl mx-auto">
             {productLeaders.map((leader, index) => (
               <motion.div
                 key={leader.id}
