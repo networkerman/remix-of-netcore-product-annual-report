@@ -24,6 +24,7 @@ import karanImg from "@/assets/team/Karan_UNBXD.jpg";
 import parthImg from "@/assets/team/Parth_Shukla-2.png";
 import kushImg from "@/assets/team/Kush_Paithane.png";
 import tanishqImg from "@/assets/team/Tanishq_Pradeep.png";
+import udayanImg from "@/assets/team/Udayan_Das_Chowdhury.jpg";
 
 // Design Team Images
 import hardImg from "@/assets/team/Hard_Gupta.png";
@@ -58,7 +59,7 @@ const teamMembers: TeamMember[] = [
   { id: 5, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
   { id: 6, name: "Deepesh", role: "AVP - Product Operations", team: "Product", funFact: "Roadmap Whisperer", outsideWork: "Cricket enthusiast", image: deepeshImg },
   { id: 7, name: "Vrinda", role: "Product Manager", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent", image: vrindaImg },
-  { id: 8, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector" },
+  { id: 8, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector", image: udayanImg },
   { id: 9, name: "Parag", role: "Sr PM", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
   { id: 10, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular", image: avaniImg },
   { id: 11, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast", image: abhinavImg },
