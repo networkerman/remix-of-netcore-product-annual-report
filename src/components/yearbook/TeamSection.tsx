@@ -7,13 +7,28 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-// Import comic images
-import kedarImg from "@/assets/team/kedar-parikh.png";
-import jibranImg from "@/assets/team/jibran-dalvi.png";
-import satishImg from "@/assets/team/satish-kokate.png";
-import paragImg from "@/assets/team/parag-mantri.png";
-import tejasImg from "@/assets/team/tejas-thakur.png";
-import parthImg from "@/assets/team/parth-shukla.png";
+// Product Team Images
+import kedarImg from "@/assets/team/Kedar_Parikh-2.png";
+import yogeshImg from "@/assets/team/Yogesh_Kulkarni.png";
+import satishImg from "@/assets/team/Satish_Kokate-2.png";
+import raviImg from "@/assets/team/Ravi_Mishra_UNBXD.png";
+import jibranImg from "@/assets/team/Jibran_Dalvi-2.png";
+import deepeshImg from "@/assets/team/leaders/deepesh.png";
+import vrindaImg from "@/assets/team/Vrinda.png";
+import paragImg from "@/assets/team/Parag_Mantri-2.png";
+import tejasImg from "@/assets/team/Tejas_Thakur-2.png";
+import karanImg from "@/assets/team/Karan_UNBXD.jpg";
+import parthImg from "@/assets/team/Parth_Shukla-2.png";
+import kushImg from "@/assets/team/Kush_Paithane.png";
+import tanishqImg from "@/assets/team/Tanishq_Pradeep.png";
+
+// Design Team Images
+import hardImg from "@/assets/team/Hard_Gupta.png";
+import yashImg from "@/assets/team/Yash_Zendekar.jpg";
+import taiyubImg from "@/assets/team/Taiyub.png";
+
+// Documentation Team Images
+import gargiImg from "@/assets/team/Gargi_Mukherjee.png";
 
 interface TeamMember {
   id: number;
@@ -26,36 +41,38 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  // Product Team
+  // Product Team (in specified order)
   { id: 1, name: "Kedar", role: "Chief Product Officer", team: "Product", funFact: "Chief Sense-Maker", outsideWork: "Trekking enthusiast", image: kedarImg },
-  { id: 2, name: "Yogesh", role: "Product Lead", team: "Product", funFact: "Ships features at 2am", outsideWork: "Marathon runner" },
-  { id: 3, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
-  { id: 4, name: "Satish", role: "AVP Product Management", team: "Product", funFact: "Full-Time Firefighter", outsideWork: "Tea connoisseur", image: satishImg },
-  { id: 5, name: "Vrinda", role: "Product Manager", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent" },
-  { id: 6, name: "Ravi", role: "Product Manager", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Weekend photographer" },
-  { id: 7, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector" },
-  { id: 8, name: "Parag", role: "Sr PM", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
-  { id: 9, name: "Tejas", role: "PM", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
-  { id: 10, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast" },
-  { id: 11, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular" },
-  { id: 12, name: "Karan", role: "Product Manager", team: "Product", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster" },
-  { id: 13, name: "Parth", role: "PM", team: "Product", funFact: "Strategic Innovation Architect", outsideWork: "AI enthusiast", image: parthImg },
-  { id: 14, name: "Kush", role: "Product Manager", team: "Product", funFact: "Figma shortcuts wizard", outsideWork: "Sourdough baker" },
-  { id: 15, name: "Tanishq", role: "Product Manager", team: "Product", funFact: "Feature velocity champion", outsideWork: "Weekend DJ" },
+  { id: 2, name: "Yogesh", role: "Product Lead", team: "Product", funFact: "Ships features at 2am", outsideWork: "Marathon runner", image: yogeshImg },
+  { id: 3, name: "Satish", role: "AVP Product Management", team: "Product", funFact: "Full-Time Firefighter", outsideWork: "Tea connoisseur", image: satishImg },
+  { id: 4, name: "Ravi", role: "Product Manager", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Weekend photographer", image: raviImg },
+  { id: 5, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
+  { id: 6, name: "Deepesh", role: "Product Manager", team: "Product", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: deepeshImg },
+  { id: 7, name: "Vrinda", role: "Product Manager", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent", image: vrindaImg },
+  { id: 8, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector" },
+  { id: 9, name: "Parag", role: "Sr PM", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
+  { id: 10, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular" },
+  { id: 11, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast" },
+  { id: 12, name: "Tejas", role: "PM", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
+  { id: 13, name: "Bharat", role: "Product Manager", team: "Product", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 14, name: "Karan", role: "Product Manager", team: "Product", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster", image: karanImg },
+  { id: 15, name: "Parth", role: "PM", team: "Product", funFact: "Strategic Innovation Architect", outsideWork: "AI enthusiast", image: parthImg },
+  { id: 16, name: "Kush", role: "Product Manager", team: "Product", funFact: "Figma shortcuts wizard", outsideWork: "Sourdough baker", image: kushImg },
+  { id: 17, name: "Tanishq", role: "Product Manager", team: "Product", funFact: "Feature velocity champion", outsideWork: "Weekend DJ", image: tanishqImg },
   
   // Design Team
-  { id: 16, name: "Kirit Lakhani", role: "Head of Product Design", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 17, name: "Amit Sharma", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 18, name: "Harshita Rajawat", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 19, name: "Dhairya Vora", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 20, name: "Hardikya Gupta", role: "Associate Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 21, name: "Yash Zendekar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 22, name: "Taiyub Afsar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 18, name: "Kirit Lakhani", role: "Head of Product Design", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 19, name: "Amit Sharma", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 20, name: "Harshita Rajawat", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 21, name: "Dhairya Vora", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 22, name: "Hardikya Gupta", role: "Associate Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: hardImg },
+  { id: 23, name: "Yash Zendekar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: yashImg },
+  { id: 24, name: "Taiyub Afsar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: taiyubImg },
   
   // Documentation Team
-  { id: 23, name: "Gargi Mukherjee", role: "Manager Product Documentation", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 24, name: "Aishwarya Sinha", role: "Senior Technical Writer", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 25, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 25, name: "Gargi Mukherjee", role: "Manager Product Documentation", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: gargiImg },
+  { id: 26, name: "Aishwarya Sinha", role: "Senior Technical Writer", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 27, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
 ];
 
 const teamColors = {
