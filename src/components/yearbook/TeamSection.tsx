@@ -13,7 +13,7 @@ import yogeshImg from "@/assets/team/Yogesh_Kulkarni.png";
 import satishImg from "@/assets/team/Satish_Kokate-2.png";
 import raviImg from "@/assets/team/Ravi_Mishra_UNBXD.png";
 import jibranImg from "@/assets/team/Jibran_Dalvi-2.png";
-import deepeshImg from "@/assets/team/leaders/deepesh.png";
+import deepeshImg from "@/assets/team/Deepesh_Lakhera-3.png";
 import vrindaImg from "@/assets/team/Vrinda.png";
 import paragImg from "@/assets/team/Parag_Mantri-2.png";
 import tejasImg from "@/assets/team/Tejas_Thakur-2.png";
