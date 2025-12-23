@@ -58,11 +58,11 @@ const teamMembers: TeamMember[] = [
   { id: 4, name: "Ravi", role: "Director, Business Analytics & Product", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Weekend photographer", image: raviImg },
   { id: 5, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
   { id: 6, name: "Deepesh", role: "AVP - Product Operations", team: "Product", funFact: "Roadmap Whisperer", outsideWork: "Cricket enthusiast", image: deepeshImg },
-  { id: 7, name: "Vrinda", role: "Product Manager", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent", image: vrindaImg },
-  { id: 8, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector", image: udayanImg },
-  { id: 9, name: "Parag", role: "Sr PM", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
-  { id: 10, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular", image: avaniImg },
-  { id: 11, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast", image: abhinavImg },
+  { id: 7, name: "Vrinda Aggarwal", role: "Associate Vice President - Product", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent", image: vrindaImg },
+  { id: 8, name: "Udayan", role: "Senior Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector", image: udayanImg },
+  { id: 9, name: "Parag", role: "Senior Product Manager", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
+  { id: 10, name: "Avani", role: "Senior Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular", image: avaniImg },
+  { id: 11, name: "Abhinav", role: "Senior Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast", image: abhinavImg },
   { id: 12, name: "Tejas", role: "Product Manager", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
   { id: 13, name: "Bharat", role: "Product Manager", team: "Product", funFact: "Customer empathy champion", outsideWork: "Travel photographer", image: bharatImg },
   { id: 14, name: "Karan", role: "Product Manager", team: "Product", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster", image: karanImg },
@@ -71,19 +71,19 @@ const teamMembers: TeamMember[] = [
   { id: 17, name: "Tanishq", role: "Product Manager", team: "Product", funFact: "Feature velocity champion", outsideWork: "Weekend DJ", image: tanishqImg },
   
   // Design Team
-  { id: 18, name: "Kirit Lakhani", role: "Head of Product Design", team: "Design", funFact: "Design system perfectionist", outsideWork: "Jazz music aficionado" },
-  { id: 19, name: "Joydeep Kumar", role: "Lead Interaction Designer", team: "Design", funFact: "Motion design maestro", outsideWork: "Film buff", image: joydeepImg },
-  { id: 20, name: "Amit Sharma", role: "Senior Product Designer", team: "Design", funFact: "Whiteboard sketch artist", outsideWork: "Street photography", image: amitImg },
-  { id: 21, name: "Harshita Rajawat", role: "Product Designer", team: "Design", funFact: "Color palette curator", outsideWork: "Book club regular", image: harshitaImg },
-  { id: 22, name: "Dhairya Vora", role: "Product Designer", team: "Design", funFact: "Micro-interaction enthusiast", outsideWork: "Fitness junkie", image: dhairyaImg },
-  { id: 23, name: "Hardikya Gupta", role: "Associate Product Designer", team: "Design", funFact: "Prototyping speedster", outsideWork: "Coffee connoisseur", image: hardImg },
-  { id: 24, name: "Yash Zendekar", role: "Product Design Intern", team: "Design", funFact: "Fresh perspective provider", outsideWork: "Bike rides explorer", image: yashImg },
-  { id: 25, name: "Taiyub Afsar", role: "Product Design Intern", team: "Design", funFact: "Typography obsessed", outsideWork: "Sketch artist", image: taiyubImg },
+  { id: 18, name: "Kirit", role: "Head of Product Design", team: "Design", funFact: "Design system perfectionist", outsideWork: "Jazz music aficionado" },
+  { id: 19, name: "Joydeep", role: "Lead Interaction Designer", team: "Design", funFact: "Motion design maestro", outsideWork: "Film buff", image: joydeepImg },
+  { id: 20, name: "Amit", role: "Senior Product Designer", team: "Design", funFact: "Whiteboard sketch artist", outsideWork: "Street photography", image: amitImg },
+  { id: 21, name: "Harshita", role: "Senior Product Designer", team: "Design", funFact: "Color palette curator", outsideWork: "Book club regular", image: harshitaImg },
+  { id: 22, name: "Dhairya", role: "Product Designer", team: "Design", funFact: "Micro-interaction enthusiast", outsideWork: "Fitness junkie", image: dhairyaImg },
+  { id: 23, name: "Hardikya", role: "Associate Product Designer", team: "Design", funFact: "Prototyping speedster", outsideWork: "Coffee connoisseur", image: hardImg },
+  { id: 24, name: "Yash", role: "Product Design Intern", team: "Design", funFact: "Fresh perspective provider", outsideWork: "Bike rides explorer", image: yashImg },
+  { id: 25, name: "Taiyur", role: "Product Design Intern", team: "Design", funFact: "Typography obsessed", outsideWork: "Sketch artist", image: taiyubImg },
   
   // Documentation Team
-  { id: 26, name: "Gargi Mukherjee", role: "Manager Product Documentation", team: "Documentation", funFact: "Grammar guardian", outsideWork: "Book collector", image: gargiImg },
-  { id: 27, name: "Aishwarya Sinha", role: "Senior Technical Writer", team: "Documentation", funFact: "Simplifies the complex", outsideWork: "Yoga practitioner", image: aishwaryaImg },
-  { id: 28, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Screenshot perfectionist", outsideWork: "Music producer", image: darpanImg },
+  { id: 26, name: "Gargi", role: "Manager Product Documentation", team: "Documentation", funFact: "Grammar guardian", outsideWork: "Book collector", image: gargiImg },
+  { id: 27, name: "Aishwarya", role: "Senior Technical Writer", team: "Documentation", funFact: "Simplifies the complex", outsideWork: "Yoga practitioner", image: aishwaryaImg },
+  { id: 28, name: "Darpan", role: "Technical Writer- II", team: "Documentation", funFact: "Screenshot perfectionist", outsideWork: "Music producer", image: darpanImg },
 ];
 
 const teamColors = {
