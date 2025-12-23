@@ -102,7 +102,7 @@ export function TeamSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [filter, setFilter] = useState<"Product" | "Design" | "Documentation">("Product");
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const filteredMembers = teamMembers.filter(m => m.team === filter);
@@ -162,8 +162,6 @@ export function TeamSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * (index % 8) }}
-              onMouseEnter={() => setHoveredId(member.id)}
-              onMouseLeave={() => setHoveredId(null)}
               className="group relative"
             >
               <div className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden card-hover">
@@ -196,15 +194,6 @@ export function TeamSection() {
                   <p className="text-cream-300/50 text-xs italic">"{member.funFact}"</p>
                 </div>
 
-                {/* Hover Reveal */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={hoveredId === member.id ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  className="absolute inset-0 bg-navy-800/95 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center pointer-events-none"
-                >
-                  <span className="text-teal-400 text-xs uppercase tracking-wider mb-2">Outside Work</span>
-                  <p className="text-cream-100 font-medium text-lg">{member.outsideWork}</p>
-                </motion.div>
               </div>
             </motion.div>
           ))}
