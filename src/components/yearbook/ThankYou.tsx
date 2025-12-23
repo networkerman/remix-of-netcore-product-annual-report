@@ -67,22 +67,6 @@ export function ThankYou() {
             every late night and early morning has led us here.
           </motion.p>
 
-          {/* Team Collage Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-16"
-          >
-            <div className="aspect-[2/1] rounded-3xl bg-navy-700/50 border-2 border-dashed border-cream-100/20 flex items-center justify-center">
-              <div className="text-center p-8">
-                <span className="text-6xl mb-4 block">👥</span>
-                <p className="text-cream-400 text-sm">[Team Collage Placeholder]</p>
-                <p className="text-cream-500 text-xs mt-2">A mosaic of everyone who made this year possible</p>
-              </div>
-            </div>
-          </motion.div>
-
           {/* Call to Reflect */}
           <motion.div
             initial={{ opacity: 0 }}
