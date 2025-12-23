@@ -31,6 +31,7 @@ import yashImg from "@/assets/team/Yash_Zendekar.jpg";
 import taiyubImg from "@/assets/team/Taiyub.png";
 import dhairyaImg from "@/assets/team/Dhairya_Vora-3.jpg";
 import harshitaImg from "@/assets/team/Harshita.jpg";
+import amitImg from "@/assets/team/Amit_Sharma-2.png";
 
 // Documentation Team Images
 import gargiImg from "@/assets/team/Gargi_Mukherjee.png";
@@ -67,7 +68,7 @@ const teamMembers: TeamMember[] = [
   
   // Design Team
   { id: 18, name: "Kirit Lakhani", role: "Head of Product Design", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 19, name: "Amit Sharma", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 19, name: "Amit Sharma", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: amitImg },
   { id: 20, name: "Harshita Rajawat", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: harshitaImg },
   { id: 21, name: "Dhairya Vora", role: "Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: dhairyaImg },
   { id: 22, name: "Hardikya Gupta", role: "Associate Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: hardImg },
