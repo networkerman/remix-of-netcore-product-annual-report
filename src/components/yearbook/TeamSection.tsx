@@ -32,6 +32,7 @@ import taiyubImg from "@/assets/team/Taiyub.png";
 import dhairyaImg from "@/assets/team/Dhairya_Vora-3.jpg";
 import harshitaImg from "@/assets/team/Harshita.jpg";
 import amitImg from "@/assets/team/Amit_Sharma-2.png";
+import joydeepImg from "@/assets/team/Joydeep_Kumar.jpg";
 
 // Documentation Team Images
 import gargiImg from "@/assets/team/Gargi_Mukherjee.png";
@@ -76,11 +77,12 @@ const teamMembers: TeamMember[] = [
   { id: 22, name: "Hardikya Gupta", role: "Associate Product Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: hardImg },
   { id: 23, name: "Yash Zendekar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: yashImg },
   { id: 24, name: "Taiyub Afsar", role: "Product Design Intern", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: taiyubImg },
+  { id: 25, name: "Joydeep Kumar", role: "Lead Interaction Designer", team: "Design", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: joydeepImg },
   
   // Documentation Team
-  { id: 25, name: "Gargi Mukherjee", role: "Manager Product Documentation", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: gargiImg },
-  { id: 26, name: "Aishwarya Sinha", role: "Senior Technical Writer", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: aishwaryaImg },
-  { id: 27, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: darpanImg },
+  { id: 26, name: "Gargi Mukherjee", role: "Manager Product Documentation", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: gargiImg },
+  { id: 27, name: "Aishwarya Sinha", role: "Senior Technical Writer", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: aishwaryaImg },
+  { id: 28, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: darpanImg },
 ];
 
 const teamColors = {
