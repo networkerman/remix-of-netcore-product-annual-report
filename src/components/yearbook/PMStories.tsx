@@ -331,10 +331,8 @@ export function PMStories() {
 
                   {/* Gradient overlay with content */}
                   <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
-                    <span className="text-2xl mb-2">{leader.emoji}</span>
-                    <h4 className="font-bold text-lg text-cream-100 mb-1">{leader.headline}</h4>
-                    <p className="text-cream-300/70 text-sm italic mb-2 line-clamp-2">"{leader.teaserQuote}"</p>
-                    <p className="text-teal-400 text-sm font-medium">{leader.name}, {leader.title}</p>
+                    <h4 className="font-bold text-lg text-cream-100 mb-1">{leader.name}</h4>
+                    <p className="text-teal-400/90 text-sm font-medium">{leader.title}</p>
                   </div>
 
                   {/* Hover CTA Overlay */}
