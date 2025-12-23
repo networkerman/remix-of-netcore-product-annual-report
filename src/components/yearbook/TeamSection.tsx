@@ -15,6 +15,7 @@ import raviImg from "@/assets/team/Ravi_Mishra_UNBXD.png";
 import jibranImg from "@/assets/team/Jibran_Dalvi-2.png";
 import deepeshImg from "@/assets/team/Deepesh_Lakhera-3.png";
 import vrindaImg from "@/assets/team/Vrinda.png";
+import avaniImg from "@/assets/team/Avani_Unbxd_1.png";
 import paragImg from "@/assets/team/Parag_Mantri-2.png";
 import tejasImg from "@/assets/team/Tejas_Thakur-2.png";
 import karanImg from "@/assets/team/Karan_UNBXD.jpg";
@@ -51,7 +52,7 @@ const teamMembers: TeamMember[] = [
   { id: 7, name: "Vrinda", role: "Product Manager", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent", image: vrindaImg },
   { id: 8, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector" },
   { id: 9, name: "Parag", role: "Sr PM", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
-  { id: 10, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular" },
+  { id: 10, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular", image: avaniImg },
   { id: 11, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast" },
   { id: 12, name: "Tejas", role: "PM", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
   { id: 13, name: "Bharat", role: "Product Manager", team: "Product", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
