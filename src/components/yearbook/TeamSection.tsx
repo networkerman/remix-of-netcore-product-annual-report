@@ -16,6 +16,7 @@ import jibranImg from "@/assets/team/Jibran_Dalvi-2.png";
 import deepeshImg from "@/assets/team/Deepesh_Lakhera-3.png";
 import vrindaImg from "@/assets/team/Vrinda.png";
 import avaniImg from "@/assets/team/Avani_Unbxd_1.png";
+import abhinavImg from "@/assets/team/Abhinav_Visen-2.jpg";
 import paragImg from "@/assets/team/Parag_Mantri-2.png";
 import tejasImg from "@/assets/team/Tejas_Thakur-2.png";
 import karanImg from "@/assets/team/Karan_UNBXD.jpg";
@@ -53,7 +54,7 @@ const teamMembers: TeamMember[] = [
   { id: 8, name: "Udayan", role: "Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector" },
   { id: 9, name: "Parag", role: "Sr PM", team: "Product", funFact: "Signal-to-Noise Ratio Optimizer", outsideWork: "Headphone audiophile", image: paragImg },
   { id: 10, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular", image: avaniImg },
-  { id: 11, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast" },
+  { id: 11, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast", image: abhinavImg },
   { id: 12, name: "Tejas", role: "PM", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
   { id: 13, name: "Bharat", role: "Product Manager", team: "Product", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
   { id: 14, name: "Karan", role: "Product Manager", team: "Product", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster", image: karanImg },
