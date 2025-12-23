@@ -25,9 +25,9 @@ const Index = () => {
         <TestimonialsCarousel />
         <CPONote />
         <TeamSection />
-        <YearAtGlance />
-        <ProductCraft />
         <HeroProducts />
+        <ProductCraft />
+        <YearAtGlance />
         <LeaderVoices />
         <PMStories />
         <LookingAhead />
