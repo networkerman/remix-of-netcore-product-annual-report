@@ -66,7 +66,7 @@ const teamMembers: TeamMember[] = [
   { id: 12, name: "Tejas", role: "PM", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
   { id: 13, name: "Bharat", role: "Product Manager", team: "Product", funFact: "Customer empathy champion", outsideWork: "Travel photographer", image: bharatImg },
   { id: 14, name: "Karan", role: "Product Manager", team: "Product", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster", image: karanImg },
-  { id: 15, name: "Parth", role: "PM", team: "Product", funFact: "Strategic Innovation Architect", outsideWork: "AI enthusiast", image: parthImg },
+  { id: 15, name: "Parth", role: "Product Manager", team: "Product", funFact: "Strategic Innovation Architect", outsideWork: "AI enthusiast", image: parthImg },
   { id: 16, name: "Kush", role: "Product Manager", team: "Product", funFact: "Figma shortcuts wizard", outsideWork: "Sourdough baker", image: kushImg },
   { id: 17, name: "Tanishq", role: "Product Manager", team: "Product", funFact: "Feature velocity champion", outsideWork: "Weekend DJ", image: tanishqImg },
   
