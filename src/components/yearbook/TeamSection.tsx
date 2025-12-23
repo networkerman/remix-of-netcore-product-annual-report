@@ -35,6 +35,7 @@ import amitImg from "@/assets/team/Amit_Sharma-2.png";
 
 // Documentation Team Images
 import gargiImg from "@/assets/team/Gargi_Mukherjee.png";
+import darpanImg from "@/assets/team/Darpan_Amle.png";
 
 interface TeamMember {
   id: number;
@@ -78,7 +79,7 @@ const teamMembers: TeamMember[] = [
   // Documentation Team
   { id: 25, name: "Gargi Mukherjee", role: "Manager Product Documentation", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: gargiImg },
   { id: 26, name: "Aishwarya Sinha", role: "Senior Technical Writer", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
-  { id: 27, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 27, name: "Darpan Amle", role: "Technical Writer- II", team: "Documentation", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: darpanImg },
 ];
 
 const teamColors = {
