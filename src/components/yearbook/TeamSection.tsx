@@ -19,6 +19,7 @@ import avaniImg from "@/assets/team/Avani_Unbxd_1.png";
 import abhinavImg from "@/assets/team/Abhinav_Visen-2.jpg";
 import paragImg from "@/assets/team/Parag_Mantri-2.png";
 import tejasImg from "@/assets/team/Tejas_Thakur-2.png";
+import bharatImg from "@/assets/team/Bharat_Chowdhary_1.png";
 import karanImg from "@/assets/team/Karan_UNBXD.jpg";
 import parthImg from "@/assets/team/Parth_Shukla-2.png";
 import kushImg from "@/assets/team/Kush_Paithane.png";
@@ -56,7 +57,7 @@ const teamMembers: TeamMember[] = [
   { id: 10, name: "Avani", role: "Product Manager", team: "Product", funFact: "Color theory debates", outsideWork: "Pottery class regular", image: avaniImg },
   { id: 11, name: "Abhinav", role: "Product Manager", team: "Product", funFact: "Pixel perfect or bust", outsideWork: "Gaming enthusiast", image: abhinavImg },
   { id: 12, name: "Tejas", role: "PM", team: "Product", funFact: "Shadow Engineer with a PM Badge", outsideWork: "Chelsea fan", image: tejasImg },
-  { id: 13, name: "Bharat", role: "Product Manager", team: "Product", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby" },
+  { id: 13, name: "Bharat", role: "Product Manager", team: "Product", funFact: "Placeholder fun fact", outsideWork: "Placeholder hobby", image: bharatImg },
   { id: 14, name: "Karan", role: "Product Manager", team: "Product", funFact: "Emoji documentation expert", outsideWork: "True crime podcaster", image: karanImg },
   { id: 15, name: "Parth", role: "PM", team: "Product", funFact: "Strategic Innovation Architect", outsideWork: "AI enthusiast", image: parthImg },
   { id: 16, name: "Kush", role: "Product Manager", team: "Product", funFact: "Figma shortcuts wizard", outsideWork: "Sourdough baker", image: kushImg },
