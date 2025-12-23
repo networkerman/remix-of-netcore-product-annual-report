@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Sparkles, Rocket, AlertCircle, Wrench, TrendingUp, Lightbulb, X } from "lucide-react";
+import { Sparkles, Rocket, AlertCircle, Wrench, TrendingUp, Lightbulb, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 // Intern images
@@ -9,6 +9,14 @@ import parthImg from "@/assets/team/interns/parth.png";
 import dhairyaImg from "@/assets/team/interns/dhairya.png";
 import kushImg from "@/assets/team/interns/kush.png";
 import tanishqImg from "@/assets/team/interns/tanishq.png";
+
+// Leader images
+import yogeshImg from "@/assets/team/leaders/yogesh.png";
+import satishImg from "@/assets/team/leaders/satish.png";
+import deepeshImg from "@/assets/team/leaders/deepesh.png";
+import raviImg from "@/assets/team/leaders/ravi.png";
+import jibranImg from "@/assets/team/leaders/jibran.png";
+import kiritImg from "@/assets/team/leaders/kirit.png";
 
 // Life in Product Team images - new photos
 import lifeImg1 from "@/assets/team/life/team-event.jpg";
@@ -28,24 +36,120 @@ const scrapbookCaptions = [
   "Good days, great people.",
 ];
 
-const aiStories = [
+// Product Leaders data
+interface ProductLeader {
+  id: string;
+  name: string;
+  title: string;
+  image: string;
+  emoji: string;
+  headline: string;
+  teaserQuote: string;
+  questions: { question: string; answer: string }[];
+}
+
+const productLeaders: ProductLeader[] = [
   {
-    leader: "[Leader Name]",
-    title: "How AI Changed My Workflow",
-    story: "Started using AI for spec writing. Now I can't imagine going back. It's not about replacing thinking—it's about amplifying it.",
-    avatar: "🧠",
+    id: "yogesh",
+    name: "Yogesh",
+    title: "Vice President - Product",
+    image: yogeshImg,
+    emoji: "🧠",
+    headline: "[Placeholder Headline]",
+    teaserQuote: "[Placeholder teaser quote]",
+    questions: [
+      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
+      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
+      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
+      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+    ],
   },
   {
-    leader: "[Leader Name]",
-    title: "The AI Debugging Incident",
-    story: "At 2am, Claude helped me find a bug that had haunted us for weeks. Turns out it was a single misplaced comma. AI: 1, Human: 0.",
-    avatar: "🐛",
+    id: "satish",
+    name: "Satish",
+    title: "AVP - Product Management",
+    image: satishImg,
+    emoji: "🚀",
+    headline: "[Placeholder Headline]",
+    teaserQuote: "[Placeholder teaser quote]",
+    questions: [
+      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
+      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
+      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
+      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+    ],
   },
   {
-    leader: "[Leader Name]",
-    title: "AI in Customer Research",
-    story: "We fed 10,000 support tickets into an AI summarizer. The insights were brutal but honest. Sometimes you need a machine to tell you the truth.",
-    avatar: "📊",
+    id: "deepesh",
+    name: "Deepesh",
+    title: "AVP - Product Operations",
+    image: deepeshImg,
+    emoji: "🔄",
+    headline: "[Placeholder Headline]",
+    teaserQuote: "[Placeholder teaser quote]",
+    questions: [
+      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
+      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
+      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
+      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+    ],
+  },
+  {
+    id: "ravi",
+    name: "Ravi",
+    title: "Director of Product & Business Analytics",
+    image: raviImg,
+    emoji: "📊",
+    headline: "[Placeholder Headline]",
+    teaserQuote: "[Placeholder teaser quote]",
+    questions: [
+      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
+      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
+      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
+      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+    ],
+  },
+  {
+    id: "jibran",
+    name: "Jibran",
+    title: "AVP - Product Management",
+    image: jibranImg,
+    emoji: "🔍",
+    headline: "Building Cohesion at Scale",
+    teaserQuote: "Identifying patterns helped us move beyond incremental fixes.",
+    questions: [
+      {
+        question: "What ecommerce problems did we focus on in 2025?",
+        answer: "In 2025, we focused on three persistent ecommerce challenges: discovery friction, low conversion efficiency, and the operational complexity of running product-led experiences at scale. Merchants had access to many tools, but connecting them into consistent, measurable journeys was difficult. This fragmentation slowed execution and made it unclear what was actually driving results.\n\nThese issues surfaced repeatedly in merchant conversations and storefront reviews. They weren't isolated problems, but systemic ones. Identifying these patterns helped us move beyond incremental fixes and instead focus on foundational improvements across browsing, discovery, personalization, and conversion—across channels, not in silos.",
+      },
+      {
+        question: "What was our overall product strategy and platform direction?",
+        answer: "Our strategy was to build a cohesive ecommerce platform where catalog, merchandising, content, personalization, and recommendations worked together as one system. Instead of intelligence being locked inside individual tools, we wanted it to flow across experiences.\n\nThis platform-led approach helped merchants maintain consistency while moving faster. The broader goal was to reduce operational overhead and enable teams to create, reuse, and optimize product-led experiences across the browse–discover–convert journey with greater clarity and efficiency.",
+      },
+      {
+        question: "What key customer insight influenced our decisions?",
+        answer: "A recurring insight from merchants was the need for flexibility with guardrails. They wanted control without complexity and power without unpredictability. This directly influenced how we scoped and prioritized solutions.\n\nWe focused on sensible defaults, fallback mechanisms, and reuse across channels and campaign types. In several cases, we simplified or re-scoped features after seeing how operationally heavy certain flows became in real-world usage. These decisions helped us balance usability with capability, ensuring solutions were powerful but practical.",
+      },
+      {
+        question: "What leadership perspective shaped the year?",
+        answer: "From a leadership perspective, we operated with a platform-owner mindset, prioritizing long-term coherence, clarity, and sustainable execution. We spent time on clear problem framing, aligning on trade-offs, and setting teams up to execute confidently rather than relying on constant intervention.\n\nLooking ahead, this approach continues with a stronger focus on product thinking, mentoring upcoming PMs, and building systems that scale—not just in platform capabilities, but in the teams that support them.",
+      },
+    ],
+  },
+  {
+    id: "kirit",
+    name: "Kirit",
+    title: "Head of Product Design",
+    image: kiritImg,
+    emoji: "🎨",
+    headline: "[Placeholder Headline]",
+    teaserQuote: "[Placeholder teaser quote]",
+    questions: [
+      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
+      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
+      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
+      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+    ],
   },
 ];
 
@@ -145,6 +249,8 @@ export function PMStories() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedIntern, setSelectedIntern] = useState<InternCard | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const [selectedLeader, setSelectedLeader] = useState<ProductLeader | null>(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   // Auto-flip every 3 seconds
   useEffect(() => {
@@ -157,6 +263,12 @@ export function PMStories() {
   // Click to flip
   const handleFlip = () => {
     setCurrentPage((prev) => (prev + 1) % lifePhotos.length);
+  };
+
+  // Handle leader card click
+  const handleLeaderClick = (leader: ProductLeader) => {
+    setSelectedLeader(leader);
+    setCurrentQuestionIndex(0);
   };
 
   return (
@@ -184,7 +296,7 @@ export function PMStories() {
           </p>
         </motion.div>
 
-        {/* AI Stories */}
+        {/* Product Leaders Speak */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -196,23 +308,136 @@ export function PMStories() {
             <h3 className="text-xl font-bold">Product Leaders Speak</h3>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {aiStories.map((story, index) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {productLeaders.map((leader, index) => (
               <motion.div
-                key={index}
+                key={leader.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 + index * 0.1 }}
-                className="p-6 rounded-2xl bg-navy-700/50 border border-cream-100/10 hover:border-teal-500/30 transition-colors"
+                className="group relative cursor-pointer"
+                onClick={() => handleLeaderClick(leader)}
               >
-                <div className="text-4xl mb-4">{story.avatar}</div>
-                <h4 className="font-bold text-lg text-cream-100 mb-2">{story.title}</h4>
-                <p className="text-cream-300/70 text-sm leading-relaxed mb-4">{story.story}</p>
-                <p className="text-teal-400 text-sm font-medium">{story.leader}</p>
+                <div className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden border border-cream-100/10 hover:border-teal-500/30 transition-all duration-300">
+                  {/* Full-bleed image */}
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                  {/* Fallback background */}
+                  <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 -z-10" />
+
+                  {/* Gradient overlay with content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
+                    <span className="text-2xl mb-2">{leader.emoji}</span>
+                    <h4 className="font-bold text-lg text-cream-100 mb-1">{leader.headline}</h4>
+                    <p className="text-cream-300/70 text-sm italic mb-2 line-clamp-2">"{leader.teaserQuote}"</p>
+                    <p className="text-teal-400 text-sm font-medium">{leader.name}, {leader.title}</p>
+                  </div>
+
+                  {/* Hover CTA Overlay */}
+                  <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="px-4 py-2 bg-teal-500 text-navy-900 font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                      View Story →
+                    </span>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
+
+        {/* Leader Story Dialog */}
+        <Dialog open={!!selectedLeader} onOpenChange={(open) => !open && setSelectedLeader(null)}>
+          <DialogContent className="bg-navy-800 border-cream-100/10 text-cream-100 max-w-xl p-0 overflow-hidden">
+            <DialogTitle className="sr-only">
+              {selectedLeader?.name} — {selectedLeader?.title}
+            </DialogTitle>
+
+            {selectedLeader && (
+              <div className="relative">
+                {/* Close button */}
+                <button
+                  onClick={() => setSelectedLeader(null)}
+                  className="absolute top-4 right-4 z-10 p-1.5 rounded-full bg-navy-700/80 hover:bg-navy-600 transition-colors"
+                >
+                  <X size={18} className="text-cream-300" />
+                </button>
+
+                {/* Header with image */}
+                <div className="p-6 pb-4 border-b border-cream-100/10 bg-gradient-to-br from-navy-700/50 to-navy-800">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-500/40 flex-shrink-0">
+                      <img
+                        src={selectedLeader.image}
+                        alt={selectedLeader.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-xl text-cream-100">
+                        {selectedLeader.name} — {selectedLeader.title}
+                      </h3>
+                      <p className="text-teal-400 text-sm">
+                        In Conversation: {selectedLeader.headline}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Q&A Content - One question at a time */}
+                <div className="p-6">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentQuestionIndex}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-coral-400 text-sm font-semibold mb-3 uppercase tracking-wide">
+                        Question {currentQuestionIndex + 1}
+                      </p>
+                      <h4 className="font-semibold text-lg text-cream-100 mb-4">
+                        {selectedLeader.questions[currentQuestionIndex].question}
+                      </h4>
+                      <p className="text-cream-300/80 leading-relaxed whitespace-pre-line">
+                        {selectedLeader.questions[currentQuestionIndex].answer}
+                      </p>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                {/* Navigation Controls */}
+                <div className="flex items-center justify-between px-6 py-4 border-t border-cream-100/10 bg-navy-800/50">
+                  <button
+                    onClick={() => setCurrentQuestionIndex((i) => i - 1)}
+                    disabled={currentQuestionIndex === 0}
+                    className="flex items-center gap-1.5 text-cream-300 hover:text-cream-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                  >
+                    <ChevronLeft size={18} />
+                    Previous
+                  </button>
+
+                  <span className="text-cream-300/60 text-sm">
+                    Question {currentQuestionIndex + 1} of {selectedLeader.questions.length}
+                  </span>
+
+                  <button
+                    onClick={() => setCurrentQuestionIndex((i) => i + 1)}
+                    disabled={currentQuestionIndex === selectedLeader.questions.length - 1}
+                    className="flex items-center gap-1.5 text-cream-300 hover:text-cream-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                  >
+                    Next
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
 
 
         {/* Deployed to Production */}
