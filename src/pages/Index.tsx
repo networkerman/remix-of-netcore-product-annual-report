@@ -10,7 +10,6 @@ import { ProductCraft } from "@/components/yearbook/ProductCraft";
 import { PMStories } from "@/components/yearbook/PMStories";
 
 import { HeroProducts } from "@/components/yearbook/HeroProducts";
-import { LookingAhead } from "@/components/yearbook/LookingAhead";
 import { ThankYou } from "@/components/yearbook/ThankYou";
 import { LeaderVoices } from "@/components/yearbook/LeaderVoices";
 
@@ -30,7 +29,6 @@ const Index = () => {
         <YearAtGlance />
         <LeaderVoices />
         <PMStories />
-        <LookingAhead />
         <ThankYou />
       </main>
     </div>
