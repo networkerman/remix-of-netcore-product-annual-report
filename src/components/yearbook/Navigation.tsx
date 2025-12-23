@@ -12,6 +12,7 @@ const navItems = [
   { id: "year-glance", label: "Year at a Glance" },
   { id: "leader-voices", label: "Recognition" },
   { id: "stories", label: "PM Stories" },
+  { id: "looking-ahead", label: "Looking Ahead" },
 ];
 
 export function Navigation() {
