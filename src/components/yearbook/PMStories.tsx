@@ -55,13 +55,29 @@ const productLeaders: ProductLeader[] = [
     title: "Vice President - Product",
     image: yogeshImg,
     emoji: "🧠",
-    headline: "[Placeholder Headline]",
-    teaserQuote: "[Placeholder teaser quote]",
+    headline: "Reaching Users Earlier",
+    teaserQuote: "The product moved from reacting to later-stage needs to proactively addressing user intent.",
     questions: [
-      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
-      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
-      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
-      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+      {
+        question: "What product shift this year helped you reach users earlier in their journey than before?",
+        answer: "This year, I worked closely with business leaders to shape the strategic roadmap earlier than before. By clearly defining target segments, core personas, and expected business growth upfront, we aligned the product roadmap much earlier in the user journey.\n\nThis shift helped us:\n• Focus on the right problems from the start\n• Avoid optimizing only downstream use cases\n• Support users earlier with more relevant capabilities\n\nAs a result, the product moved from reacting to later-stage needs to proactively addressing user intent much earlier in the lifecycle.",
+      },
+      {
+        question: "How did your work change who marketers could engage—and when they could engage them?",
+        answer: "With the launch of Addressable Anonymous, we expanded marketing reach by enabling engagement with users earlier in the lifecycle, even before they were known.\n\nThis change:\n• Increased the overall addressable audience\n• Moved engagement earlier by multiple lifecycle stages\n• Enabled better use of early intent signals\n\nThe outcome was improved timing of engagement, higher reachable user volume, and stronger impact across activation and conversion funnels.",
+      },
+      {
+        question: "What moment or pattern of feedback made it clear this feature was resonating across teams?",
+        answer: "Validation came through a combination of strong signals:\n• Rapid adoption within the first few days of launch\n• Repeat usage by key customers\n• Positive feedback across marketing, sales, and customer success teams\n\nWhat stood out was consistency. Different teams independently highlighted the same value—earlier reach and increased addressability. That alignment made it clear the feature was resonating beyond a single use case or function.",
+      },
+      {
+        question: "How did mentoring or supporting other PMs or team members shape your own growth this year?",
+        answer: "Supporting other PMs helped me shift from execution-focused leadership to systems-level thinking. Through regular reviews, roadmap discussions, and feedback, I learned to ask better questions, delegate decisions, and trust teams with ownership.\n\nThis approach strengthened the PM team while also helping me operate at a higher altitude—focusing more on long-term strategy and less on day-to-day execution.",
+      },
+      {
+        question: "As you look ahead, which industry or use case will stretch the product most meaningfully next year?",
+        answer: "AI-driven insights and positionless marketing will stretch the product most next year. As teams move toward models where fewer specialists execute and more marketers contribute strategically, the platform must reduce manual effort and act as a maker–checker.\n\nFor example:\n• Marketers design journeys using AI-recommended segments and messages\n• The system validates data readiness, logic, compliance, and impact\n\nThis shift will push the product from a workflow engine to an intelligent marketing system that enables confidence, efficiency, and scale.",
+      },
     ],
   },
   {
@@ -120,19 +136,19 @@ const productLeaders: ProductLeader[] = [
     questions: [
       {
         question: "What ecommerce problems did we focus on in 2025?",
-        answer: "In 2025, we focused on three persistent ecommerce challenges: discovery friction, low conversion efficiency, and the operational complexity of running product-led experiences at scale. Merchants had access to many tools, but connecting them into consistent, measurable journeys was difficult. This fragmentation slowed execution and made it unclear what was actually driving results.\n\nThese issues surfaced repeatedly in merchant conversations and storefront reviews. They weren't isolated problems, but systemic ones. Identifying these patterns helped us move beyond incremental fixes and instead focus on foundational improvements across browsing, discovery, personalization, and conversion—across channels, not in silos.",
+        answer: "In 2025, we focused on three persistent ecommerce challenges:\n• Discovery friction\n• Low conversion efficiency\n• Operational complexity at scale\n\nMerchants had access to multiple tools, but stitching them into consistent, measurable journeys was difficult. This fragmentation slowed execution and made it hard to understand what was driving results.\n\nThese issues surfaced repeatedly in merchant conversations and storefront reviews. Recognizing these patterns helped us move beyond incremental fixes and focus on foundational improvements across browsing, discovery, personalization, and conversion—across channels rather than in silos.",
       },
       {
         question: "What was our overall product strategy and platform direction?",
-        answer: "Our strategy was to build a cohesive ecommerce platform where catalog, merchandising, content, personalization, and recommendations worked together as one system. Instead of intelligence being locked inside individual tools, we wanted it to flow across experiences.\n\nThis platform-led approach helped merchants maintain consistency while moving faster. The broader goal was to reduce operational overhead and enable teams to create, reuse, and optimize product-led experiences across the browse–discover–convert journey with greater clarity and efficiency.",
+        answer: "Our strategy was to build a cohesive ecommerce platform where key capabilities worked together:\n• Catalog\n• Merchandising\n• Content\n• Personalization\n• Recommendations\n\nInstead of intelligence being locked into individual tools, we ensured it flowed across experiences. This platform-led approach helped merchants stay consistent while moving faster.\n\nThe goal was to reduce operational overhead and enable teams to create, reuse, and optimize product-led experiences across the browse–discover–convert journey with greater clarity and efficiency.",
       },
       {
         question: "What key customer insight influenced our decisions?",
-        answer: "A recurring insight from merchants was the need for flexibility with guardrails. They wanted control without complexity and power without unpredictability. This directly influenced how we scoped and prioritized solutions.\n\nWe focused on sensible defaults, fallback mechanisms, and reuse across channels and campaign types. In several cases, we simplified or re-scoped features after seeing how operationally heavy certain flows became in real-world usage. These decisions helped us balance usability with capability, ensuring solutions were powerful but practical.",
+        answer: "A recurring insight from merchants was the need for flexibility with guardrails. They wanted:\n• Control without complexity\n• Power without unpredictability\n\nThis insight shaped how we scoped and prioritized solutions. We emphasized sensible defaults, fallback mechanisms, and reuse across channels and campaign types.\n\nIn several cases, we simplified or re-scoped features after seeing how operationally heavy certain flows became in real-world usage. These decisions helped balance usability with capability.",
       },
       {
         question: "What leadership perspective shaped the year?",
-        answer: "From a leadership perspective, we operated with a platform-owner mindset, prioritizing long-term coherence, clarity, and sustainable execution. We spent time on clear problem framing, aligning on trade-offs, and setting teams up to execute confidently rather than relying on constant intervention.\n\nLooking ahead, this approach continues with a stronger focus on product thinking, mentoring upcoming PMs, and building systems that scale—not just in platform capabilities, but in the teams that support them.",
+        answer: "From a leadership perspective, we operated with a platform-owner mindset, prioritizing:\n• Long-term coherence\n• Clarity of intent\n• Sustainable execution\n\nWe invested time in clear problem framing, aligning on trade-offs, and setting teams up to execute with confidence rather than constant intervention.\n\nLooking ahead, this approach continues with a stronger focus on product thinking, mentoring upcoming PMs, and building systems that scale—both in platform capabilities and in the teams behind them.",
       },
     ],
   },
@@ -142,13 +158,21 @@ const productLeaders: ProductLeader[] = [
     title: "Head of Product Design",
     image: kiritImg,
     emoji: "🎨",
-    headline: "[Placeholder Headline]",
-    teaserQuote: "[Placeholder teaser quote]",
+    headline: "Design in an AI-Driven Future",
+    teaserQuote: "Design now emphasizes outcomes over actions.",
     questions: [
-      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
-      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
-      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
-      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+      {
+        question: "How does the role of design evolve in an AI- and agent-driven Netcore?",
+        answer: "As Netcore moves toward AI- and agent-driven engagement, design expands beyond crafting screens to shaping intelligent decision systems. The focus shifts to how AI agents reason, prioritize, and act—making complex decisions transparent, explainable, and aligned with marketer intent.\n\nDesign now emphasizes outcomes over actions. Instead of optimizing what users do, it helps users express what they want to achieve, while ensuring trust, control, and clarity in AI-led experiences. In this model, design orchestrates how intelligence is surfaced, how decisions are understood, and how confidence is built in autonomous systems.",
+      },
+      {
+        question: "How should Netcore rethink dashboards, workflows, and interactions for an AI-first experience?",
+        answer: "With AI agents proactively driving outcomes across Netcore products, traditional dashboards and static workflows give way to conversational and intent-based interactions. Rather than configuring rules and journeys, users collaborate with AI by defining goals, constraints, and guardrails.\n\nKey interaction shifts include:\n• Goal-driven prompts instead of complex setups\n• Real-time recommendations over static reports\n• Natural language controls in place of manual configuration\n• Clear, actionable explanations instead of opaque logic\n\nThis approach allows AI to continuously optimize in the background while users stay focused on outcomes rather than mechanics.",
+      },
+      {
+        question: "How is the design team preparing for an agentic AI future across channels?",
+        answer: "Netcore's design team is preparing for an agentic AI future by building systems that are channel-aware yet experience-consistent across Email, WhatsApp, SMS, and in-app journeys. The goal is to enable intelligence that adapts by channel without fragmenting the user experience.\n\nCore design principles guiding this shift include:\n• Outcome-centricity\n• Human-in-the-loop control\n• Transparency by default\n• Seamless cross-channel intelligence\n\nBy designing for trust, autonomy, and scale, Netcore aims to differentiate through experiences where AI feels less like a tool and more like a capable growth partner.",
+      },
     ],
   },
 ];
