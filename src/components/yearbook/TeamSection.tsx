@@ -191,7 +191,7 @@ export function TeamSection() {
                   </span>
                   <h3 className="font-bold text-lg text-cream-100 mb-1">{member.name}</h3>
                   <p className="text-cream-300/70 text-sm mb-2">{member.role}</p>
-                  <p className="text-cream-300/50 text-xs italic">"{member.funFact}"</p>
+                  
                 </div>
 
               </div>
