@@ -309,18 +309,16 @@ export function HeroProducts() {
                         
                         {/* Content */}
                         <div className="relative p-6 h-full flex flex-col bg-navy-800/80 backdrop-blur-sm border border-cream-100/10 rounded-2xl min-h-[360px]">
-                          {/* Month Badge & Hero Label */}
+                          {/* Hero Label Only (no date for story cards) */}
                           <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
                             <div className="flex items-center gap-2">
-                              <span className="text-cream-400 text-sm">{hero.month}</span>
-                              {hero.heroLabel && (
-                                <>
-                                  <span className="text-cream-100/30">•</span>
-                                  <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${section.gradient} text-navy-900 text-xs font-semibold`}>
-                                    <BookOpen size={12} />
-                                    {hero.heroLabel}
-                                  </span>
-                                </>
+                              {hero.heroLabel ? (
+                                <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${section.gradient} text-navy-900 text-xs font-semibold`}>
+                                  <BookOpen size={12} />
+                                  {hero.heroLabel}
+                                </span>
+                              ) : (
+                                <span className="text-cream-400 text-sm">{hero.month}</span>
                               )}
                             </div>
                           </div>
@@ -328,14 +326,7 @@ export function HeroProducts() {
                           {/* Title */}
                           <h4 className="text-xl font-bold text-cream-100 mb-3">{hero.title}</h4>
 
-                          {/* Subtitle (if exists) */}
-                          {hero.subtitle && (
-                            <p className="text-cream-300/70 text-sm mb-4 leading-relaxed">
-                              {hero.subtitle}
-                            </p>
-                          )}
-
-                          {/* Why It Matters */}
+                          {/* Why It Matters - directly under title */}
                           <div className="mb-6 flex-grow">
                             <div className="flex items-center gap-2 text-teal-400 mb-2">
                               <Star size={14} />
