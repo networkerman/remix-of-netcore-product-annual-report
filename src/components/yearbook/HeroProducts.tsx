@@ -226,9 +226,10 @@ const heroSections: {
         heroLabel: "Predictive Signals",
         why: "Enables predictive personalization by modeling user intent and likelihood to act across channels at scale.",
         links: [
-          { label: "Documentation", url: "#" },
-          { label: "Feature Overview", url: "#" },
-          { label: "Data Inputs & Outputs", url: "#" },
+          { label: "Create Affinity-Based Segment", url: "https://cedocs.netcorecloud.com/docs/create-predictive-segment" },
+          { label: "Propensity Based Segment", url: "https://cedocs.netcorecloud.com/docs/propensities-in-segmentation" },
+          { label: "Success Story", url: "https://netcorecloud.com/success-story/tobi-achieves-94-x-surge-in-engagement-using-netcore-cloud/" },
+          { label: "FAQs", url: "https://cedocs.netcorecloud.com/docs/audience-management-faqs" },
         ],
         story: affinitiesPropensitiesStory,
         tags: ["Netcore CE"],
@@ -239,9 +240,8 @@ const heroSections: {
         heroLabel: "Smart Analysis",
         why: "Turns campaign performance into clear, actionable insights by explaining why results happen across channels, helping teams spot trends, diagnose gaps, and optimize faster without manual analysis.",
         links: [
-          { label: "Documentation", url: "#" },
-          { label: "Use Cases", url: "#" },
-          { label: "QBR Enablement Guide", url: "#" },
+          { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/enable-insight-generator" },
+          { label: "FAQs", url: "https://cedocs.netcorecloud.com/docs/insight-generator-faqs-troubleshooting" },
         ],
         story: insightAgentStory,
         tags: ["Netcore CE"],
@@ -265,6 +265,7 @@ const heroSections: {
         heroLabel: "Intent Guidance",
         why: "Transforms on-site discovery into a guided, conversational experience by helping shoppers find the right products faster, driving higher engagement and conversions while reducing reliance on manual support.",
         links: [
+          { label: "Release Notes", url: "https://docs.netcoreunbxd.com/docs/whats-new-2025" },
           { label: "Documentation", url: "https://docs.netcoreunbxd.com/docs/shopping-assistant" },
           { label: "Feature Overview", url: "https://docs.netcoreunbxd.com/docs/search-preview" },
         ],
@@ -312,7 +313,6 @@ const heroSections: {
         links: [
           { label: "Release Notes", url: "https://updates.netcorecloud.com/changelog/app-content-personalization" },
           { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/app-content-personalization" },
-          { label: "Use Case", url: "https://docs.google.com/presentation/d/1OZ0aJv1qsHhxhOoMXg3Jx-l9DnZXNgA0fk8Gh5Jxblo/edit?slide=id.g37b23aedcfc_2_75#slide=id.g37b23aedcfc_2_75" },
         ],
         tags: ["Netcore CE"],
       },
