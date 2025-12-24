@@ -9,7 +9,7 @@ import parthImg from "@/assets/team/interns/parth.png";
 import dhairyaImg from "@/assets/team/interns/dhairya.png";
 import kushImg from "@/assets/team/interns/kush.png";
 import tanishqImg from "@/assets/team/interns/tanishq.png";
-// Hardikya placeholder - will use initial avatar
+import hardikyaImg from "@/assets/team/interns/hardikya.png";
 
 // Leader images
 import yogeshImg from "@/assets/team/leaders/yogesh.png";
@@ -285,18 +285,18 @@ const internCards: InternCard[] = [
   },
   {
     name: "Hardikya",
-    image: null,
+    image: hardikyaImg,
     persona: "UX Guardian",
     role: "Product Designer",
     part1: {
       ohShitMoment: "I was most terrified of overlooking a discrepancy during the UX verification process. I wanted to make sure everything was as close to the design as possible, so the thought of a UI inconsistency slipping through to production was my biggest fear.",
       learningCurve: "My biggest challenge was minimizing design inconsistency. I had to learn to stop 'reinventing the wheel' and instead master the existing component library to ensure every new feature felt like a native part of the product.",
-      firstImpression: "The team seemed cool.",
+      firstImpression: "The impression actually remained the same, the team seemed cool.",
       currentImpression: "Actually the team is pretty cool.",
     },
     part2: {
       jiraComparison: "The work evolved over time. In the initial days, it was more about understanding the product and the existing designs; now, it involves connecting with product and business stakeholders, understanding requirements, and crafting the UX.",
-      mythBusted: "The only task is to understanding requirements and creating the designs in Figma.",
+      mythBusted: "The only task is understanding requirements and creating the designs in Figma.",
     },
     part3: {
       internSong: "🎨",
