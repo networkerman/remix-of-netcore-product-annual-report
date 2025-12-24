@@ -57,7 +57,7 @@ const teamMembers: TeamMember[] = [
   { id: 2, name: "Yogesh", role: "Vice President- Product", team: "Product", funFact: "Ships features at 2am", outsideWork: "Marathon runner", image: yogeshImg },
   { id: 3, name: "Satish", role: "AVP Product Management", team: "Product", funFact: "Full-Time Firefighter", outsideWork: "Tea connoisseur", image: satishImg },
   { id: 4, name: "Ravi", role: "Director, Business Analytics & Product", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Weekend photographer", image: raviImg },
-  { id: 5, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
+  { id: 5, name: "Jibran", role: "AVP - Product", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
   { id: 6, name: "Deepesh", role: "AVP - Product Operations", team: "Product", funFact: "Roadmap Whisperer", outsideWork: "Cricket enthusiast", image: deepeshImg },
   { id: 7, name: "Vrinda Aggarwal", role: "Associate Vice President - Product", team: "Product", funFact: "Never misses a standup", outsideWork: "Plant parent", image: vrindaImg },
   { id: 8, name: "Udayan", role: "Senior Product Manager", team: "Product", funFact: "API docs speedrunner", outsideWork: "Vinyl collector", image: udayanImg },
