@@ -1,8 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState, useCallback } from "react";
-import { Quote, ChevronDown, ChevronUp } from "lucide-react";
+import { Quote } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface QA {
   question: string;
@@ -230,134 +236,31 @@ const leaderTestimonials: LeaderTestimonial[] = [
   },
 ];
 
-function TestimonialCard({
-  testimonial,
-  isActive,
-  isExpanded,
-  onToggleExpand,
-  onMouseEnter,
-  onMouseLeave,
-}: {
-  testimonial: LeaderTestimonial;
-  isActive: boolean;
-  isExpanded: boolean;
-  onToggleExpand: () => void;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-}) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <div
-      ref={cardRef}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className={`bg-navy-700/50 backdrop-blur-sm border border-cream-100/10 rounded-3xl p-6 md:p-8 transition-all duration-500 h-full flex flex-col ${
-        isActive ? "opacity-100" : "opacity-50"
-      }`}
-    >
-      {/* Quote Icon */}
-      <div className="w-10 h-10 bg-teal-500/20 rounded-xl flex items-center justify-center mb-4 flex-shrink-0">
-        <Quote className="w-5 h-5 text-teal-400" />
-      </div>
-
-      {/* Collapsed Quote */}
-      <blockquote className="text-lg md:text-xl text-cream-100 leading-relaxed mb-4 font-light flex-shrink-0">
-        "{testimonial.collapsedQuote}"
-      </blockquote>
-
-      {/* Author Info */}
-      <div className="flex items-center gap-3 mb-4 flex-shrink-0">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-sm font-bold text-cream-100">
-          {testimonial.name.charAt(0)}
-        </div>
-        <div>
-          <p className="font-semibold text-cream-100 text-sm">{testimonial.name}</p>
-          <p className="text-cream-300/60 text-xs">{testimonial.role}</p>
-        </div>
-      </div>
-
-      {/* CTA Button */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onToggleExpand();
-        }}
-        className="text-teal-400 hover:text-teal-300 text-sm font-medium transition-colors flex items-center gap-1 uppercase tracking-wide flex-shrink-0"
-      >
-        {isExpanded ? "HIDE TESTIMONIAL" : "VIEW FULL TESTIMONIAL"}
-        {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-      </button>
-
-      {/* Expanded Content */}
-      {isExpanded && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="mt-4 pt-4 border-t border-cream-100/10 overflow-y-auto max-h-[300px] flex-grow"
-        >
-          {testimonial.expandedContent.map((qa, idx) => (
-            <div key={idx} className="mb-4 last:mb-0">
-              <p className="text-teal-400 text-sm font-medium mb-2">Q: {qa.question}</p>
-              {Array.isArray(qa.answer) ? (
-                <ul className="text-cream-200/80 text-sm space-y-1 pl-4">
-                  {qa.answer.map((item, i) => (
-                    <li key={i} className="list-disc">{item}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-cream-200/80 text-sm">A: {qa.answer}</p>
-              )}
-            </div>
-          ))}
-        </motion.div>
-      )}
-    </div>
-  );
-}
-
 export function LeadershipSpeaks() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [isAllExpanded, setIsAllExpanded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-
-  const autoplayPlugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
-  );
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [openTestimonial, setOpenTestimonial] = useState<LeaderTestimonial | null>(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start", slidesToScroll: 1 },
-    [autoplayPlugin.current]
+    { loop: true, align: "center" },
+    [Autoplay({ delay: 5000, stopOnInteraction: false })]
   );
 
-  // Pause autoplay when cards are expanded
   useEffect(() => {
     if (!emblaApi) return;
-    
-    if (isAllExpanded) {
-      autoplayPlugin.current.stop();
-    } else if (!isHovered) {
-      autoplayPlugin.current.play();
-    }
-  }, [isAllExpanded, isHovered, emblaApi]);
 
-  const handleToggleExpand = useCallback(() => {
-    setIsAllExpanded((prev) => !prev);
-  }, []);
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
 
-  const handleMouseEnter = useCallback(() => {
-    setIsHovered(true);
-  }, []);
+    emblaApi.on("select", onSelect);
+    onSelect();
 
-  const handleMouseLeave = useCallback(() => {
-    setIsHovered(false);
-    if (!isAllExpanded) {
-      autoplayPlugin.current.play();
-    }
-  }, [isAllExpanded]);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
 
   return (
     <section
@@ -395,24 +298,116 @@ export function LeadershipSpeaks() {
           ref={emblaRef}
         >
           <div className="flex">
-            {leaderTestimonials.map((testimonial) => (
+            {leaderTestimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] px-3"
+                className="flex-[0_0_100%] min-w-0 md:flex-[0_0_80%] lg:flex-[0_0_60%] px-4"
               >
-                <TestimonialCard
-                  testimonial={testimonial}
-                  isActive={true}
-                  isExpanded={isAllExpanded}
-                  onToggleExpand={handleToggleExpand}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                />
+                <div
+                  className={`bg-navy-700/50 backdrop-blur-sm border border-cream-100/10 rounded-3xl p-8 md:p-12 transition-all duration-500 ${
+                    selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
+                  }`}
+                >
+                  {/* Quote Icon */}
+                  <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
+                    <Quote className="w-6 h-6 text-teal-400" />
+                  </div>
+
+                  {/* Quote Text */}
+                  <blockquote className="text-xl md:text-2xl text-cream-100 leading-relaxed mb-4 font-light">
+                    "{testimonial.collapsedQuote}"
+                  </blockquote>
+
+                  {/* View Full Testimonial CTA */}
+                  <button
+                    onClick={() => setOpenTestimonial(testimonial)}
+                    className="text-teal-400 hover:text-teal-300 text-sm font-medium mb-6 transition-colors"
+                  >
+                    View full testimonial →
+                  </button>
+
+                  {/* Author Info */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-cream-100">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-cream-100">{testimonial.name}</p>
+                      <p className="text-cream-300/60 text-sm">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </motion.div>
+
+        {/* Dots Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex justify-center gap-2 mt-8"
+        >
+          {leaderTestimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                selectedIndex === index
+                  ? "bg-teal-400 w-8"
+                  : "bg-cream-100/30 hover:bg-cream-100/50"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </motion.div>
       </div>
+
+      {/* Full Testimonial Dialog */}
+      <Dialog open={!!openTestimonial} onOpenChange={() => setOpenTestimonial(null)}>
+        <DialogContent className="bg-navy-800 border-cream-100/10 text-cream-100 max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-cream-100 text-xl">Full Testimonial</DialogTitle>
+          </DialogHeader>
+          {openTestimonial && (
+            <div className="mt-4">
+              <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
+                <Quote className="w-6 h-6 text-teal-400" />
+              </div>
+
+              {/* Q&A Content */}
+              <div className="space-y-6 mb-8">
+                {openTestimonial.expandedContent.map((qa, idx) => (
+                  <div key={idx}>
+                    <p className="text-teal-400 font-medium mb-2">Q: {qa.question}</p>
+                    {Array.isArray(qa.answer) ? (
+                      <ul className="text-cream-200/90 space-y-2 pl-4">
+                        {qa.answer.map((item, i) => (
+                          <li key={i} className="list-disc">{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-cream-200/90">A: {qa.answer}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Author Info */}
+              <div className="flex items-center gap-4 pt-6 border-t border-cream-100/10">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-cream-100">
+                  {openTestimonial.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-cream-100">{openTestimonial.name}</p>
+                  <p className="text-cream-300/60 text-sm">{openTestimonial.role}</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
