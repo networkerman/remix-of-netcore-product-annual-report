@@ -16,38 +16,38 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    quote: "Placeholder testimonial - The product team's dedication to understanding our needs has transformed how we engage with our customers. A true partnership.",
-    author: "Customer Name",
-    role: "VP of Marketing",
-    company: "Company A",
+    quote: "Partnering with Netcore has been a game-changer for our digital strategy. With their advanced personalization tools and seamless orchestration of journeys, we've seen a 26.82% uplift in overall revenue and a 9X ROI — results that speak for themselves. Through strategic implementation of pop-ups, web push notifications, and tailored content, we achieved an impressive 97% uplift in engagement rate across our campaigns. Netcore's platform contributed to 10% of our overall revenue, helping us engage high-intent users with the right message at the right time. Their team's support, insights, and commitment to our success made it a truly impactful collaboration. We're excited about the future and the continued growth this partnership will bring.",
+    author: "Abhishek Arora",
+    role: "CRM, Loyalty & Omni-Channel Customer Acquisition Lead",
+    company: "The Jewellery Group",
   },
   {
     id: 2,
-    quote: "Placeholder testimonial - What impressed us most was the speed of iteration. Feedback we gave on Monday was often shipped by Friday.",
-    author: "Customer Name",
-    role: "Head of Growth",
-    company: "Company B",
+    quote: "Partnering with Netcore helped us move from broad targeting to precision marketing. The combination of RFM, AI, and WhatsApp STO gave us deeper customer insights and the ability to reach the right users at the right time. The result — higher conversions, better engagement, and smarter campaign efficiency month after month.",
+    author: "Ashutosh Patkar",
+    role: "Sr. Manager Ecommerce",
+    company: "Pepe Jeans",
   },
   {
     id: 3,
-    quote: "Placeholder testimonial - The analytics capabilities have given us insights we never had before. Our campaigns are performing 3x better.",
-    author: "Customer Name",
-    role: "Director of Digital",
-    company: "Company C",
+    quote: "Partnering with Netcore has helped us completely transform the way we engage our customers. With Netcore's RFM segmentation and cohort-based insights, we've been able to target the right users with personalized journeys across channels. The result has been a clear uplift in repeat purchases, stronger retention, and higher engagement across channels.",
+    author: "Aditi Choudhary",
+    role: "Assistant CRM Manager",
+    company: "Plum Goodness",
   },
   {
     id: 4,
-    quote: "Placeholder testimonial - Seamless integration, intuitive interface, and a team that genuinely cares about our success. Highly recommended.",
-    author: "Customer Name",
-    role: "Chief Marketing Officer",
-    company: "Company D",
+    quote: "I would like to take a moment to appreciate the new WhatsApp editor, which was built with our feedback in mind. I genuinely like its ease of use and the overall UX/UI.",
+    author: "Rupali Nagvanshi",
+    role: "",
+    company: "Fiserv",
   },
   {
     id: 5,
-    quote: "Placeholder testimonial - We've tried many platforms, but this one stands out for its reliability and the constant innovation we see.",
-    author: "Customer Name",
-    role: "Product Manager",
-    company: "Company E",
+    quote: "Earlier, the WhatsApp editor was quite poor, with frequent bug issues. The older editor also required many steps to create a template. However, the new WhatsApp UCE offers a much better UI and UX. It's good to see the addition of new and improved features.",
+    author: "Deepika M Mohan",
+    role: "",
+    company: "BigHaat",
   },
 ];
 
@@ -140,7 +140,7 @@ export function TestimonialsCarousel() {
                     <div>
                       <p className="font-semibold text-cream-100">{testimonial.author}</p>
                       <p className="text-cream-300/60 text-sm">
-                        {testimonial.role}, {testimonial.company}
+                        {testimonial.role ? `${testimonial.role}, ${testimonial.company}` : testimonial.company}
                       </p>
                     </div>
                   </div>
