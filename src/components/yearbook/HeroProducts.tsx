@@ -407,32 +407,17 @@ const heroSections: {
     gradient: "from-coral-400 to-coral-500",
     heroes: [
       {
-        title: "[Hero Design 1]",
-        month: "June 2025",
-        why: "A complete visual overhaul that unified three products under one design language. 200+ components, infinite possibilities, zero confusion.",
+        title: "Analytics",
+        month: "2025",
+        heroLabel: "Unified Insights",
+        why: "Brings critical metrics into one shared, customizable view, helping teams track performance faster, align on insights, and make decisions without jumping across multiple analytics modules.",
         links: [
-          { label: "Design System Docs", url: "#" },
-          { label: "Figma Library", url: "#" },
-          { label: "Blog Post", url: "#" },
+          { label: "Release Notes", url: "https://updates.netcorecloud.com/changelog/reports-and-analytics-now-lets-you-see-all-the-tabs-in-the-side-navigation" },
+          { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/getting-started-with-analytics" },
+          { label: "Use Case: Pepe Jeans", url: "https://docs.google.com/presentation/d/1K1PYKsqyOZBK1Xq9sGDpS-RqPwCGNuXPQqvKPCYL-dQ/edit?slide=id.g37b23aedcfc_2_75#slide=id.g37b23aedcfc_2_75" },
+          { label: "Use Case: Plum Goodness", url: "https://docs.google.com/presentation/d/1OZ0aJv1qsHhxhOoMXg3Jx-l9DnZXNgA0fk8Gh5Jxblo/edit?slide=id.g37b23aedcfc_2_75#slide=id.g37b23aedcfc_2_75" },
         ],
-      },
-      {
-        title: "[Hero Design 2]",
-        month: "September 2025",
-        why: "Accessibility-first redesign that earned WCAG AA compliance across all touchpoints. Inclusive design that works for everyone.",
-        links: [
-          { label: "Accessibility Guide", url: "#" },
-          { label: "Case Study", url: "#" },
-        ],
-      },
-      {
-        title: "[Hero Design 3]",
-        month: "November 2025",
-        why: "Mobile-first responsive patterns that reduced bounce rates by 25%. A masterclass in adaptive design thinking.",
-        links: [
-          { label: "Pattern Library", url: "#" },
-          { label: "Demo", url: "#" },
-        ],
+        tags: ["Netcore CE"],
       },
     ],
   },
