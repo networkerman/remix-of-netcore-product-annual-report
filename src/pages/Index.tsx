@@ -24,11 +24,11 @@ const Index = () => {
         <HeroSection />
         <TestimonialsCarousel />
         <CPONote />
-        <TeamSection />
         <HeroProducts />
         <ProductCraft />
         <YearAtGlance />
         <LeadershipSpeaks />
+        <TeamSection />
         <PMStories />
         <LookingAhead />
         <ThankYou />
