@@ -590,7 +590,9 @@ const heroSections: {
         month: "2025",
         heroLabel: "AI-Powered Support",
         why: "Documentation that responds. Not just explains. A chatbot inside Netcore CE docs helping customers find answers quickly.",
-        links: [],
+        links: [
+          { label: "Check our bot today", url: "https://cedocs.netcorecloud.com/docs/overview" },
+        ],
         story: documentationChatbotStory,
       },
     ],
