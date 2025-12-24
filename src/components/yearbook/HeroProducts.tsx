@@ -1,15 +1,26 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Award, ExternalLink, Star, ChevronLeft, ChevronRight, BookOpen, Eye } from "lucide-react";
+import { Award, ExternalLink, Star, ChevronLeft, ChevronRight, BookOpen, Eye, ChevronDown } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type SectionType = "Product" | "Design" | "Documentation";
+
+interface ProductStorySection {
+  impact: string[];
+  shipped: string[];
+}
 
 interface HeroStorySection {
   heading?: string;
@@ -25,6 +36,7 @@ interface HeroItem {
   heroLabel?: string;
   subtitle?: string;
   story?: HeroStorySection[];
+  productStory?: ProductStorySection;
 }
 
 const documentationHeroStory: HeroStorySection[] = [
@@ -111,6 +123,67 @@ const unbxdDocsHeroStory: HeroStorySection[] = [
   },
 ];
 
+// Product Hero Stories
+const multiAgentStory: ProductStorySection = {
+  impact: [
+    "Accelerated decision-making across journeys and personalization",
+    "Reduced manual configuration overhead for teams",
+  ],
+  shipped: [
+    "Multi-agent decision orchestration",
+    "Specialized agents for targeting, optimization, and execution",
+    "Central coordination layer for outcome alignment",
+  ],
+};
+
+const insightAgentStory: ProductStorySection = {
+  impact: [
+    "Faster identification of anomalies and performance shifts",
+    "Stronger, insight-led QBRs and customer conversations",
+  ],
+  shipped: [
+    "Automated insight detection",
+    "Impact attribution across campaigns and journeys",
+    "CSM-ready views for customer storytelling",
+  ],
+};
+
+const shoppingAgentStory: ProductStorySection = {
+  impact: [
+    "Improved engagement in discovery-heavy shopping flows",
+    "Higher quality conversions driven by intent alignment",
+  ],
+  shipped: [
+    "Real-time intent understanding",
+    "Conversational guidance during browsing",
+    "Context-aware product recommendations",
+  ],
+};
+
+const journeyPathOptimizerStory: ProductStorySection = {
+  impact: [
+    "Clear visibility into high-performing journey paths",
+    "Better optimization decisions backed by data",
+  ],
+  shipped: [
+    "Path analysis and comparison logic",
+    "Optimization rules based on real outcomes",
+    "Continuous performance feedback loops",
+  ],
+};
+
+const affinitiesPropensitiesStory: ProductStorySection = {
+  impact: [
+    "More relevant personalization across channels",
+    "Better targeting using predictive signals",
+  ],
+  shipped: [
+    "Affinity modeling across behaviors",
+    "Propensity scoring for key actions",
+    "Activation-ready outputs for campaigns",
+  ],
+};
+
 const heroSections: {
   function: SectionType;
   icon: string;
@@ -123,33 +196,59 @@ const heroSections: {
     gradient: "from-teal-500 to-teal-600",
     heroes: [
       {
-        title: "[Hero Product 1]",
+        title: "Multi-Agent (Agentic AI)",
         month: "March 2025",
-        why: "This feature didn't just ship—it transformed how customers think about engagement. It's the kind of work that makes competitors take notice.",
+        why: "Delivers faster, smarter outcomes by distributing decisions across specialized AI agents—without adding complexity for marketers.",
         links: [
           { label: "Documentation", url: "#" },
-          { label: "Demo Video", url: "#" },
-          { label: "Case Study", url: "#" },
-        ],
-      },
-      {
-        title: "[Hero Product 2]",
-        month: "May 2025",
-        why: "A game-changing integration that connected disparate systems into one seamless workflow. Customer onboarding time reduced by 40%.",
-        links: [
-          { label: "Integration Guide", url: "#" },
-          { label: "Demo Video", url: "#" },
-        ],
-      },
-      {
-        title: "[Hero Product 3]",
-        month: "August 2025",
-        why: "Real-time analytics that finally gave customers the insights they'd been asking for. Dashboard adoption increased 3x in the first week.",
-        links: [
           { label: "Feature Overview", url: "#" },
-          { label: "User Guide", url: "#" },
-          { label: "Blog Post", url: "#" },
+          { label: "Release Notes", url: "#" },
         ],
+        productStory: multiAgentStory,
+      },
+      {
+        title: "Insight Agent",
+        month: "April 2025",
+        why: "Turns analysis into action by surfacing insights, anomalies, and impact—powering sharper decisions for customers and CSMs alike.",
+        links: [
+          { label: "Documentation", url: "#" },
+          { label: "Use Cases", url: "#" },
+          { label: "QBR Enablement Guide", url: "#" },
+        ],
+        productStory: insightAgentStory,
+      },
+      {
+        title: "Shopping Agent",
+        month: "May 2025",
+        why: "Guides shoppers in real time based on intent, reducing friction and improving conversion quality in high-consideration journeys.",
+        links: [
+          { label: "Documentation", url: "#" },
+          { label: "How It Works", url: "#" },
+          { label: "Demo Environment (Coming Soon)", url: "#" },
+        ],
+        productStory: shoppingAgentStory,
+      },
+      {
+        title: "Journey Path Optimiser",
+        month: "July 2025",
+        why: "Eliminates guesswork in journey design by identifying and optimizing the paths that drive the highest impact.",
+        links: [
+          { label: "Documentation", url: "#" },
+          { label: "Use Case Library", url: "#" },
+          { label: "Release Notes", url: "#" },
+        ],
+        productStory: journeyPathOptimizerStory,
+      },
+      {
+        title: "Affinities and Propensities",
+        month: "August 2025",
+        why: "Enables predictive personalization by modeling user intent and likelihood to act across channels at scale.",
+        links: [
+          { label: "Documentation", url: "#" },
+          { label: "Feature Overview", url: "#" },
+          { label: "Data Inputs & Outputs", url: "#" },
+        ],
+        productStory: affinitiesPropensitiesStory,
       },
     ],
   },
@@ -228,6 +327,7 @@ export function HeroProducts() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeSection, setActiveSection] = useState<SectionType>("Product");
   const [selectedHero, setSelectedHero] = useState<HeroItem | null>(null);
+  const [expandedProductIndex, setExpandedProductIndex] = useState<number | null>(null);
 
   const scrollContainer = (direction: "left" | "right") => {
     const container = document.getElementById(`scroll-${activeSection}`);
@@ -235,6 +335,10 @@ export function HeroProducts() {
       const scrollAmount = direction === "left" ? -340 : 340;
       container.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
+  };
+
+  const toggleProductExpand = (index: number) => {
+    setExpandedProductIndex(expandedProductIndex === index ? null : index);
   };
 
   return (
@@ -331,81 +435,200 @@ export function HeroProducts() {
                   className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
                   style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
-                  {section.heroes.map((hero, heroIndex) => (
-                    <motion.div
-                      key={heroIndex}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: heroIndex * 0.1 }}
-                      className="group relative flex-shrink-0 w-80 snap-start cursor-pointer"
-                      onClick={() => hero.story && setSelectedHero(hero)}
-                    >
-                      {/* Card */}
-                      <div className="relative h-full rounded-2xl overflow-hidden">
-                        {/* Gradient Background */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
-                        
-                        {/* Hover Overlay for Story Cards */}
-                        {hero.story && (
-                          <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
-                            <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-navy-900 font-semibold text-sm">
-                              <Eye size={18} />
-                              <span>VIEW FULL STORY</span>
-                            </div>
-                          </div>
-                        )}
-                        
-                        {/* Content */}
-                        <div className="relative p-6 h-full flex flex-col bg-navy-800/80 backdrop-blur-sm border border-cream-100/10 rounded-2xl min-h-[360px]">
-                          {/* Hero Label Only (no date for story cards) */}
-                          <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                            <div className="flex items-center gap-2">
-                              {hero.heroLabel ? (
-                                <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${section.gradient} text-navy-900 text-xs font-semibold`}>
-                                  <BookOpen size={12} />
-                                  {hero.heroLabel}
-                                </span>
-                              ) : (
-                                <span className="text-cream-400 text-sm">{hero.month}</span>
-                              )}
-                            </div>
-                          </div>
+                  {section.heroes.map((hero, heroIndex) => {
+                    const isProduct = section.function === "Product";
+                    const isExpanded = isProduct && expandedProductIndex === heroIndex;
 
-                          {/* Title */}
-                          <h4 className="text-xl font-bold text-cream-100 mb-3">{hero.title}</h4>
-
-                          {/* Why It Matters - directly under title */}
-                          <div className="mb-6 flex-grow">
-                            <div className="flex items-center gap-2 text-teal-400 mb-2">
-                              <Star size={14} />
-                              <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+                    return (
+                      <motion.div
+                        key={heroIndex}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: heroIndex * 0.1 }}
+                        layout
+                        className={`group relative flex-shrink-0 snap-start ${
+                          isProduct ? "w-80" : "w-80"
+                        } ${isProduct ? "cursor-pointer" : hero.story ? "cursor-pointer" : ""}`}
+                        onClick={() => {
+                          if (isProduct) {
+                            toggleProductExpand(heroIndex);
+                          } else if (hero.story) {
+                            setSelectedHero(hero);
+                          }
+                        }}
+                      >
+                        {/* Card */}
+                        <div className="relative h-full rounded-2xl overflow-hidden">
+                          {/* Gradient Background */}
+                          <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
+                          
+                          {/* Hover Overlay for Documentation Story Cards (not Product) */}
+                          {!isProduct && hero.story && (
+                            <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
+                              <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-navy-900 font-semibold text-sm">
+                                <Eye size={18} />
+                                <span>VIEW FULL STORY</span>
+                              </div>
                             </div>
-                            <p className="text-cream-300/80 leading-relaxed text-sm">
-                              {hero.why}
-                            </p>
-                          </div>
+                          )}
+                          
+                          {/* Content */}
+                          <motion.div 
+                            layout
+                            className={`relative p-6 h-full flex flex-col bg-navy-800/80 backdrop-blur-sm border border-cream-100/10 rounded-2xl ${
+                              isProduct ? "" : "min-h-[360px]"
+                            }`}
+                          >
+                            {/* Product Card - Simplified Header (no month) */}
+                            {isProduct ? (
+                              <>
+                                {/* Title */}
+                                <h4 className="text-xl font-bold text-cream-100 mb-3">{hero.title}</h4>
 
-                          {/* Links */}
-                          <div className="space-y-2 pt-4 border-t border-cream-100/10">
-                            {hero.links.map((link, lIndex) => (
-                              <a
-                                key={lIndex}
-                                href={link.url}
-                                onClick={(e) => e.stopPropagation()}
-                                className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
-                              >
-                                <span>{link.label}</span>
-                                <ExternalLink size={14} />
-                              </a>
-                            ))}
-                          </div>
+                                {/* Why It Matters with Tooltip */}
+                                <div className="mb-4">
+                                  <TooltipProvider>
+                                    <Tooltip>
+                                      <TooltipTrigger asChild>
+                                        <div className="flex items-center gap-2 text-teal-400 mb-2 cursor-help">
+                                          <Star size={14} />
+                                          <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+                                        </div>
+                                      </TooltipTrigger>
+                                      <TooltipContent className="bg-navy-700 text-cream-100 border-cream-100/20">
+                                        <p className="text-xs">Why this feature earned Hero status in 2025</p>
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </TooltipProvider>
+                                  <p className="text-cream-300/80 leading-relaxed text-sm">
+                                    {hero.why}
+                                  </p>
+                                </div>
+
+                                {/* Expand/Collapse Indicator */}
+                                <div className="flex items-center justify-center py-2 border-t border-cream-100/10">
+                                  <motion.div
+                                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="text-cream-400"
+                                  >
+                                    <ChevronDown size={20} />
+                                  </motion.div>
+                                </div>
+
+                                {/* Expanded Content - Inline */}
+                                <AnimatePresence>
+                                  {isExpanded && hero.productStory && (
+                                    <motion.div
+                                      initial={{ height: 0, opacity: 0 }}
+                                      animate={{ height: "auto", opacity: 1 }}
+                                      exit={{ height: 0, opacity: 0 }}
+                                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                                      className="overflow-hidden"
+                                    >
+                                      <div className="pt-4 space-y-4">
+                                        {/* Impact Section */}
+                                        <div>
+                                          <h5 className="text-sm font-semibold text-teal-400 uppercase tracking-wider mb-2">Impact</h5>
+                                          <ul className="space-y-2">
+                                            {hero.productStory.impact.map((item, i) => (
+                                              <li key={i} className="flex items-start gap-2 text-cream-300/80 text-sm">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0" />
+                                                <span>{item}</span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+
+                                        {/* What We Shipped Section */}
+                                        <div>
+                                          <h5 className="text-sm font-semibold text-teal-400 uppercase tracking-wider mb-2">What We Shipped</h5>
+                                          <ul className="space-y-2">
+                                            {hero.productStory.shipped.map((item, i) => (
+                                              <li key={i} className="flex items-start gap-2 text-cream-300/80 text-sm">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0" />
+                                                <span>{item}</span>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        </div>
+
+                                        {/* Resources */}
+                                        <div className="pt-4 border-t border-cream-100/10">
+                                          <h5 className="text-sm font-semibold text-cream-400 uppercase tracking-wider mb-2">Resources</h5>
+                                          <div className="space-y-2">
+                                            {hero.links.map((link, lIndex) => (
+                                              <a
+                                                key={lIndex}
+                                                href={link.url}
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
+                                              >
+                                                <span>{link.label}</span>
+                                                <ExternalLink size={14} />
+                                              </a>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </>
+                            ) : (
+                              <>
+                                {/* Non-Product Cards (Design/Documentation) - Original Layout */}
+                                <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                                  <div className="flex items-center gap-2">
+                                    {hero.heroLabel ? (
+                                      <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${section.gradient} text-navy-900 text-xs font-semibold`}>
+                                        <BookOpen size={12} />
+                                        {hero.heroLabel}
+                                      </span>
+                                    ) : (
+                                      <span className="text-cream-400 text-sm">{hero.month}</span>
+                                    )}
+                                  </div>
+                                </div>
+
+                                {/* Title */}
+                                <h4 className="text-xl font-bold text-cream-100 mb-3">{hero.title}</h4>
+
+                                {/* Why It Matters - directly under title */}
+                                <div className="mb-6 flex-grow">
+                                  <div className="flex items-center gap-2 text-teal-400 mb-2">
+                                    <Star size={14} />
+                                    <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+                                  </div>
+                                  <p className="text-cream-300/80 leading-relaxed text-sm">
+                                    {hero.why}
+                                  </p>
+                                </div>
+
+                                {/* Links */}
+                                <div className="space-y-2 pt-4 border-t border-cream-100/10">
+                                  {hero.links.map((link, lIndex) => (
+                                    <a
+                                      key={lIndex}
+                                      href={link.url}
+                                      onClick={(e) => e.stopPropagation()}
+                                      className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
+                                    >
+                                      <span>{link.label}</span>
+                                      <ExternalLink size={14} />
+                                    </a>
+                                  ))}
+                                </div>
+                              </>
+                            )}
+                          </motion.div>
                         </div>
-                      </div>
 
-                      {/* Glow Effect on Hover */}
-                      <div className={`absolute -inset-0.5 bg-gradient-to-br ${section.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`} />
-                    </motion.div>
-                  ))}
+                        {/* Glow Effect on Hover */}
+                        <div className={`absolute -inset-0.5 bg-gradient-to-br ${section.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`} />
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </motion.div>
             ))}
