@@ -177,6 +177,28 @@ const unbxdDocsHeroStory: HeroStorySection[] = [
   },
 ];
 
+const documentationChatbotStory: HeroStorySection[] = [
+  {
+    heading: "Documentation Chatbot",
+    subheading: "Documentation that responds. Not just explains.",
+  },
+  {
+    content: "This year, we introduced a chatbot inside Netcore CE documentation to help our customers find answers quickly.",
+  },
+  {
+    content: "Instead of searching through multiple pages, users can now ask questions to our chatbot without leaving the docs. The chatbot acts as a real-time guide, helping customers and internal teams move faster with fewer interruptions.",
+  },
+  {
+    heading: "The Impact",
+    bullets: [
+      "Quicker answers",
+      "Fewer repeated questions",
+      "Reduced tickets to helpdesk",
+      "Smoother self-serve experiences across onboarding, troubleshooting, and daily usage.",
+    ],
+  },
+];
+
 // Product Hero Stories (HeroStorySection format for dialog popup)
 const affinitiesPropensitiesStory: HeroStorySection[] = [
   {
@@ -562,6 +584,14 @@ const heroSections: {
           { label: "Data Export Requests Video", url: "https://cedocs.netcorecloud.com/docs/how-to-add-or-modify-email-and-mobile-information-for-data-export-requests#video-tutorial" },
           { label: "Web Personalization Use Case Video", url: "https://cedocs.netcorecloud.com/docs/website-content-personalization#video-tutorial" },
         ],
+      },
+      {
+        title: "Documentation Bot",
+        month: "2025",
+        heroLabel: "AI-Powered Support",
+        why: "Documentation that responds. Not just explains. A chatbot inside Netcore CE docs helping customers find answers quickly.",
+        links: [],
+        story: documentationChatbotStory,
       },
     ],
   },
