@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Quote } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -70,15 +70,31 @@ const leaderTestimonials: LeaderTestimonial[] = [
     expandedContent: [
       {
         question: "What was the Product team's standout moment this year?",
-        answer: "The simplification of platform navigation and improved user workflows that directly impacted customer satisfaction scores.",
+        answer: "Features like journey frequency management, product catalog sync, and Segment-on-Segment simplified the platform and reduced dependency on complex structures.",
       },
       {
         question: "How did Product help you win customers?",
-        answer: "By delivering features that customers actually asked for, with clear documentation and smooth onboarding experiences.",
+        answer: "The same capabilities directly improved outcomes while reducing operational complexity.",
+      },
+      {
+        question: "Who deserves a WOW Card this year?",
+        answer: [
+          "WOW: Jibran",
+          "Situation: Handling one-day-only custom requests",
+          "Impact: Prevented churn and ensured timely MRR billing",
+        ],
       },
       {
         question: "Biggest improvement in Product team's approachability?",
-        answer: "Regular syncs with delivery teams helped bridge gaps faster.",
+        answer: "Significantly faster response times.",
+      },
+      {
+        question: "A firefighter moment you recall?",
+        answer: "Jibran's hands-on involvement throughout a complex OneDayOnly onboarding.",
+      },
+      {
+        question: "Suggestions for 2026?",
+        answer: "Include more IIT asks in quarterly roadmaps, build Zoho and Salesforce connectors, and focus more on analytics and usability.",
       },
     ],
   },
@@ -90,18 +106,31 @@ const leaderTestimonials: LeaderTestimonial[] = [
     expandedContent: [
       {
         question: "What was the Product team's standout moment this year?",
-        answer: "The catalog enrichment feature and complete documentation revamp were game-changers for our pre-sales demos.",
+        answer: "Being named a leader in the Gartner Magic Quadrant for the second consecutive year was a proud moment.",
       },
       {
-        question: "How did Product help you win customers?",
+        question: "How has the Product team helped you win customers?",
+        answer: "Catalog enrichment had the biggest impact on the Unbxd Console. It became a lifesaver for POCs and helped clearly demonstrate the value of our AI services. The complete revamp of the documentation website also elevated our product's market perception.",
+      },
+      {
+        question: "Who deserves a WOW Card this year?",
         answer: [
-          "Clear API documentation reduced integration time significantly.",
-          "Catalog enrichment became a key differentiator in competitive deals.",
+          "WOW: Aishwarya",
+          "Situation: Extremely fast documentation for new features across Search and Recommendations",
+          "Impact: Reduced confusion, fewer queries, and fewer complaints about undocumented features",
         ],
       },
       {
+        question: "What's the biggest improvement in Product team's approachability?",
+        answer: "The ability to run UATs on beta features and catch functional and usability issues early.",
+      },
+      {
         question: "A firefighter moment you recall?",
-        answer: "The team's quick response during the Q3 migration crisis was exceptional.",
+        answer: "Abhinav stepping in to help resurrect the Agents work during a critical phase.",
+      },
+      {
+        question: "Advice for better collaboration in 2026?",
+        answer: "Vet product features with customers before engineering sprints and actively engage customers post-release to drive adoption and feedback.",
       },
     ],
   },
@@ -112,16 +141,32 @@ const leaderTestimonials: LeaderTestimonial[] = [
     collapsedQuote: "Ease of use became a real differentiator.",
     expandedContent: [
       {
-        question: "What was the Product team's standout moment this year?",
-        answer: "Making complex features accessible through intuitive interfaces.",
+        question: "What was a standout Product team moment this year?",
+        answer: "A strong focus on customer experience and ease of use. Features like frequency management within journeys, product catalog sync, and Segment-on-Segment made the platform far simpler to use without complex structuring.",
       },
       {
-        question: "How did Product help you win customers?",
-        answer: "The focus on user experience made demos more impactful and reduced training time for new clients.",
+        question: "How has the Product team helped you win customers?",
+        answer: "Same as above—ease of use and simplification played a major role.",
       },
       {
-        question: "Suggestions for 2026?",
-        answer: "Continue the UX-first approach and invest more in self-service capabilities.",
+        question: "Who deserves a WOW Card this year?",
+        answer: [
+          "WOW: Jibran",
+          "Situation: Handling one-day-only custom requests",
+          "Impact: Helped avert churn risk and ensured MRR was billed on time",
+        ],
+      },
+      {
+        question: "Biggest improvement in Product team's approachability?",
+        answer: "Much faster response turnaround times.",
+      },
+      {
+        question: "A firefighter moment you recall?",
+        answer: "For the OneDayOnly account, Jibran stayed throughout onboarding, helped strategize, and delivered quick workarounds to manage complex requirements.",
+      },
+      {
+        question: "Suggestions for collaboration in 2026?",
+        answer: "Allocate quarterly scope for IIT-specific asks, build connectors with platforms like Zoho and Salesforce, and invest more in analytics and usability.",
       },
     ],
   },
@@ -133,18 +178,31 @@ const leaderTestimonials: LeaderTestimonial[] = [
     expandedContent: [
       {
         question: "What was the Product team's standout moment this year?",
-        answer: "The analytics dashboard redesign gave us compelling stories to tell in our marketing campaigns.",
+        answer: "The analytics launch and customer case studies with Plum Goodness and Pepe Jeans.",
       },
       {
         question: "How did Product help you win customers?",
+        answer: "Product demos for the Agentic Marketing Event in Mumbai played a key role.",
+      },
+      {
+        question: "Who deserves a WOW Card this year?",
         answer: [
-          "Demo environments became more polished and conversion-focused.",
-          "Case study data from product analytics powered our content strategy.",
+          "WOW: Bharat Choudhary",
+          "Situation: Consistently supporting Marketing with launches",
+          "Impact: Enabled faster go-to-market with a collaborative, customer-first mindset",
         ],
       },
       {
         question: "Biggest improvement in Product team's approachability?",
-        answer: "Product marketing syncs became more regular and collaborative.",
+        answer: "Stronger collaboration with Product Marketing over the last three months, especially around events and adoption initiatives.",
+      },
+      {
+        question: "A firefighter moment you recall?",
+        answer: "Bharat stepping in during time-sensitive needs without hesitation.",
+      },
+      {
+        question: "Advice for better collaboration in 2026?",
+        answer: "Align product and marketing action plans more closely around shared revenue outcomes and increase visibility into each team's impact.",
       },
     ],
   },
@@ -156,15 +214,31 @@ const leaderTestimonials: LeaderTestimonial[] = [
     expandedContent: [
       {
         question: "What was the Product team's standout moment this year?",
-        answer: "The personalization engine upgrades directly improved customer retention metrics.",
+        answer: "Content Personalization upgrades.",
       },
       {
         question: "How did Product help you win customers?",
-        answer: "Features like smart recommendations helped customers see immediate ROI.",
+        answer: "UCE improvements and Product Picker enhancements.",
+      },
+      {
+        question: "Who deserves a WOW Card this year?",
+        answer: [
+          "WOW: Jibran Dalvie",
+          "Situation: Took full accountability for every request, big or small",
+          "Impact: Delivered exactly what the client needed",
+        ],
+      },
+      {
+        question: "Has Product team's approachability changed?",
+        answer: "Approachability was never an issue.",
       },
       {
         question: "A firefighter moment you recall?",
-        answer: "Quick turnaround on a critical bug that was affecting a major enterprise client.",
+        answer: "Udayan resolving a critical WhatsApp consent management issue.",
+      },
+      {
+        question: "Advice for 2026?",
+        answer: "Stronger ownership and better documentation of discussed features to prevent drop-offs post-alignment.",
       },
     ],
   },
@@ -176,18 +250,31 @@ const leaderTestimonials: LeaderTestimonial[] = [
     expandedContent: [
       {
         question: "What was the Product team's standout moment this year?",
-        answer: "Launching Agentic AI capabilities that became a major talking point in sales conversations.",
+        answer: "The Agentic AI roadmap and feature development, especially Content and Insight Agents showcased during events.",
       },
       {
         question: "How did Product help you win customers?",
+        answer: "Continuous enhancements to OneDayOnly's Product Picker helped ensure full utilization.",
+      },
+      {
+        question: "Who deserves a WOW Card this year?",
         answer: [
-          "AI-powered features differentiated us from competitors.",
-          "The product roadmap vision excited enterprise prospects.",
+          "WOW: Jibran Dalvi",
+          "Situation: Supporting Product Picker and DSTV personalization development",
+          "Impact: $16K MRR onboarding for OneDayOnly and $7K MRR pipeline for DSTV",
         ],
       },
       {
+        question: "Biggest improvement in Product team's approachability?",
+        answer: "More structured decision-making with stronger business validation.",
+      },
+      {
+        question: "A firefighter moment you recall?",
+        answer: "Bharat personally stepping in during Grameenphone's analytics evaluation to remove ambiguity.",
+      },
+      {
         question: "Suggestions for 2026?",
-        answer: "Double down on AI and automation stories.",
+        answer: "Innovate more visibly, engage SEA and MEA customers, strengthen thought leadership, publish stronger use cases, invest in PSS training, and elevate UI/UX impact.",
       },
     ],
   },
@@ -199,38 +286,66 @@ const leaderTestimonials: LeaderTestimonial[] = [
     expandedContent: [
       {
         question: "What was the Product team's standout moment this year?",
-        answer: "The complete overhaul of technical documentation made implementation smoother.",
+        answer: "Unlocking WhatsApp third-party integrations.",
       },
       {
         question: "How did Product help you win customers?",
-        answer: "Customers could self-serve better, reducing support tickets and improving satisfaction.",
+        answer: "Insights Agent and faster analytics delivery.",
       },
       {
-        question: "Biggest improvement in Product team's approachability?",
-        answer: "More responsive to field feedback and faster feature iterations.",
+        question: "Who deserves a WOW Card this year?",
+        answer: [
+          "WOW: Gargi",
+          "Situation & Impact: Transformed documentation quality, making it easier to handle demanding customers with confidence",
+        ],
+      },
+      {
+        question: "Has Product's approachability changed?",
+        answer: "It has remained the same.",
+      },
+      {
+        question: "A firefighter moment you recall?",
+        answer: "Deepesh Lakhera consistently stepping in to help across multiple situations.",
+      },
+      {
+        question: "Advice for 2026?",
+        answer: "More training for customer-facing teams and deeper analysis of how large customers use competitor platforms.",
       },
     ],
   },
   {
     id: 9,
     name: "Tanmay Sinha",
-    role: "Associate Product Marketing Manager – Netcore Unbxd",
+    role: "Associate Product Marketing Manager – Netcore UNBXD",
     collapsedQuote: "Gartner recognition validated the product and the people.",
     expandedContent: [
       {
-        question: "What was the Product team's standout moment this year?",
-        answer: "The Gartner recognition was a testament to the team's consistent execution and innovation.",
+        question: "What was one standout moment this year where the Product team exceeded expectations?",
+        answer: "The Gartner Magic Quadrant recognition stood out. Our product ranked very high with the top score in the Current Offering category, far surpassing other enterprise-grade competitors.",
       },
       {
-        question: "How did Product help you win customers?",
+        question: "How has the Product team helped you win customers?",
+        answer: "While Product Marketing does not directly prospect or interact with customers, we gather testimonials to support customer-led growth. The feedback consistently reflects high praise for both the product and the people building it.",
+      },
+      {
+        question: "Who deserves a WOW Card this year?",
         answer: [
-          "Analyst recognition gave us credibility in enterprise conversations.",
-          "The product improvements backing the recognition were tangible and demonstrable.",
+          "WOW: Gargi Mukherjee",
+          "Situation: Migration and updating of Netcore Unbxd technical documentation",
+          "Impact: Helped strengthen our AEO efforts and significantly improved citation numbers",
         ],
       },
       {
-        question: "Suggestions for 2026?",
-        answer: "Maintain the momentum and aim for even stronger analyst positioning.",
+        question: "How has the Product team's approachability changed compared to last year?",
+        answer: "Shorter review cycles. Thanks to better coordination with Ravi, Avani, Karan, Abhinav, and Nishant Jain, we were able to close multiple assets faster.",
+      },
+      {
+        question: "A moment when the Product team acted as firefighters?",
+        answer: "Not applicable.",
+      },
+      {
+        question: "Any suggestions for improving collaboration in 2026?",
+        answer: "Improve release coordination between Product, Product Documentation, and Product Marketing. Earlier alignment would help generate stronger market buzz and increase feature adoption.",
       },
     ],
   },
