@@ -67,6 +67,50 @@ const documentationHeroStory: HeroStorySection[] = [
   },
 ];
 
+const unbxdDocsHeroStory: HeroStorySection[] = [
+  {
+    heading: "A Documentation Website That Works the Way Customers Think",
+    content:
+      "This year, the Documentation team rebuilt the Unbxd documentation website to solve a long-standing challenge: a legacy doc platform that had become a deadlock for updates and improvements.",
+  },
+  {
+    content:
+      "The older site restricted changes, slowed down fixes, and made it harder to surface the right information when customers needed it most. With the new Unbxd documentation website, content is now structured around how users search, browse, and integrate—making answers easier to find and faster to act on.",
+  },
+  {
+    content:
+      "The result is a documentation experience that supports customers throughout their journey, from evaluation to implementation and optimization.",
+  },
+  {
+    heading: "Why This Matters",
+    bullets: [
+      "Faster access to relevant information across Search, Browse, and APIs",
+      "Quicker resolution of customer and partner queries",
+      "Reduced dependency on manual explanations from internal teams",
+      "Documentation that stays current as the product evolves",
+    ],
+  },
+  {
+    heading: "What We Shipped",
+    bullets: [
+      "A fully redesigned Unbxd documentation website",
+      "Clear information architecture aligned to user intent",
+      "Improved navigation and discoverability across modules",
+      "A flexible platform that allows continuous updates and fixes",
+    ],
+  },
+  {
+    heading: "Business Impact",
+    content:
+      "The new Unbxd documentation site removed content bottlenecks, improved self-serve success, and enabled the team to respond to customer questions faster—strengthening trust and reducing friction across the Unbxd ecosystem.",
+  },
+  {
+    heading: "What's Next",
+    content:
+      "With the foundation in place, the team will continue enhancing Unbxd documentation with deeper guides, expanded APIs, and tighter alignment with product updates—ensuring the site scales alongside Unbxd's roadmap.",
+  },
+];
+
 const heroSections: {
   function: SectionType;
   icon: string;
@@ -163,13 +207,17 @@ const heroSections: {
         story: documentationHeroStory,
       },
       {
-        title: "[Hero Docs 2]",
-        month: "October 2025",
-        why: "Comprehensive migration guides that turned a complex upgrade into a smooth transition. Zero escalations, happy customers.",
+        title: "Unbxd Docs, Rebuilt for Clarity and Speed",
+        month: "July 2025",
+        heroLabel: "Hero Docs 2",
+        subtitle: "A redesigned documentation website that makes it easier to find the right information at the right time.",
+        why: "A modern, flexible documentation site that removes content bottlenecks and accelerates query resolution.",
         links: [
-          { label: "Migration Guide", url: "#" },
-          { label: "FAQ", url: "#" },
+          { label: "Unbxd Documentation Home", url: "https://docs.unbxd.com" },
+          { label: "Search & Browse Docs", url: "https://docs.unbxd.com/search" },
+          { label: "API References", url: "https://docs.unbxd.com/api" },
         ],
+        story: unbxdDocsHeroStory,
       },
     ],
   },
