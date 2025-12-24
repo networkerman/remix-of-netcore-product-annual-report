@@ -10,7 +10,6 @@ import { ProductCraft } from "@/components/yearbook/ProductCraft";
 import { PMStories } from "@/components/yearbook/PMStories";
 
 import { HeroProducts } from "@/components/yearbook/HeroProducts";
-import { DocumentationHero } from "@/components/yearbook/DocumentationHero";
 import { LookingAhead } from "@/components/yearbook/LookingAhead";
 import { ThankYou } from "@/components/yearbook/ThankYou";
 import { LeaderVoices } from "@/components/yearbook/LeaderVoices";
@@ -27,7 +26,6 @@ const Index = () => {
         <CPONote />
         <TeamSection />
         <HeroProducts />
-        <DocumentationHero />
         <ProductCraft />
         <YearAtGlance />
         <LeaderVoices />
