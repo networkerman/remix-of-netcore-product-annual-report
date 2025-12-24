@@ -388,6 +388,17 @@ const heroSections: {
         ],
         tags: ["CPaaS"],
       },
+      {
+        title: "Variant Locking",
+        month: "2025",
+        why: "Gives merchants precise control over which product variant shoppers see first—aligning category pages with campaign goals, improving merchandising consistency, and driving better engagement without manual rework.",
+        links: [
+          { label: "Release Notes", url: "https://docs.netcoreunbxd.com/docs/october-november#product-display-with-variant-locking" },
+          { label: "Documentation", url: "https://docs.netcoreunbxd.com/docs/variant-locking#" },
+          { label: "FAQs", url: "https://docs.netcoreunbxd.com/docs/variant-locking#faqs-and-troubleshooting" },
+        ],
+        tags: ["Netcore Unbxd"],
+      },
     ],
   },
   {
