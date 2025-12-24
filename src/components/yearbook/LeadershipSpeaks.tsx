@@ -228,22 +228,6 @@ const leaderTestimonials: LeaderTestimonial[] = [
       },
     ],
   },
-  {
-    id: 10,
-    name: "Leadership Team",
-    role: "Collective Voice",
-    collapsedQuote: "This year, Product truly became a strategic partner.",
-    expandedContent: [
-      {
-        question: "What was the Product team's standout moment this year?",
-        answer: "The alignment between product vision and business goals was stronger than ever.",
-      },
-      {
-        question: "How did Product help you win customers?",
-        answer: "By listening, iterating, and delivering what the market needed.",
-      },
-    ],
-  },
 ];
 
 function TestimonialCard({
