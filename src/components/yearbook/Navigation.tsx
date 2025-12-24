@@ -6,11 +6,11 @@ const navItems = [
   { id: "cover", label: "Cover" },
   { id: "testimonials", label: "Customer Love" },
   { id: "cpo-note", label: "CPO Note" },
-  { id: "team", label: "Meet the Team" },
   { id: "heroes", label: "Hero of the Year" },
   { id: "craft", label: "Behind the Build" },
   { id: "year-glance", label: "Year at a Glance" },
-  { id: "leader-voices", label: "Recognition" },
+  { id: "leadership-speaks", label: "Leadership Speaks" },
+  { id: "team", label: "Meet the Team" },
   { id: "stories", label: "PM Stories" },
   { id: "looking-ahead", label: "Looking Ahead" },
 ];
