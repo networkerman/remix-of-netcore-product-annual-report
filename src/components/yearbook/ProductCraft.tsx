@@ -164,18 +164,23 @@ export function ProductCraft() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6 }}
-            className="p-6 rounded-2xl bg-gradient-to-br from-teal-500/20 via-primary/10 to-teal-600/20 border-2 border-teal-500/30 flex flex-col items-center justify-center text-center md:col-span-2 lg:col-span-1"
+            className="p-6 rounded-2xl bg-gradient-to-br from-teal-500/20 via-primary/10 to-teal-600/20 border-2 border-teal-500/30 flex flex-col md:col-span-2 lg:col-span-1"
           >
-            <TrendingUp className="text-teal-600 mb-3" size={40} />
-            <h4 className="font-bold text-xl text-foreground mb-2">NPS Score Improved</h4>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-3xl font-bold text-foreground/40">1</span>
-              <span className="text-2xl text-teal-600">→</span>
-              <span className="text-5xl font-black text-teal-600">10</span>
+            <div className="flex items-center gap-3 mb-4">
+              <TrendingUp className="text-teal-600" size={28} />
+              <h4 className="font-bold text-xl text-foreground">NPS Score Improved</h4>
             </div>
-            <p className="text-foreground/60 text-sm italic">
-              Now among the highest-rated modules on the platform
-            </p>
+            
+            <div className="space-y-4 flex-grow">
+              <div className="flex justify-between items-center py-3 px-4 bg-teal-500/10 rounded-xl">
+                <span className="text-foreground/80">RFM & Cohort NPS</span>
+                <span className="font-bold text-2xl text-teal-600">+63%</span>
+              </div>
+              <div className="flex justify-between items-center py-3 px-4 bg-teal-500/10 rounded-xl">
+                <span className="text-foreground/80">Funnel NPS</span>
+                <span className="font-bold text-2xl text-teal-600">+44%</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
