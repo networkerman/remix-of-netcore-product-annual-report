@@ -15,7 +15,6 @@ import hardikyaImg from "@/assets/team/interns/hardikya.png";
 import yogeshImg from "@/assets/team/leaders/yogesh.png";
 import satishImg from "@/assets/team/leaders/satish.png";
 import deepeshImg from "@/assets/team/leaders/deepesh.png";
-import raviImg from "@/assets/team/leaders/ravi.png";
 import jibranImg from "@/assets/team/leaders/jibran.png";
 import kiritImg from "@/assets/team/leaders/kirit.png";
 
@@ -102,21 +101,6 @@ const productLeaders: ProductLeader[] = [
     title: "AVP - Product Operations",
     image: deepeshImg,
     emoji: "🔄",
-    headline: "[Placeholder Headline]",
-    teaserQuote: "[Placeholder teaser quote]",
-    questions: [
-      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
-      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
-      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
-      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
-    ],
-  },
-  {
-    id: "ravi",
-    name: "Ravi",
-    title: "Director of Product & Business Analytics",
-    image: raviImg,
-    emoji: "📊",
     headline: "[Placeholder Headline]",
     teaserQuote: "[Placeholder teaser quote]",
     questions: [
