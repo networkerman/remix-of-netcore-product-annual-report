@@ -31,6 +31,7 @@ interface HeroItem {
   story?: HeroStorySection[];
   tags?: ProductTag[];
   displayTag?: string;
+  tagColor?: string;
 }
 
 const documentationHeroStory: HeroStorySection[] = [
@@ -507,6 +508,7 @@ const heroSections: {
         title: "Unbxd Docs, Rebuilt for Clarity and Speed",
         month: "July 2025",
         heroLabel: "New Unbxd Website",
+        tagColor: "from-coral-400 to-coral-500",
         why: "A modern, flexible documentation site that removes content bottlenecks and accelerates query resolution.",
         links: [
           { label: "Unbxd Documentation", url: "https://docs.netcoreunbxd.com/docs/getting-started" },
@@ -533,6 +535,14 @@ const heroSections: {
           { label: "Two Factor Authentication (Netcore Unbxd)", url: "https://docs.netcoreunbxd.com/docs/two-factor-authentication" },
           { label: "Campaign Insight Agent", url: "https://cedocs.netcorecloud.com/docs/campaign-insight-generator" },
           { label: "WhatsApp Template Guidelines", url: "https://cedocs.netcorecloud.com/docs/whatsapp-guidelines" },
+          { label: "WhatsApp Template Management", url: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/w6j0vuk1n77t8-whats-app-template-management" },
+          { label: "Integrate with Third-Party WhatsApp BSPs", url: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/7476ee6d7eed9-integrate-netcore-with-third-party-whats-app-bs-ps" },
+          { label: "CPaaS: Email Warm-up", url: "https://emaildocs.netcorecloud.com/docs/email-warmup" },
+          { label: "CPaaS: Suppressions", url: "https://emaildocs.netcorecloud.com/docs/suppressions-1" },
+          { label: "CPaaS: SMTP Integration with Netcore", url: "https://emaildocs.netcorecloud.com/docs/smtp-integration-with-netcore" },
+          { label: "App Push: Create & Manage Templates", url: "https://cedocs.netcorecloud.com/docs/app-push-template" },
+          { label: "UCE Image Editor", url: "https://cedocs.netcorecloud.com/docs/uce-image-editing-and-responsiveness" },
+          { label: "Unbxd: What's New 2025", url: "https://docs.netcoreunbxd.com/docs/whats-new-2025" },
         ],
       },
       {
@@ -722,7 +732,7 @@ export function HeroProducts() {
                                     {hero.displayTag}
                                   </span>
                                 ) : hero.heroLabel ? (
-                                  <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${section.gradient} text-navy-900 text-xs font-semibold`}>
+                                  <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${hero.tagColor || section.gradient} text-navy-900 text-xs font-semibold`}>
                                     <BookOpen size={12} />
                                     {hero.heroLabel}
                                   </span>
