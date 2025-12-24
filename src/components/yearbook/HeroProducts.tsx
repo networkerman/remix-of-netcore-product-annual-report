@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 
 type SectionType = "Product" | "Design" | "Documentation";
-type ProductTag = "Netcore CE" | "Netcore Unbxd";
+type ProductTag = "Netcore CE" | "Netcore Unbxd" | "CPaaS";
 
 interface HeroStorySection {
   heading?: string;
@@ -237,7 +237,7 @@ const heroSections: {
         title: "Insight Agent",
         month: "April 2025",
         heroLabel: "Smart Analysis",
-        why: "Turns analysis into action by surfacing insights, anomalies, and impact—powering sharper decisions for customers and CSMs alike.",
+        why: "Turns campaign performance into clear, actionable insights by explaining why results happen across channels, helping teams spot trends, diagnose gaps, and optimize faster without manual analysis.",
         links: [
           { label: "Documentation", url: "#" },
           { label: "Use Cases", url: "#" },
@@ -250,7 +250,7 @@ const heroSections: {
         title: "Journey Path Optimiser",
         month: "July 2025",
         heroLabel: "Path Intelligence",
-        why: "Eliminates guesswork in journey design by identifying and optimizing the paths that drive the highest impact.",
+        why: "Removes manual A/B testing from journey design by automatically routing users to the best-performing path in real time—driving higher clicks or conversions with less effort and faster optimization.",
         links: [
           { label: "Documentation", url: "#" },
           { label: "Use Case Library", url: "#" },
@@ -263,7 +263,7 @@ const heroSections: {
         title: "Shopping Agent",
         month: "May 2025",
         heroLabel: "Intent Guidance",
-        why: "Guides shoppers in real time based on intent, reducing friction and improving conversion quality in high-consideration journeys.",
+        why: "Transforms on-site discovery into a guided, conversational experience by helping shoppers find the right products faster, driving higher engagement and conversions while reducing reliance on manual support.",
         links: [
           { label: "Documentation", url: "#" },
           { label: "How It Works", url: "#" },
@@ -275,7 +275,7 @@ const heroSections: {
       {
         title: "Analytics",
         month: "2025",
-        why: "Comprehensive analytics solution providing deep insights into customer behavior and campaign performance.",
+        why: "Brings critical metrics into one shared, customizable view, helping teams track performance faster, align on insights, and make decisions without jumping across multiple analytics modules.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -284,7 +284,7 @@ const heroSections: {
       {
         title: "Addressable Anonymous",
         month: "2025",
-        why: "Enables personalization for anonymous visitors by building addressable profiles before login.",
+        why: "Enables early personalization by capturing and enriching anonymous user activity upfront, so teams can engage users sooner and seamlessly convert them into known profiles when they identify themselves.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -293,7 +293,7 @@ const heroSections: {
       {
         title: "WhatsApp UCE",
         month: "2025",
-        why: "Unified conversational engagement through WhatsApp for seamless customer interactions.",
+        why: "Accelerates WhatsApp campaign creation with a more flexible, personalized content editor—helping teams launch richer messages faster while gaining better visibility into engagement and performance.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -302,7 +302,7 @@ const heroSections: {
       {
         title: "App Engagement and Personalisation",
         month: "2025",
-        why: "Drive app engagement with personalized experiences tailored to each user's behavior and preferences.",
+        why: "Enables real-time, native in-app personalization without intrusive pop-ups—helping marketers deliver relevant experiences, measure uplift accurately, and drive higher engagement directly within the app.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -311,7 +311,7 @@ const heroSections: {
       {
         title: "Multi Store",
         month: "2025",
-        why: "Manage multiple storefronts with unified search and browse experiences across all properties.",
+        why: "Simplifies multi-store search by retrieving and filtering products across locations in a single API call—reducing integration complexity while delivering accurate, store-specific pricing and availability at scale.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -320,7 +320,7 @@ const heroSections: {
       {
         title: "Product Recommendation on WhatsApp and APN",
         month: "2025",
-        why: "Deliver personalized product recommendations through WhatsApp and push notifications.",
+        why: "Brings real-time, AI-powered product recommendations directly into WhatsApp and app push messages—boosting relevance, engagement, and conversions across both journeys and broadcasts with minimal setup.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -329,7 +329,7 @@ const heroSections: {
       {
         title: "Product Catalogue Integration",
         month: "2025",
-        why: "Seamless integration of product catalogues for enhanced personalization and recommendations.",
+        why: "Keeps product data accurate, enriched, and always in sync across channels—so marketers can power personalization, triggers, and product-led campaigns without manual updates or inconsistencies.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -338,7 +338,7 @@ const heroSections: {
       {
         title: "Product Picker",
         month: "2025",
-        why: "Intuitive product selection tool for marketers to curate and personalize product offerings.",
+        why: "Makes product-led emails easier and safer to run by enabling static and real-time product insertion—ensuring up-to-date recommendations, preventing out-of-stock errors, and driving more relevant engagement across campaigns and journeys.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -347,7 +347,7 @@ const heroSections: {
       {
         title: "Egress",
         month: "2025",
-        why: "Efficient data export capabilities for seamless integration with external systems.",
+        why: "Gives data teams full control over event-level data by exporting clean, transformed, and scheduled datasets to S3—enabling deeper analysis, compliance, and seamless integration with downstream analytics and CRM systems.",
         links: [
           { label: "Documentation", url: "#" },
         ],
@@ -356,11 +356,20 @@ const heroSections: {
       {
         title: "Segment on Segment",
         month: "2025",
-        why: "Advanced segmentation capabilities allowing nested segments for precise targeting.",
+        why: "Speeds up audience creation by letting teams reuse and refine existing segments—ensuring faster setup, better control, and more accurate targeting for campaigns.",
         links: [
           { label: "Documentation", url: "#" },
         ],
         tags: ["Netcore CE"],
+      },
+      {
+        title: "WhatsApp Retry Logic",
+        month: "2025",
+        why: "Improves WhatsApp message reliability by retrying failed deliveries—helping teams reduce drop-offs, maintain reach during transient failures, and control behavior through backend toggles when needed.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["CPaaS"],
       },
     ],
   },
@@ -584,7 +593,9 @@ export function HeroProducts() {
                                       className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
                                         tag === "Netcore CE"
                                           ? "bg-gradient-to-r from-teal-500 to-teal-600 text-navy-900"
-                                          : "bg-gradient-to-r from-coral-400 to-coral-500 text-navy-900"
+                                          : tag === "Netcore Unbxd"
+                                          ? "bg-gradient-to-r from-coral-400 to-coral-500 text-navy-900"
+                                          : "bg-gradient-to-r from-purple-500 to-purple-600 text-white"
                                       }`}
                                     >
                                       {tag}
