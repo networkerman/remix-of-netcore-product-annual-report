@@ -56,23 +56,19 @@ export function CPONote() {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <span className="caption text-primary mb-4 block">Newsletter from the CPO</span>
+                <span className="caption text-primary mb-4 block">A Note from the CPO</span>
                 
                 <h2 className="section-heading text-foreground mb-8">
-                  "This year tested us. And we delivered."
+                  "In 2025, AI at Netcore moved beyond analysis to actively drive decisions and outcomes for marketers."
                 </h2>
 
                 <div className="space-y-6 text-foreground/70 body-large">
                   <p>
-                    <strong className="text-foreground">The Year in Review:</strong> 2025 was a year of transformation. 
-                    We shipped more features than ever, tackled technical debt that had haunted us for years, 
-                    and built foundations that will serve us for the decade ahead.
+                    2025 marked a fundamental shift in how we leveraged AI at Netcore. We moved from analysing data to actively driving decisions and outcomes for marketers.
                   </p>
 
                   <p>
-                    <strong className="text-foreground">The Challenges:</strong> Let's be honest—it wasn't smooth. 
-                    We faced resource constraints, shifting priorities, and the eternal tension between speed and quality. 
-                    Some bets didn't pay off. That's the reality of building products.
+                    Over the year, we strengthened our data foundation through affinity and propensity models, deeper funnel and RFM analytics, and highly actionable dashboards.
                   </p>
 
                   <button
@@ -94,9 +90,9 @@ export function CPONote() {
             >
               {/* Expanded Header */}
               <div className="text-center mb-12">
-                <span className="caption text-primary mb-4 block">Newsletter from the CPO</span>
+                <span className="caption text-primary mb-4 block">A Note from the CPO</span>
                 <h2 className="section-heading text-foreground mb-4">
-                  "This year tested us. And we delivered."
+                  "In 2025, AI at Netcore moved beyond analysis to actively drive decisions and outcomes for marketers."
                 </h2>
                 <div className="flex items-center justify-center gap-4 mt-6">
                   <img 
@@ -113,115 +109,26 @@ export function CPONote() {
 
               {/* Full Article Content */}
               <article className="prose prose-lg max-w-none text-foreground/80">
-                <section className="mb-10">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Introduction</h3>
-                  <p className="mb-4">
-                    [Placeholder: Opening remarks about the significance of 2025 and setting the tone for the year-end reflection. 
-                    Discuss the overarching theme of growth, resilience, and innovation that defined this year.]
-                  </p>
-                  <p>
-                    [Placeholder: Personal note from the CPO about what this year meant to them personally and professionally. 
-                    Share a brief anecdote that captures the spirit of the team.]
-                  </p>
-                </section>
+                <p className="mb-6">
+                  2025 marked a fundamental shift in how we leveraged AI at Netcore. We moved from analysing data to actively driving decisions and outcomes for marketers.
+                </p>
 
-                <section className="mb-10">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">The Year in Review</h3>
-                  <p className="mb-4">
-                    2025 was a year of transformation. We shipped more features than ever, tackled technical debt 
-                    that had haunted us for years, and built foundations that will serve us for the decade ahead.
-                  </p>
-                  <p className="mb-4">
-                    [Placeholder: Detailed overview of major product launches and updates. Include specific numbers, 
-                    such as the number of features shipped, customer feedback scores, and market impact metrics.]
-                  </p>
-                  <p>
-                    [Placeholder: Highlight 2-3 standout moments that defined the year—product launches, customer wins, 
-                    or team achievements that deserve special recognition.]
-                  </p>
-                </section>
+                <p className="mb-6">
+                  Over the year, we strengthened our data foundation through affinity and propensity models, deeper funnel and RFM analytics, and highly actionable dashboards. This enabled marketers to move decisively from insight to execution.
+                </p>
 
-                <section className="mb-10">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Challenges We Faced</h3>
-                  <p className="mb-4">
-                    Let's be honest—it wasn't smooth. We faced resource constraints, shifting priorities, 
-                    and the eternal tension between speed and quality. Some bets didn't pay off. That's the reality of building products.
-                  </p>
-                  <p className="mb-4">
-                    [Placeholder: Discuss specific challenges such as market competition, technical hurdles, 
-                    or organizational changes. Be honest about what didn't work and why.]
-                  </p>
-                  <p>
-                    [Placeholder: Explain how the team responded to these challenges. What pivots did we make? 
-                    What did we learn from our failures?]
-                  </p>
-                </section>
+                <p className="mb-6">
+                  At the same time, we committed to Agentic AI as a platform strategy. In partnership with Google, we articulated our Agentic AI Stack and launched the Content Agent and Insights Agent—marking a clear evolution of AI from support to action.
+                </p>
 
-                <section className="mb-10">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Strategic Decisions</h3>
-                  <p className="mb-4">
-                    [Placeholder: Detail the major strategic decisions made this year—why we chose to focus on 
-                    certain product areas, deprioritize others, or enter new markets.]
-                  </p>
-                  <p className="mb-4">
-                    Every major pivot came from listening—to customers, to data, to each other. The decision to double down on 
-                    Analytics wasn't easy. The choice to rebuild the WhatsApp editor was costly. But looking back, 
-                    these were the right calls.
-                  </p>
-                  <p>
-                    [Placeholder: Share the reasoning behind key decisions. Help the team understand the "why" 
-                    behind strategic choices that shaped our roadmap.]
-                  </p>
-                </section>
+                <p className="mb-6">
+                  What stood out most was not just adoption, but trust. The Insights Agent is now increasingly used for Monday reviews and QBRs, signalling a meaningful shift: customers and CSMs now rely on AI as a credible decision partner.
+                </p>
 
-                <section className="mb-10">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Team Recognition</h3>
-                  <p className="mb-4">
-                    The team. Full stop. The way you've grown, the way you've supported each other, 
-                    the way you've pushed back when needed and stepped up when it mattered. 
-                    That's not something you can ship—it's something you build.
-                  </p>
-                  <p className="mb-4">
-                    [Placeholder: Call out specific team achievements, individual contributions, or cross-functional 
-                    collaborations that made a significant impact. This is the place to celebrate our people.]
-                  </p>
-                  <p>
-                    [Placeholder: Mention any awards, recognitions, or milestones achieved by team members. 
-                    Celebrate promotions, certifications, or personal achievements.]
-                  </p>
-                </section>
-
-                <section className="mb-10">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Looking Forward</h3>
-                  <p className="mb-4">
-                    [Placeholder: Preview of what's coming in 2026. Share the vision without giving away competitive details. 
-                    Build excitement for the roadmap ahead.]
-                  </p>
-                  <p className="mb-4">
-                    [Placeholder: Discuss how we plan to build on this year's successes and address ongoing challenges. 
-                    What new opportunities are we pursuing?]
-                  </p>
-                  <p>
-                    [Placeholder: Set expectations for the team—what skills will be important, what mindsets will help us succeed, 
-                    and how we plan to continue growing together.]
-                  </p>
-                </section>
-
-                <section className="mb-10">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">Closing Note</h3>
-                  <blockquote className="border-l-4 border-primary pl-6 italic text-foreground my-8">
-                    "To everyone who stayed late, who questioned assumptions, who cared enough to argue—thank you. 
-                    This yearbook is yours."
-                  </blockquote>
-                  <p className="mb-4">
-                    [Placeholder: Final thoughts and gratitude. A personal message from the CPO to each team member. 
-                    Reflect on the journey and express optimism for the future.]
-                  </p>
-                  <p className="text-right font-semibold text-foreground mt-8">
-                    — Kedar Parikh<br />
-                    <span className="font-normal text-foreground/60">Chief Product Officer</span>
-                  </p>
-                </section>
+                <p className="text-right font-semibold text-foreground mt-8">
+                  — Kedar Parikh<br />
+                  <span className="font-normal text-foreground/60">Chief Product Officer</span>
+                </p>
               </article>
 
               {/* Collapse Button */}
