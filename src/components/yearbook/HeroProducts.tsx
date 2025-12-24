@@ -156,8 +156,9 @@ const heroSections: {
         subtitle: "An interactive APIfication documentation experience that helps developers test, debug, and go live faster.",
         why: "Interactive API documentation that lets developers test endpoints without leaving the page.",
         links: [
-          { label: "API Reference", url: "#" },
-          { label: "Quick Start Guide", url: "#" },
+          { label: "Quick Start Guide", url: "https://developer.netcorecloud.com/reference/getting-started" },
+          { label: "Email API V5", url: "https://developer.netcorecloud.com/reference/contacts" },
+          { label: "Email API V6", url: "https://emaildocs.netcorecloud.com/reference/email-api" },
         ],
         story: documentationHeroStory,
       },
