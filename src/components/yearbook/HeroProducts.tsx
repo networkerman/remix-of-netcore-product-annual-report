@@ -158,7 +158,6 @@ const heroSections: {
         links: [
           { label: "API Reference", url: "#" },
           { label: "Quick Start Guide", url: "#" },
-          { label: "Video Walkthrough", url: "#" },
         ],
         story: documentationHeroStory,
       },
