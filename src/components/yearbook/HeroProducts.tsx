@@ -723,20 +723,35 @@ export function HeroProducts() {
                               </p>
                             </div>
 
-                            {/* Links */}
-                            <div className="space-y-2 pt-4 border-t border-cream-100/10">
-                              {hero.links.map((link, lIndex) => (
-                                <a
-                                  key={lIndex}
-                                  href={link.url}
-                                  onClick={(e) => e.stopPropagation()}
-                                  className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
+                            {/* Links - hidden for Hero Documents and Hero Videos */}
+                            {hero.title !== "Hero Documents" && hero.title !== "Hero Videos" && (
+                              <div className="space-y-2 pt-4 border-t border-cream-100/10">
+                                {hero.links.map((link, lIndex) => (
+                                  <a
+                                    key={lIndex}
+                                    href={link.url}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
+                                  >
+                                    <span>{link.label}</span>
+                                    <ExternalLink size={14} />
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                            
+                            {/* Expand prompt for Hero Documents and Hero Videos */}
+                            {(hero.title === "Hero Documents" || hero.title === "Hero Videos") && (
+                              <div className="pt-4 border-t border-cream-100/10">
+                                <button
+                                  onClick={() => setSelectedHero(hero)}
+                                  className="flex items-center gap-2 text-sm text-teal-400 hover:text-teal-300 transition-colors"
                                 >
-                                  <span>{link.label}</span>
-                                  <ExternalLink size={14} />
-                                </a>
-                              ))}
-                            </div>
+                                  <Eye size={14} />
+                                  <span>Click to view all links</span>
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
 
