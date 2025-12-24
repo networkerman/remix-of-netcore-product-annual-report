@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 
 type SectionType = "Product" | "Design" | "Documentation";
-
+type ProductTag = "Netcore CE" | "Netcore Unbxd";
 
 interface HeroStorySection {
   heading?: string;
@@ -25,6 +25,7 @@ interface HeroItem {
   links: { label: string; url: string }[];
   heroLabel?: string;
   story?: HeroStorySection[];
+  tags?: ProductTag[];
 }
 
 const documentationHeroStory: HeroStorySection[] = [
@@ -230,6 +231,7 @@ const heroSections: {
           { label: "Data Inputs & Outputs", url: "#" },
         ],
         story: affinitiesPropensitiesStory,
+        tags: ["Netcore CE"],
       },
       {
         title: "Insight Agent",
@@ -242,6 +244,7 @@ const heroSections: {
           { label: "QBR Enablement Guide", url: "#" },
         ],
         story: insightAgentStory,
+        tags: ["Netcore CE"],
       },
       {
         title: "Journey Path Optimiser",
@@ -254,6 +257,7 @@ const heroSections: {
           { label: "Release Notes", url: "#" },
         ],
         story: journeyPathOptimizerStory,
+        tags: ["Netcore CE"],
       },
       {
         title: "Shopping Agent",
@@ -266,6 +270,97 @@ const heroSections: {
           { label: "Demo Environment (Coming Soon)", url: "#" },
         ],
         story: shoppingAgentStory,
+        tags: ["Netcore Unbxd"],
+      },
+      {
+        title: "Analytics",
+        month: "2025",
+        why: "Comprehensive analytics solution providing deep insights into customer behavior and campaign performance.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
+      },
+      {
+        title: "Addressable Anonymous",
+        month: "2025",
+        why: "Enables personalization for anonymous visitors by building addressable profiles before login.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
+      },
+      {
+        title: "WhatsApp UCE",
+        month: "2025",
+        why: "Unified conversational engagement through WhatsApp for seamless customer interactions.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
+      },
+      {
+        title: "App Engagement and Personalisation",
+        month: "2025",
+        why: "Drive app engagement with personalized experiences tailored to each user's behavior and preferences.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
+      },
+      {
+        title: "Multi Store",
+        month: "2025",
+        why: "Manage multiple storefronts with unified search and browse experiences across all properties.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore Unbxd"],
+      },
+      {
+        title: "Product Recommendation on WhatsApp and APN",
+        month: "2025",
+        why: "Deliver personalized product recommendations through WhatsApp and push notifications.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE", "Netcore Unbxd"],
+      },
+      {
+        title: "Product Catalogue Integration",
+        month: "2025",
+        why: "Seamless integration of product catalogues for enhanced personalization and recommendations.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
+      },
+      {
+        title: "Product Picker",
+        month: "2025",
+        why: "Intuitive product selection tool for marketers to curate and personalize product offerings.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
+      },
+      {
+        title: "Egress",
+        month: "2025",
+        why: "Efficient data export capabilities for seamless integration with external systems.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
+      },
+      {
+        title: "Segment on Segment",
+        month: "2025",
+        why: "Advanced segmentation capabilities allowing nested segments for precise targeting.",
+        links: [
+          { label: "Documentation", url: "#" },
+        ],
+        tags: ["Netcore CE"],
       },
     ],
   },
@@ -479,10 +574,23 @@ export function HeroProducts() {
                           
                           {/* Content */}
                           <div className="relative p-6 h-full flex flex-col bg-navy-800/80 backdrop-blur-sm border border-cream-100/10 rounded-2xl min-h-[360px]">
-                            {/* Hero Label */}
+                            {/* Hero Label / Tags */}
                             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                              <div className="flex items-center gap-2">
-                                {hero.heroLabel ? (
+                              <div className="flex items-center gap-2 flex-wrap">
+                                {section.function === "Product" && hero.tags && hero.tags.length > 0 ? (
+                                  hero.tags.map((tag, tagIndex) => (
+                                    <span
+                                      key={tagIndex}
+                                      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
+                                        tag === "Netcore CE"
+                                          ? "bg-gradient-to-r from-teal-500 to-teal-600 text-navy-900"
+                                          : "bg-gradient-to-r from-coral-400 to-coral-500 text-navy-900"
+                                      }`}
+                                    >
+                                      {tag}
+                                    </span>
+                                  ))
+                                ) : hero.heroLabel ? (
                                   <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${section.gradient} text-navy-900 text-xs font-semibold`}>
                                     <BookOpen size={12} />
                                     {hero.heroLabel}
