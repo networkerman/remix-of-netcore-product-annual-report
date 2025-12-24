@@ -446,15 +446,18 @@ export function HeroProducts() {
                   style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
                   {section.heroes.map((hero, heroIndex) => {
+                    const isDocumentation = section.function === "Documentation";
+                    const isClickable = isDocumentation && hero.story;
+                    
                     return (
                       <motion.div
                         key={heroIndex}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.4, delay: heroIndex * 0.1 }}
-                        className={`group relative flex-shrink-0 snap-start w-80 ${hero.story ? "cursor-pointer" : ""}`}
+                        className={`group relative flex-shrink-0 snap-start w-80 ${isClickable ? "cursor-pointer" : ""}`}
                         onClick={() => {
-                          if (hero.story) {
+                          if (isClickable) {
                             setSelectedHero(hero);
                           }
                         }}
