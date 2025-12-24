@@ -410,7 +410,7 @@ const heroSections: {
         title: "Analytics",
         month: "2025",
         heroLabel: "Unified Insights",
-        why: "Brings critical metrics into one shared, customizable view, helping teams track performance faster, align on insights, and make decisions without jumping across multiple analytics modules.",
+        why: "Upgraded to version design 1.5",
         links: [
           { label: "Release Notes", url: "https://updates.netcorecloud.com/changelog/reports-and-analytics-now-lets-you-see-all-the-tabs-in-the-side-navigation" },
           { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/getting-started-with-analytics" },
@@ -444,9 +444,11 @@ const heroSections: {
         heroLabel: "New Unbxd Website",
         why: "A modern, flexible documentation site that removes content bottlenecks and accelerates query resolution.",
         links: [
-          { label: "Unbxd Documentation Home", url: "https://docs.unbxd.com" },
-          { label: "Search & Browse Docs", url: "https://docs.unbxd.com/search" },
-          { label: "API References", url: "https://docs.unbxd.com/api" },
+          { label: "Unbxd Documentation", url: "https://docs.netcoreunbxd.com/docs/getting-started" },
+          { label: "Search Documents", url: "https://docs.netcoreunbxd.com/docs/introducing-unbxd-search" },
+          { label: "Browse Documents", url: "https://docs.netcoreunbxd.com/docs/introducing-browse" },
+          { label: "Recommendation Documents", url: "https://docs.netcoreunbxd.com/docs/introducing-recommendations" },
+          { label: "API Reference", url: "https://docs.netcoreunbxd.com/docs/api-integration" },
         ],
         story: unbxdDocsHeroStory,
       },
