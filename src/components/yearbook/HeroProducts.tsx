@@ -467,8 +467,8 @@ export function HeroProducts() {
                           {/* Gradient Background */}
                           <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
                           
-                          {/* Hover Overlay for Story Cards */}
-                          {hero.story && (
+                          {/* Hover Overlay for Documentation Story Cards Only */}
+                          {isDocumentation && hero.story && (
                             <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
                               <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-navy-900 font-semibold text-sm">
                                 <Eye size={18} />
