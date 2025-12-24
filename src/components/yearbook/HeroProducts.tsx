@@ -83,7 +83,7 @@ const heroSections = [
     gradient: "from-accent to-amber-500",
     heroes: [
       {
-        title: "[Hero Docs 1]",
+        title: "Docs That Execute, Not Just Explain",
         month: "July 2025",
         why: "Interactive API documentation that lets developers test endpoints without leaving the page. Support tickets dropped 30% in the first month.",
         links: [
