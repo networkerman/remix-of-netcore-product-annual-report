@@ -27,7 +27,7 @@ export function ProductCraft() {
           <span className="caption text-primary mb-4 block">Behind the Build</span>
           <h2 className="section-heading text-foreground mb-6">The Stories Behind the Build</h2>
           <p className="body-large text-foreground/60 max-w-2xl mx-auto">
-            Among many product wins this year, Analytics stands out—<strong>for both its impact and how it was built.</strong>
+            Among many product wins this year, <strong>Analytics</strong> stands out—<strong>for both its impact and how it was built.</strong>
           </p>
         </motion.div>
 
