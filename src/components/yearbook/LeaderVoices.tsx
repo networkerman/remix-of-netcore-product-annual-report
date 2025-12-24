@@ -58,6 +58,7 @@ const leaderTestimonials = [
 
 // Word map data - words from company-wide survey
 const wordMapData = [
+  // Original large words
   { word: "Collaborative", frequency: 45 },
   { word: "Strategic", frequency: 42 },
   { word: "Focused", frequency: 38 },
@@ -78,6 +79,41 @@ const wordMapData = [
   { word: "Curious", frequency: 15 },
   { word: "Supportive", frequency: 14 },
   { word: "Decisive", frequency: 13 },
+  // New anchor words (larger)
+  { word: "Outcome-driven", frequency: 36 },
+  { word: "Execution-focused", frequency: 34 },
+  { word: "Insightful", frequency: 30 },
+  { word: "Product-minded", frequency: 28 },
+  { word: "User-obsessed", frequency: 26 },
+  { word: "Pragmatic", frequency: 23 },
+  { word: "Accountable", frequency: 21 },
+  // New medium words
+  { word: "Analytical", frequency: 18 },
+  { word: "Structured", frequency: 17 },
+  { word: "Methodical", frequency: 16 },
+  { word: "Iterative", frequency: 15 },
+  { word: "Cross-functional", frequency: 14 },
+  { word: "Scalable", frequency: 14 },
+  { word: "Disciplined", frequency: 13 },
+  { word: "Results-focused", frequency: 13 },
+  { word: "Context-aware", frequency: 12 },
+  { word: "Ownership-driven", frequency: 12 },
+  { word: "Dependable", frequency: 11 },
+  { word: "Balanced", frequency: 11 },
+  { word: "Metrics-led", frequency: 10 },
+  { word: "Solution-oriented", frequency: 10 },
+  { word: "Resilient", frequency: 10 },
+  // New smaller/filler words
+  { word: "Clear-thinking", frequency: 9 },
+  { word: "Calm-under-pressure", frequency: 8 },
+  { word: "Detail-oriented", frequency: 8 },
+  { word: "Always-learning", frequency: 7 },
+  { word: "Problem-solvers", frequency: 7 },
+  { word: "Delivery-minded", frequency: 6 },
+  { word: "Bias-for-action", frequency: 6 },
+  { word: "Tradeoff-aware", frequency: 5 },
+  { word: "Roadmap-focused", frequency: 5 },
+  { word: "Hypothesis-driven", frequency: 5 },
 ];
 
 function TestimonialCard({ testimonial, isActive }: { testimonial: typeof leaderTestimonials[0]; isActive: boolean }) {
