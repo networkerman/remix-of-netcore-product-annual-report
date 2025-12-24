@@ -4,10 +4,17 @@ import { useRef, useEffect, useState } from "react";
 import { Quote } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface Testimonial {
   id: number;
   quote: string;
+  fullQuote?: string;
   author: string;
   role: string;
   company: string;
@@ -16,7 +23,8 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    quote: "Partnering with Netcore has been a game-changer for our digital strategy. With their advanced personalization tools and seamless orchestration of journeys, we've seen a 26.82% uplift in overall revenue and a 9X ROI — results that speak for themselves. Through strategic implementation of pop-ups, web push notifications, and tailored content, we achieved an impressive 97% uplift in engagement rate across our campaigns. Netcore's platform contributed to 10% of our overall revenue, helping us engage high-intent users with the right message at the right time. Their team's support, insights, and commitment to our success made it a truly impactful collaboration. We're excited about the future and the continued growth this partnership will bring.",
+    quote: "Partnering with Netcore has been a game-changer for our digital strategy. With their advanced personalization tools and seamless orchestration of journeys, we've seen a 26.82% uplift in overall revenue and a 9X ROI — results that speak for themselves.",
+    fullQuote: "Partnering with Netcore has been a game-changer for our digital strategy. With their advanced personalization tools and seamless orchestration of journeys, we've seen a 26.82% uplift in overall revenue and a 9X ROI — results that speak for themselves. Through strategic implementation of pop-ups, web push notifications, and tailored content, we achieved an impressive 97% uplift in engagement rate across our campaigns. Netcore's platform contributed to 10% of our overall revenue, helping us engage high-intent users with the right message at the right time. Their team's support, insights, and commitment to our success made it a truly impactful collaboration. We're excited about the future and the continued growth this partnership will bring.",
     author: "Abhishek Arora",
     role: "CRM, Loyalty & Omni-Channel Customer Acquisition Lead",
     company: "The Jewellery Group",
@@ -55,6 +63,7 @@ export function TestimonialsCarousel() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [openTestimonial, setOpenTestimonial] = useState<Testimonial | null>(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "center" },
@@ -128,9 +137,20 @@ export function TestimonialsCarousel() {
                   </div>
 
                   {/* Quote Text */}
-                  <blockquote className="text-xl md:text-2xl text-cream-100 leading-relaxed mb-8 font-light">
+                  <blockquote className="text-xl md:text-2xl text-cream-100 leading-relaxed mb-4 font-light">
                     "{testimonial.quote}"
                   </blockquote>
+
+                  {/* View Full Testimonial CTA */}
+                  {testimonial.fullQuote && (
+                    <button
+                      onClick={() => setOpenTestimonial(testimonial)}
+                      className="text-teal-400 hover:text-teal-300 text-sm font-medium mb-6 transition-colors"
+                    >
+                      View full testimonial →
+                    </button>
+                  )}
+                  {!testimonial.fullQuote && <div className="mb-4" />}
 
                   {/* Author Info */}
                   <div className="flex items-center gap-4">
@@ -171,6 +191,36 @@ export function TestimonialsCarousel() {
           ))}
         </motion.div>
       </div>
+
+      {/* Full Testimonial Dialog */}
+      <Dialog open={!!openTestimonial} onOpenChange={() => setOpenTestimonial(null)}>
+        <DialogContent className="bg-navy-800 border-cream-100/10 text-cream-100 max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-cream-100 text-xl">Full Testimonial</DialogTitle>
+          </DialogHeader>
+          {openTestimonial && (
+            <div className="mt-4">
+              <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
+                <Quote className="w-6 h-6 text-teal-400" />
+              </div>
+              <blockquote className="text-lg text-cream-100 leading-relaxed mb-6 font-light">
+                "{openTestimonial.fullQuote}"
+              </blockquote>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-cream-100">
+                  {openTestimonial.author.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-cream-100">{openTestimonial.author}</p>
+                  <p className="text-cream-300/60 text-sm">
+                    {openTestimonial.role ? `${openTestimonial.role}, ${openTestimonial.company}` : openTestimonial.company}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
