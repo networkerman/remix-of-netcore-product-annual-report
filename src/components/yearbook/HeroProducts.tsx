@@ -209,7 +209,7 @@ const heroSections: {
       {
         title: "Unbxd Docs, Rebuilt for Clarity and Speed",
         month: "July 2025",
-        heroLabel: "Hero Docs 2",
+        heroLabel: "New Unbxd Website",
         subtitle: "A redesigned documentation website that makes it easier to find the right information at the right time.",
         why: "A modern, flexible documentation site that removes content bottlenecks and accelerates query resolution.",
         links: [
