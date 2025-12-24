@@ -5,24 +5,29 @@ import { Telescope, Lock, Sparkles } from "lucide-react";
 
 const themes = [
   {
-    title: "AI-Native Everything",
-    description: "Moving from AI as a feature to AI as foundation. Every product touchpoint will be smarter.",
+    title: "Autonomous by Design",
+    description: "AI evolves from recommending actions to autonomously executing decisions, enabling marketers to operate at machine speed with confidence.",
     icon: "🤖",
   },
   {
-    title: "Platform Consolidation",
-    description: "One platform, infinite possibilities. Breaking down walls between CE, CPaaS, and Unbxd.",
+    title: "Multi-Agent Intelligence",
+    description: "A coordinated system of agents—Segment, Decision, and more—working together to deliver true 1:1 hyper-personalised experiences at scale.",
+    icon: "🧠",
+  },
+  {
+    title: "Netcore × Unbxd Synergy",
+    description: "Deeper platform integration to drive measurable impact across the full commerce funnel, from discovery to conversion.",
     icon: "🔗",
   },
   {
-    title: "Developer Experience",
-    description: "If developers don't love us, we've failed. 2025 is the year we become their favorite platform.",
-    icon: "💻",
+    title: "Agentic Commerce",
+    description: "Shopping and Merchandising Agents autonomously optimise discovery and merchandising, redefining how customers find and engage with products.",
+    icon: "🛍️",
   },
   {
-    title: "Global Scale",
-    description: "New markets, new challenges, new opportunities. Taking Netcore everywhere.",
-    icon: "🌍",
+    title: "Design 3.0",
+    description: "An AI-first UI/UX that reduces complexity, embeds intelligence by default, and elevates marketer outcomes without added effort.",
+    icon: "✨",
   },
 ];
 
@@ -53,8 +58,7 @@ export function LookingAhead() {
           <span className="caption text-primary mb-4 block">A Glimpse of Tomorrow</span>
           <h2 className="section-heading text-foreground mb-6">Looking Ahead to 2026</h2>
           <p className="body-large text-foreground/60 max-w-2xl mx-auto">
-            These aren't commitments—they're directions. Where we're pointing, 
-            what we're excited about, and the bets we're making on the future.
+            The future is autonomous: systems that marketers can trust, delegate to, and scale with—without increasing human effort.
           </p>
         </motion.div>
 
