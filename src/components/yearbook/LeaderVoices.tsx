@@ -158,30 +158,52 @@ function WordMap() {
     return 0.5 + normalized * 0.5; // Range from 0.5 to 1
   };
 
-  // Create organic positioning using golden angle distribution
+  // Create organic positioning with better spacing and rotation
   const positionedWords = useMemo(() => {
     const sortedWords = [...wordMapData].sort((a, b) => b.frequency - a.frequency);
-    const positions: { word: string; frequency: number; x: number; y: number; delay: number }[] = [];
+    const positions: { word: string; frequency: number; x: number; y: number; rotation: number; delay: number }[] = [];
     
-    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
-    const centerX = 50;
-    const centerY = 50;
+    // Grid-based placement to avoid overlaps
+    const cols = 8;
+    const rows = 7;
+    const cellWidth = 100 / cols;
+    const cellHeight = 100 / rows;
+    
+    // Shuffle positions for organic distribution
+    const gridPositions: { col: number; row: number }[] = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        gridPositions.push({ col: c, row: r });
+      }
+    }
+    
+    // Fisher-Yates shuffle with seed for consistency
+    for (let i = gridPositions.length - 1; i > 0; i--) {
+      const j = Math.floor((Math.sin(i * 9.8) + 1) * 0.5 * (i + 1));
+      [gridPositions[i], gridPositions[j]] = [gridPositions[j], gridPositions[i]];
+    }
     
     sortedWords.forEach((wordData, index) => {
-      const radius = 8 + Math.sqrt(index) * 12;
-      const angle = index * goldenAngle;
+      if (index >= gridPositions.length) return;
       
-      // Add some randomness for organic feel
-      const randomOffset = (Math.sin(index * 7) * 5);
+      const { col, row } = gridPositions[index];
       
-      const x = centerX + Math.cos(angle) * radius + randomOffset;
-      const y = centerY + Math.sin(angle) * (radius * 0.6) + randomOffset * 0.5;
+      // Add slight randomness within cell
+      const jitterX = (Math.sin(index * 3.7) * 0.3) * cellWidth;
+      const jitterY = (Math.cos(index * 5.3) * 0.3) * cellHeight;
+      
+      const x = (col + 0.5) * cellWidth + jitterX;
+      const y = (row + 0.5) * cellHeight + jitterY;
+      
+      // Random rotation between -30 and 30 degrees for variety
+      const rotation = Math.sin(index * 4.2) * 30;
       
       positions.push({
         ...wordData,
-        x: Math.max(10, Math.min(90, x)),
-        y: Math.max(15, Math.min(85, y)),
-        delay: index * 0.05,
+        x: Math.max(8, Math.min(92, x)),
+        y: Math.max(8, Math.min(92, y)),
+        rotation,
+        delay: index * 0.03,
       });
     });
     
@@ -204,7 +226,7 @@ function WordMap() {
             left: `${wordData.x}%`,
             top: `${wordData.y}%`,
             fontSize: `${getWordSize(wordData.frequency)}px`,
-            transform: "translate(-50%, -50%)",
+            transform: `translate(-50%, -50%) rotate(${wordData.rotation}deg)`,
           }}
           className={`font-semibold cursor-default transition-all duration-300 whitespace-nowrap ${
             hoveredWord === wordData.word
