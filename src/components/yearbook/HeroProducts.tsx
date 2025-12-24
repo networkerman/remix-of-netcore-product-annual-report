@@ -479,7 +479,7 @@ const heroSections: {
     gradient: "from-accent to-amber-500",
     heroes: [
       {
-        title: "Docs That Execute, Not Just Explain",
+        title: "Developer Dashboard",
         month: "2025",
         heroLabel: "Developer Dashboard",
         displayTag: "API-fication",
