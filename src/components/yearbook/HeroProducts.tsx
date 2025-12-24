@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Award, ExternalLink, Star, ChevronLeft, ChevronRight, BookOpen, Eye, Code, Play, Clock, Shield } from "lucide-react";
+import { Award, ExternalLink, Star, ChevronLeft, ChevronRight, BookOpen, Eye, Code, Play, Clock, Shield, FileText, Zap, RefreshCw, Target } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -107,6 +107,18 @@ const documentationHeroStory: HeroStorySection[] = [
 ];
 
 const unbxdDocsHeroStory: HeroStorySection[] = [
+  {
+    heading: "Documentation Impact at Scale",
+    subheading: "",
+  },
+  {
+    metrics: [
+      { icon: "FileText", number: "120+", label: ["Pages rebuilt across", "Search, Browse, and APIs"] },
+      { icon: "Zap", number: "3× faster", label: ["Time to find", "integration-ready answers"] },
+      { icon: "RefreshCw", number: "100%", label: ["Migration off legacy", "documentation platform"] },
+      { icon: "Target", number: "Single source", label: ["Of truth for customers,", "partners, and teams"] },
+    ],
+  },
   {
     heading: "UNBXD Documentation Revamp",
     subheading: "A Docs Experience Built Around How Customers Actually Work",
@@ -850,6 +862,10 @@ export function HeroProducts() {
                     Play: Play,
                     Clock: Clock,
                     Shield: Shield,
+                    FileText: FileText,
+                    Zap: Zap,
+                    RefreshCw: RefreshCw,
+                    Target: Target,
                   };
                   
                   return (
