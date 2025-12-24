@@ -412,19 +412,15 @@ export function HeroProducts() {
             <DialogTitle className="text-2xl md:text-3xl font-bold text-cream-100">
               {selectedHero?.title}
             </DialogTitle>
-            {selectedHero?.subtitle && (
-              <p className="text-cream-300/80 text-lg mt-2">{selectedHero.subtitle}</p>
-            )}
-          </DialogHeader>
-
-          {/* Why It Matters Highlight */}
-          <div className="p-5 rounded-xl bg-cream-100/5 border border-cream-100/10 my-6">
-            <div className="flex items-center gap-2 text-teal-400 mb-3">
-              <Star size={16} />
-              <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+            {/* Why It Matters Highlight */}
+            <div className="p-5 rounded-xl bg-cream-100/5 border border-cream-100/10 mt-4">
+              <div className="flex items-center gap-2 text-teal-400 mb-3">
+                <Star size={16} />
+                <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+              </div>
+              <p className="text-cream-200 leading-relaxed">{selectedHero?.why}</p>
             </div>
-            <p className="text-cream-200 leading-relaxed">{selectedHero?.why}</p>
-          </div>
+          </DialogHeader>
 
           {/* Links */}
           <div className="flex flex-wrap gap-3 mb-8">
