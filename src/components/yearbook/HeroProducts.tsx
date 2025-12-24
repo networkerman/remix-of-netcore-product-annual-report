@@ -14,8 +14,10 @@ type ProductTag = "Netcore CE" | "Netcore Unbxd" | "CPaaS";
 
 interface HeroStorySection {
   heading?: string;
+  subheading?: string;
   content?: string;
   bullets?: string[];
+  isClosingLine?: boolean;
 }
 
 interface HeroItem {
@@ -70,45 +72,59 @@ const documentationHeroStory: HeroStorySection[] = [
 
 const unbxdDocsHeroStory: HeroStorySection[] = [
   {
-    heading: "A Documentation Website That Works the Way Customers Think",
+    heading: "UNBXD Documentation Revamp",
+    subheading: "A Docs Experience Built Around How Customers Actually Work",
+  },
+  {
+    heading: "The Problem We Fixed",
     content:
-      "This year, the Documentation team rebuilt the Unbxd documentation website to solve a long-standing challenge: a legacy doc platform that had become a deadlock for updates and improvements.",
+      "Unbxd's earlier documentation lived on a legacy setup that slowed updates, limited fixes, and reduced discoverability. Content existed, but finding the right answer at the right moment was harder than it should be.",
+  },
+  {
+    heading: "What We Changed",
+    content:
+      "We rebuilt the Unbxd documentation website from the ground up—moving from a system-led structure to a customer-thinking model. The new site mirrors how users actually work:",
+    bullets: [
+      "Search for answers",
+      "Browse features and use cases",
+      "Integrate APIs into real implementations",
+    ],
   },
   {
     content:
-      "The older site restricted changes, slowed down fixes, and made it harder to surface the right information when customers needed it most. With the new Unbxd documentation website, content is now structured around how users search, browse, and integrate—making answers easier to find and faster to act on.",
-  },
-  {
-    content:
-      "The result is a documentation experience that supports customers throughout their journey, from evaluation to implementation and optimization.",
+      "The result is less friction, faster clarity, and documentation that moves at product speed.",
   },
   {
     heading: "Why This Matters",
     bullets: [
-      "Faster access to relevant information across Search, Browse, and APIs",
-      "Quicker resolution of customer and partner queries",
-      "Reduced dependency on manual explanations from internal teams",
-      "Documentation that stays current as the product evolves",
+      "Faster access to Search, Browse, and API guidance",
+      "Higher self-serve success for customers and partners",
+      "Fewer repeat questions for Sales, CS, and Support",
+      "Documentation that evolves in lockstep with the product",
     ],
   },
   {
     heading: "What We Shipped",
     bullets: [
       "A fully redesigned Unbxd documentation website",
-      "Clear information architecture aligned to user intent",
-      "Improved navigation and discoverability across modules",
-      "A flexible platform that allows continuous updates and fixes",
+      "Intent-led information architecture aligned to user workflows",
+      "Clear module-level navigation and discoverability",
+      "A flexible platform that supports continuous updates",
     ],
   },
   {
     heading: "Business Impact",
     content:
-      "The new Unbxd documentation site removed content bottlenecks, improved self-serve success, and enabled the team to respond to customer questions faster—strengthening trust and reducing friction across the Unbxd ecosystem.",
+      "The revamp removed content bottlenecks, reduced dependency on manual walkthroughs, and strengthened customer trust—turning documentation into a reliable extension of the Unbxd product experience.",
   },
   {
     heading: "What's Next",
     content:
-      "With the foundation in place, the team will continue enhancing Unbxd documentation with deeper guides, expanded APIs, and tighter alignment with product updates—ensuring the site scales alongside Unbxd's roadmap.",
+      "With the foundation in place, Unbxd documentation will continue to expand with deeper guides, richer API references, and tighter alignment with product releases—ensuring it scales with Unbxd's roadmap.",
+  },
+  {
+    heading: "Built to scale. Built for customers. Built to last.",
+    isClosingLine: true,
   },
 ];
 
@@ -778,11 +794,22 @@ export function HeroProducts() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
+                    className={section.isClosingLine ? "mt-8 pt-6 border-t border-cream-100/10" : ""}
                   >
-                    {section.heading && (
+                    {section.heading && !section.isClosingLine && (
                       <h4 className="text-xl font-bold text-cream-100 mb-3">
                         {section.heading}
                       </h4>
+                    )}
+                    {section.isClosingLine && section.heading && (
+                      <p className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-accent text-center">
+                        {section.heading}
+                      </p>
+                    )}
+                    {section.subheading && (
+                      <p className="text-cream-300/60 text-sm mb-6">
+                        {section.subheading}
+                      </p>
                     )}
                     {section.content && (
                       <p className="text-cream-300/80 leading-relaxed mb-4">
