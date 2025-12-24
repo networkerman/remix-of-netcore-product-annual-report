@@ -14,7 +14,7 @@ import hardikyaImg from "@/assets/team/interns/hardikya.png";
 // Leader images
 import yogeshImg from "@/assets/team/leaders/yogesh.png";
 import satishImg from "@/assets/team/leaders/satish.png";
-import deepeshImg from "@/assets/team/leaders/deepesh.png";
+
 import jibranImg from "@/assets/team/leaders/jibran.png";
 import kiritImg from "@/assets/team/leaders/kirit.png";
 
@@ -86,28 +86,29 @@ const productLeaders: ProductLeader[] = [
     title: "AVP - Product Management",
     image: satishImg,
     emoji: "🚀",
-    headline: "[Placeholder Headline]",
-    teaserQuote: "[Placeholder teaser quote]",
+    headline: "Building Depth Over Breadth",
+    teaserQuote: "The mistake isn't choosing short-term—it's pretending it doesn't have long-term cost.",
     questions: [
-      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
-      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
-      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
-      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
-    ],
-  },
-  {
-    id: "deepesh",
-    name: "Deepesh",
-    title: "AVP - Product Operations",
-    image: deepeshImg,
-    emoji: "🔄",
-    headline: "[Placeholder Headline]",
-    teaserQuote: "[Placeholder teaser quote]",
-    questions: [
-      { question: "[Placeholder Question 1]", answer: "[Placeholder Answer 1]" },
-      { question: "[Placeholder Question 2]", answer: "[Placeholder Answer 2]" },
-      { question: "[Placeholder Question 3]", answer: "[Placeholder Answer 3]" },
-      { question: "[Placeholder Question 4]", answer: "[Placeholder Answer 4]" },
+      {
+        question: "What was your biggest focus area in 2025?",
+        answer: "My primary focus was building depth over breadth—strengthening core capabilities like journey orchestration, experimentation, and app personalization so they scale reliably for large customers. Instead of chasing many features, the goal was to make fewer things truly robust, usable, and measurable.",
+      },
+      {
+        question: "What was the toughest stakeholder challenge you handled in 2025?",
+        answer: "Balancing speed with correctness across sales, customers, and engineering. Everyone wanted fast outcomes—but aligning on why we're building something, not just when, was key to earning trust on all sides.",
+      },
+      {
+        question: "How do you stay calm when things go wrong?",
+        answer: "By focusing on controllables. When issues arise, I prioritize bringing structure to chaos—defining the problem clearly, assigning ownership, and communicating transparently. Calm is less about personality and more about process.",
+      },
+      {
+        question: "How did you manage trade-offs between short-term wins and long-term vision?",
+        answer: "By explicitly labeling them. Once trade-offs are visible and acknowledged, teams align better. The mistake isn't choosing short-term—it's pretending it doesn't have long-term cost.",
+      },
+      {
+        question: "What was the most underestimated part of product leadership in 2025?",
+        answer: "Communication. Not just updates—but context setting. Repeating the 'why' consistently saved far more time than writing perfect specs.",
+      },
     ],
   },
   {
