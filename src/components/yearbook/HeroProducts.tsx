@@ -19,6 +19,7 @@ interface HeroStorySection {
   bullets?: string[];
   isClosingLine?: boolean;
   metrics?: { icon: string; number: string; label: string[] }[];
+  highlight?: boolean;
 }
 
 interface HeroItem {
@@ -29,16 +30,21 @@ interface HeroItem {
   heroLabel?: string;
   story?: HeroStorySection[];
   tags?: ProductTag[];
+  displayTag?: string;
 }
 
 const documentationHeroStory: HeroStorySection[] = [
   {
     metrics: [
-      { icon: "Code", number: "2", label: ["Email APIs launched with", "interactive documentation"] },
-      { icon: "Play", number: "Live", label: ["API requests executed", "directly from docs"] },
-      { icon: "Clock", number: "Faster", label: ["Time-to-first-success", "for developers"] },
+      { icon: "Code", number: "Launch", label: ["Launch CE v5 or CPaaS V6", "email API from docs."] },
+      { icon: "Play", number: "Live", label: ["Test before you implement"] },
+      { icon: "Clock", number: "Faster", label: ["Time to test first"] },
       { icon: "Shield", number: "Self-serve", label: ["Onboarding for testing,", "validation, and go-live"] },
     ],
+  },
+  {
+    content: "API documentation for CPaaS: WhatsApp, RCS, and SMS is coming soon.",
+    highlight: true,
   },
   {
     heading: "Interactive API Documentation",
@@ -475,7 +481,8 @@ const heroSections: {
       {
         title: "Docs That Execute, Not Just Explain",
         month: "2025",
-        heroLabel: "Documentation Hero",
+        heroLabel: "Developer Dashboard",
+        displayTag: "API-fication",
         why: "Interactive API documentation that lets developers test endpoints without leaving the page.",
         links: [
           { label: "Quick Start Guide", url: "https://developer.netcorecloud.com/reference/getting-started" },
@@ -698,6 +705,10 @@ export function HeroProducts() {
                                       {tag}
                                     </span>
                                   ))
+                                ) : hero.displayTag ? (
+                                  <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-semibold">
+                                    {hero.displayTag}
+                                  </span>
                                 ) : hero.heroLabel ? (
                                   <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${section.gradient} text-navy-900 text-xs font-semibold`}>
                                     <BookOpen size={12} />
@@ -894,7 +905,11 @@ export function HeroProducts() {
                         </p>
                       )}
                       {section.content && (
-                        <p className="text-cream-300/80 leading-relaxed mb-4">
+                        <p className={`leading-relaxed mb-4 ${
+                          section.highlight 
+                            ? "text-teal-400 font-semibold italic" 
+                            : "text-cream-300/80"
+                        }`}>
                           {section.content}
                         </p>
                       )}
