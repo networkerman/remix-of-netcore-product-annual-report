@@ -788,25 +788,6 @@ export function HeroProducts() {
             ))}
         </div>
 
-        {/* Honorable Mentions */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
-          className="mt-20 text-center"
-        >
-          <p className="text-cream-400 mb-6">And countless other projects that made us proud...</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {["Analytics v3", "WhatsApp Editor", "Design Tokens", "API Docs 2.0", "Mobile SDK", "Reporting Engine"].map((item, index) => (
-              <span
-                key={index}
-                className="px-4 py-2 rounded-full bg-cream-100/5 border border-cream-100/10 text-cream-300 text-sm"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
 
       {/* Full Story Dialog */}
