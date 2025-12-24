@@ -54,7 +54,7 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   // Product Team (in specified order)
   { id: 1, name: "Kedar", role: "Chief Product Officer", team: "Product", funFact: "Chief Sense-Maker", outsideWork: "Trekking enthusiast", image: kedarImg },
-  { id: 2, name: "Yogesh", role: "VP Product Manager", team: "Product", funFact: "Ships features at 2am", outsideWork: "Marathon runner", image: yogeshImg },
+  { id: 2, name: "Yogesh", role: "Vice President- Product", team: "Product", funFact: "Ships features at 2am", outsideWork: "Marathon runner", image: yogeshImg },
   { id: 3, name: "Satish", role: "AVP Product Management", team: "Product", funFact: "Full-Time Firefighter", outsideWork: "Tea connoisseur", image: satishImg },
   { id: 4, name: "Ravi", role: "Director, Business Analytics & Product", team: "Product", funFact: "Has 47 Notion templates", outsideWork: "Weekend photographer", image: raviImg },
   { id: 5, name: "Jibran", role: "AVP Product Management", team: "Product", funFact: "Chief Chaos-to-Clarity Officer", outsideWork: "Excel wizard", image: jibranImg },
