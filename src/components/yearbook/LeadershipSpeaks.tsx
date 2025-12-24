@@ -337,7 +337,7 @@ function TestimonialCard({
 export function LeadershipSpeaks() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [isAllExpanded, setIsAllExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const autoplayPlugin = useRef(
@@ -349,19 +349,19 @@ export function LeadershipSpeaks() {
     [autoplayPlugin.current]
   );
 
-  // Pause autoplay when card is expanded
+  // Pause autoplay when cards are expanded
   useEffect(() => {
     if (!emblaApi) return;
     
-    if (expandedId !== null) {
+    if (isAllExpanded) {
       autoplayPlugin.current.stop();
     } else if (!isHovered) {
       autoplayPlugin.current.play();
     }
-  }, [expandedId, isHovered, emblaApi]);
+  }, [isAllExpanded, isHovered, emblaApi]);
 
-  const handleToggleExpand = useCallback((id: number) => {
-    setExpandedId((prev) => (prev === id ? null : id));
+  const handleToggleExpand = useCallback(() => {
+    setIsAllExpanded((prev) => !prev);
   }, []);
 
   const handleMouseEnter = useCallback(() => {
@@ -370,10 +370,10 @@ export function LeadershipSpeaks() {
 
   const handleMouseLeave = useCallback(() => {
     setIsHovered(false);
-    if (expandedId === null) {
+    if (!isAllExpanded) {
       autoplayPlugin.current.play();
     }
-  }, [expandedId]);
+  }, [isAllExpanded]);
 
   return (
     <section
@@ -419,8 +419,8 @@ export function LeadershipSpeaks() {
                 <TestimonialCard
                   testimonial={testimonial}
                   isActive={true}
-                  isExpanded={expandedId === testimonial.id}
-                  onToggleExpand={() => handleToggleExpand(testimonial.id)}
+                  isExpanded={isAllExpanded}
+                  onToggleExpand={handleToggleExpand}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 />
