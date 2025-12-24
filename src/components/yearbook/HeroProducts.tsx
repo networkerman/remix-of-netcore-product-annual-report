@@ -487,10 +487,10 @@ const heroSections: {
         ],
       },
       {
-        title: "Hero Video",
+        title: "Hero Videos",
         month: "2025",
-        heroLabel: "Video Tutorials",
-        why: "Hero documents that close key knowledge gaps across setup, usage, and troubleshooting.",
+        heroLabel: "From Clicks to Clarity",
+        why: "Short, task-focused videos break down complex workflows into clear, actionable steps, helping users onboard faster, configure features correctly, and move from learning to execution with confidence.",
         links: [
           { label: "App Content Personalization Video", url: "https://cedocs.netcorecloud.com/docs/app-content-personalization#video-tutorial" },
           { label: "Product Picker Video", url: "https://cedocs.netcorecloud.com/docs/addressable-anonymous" },
