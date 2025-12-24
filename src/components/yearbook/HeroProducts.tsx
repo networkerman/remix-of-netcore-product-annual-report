@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Award, ExternalLink, Star, ChevronLeft, ChevronRight, BookOpen, Eye } from "lucide-react";
+import { Award, ExternalLink, Star, ChevronLeft, ChevronRight, BookOpen, Eye, Code, Play, Clock, Shield } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -18,6 +18,7 @@ interface HeroStorySection {
   content?: string;
   bullets?: string[];
   isClosingLine?: boolean;
+  metrics?: { icon: string; number: string; label: string[] }[];
 }
 
 interface HeroItem {
@@ -32,41 +33,70 @@ interface HeroItem {
 
 const documentationHeroStory: HeroStorySection[] = [
   {
-    heading: "Interactive API Documentation That Developers Can Use, Not Just Read",
+    metrics: [
+      { icon: "Code", number: "2", label: ["Email APIs launched with", "interactive documentation"] },
+      { icon: "Play", number: "Live", label: ["API requests executed", "directly from docs"] },
+      { icon: "Clock", number: "Faster", label: ["Time-to-first-success", "for developers"] },
+      { icon: "Shield", number: "Self-serve", label: ["Onboarding for testing,", "validation, and go-live"] },
+    ],
+  },
+  {
+    heading: "Interactive API Documentation",
+    subheading: "Built for Developers to Use, Not Just Read",
+  },
+  {
+    heading: "The Problem We Fixed",
     content:
-      "This year, the Documentation team redefined how developers interact with Netcore APIs by launching interactive API documentation for Email V5 and Email V6.",
+      "Traditional API documentation forced developers to jump between tools—read specs in one place, test requests elsewhere, and debug responses manually. This slowed integrations and increased dependency on Support and Solutions teams.",
+  },
+  {
+    heading: "What We Changed",
+    content:
+      "We introduced fully interactive API documentation for Email V5 and Email V6, transforming static references into a live development workspace.",
+  },
+  {
+    content: "Developers can now:",
+    bullets: [
+      "Make real API calls directly from the docs",
+      "Validate requests in real time",
+      "Instantly view actual responses",
+    ],
   },
   {
     content:
-      "Instead of static references, developers can now make live API calls directly from the documentation, validate requests in real time, and instantly view responses—without switching tools or writing boilerplate code elsewhere. This shift transformed our docs from a passive learning resource into an active development workspace.",
+      "No context switching. No boilerplate setup. Just faster progress.",
   },
   {
     heading: "Why This Matters",
     bullets: [
-      "Reduced time-to-first-success for developers integrating Email APIs",
-      "Fewer back-and-forths with support and solution teams",
-      "Higher confidence during integration, testing, and go-live",
-      "Documentation now acts as a self-serve onboarding layer for developers",
+      "Reduced time-to-first-success for Email API integrations",
+      "Fewer back-and-forths with Support and Solutions teams",
+      "Higher confidence during testing and go-live",
+      "Documentation becomes a self-serve onboarding layer",
     ],
   },
   {
     heading: "What We Shipped",
     bullets: [
-      "Fully interactive API docs for Email V5 and Email V6",
+      "Interactive API documentation for Email V5 and Email V6",
       "Live request execution with real responses",
-      "Clear request/response visibility for faster debugging",
-      "Seamless experience aligned with real production workflows",
+      "Clear request and response visibility for faster debugging",
+      "Flows aligned with real production workflows",
     ],
   },
   {
     heading: "Business Impact",
     content:
-      "This initiative directly supports faster adoption, better developer experience, and stronger platform trust—turning documentation into a growth enabler rather than a support dependency.",
+      "Interactive API docs improved developer experience, accelerated adoption, and strengthened platform trust—positioning documentation as a growth enabler rather than a support dependency.",
   },
   {
     heading: "What's Next",
     content:
-      "Building on this success, interactive API documentation for WhatsApp, RCS, and SMS is already in progress and planned for the next quarter, extending the same developer-first experience across Netcore's CPaaS stack.",
+      "Interactive API documentation for WhatsApp, RCS, and SMS is already in progress, extending the same developer-first experience across Netcore's CPaaS platform.",
+  },
+  {
+    heading: "From reference docs to real development workflows.",
+    isClosingLine: true,
   },
 ];
 
@@ -444,7 +474,7 @@ const heroSections: {
     heroes: [
       {
         title: "Docs That Execute, Not Just Explain",
-        month: "July 2025",
+        month: "2025",
         heroLabel: "Documentation Hero",
         why: "Interactive API documentation that lets developers test endpoints without leaving the page.",
         links: [
@@ -788,49 +818,87 @@ export function HeroProducts() {
           {selectedHero?.story && (
             <div className="pt-6 border-t border-cream-100/10">
               <div className="space-y-6">
-                {selectedHero.story.map((section, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.4 }}
-                    className={section.isClosingLine ? "mt-8 pt-6 border-t border-cream-100/10" : ""}
-                  >
-                    {section.heading && !section.isClosingLine && (
-                      <h4 className="text-xl font-bold text-cream-100 mb-3">
-                        {section.heading}
-                      </h4>
-                    )}
-                    {section.isClosingLine && section.heading && (
-                      <p className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-accent text-center">
-                        {section.heading}
-                      </p>
-                    )}
-                    {section.subheading && (
-                      <p className="text-cream-300/60 text-sm mb-6">
-                        {section.subheading}
-                      </p>
-                    )}
-                    {section.content && (
-                      <p className="text-cream-300/80 leading-relaxed mb-4">
-                        {section.content}
-                      </p>
-                    )}
-                    {section.bullets && section.bullets.length > 0 && (
-                      <ul className="space-y-2">
-                        {section.bullets.map((bullet, bulletIndex) => (
-                          <li
-                            key={bulletIndex}
-                            className="flex items-start gap-3 text-cream-300/80"
-                          >
-                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0" />
-                            <span className="leading-relaxed">{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </motion.div>
-                ))}
+                {selectedHero.story.map((section, index) => {
+                  const iconMap: Record<string, React.ElementType> = {
+                    Code: Code,
+                    Play: Play,
+                    Clock: Clock,
+                    Shield: Shield,
+                  };
+                  
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.4 }}
+                      className={section.isClosingLine ? "mt-8 pt-6 border-t border-cream-100/10" : ""}
+                    >
+                      {/* Metrics Strip */}
+                      {section.metrics && (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-6 bg-gradient-to-br from-teal-900/20 to-accent/10 rounded-xl border border-cream-100/10">
+                          {section.metrics.map((metric, metricIndex) => {
+                            const IconComponent = iconMap[metric.icon];
+                            return (
+                              <div
+                                key={metricIndex}
+                                className={`flex flex-col items-center text-center ${
+                                  metricIndex < section.metrics!.length - 1 ? "md:border-r md:border-cream-100/10" : ""
+                                }`}
+                              >
+                                {IconComponent && (
+                                  <IconComponent className="w-6 h-6 text-teal-400 mb-2" />
+                                )}
+                                <span className="text-2xl md:text-3xl font-bold text-cream-100 mb-1">
+                                  {metric.number}
+                                </span>
+                                <div className="text-xs text-cream-300/60 leading-tight">
+                                  {metric.label.map((line, lineIndex) => (
+                                    <div key={lineIndex}>{line}</div>
+                                  ))}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                      
+                      {section.heading && !section.isClosingLine && (
+                        <h4 className="text-xl font-bold text-cream-100 mb-3">
+                          {section.heading}
+                        </h4>
+                      )}
+                      {section.isClosingLine && section.heading && (
+                        <p className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-accent text-center">
+                          {section.heading}
+                        </p>
+                      )}
+                      {section.subheading && (
+                        <p className="text-cream-300/60 text-sm mb-6">
+                          {section.subheading}
+                        </p>
+                      )}
+                      {section.content && (
+                        <p className="text-cream-300/80 leading-relaxed mb-4">
+                          {section.content}
+                        </p>
+                      )}
+                      {section.bullets && section.bullets.length > 0 && (
+                        <ul className="space-y-2">
+                          {section.bullets.map((bullet, bulletIndex) => (
+                            <li
+                              key={bulletIndex}
+                              className="flex items-start gap-3 text-cream-300/80"
+                            >
+                              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0" />
+                              <span className="leading-relaxed">{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           )}
