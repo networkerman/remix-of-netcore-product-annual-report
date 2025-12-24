@@ -353,6 +353,8 @@ const heroSections: {
         why: "Makes product-led emails easier and safer to run by enabling static and real-time product insertion—ensuring up-to-date recommendations, preventing out-of-stock errors, and driving more relevant engagement across campaigns and journeys.",
         links: [
           { label: "Release Notes", url: "https://updates.netcorecloud.com/changelog/rocket-big-news-dynamic-and-static-product-picker-now-available" },
+          { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/product-picker" },
+          { label: "Video", url: "https://cedocs.netcorecloud.com/docs/product-picker" },
         ],
         tags: ["Netcore CE"],
       },
@@ -361,7 +363,9 @@ const heroSections: {
         month: "2025",
         why: "Gives data teams full control over event-level data by exporting clean, transformed, and scheduled datasets to S3—enabling deeper analysis, compliance, and seamless integration with downstream analytics and CRM systems.",
         links: [
-          { label: "Documentation", url: "#" },
+          { label: "Release Notes", url: "https://updates.netcorecloud.com/changelog/egress-data-transfer" },
+          { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/egress-framework" },
+          { label: "FAQs", url: "https://cedocs.netcorecloud.com/docs/reports-troubleshooting-faqs" },
         ],
         tags: ["Netcore CE"],
       },
@@ -370,7 +374,8 @@ const heroSections: {
         month: "2025",
         why: "Speeds up audience creation by letting teams reuse and refine existing segments—ensuring faster setup, better control, and more accurate targeting for campaigns.",
         links: [
-          { label: "Documentation", url: "#" },
+          { label: "Release Notes", url: "https://updates.netcorecloud.com/changelog/segment-on-segment-build-new-audiences-from-existing-segments-beta" },
+          { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/segment-inclusion-exclusion" },
         ],
         tags: ["Netcore CE"],
       },
@@ -379,7 +384,7 @@ const heroSections: {
         month: "2025",
         why: "Improves WhatsApp message reliability by retrying failed deliveries—helping teams reduce drop-offs, maintain reach during transient failures, and control behavior through backend toggles when needed.",
         links: [
-          { label: "Documentation", url: "#" },
+          { label: "Documentation", url: "https://cedocs.netcorecloud.com/docs/whatsapp-retry-logic" },
         ],
         tags: ["CPaaS"],
       },
