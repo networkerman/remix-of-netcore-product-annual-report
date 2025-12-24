@@ -481,7 +481,7 @@ const heroSections: {
       {
         title: "Developer Dashboard",
         month: "2025",
-        heroLabel: "Developer Dashboard",
+        heroLabel: "API-fication",
         displayTag: "API-fication",
         why: "Interactive API documentation that lets developers test endpoints without leaving the page.",
         links: [
