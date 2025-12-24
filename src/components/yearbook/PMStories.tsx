@@ -9,6 +9,7 @@ import parthImg from "@/assets/team/interns/parth.png";
 import dhairyaImg from "@/assets/team/interns/dhairya.png";
 import kushImg from "@/assets/team/interns/kush.png";
 import tanishqImg from "@/assets/team/interns/tanishq.png";
+// Hardikya placeholder - will use initial avatar
 
 // Leader images
 import yogeshImg from "@/assets/team/leaders/yogesh.png";
@@ -179,12 +180,25 @@ const productLeaders: ProductLeader[] = [
 
 interface InternCard {
   name: string;
-  image: string;
+  image: string | null;
   persona: string;
-  realityCheck: string;
-  whatBroke: string;
-  whatChanged: { then: string; now: string };
-  shippedLearning: string;
+  role?: string;
+  part1: {
+    ohShitMoment: string;
+    learningCurve: string;
+    firstImpression: string;
+    currentImpression: string;
+  };
+  part2: {
+    jiraComparison: string;
+    currentPower?: string;
+    mythBusted: string;
+  };
+  part3: {
+    internSong: string;
+    apmSong: string;
+    cultureEmojis: string;
+  };
 }
 
 const internCards: InternCard[] = [
@@ -192,37 +206,103 @@ const internCards: InternCard[] = [
     name: "Parth",
     image: parthImg,
     persona: "Tech Decoder",
-    realityCheck: "First grooming call felt like a foreign language class—drowning in acronyms like SDKs, RAGs, and CTRs.",
-    whatBroke: "Confused 'cool tech' with 'valuable product.' Learned that novelty alone doesn't solve user problems.",
-    whatChanged: { then: "Nodding along, hoping no one asks", now: "Actually following the conversation" },
-    shippedLearning: "Technical fluency comes from asking 'dumb' questions early and often.",
+    part1: {
+      ohShitMoment: "My first few grooming calls — first with Jobin & Satish, and earlier with my then manager and devs — felt like I'd accidentally joined a foreign language class. Words like Flutter, SDKs, RAGs, pipelines, and events were being thrown around like everyone was born knowing them. My genuine thought was, \"I am wildly underqualified for this.\" But constant questioning, reading, and shameless curiosity slowly turned panic into clarity — and today, those once-scary terms are working concepts I throw around like muscle memory.",
+      learningCurve: "If my internship were an AI model training phase, the biggest \"error\" I had to minimize was falling in love with ideas instead of problems. Early on, I assumed that if a feature sounded cool or intelligent, it must be worth building. Over time, I learned that novelty isn't a problem statement. Equally important was realizing that stakeholder expectations don't always match actual user behavior. Minimizing the gap between what people say they want and what they truly use—and making rational calls based on that insight, even when it meant dropping ideas I liked—became the real learning curve.",
+      firstImpression: "Super intense, extremely smart, always-on-top-of-everything product nerds who somehow already had all the answers.",
+      currentImpression: "Still super smart—but just as human. Ideas don't arrive fully formed; they get shaped through iterations, debates, and a lot of \"this might not work.\" Also confirmed they're definitely not nerds—that myth was busted very quickly after a few off-work hangouts 🍻",
+    },
+    part2: {
+      jiraComparison: "You handle the Agentic AI stack now.",
+      currentPower: "How would you explain your current power to your grandmother?",
+      mythBusted: "One common myth about AI Product Management that you've realized is totally false.",
+    },
+    part3: {
+      internSong: "Your \"Intern\" song/vibe",
+      apmSong: "Your \"APM\" song/vibe",
+      cultureEmojis: "🚀🧠💡",
+    },
   },
   {
     name: "Dhairya",
     image: dhairyaImg,
     persona: "Design System Rebel",
-    realityCheck: "Terrified of being 'The Fire Guy'—the one who triggers production alarms while everyone's asleep.",
-    whatBroke: "Went rogue on the Design System. Built custom components instead of reusing existing ones.",
-    whatChanged: { then: "Panic at every deploy", now: "Confident with the release checklist" },
-    shippedLearning: "Consistency beats creativity when building at scale.",
+    part1: {
+      ohShitMoment: "I was shit scared of missing out on deadlines once I knew how many stakeholders are involved. I was also scared of doing something incredibly stupid - like triggering the fire alarm for example (which totally didn't happen btw). I didn't want to be called the fire guy.",
+      learningCurve: "I kept adding new design components and deviated from our existing design system. I was nightmare for my manager for doing this.",
+      firstImpression: "I thought these guys are pretty cool.",
+      currentImpression: "Still pretty cool.",
+    },
+    part2: {
+      jiraComparison: "\"Wtf is going on???!!!!\" to \"Oh ok. Cool\"",
+      mythBusted: "I want to laugh when people say \"Figma hi to banana hai. Shouldn't take much time no?\"",
+    },
+    part3: {
+      internSong: "🔥",
+      apmSong: "😎",
+      cultureEmojis: "🎨✨🔥",
+    },
   },
   {
     name: "Kush",
     image: kushImg,
     persona: "Strategic Nodder",
-    realityCheck: "Survived first grooming with 'strategic nodding' and praying no one asked follow-up questions.",
-    whatBroke: "Assumed silence meant agreement. Learned 'I think we're aligned' often means the opposite.",
-    whatChanged: { then: "Hoping to blend in", now: "Speaking up with confidence" },
-    shippedLearning: "Alignment requires active confirmation, not passive assumption.",
+    part1: {
+      ohShitMoment: "As an intern, I was absolutely terrified of joining client calls without a manager present — one wrong sentence felt like it could end with, \"Okay, let's pause this partnership.\" My first grooming session was equally stressful; I spent most of it decoding acronyms and nodding strategically while hoping no one asked me a follow-up question.",
+      learningCurve: "The biggest error I had to minimize was assuming instead of confirming. I learned the hard way that \"I think everyone is aligned\" usually means \"no one is aligned.\" Clear communication, written context, and repeating the same thing in three different ways turned out to be far more effective than mind-reading.",
+      firstImpression: "A terrifyingly smart group of ultra-techy product owners, constantly busy, casually throwing around jargon while managing a massive, complicated product universe.",
+      currentImpression: "A group of super helpful, fun people who deeply care about customer journeys, to the point where a failed checkout feels less like a metric drop and more like a personal betrayal.",
+    },
+    part2: {
+      jiraComparison: "From opening Jira and questioning my life choices, to actually understanding tickets, asking better questions, and occasionally closing them without breaking anything.",
+      mythBusted: "That Product Managers write a lot of code or know everything — in reality, we mostly survive by asking uncomfortable questions, Googling efficiently, and pretending to be calm while making decisions with 70% information.",
+    },
+    part3: {
+      internSong: "Khoon Choos Le, Mondays stay innocent!",
+      apmSong: "Safarnama",
+      cultureEmojis: "🎯🤝🚀",
+    },
   },
   {
     name: "Tanishq",
     image: tanishqImg,
     persona: "Happy-Path Hunter",
-    realityCheck: "Leading grooming sessions in week one while barely understanding what we were building.",
-    whatBroke: "Designed only for the 'happy path.' Learned that edge cases devour best-case scenarios.",
-    whatChanged: { then: "Planning for success only", now: "Designing for failure too" },
-    shippedLearning: "Great products handle the unexpected as gracefully as the expected.",
+    part1: {
+      ohShitMoment: "I was terrified of leading groomings. For the first two weeks, I was honestly just trying to figure out what was even happening in those calls.",
+      learningCurve: "Realizing the importance of covering all possible use cases before releasing a project, not just the happy path.",
+      firstImpression: "Honestly, both are the same — fun, high-energy people with great communication skills who also know their stuff.",
+      currentImpression: "Fun, high-energy people with great communication skills who also know their stuff.",
+    },
+    part2: {
+      jiraComparison: "Day 1: Nervous to share ideas in meetings, Jira tickets required multiple iterations, and clarity came only after speaking with several stakeholders. Now: Much more confident in voicing ideas (at-least in most meetings) and thinking through impact areas before grooming and creating Jira tickets.",
+      mythBusted: "PMs don't just \"have ideas\" — execution, alignment, and trade-offs make up most of the job.",
+    },
+    part3: {
+      internSong: "Apna Time Aayega – Gully Boy",
+      apmSong: "Zinda – Bhaag Milkha Bhaag",
+      cultureEmojis: "💪🎯🔥",
+    },
+  },
+  {
+    name: "Hardikya",
+    image: null,
+    persona: "UX Guardian",
+    role: "Product Designer",
+    part1: {
+      ohShitMoment: "I was most terrified of overlooking a discrepancy during the UX verification process. I wanted to make sure everything was as close to the design as possible, so the thought of a UI inconsistency slipping through to production was my biggest fear.",
+      learningCurve: "My biggest challenge was minimizing design inconsistency. I had to learn to stop 'reinventing the wheel' and instead master the existing component library to ensure every new feature felt like a native part of the product.",
+      firstImpression: "The team seemed cool.",
+      currentImpression: "Actually the team is pretty cool.",
+    },
+    part2: {
+      jiraComparison: "The work evolved over time. In the initial days, it was more about understanding the product and the existing designs; now, it involves connecting with product and business stakeholders, understanding requirements, and crafting the UX.",
+      mythBusted: "The only task is to understanding requirements and creating the designs in Figma.",
+    },
+    part3: {
+      internSong: "🎨",
+      apmSong: "✨",
+      cultureEmojis: "🎨🤝✨",
+    },
   },
 ];
 
@@ -492,16 +572,22 @@ export function PMStories() {
                   className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden 
                     border border-cream-100/10 transition-all duration-300"
                 >
-                  {/* Full-bleed image */}
-                  <img 
-                    src={intern.image} 
-                    alt={intern.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.style.display = 'none';
-                    }}
-                  />
+                  {/* Full-bleed image or initial fallback */}
+                  {intern.image ? (
+                    <img 
+                      src={intern.image} 
+                      alt={intern.name}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center">
+                      <span className="text-6xl font-bold text-cream-100/80">{intern.name.charAt(0)}</span>
+                    </div>
+                  )}
                   
                   {/* Fallback background for missing image */}
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 -z-10" />
@@ -510,6 +596,9 @@ export function PMStories() {
                   <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
                     <h4 className="font-bold text-lg text-cream-100 mb-1">{intern.name}</h4>
                     <p className="text-teal-400/90 text-sm font-medium">{intern.persona}</p>
+                    {intern.role && (
+                      <p className="text-cream-300/60 text-xs">{intern.role}</p>
+                    )}
                   </div>
 
                   {/* Hover CTA Overlay */}
@@ -535,7 +624,7 @@ export function PMStories() {
             </DialogTitle>
             
             {selectedIntern && (
-              <div className="relative">
+              <div className="relative max-h-[80vh] overflow-y-auto">
                 {/* Close button */}
                 <button
                   onClick={() => setSelectedIntern(null)}
@@ -547,71 +636,119 @@ export function PMStories() {
                 {/* Header with image */}
                 <div className="p-6 pb-4 border-b border-cream-100/10 bg-gradient-to-br from-navy-700/50 to-navy-800">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-500/40 flex-shrink-0">
-                      <img 
-                        src={selectedIntern.image} 
-                        alt={selectedIntern.name}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-500/40 flex-shrink-0 bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center">
+                      {selectedIntern.image ? (
+                        <img 
+                          src={selectedIntern.image} 
+                          alt={selectedIntern.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <span className="text-2xl font-bold text-cream-100">{selectedIntern.name.charAt(0)}</span>
+                      )}
                     </div>
                     <div>
                       <h3 className="font-bold text-xl text-cream-100">{selectedIntern.name}</h3>
                       <p className="text-sm text-teal-400 font-medium">{selectedIntern.persona}</p>
+                      {selectedIntern.role && (
+                        <p className="text-xs text-cream-300/60">{selectedIntern.role}</p>
+                      )}
                     </div>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-5">
-                  {/* Reality Check */}
+                <div className="p-6 space-y-6">
+                  {/* Part 1: The Intern Days */}
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <AlertCircle className="text-coral-400" size={16} />
-                      <span className="text-sm font-semibold text-coral-400 uppercase tracking-wide">Reality Check</span>
-                    </div>
-                    <p className="text-cream-300/80 text-sm leading-relaxed">
-                      {selectedIntern.realityCheck}
-                    </p>
-                  </div>
-
-                  {/* What Broke */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Wrench className="text-amber-400" size={16} />
-                      <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">What Broke</span>
-                    </div>
-                    <p className="text-cream-300/80 text-sm leading-relaxed">
-                      {selectedIntern.whatBroke}
-                    </p>
-                  </div>
-
-                  {/* What Changed */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp className="text-teal-400" size={16} />
-                      <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">What Changed</span>
-                    </div>
-                    <div className="text-cream-300/80 text-sm leading-relaxed">
-                      <div className="flex items-start gap-2 mb-1">
-                        <span className="text-cream-400/60 text-xs uppercase mt-0.5">Then:</span>
-                        <span>{selectedIntern.whatChanged.then}</span>
+                    <h4 className="text-lg font-bold text-coral-400 mb-4">Part 1: The Intern Days</h4>
+                    
+                    {/* Oh Sh*t Moment */}
+                    <div className="mb-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <AlertCircle className="text-coral-400" size={16} />
+                        <span className="text-sm font-semibold text-coral-400 uppercase tracking-wide">The "Oh S#t" Moment</span>
                       </div>
-                      <div className="flex items-start gap-2">
-                        <span className="text-cream-400/60 text-xs uppercase mt-0.5">Now:</span>
-                        <span className="text-cream-100">{selectedIntern.whatChanged.now}</span>
+                      <p className="text-cream-300/80 text-sm leading-relaxed">
+                        {selectedIntern.part1.ohShitMoment}
+                      </p>
+                    </div>
+
+                    {/* Learning Curve */}
+                    <div className="mb-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <TrendingUp className="text-amber-400" size={16} />
+                        <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">The Learning Curve</span>
+                      </div>
+                      <p className="text-cream-300/80 text-sm leading-relaxed">
+                        {selectedIntern.part1.learningCurve}
+                      </p>
+                    </div>
+
+                    {/* Impressions */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Lightbulb className="text-teal-400" size={16} />
+                        <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">First Impression vs Reality</span>
+                      </div>
+                      <div className="text-cream-300/80 text-sm leading-relaxed space-y-2">
+                        <div>
+                          <span className="text-cream-400/60 text-xs uppercase">First impression: </span>
+                          <span>{selectedIntern.part1.firstImpression}</span>
+                        </div>
+                        <div>
+                          <span className="text-cream-400/60 text-xs uppercase">Reality: </span>
+                          <span className="text-cream-100">{selectedIntern.part1.currentImpression}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Shipped Learning */}
+                  {/* Part 2: Full-Time */}
                   <div className="pt-4 border-t border-cream-100/10">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Lightbulb className="text-emerald-400" size={16} />
-                      <span className="text-sm font-semibold text-emerald-400 uppercase tracking-wide">Shipped Learning</span>
+                    <h4 className="text-lg font-bold text-teal-400 mb-4">Part 2: Full-Time</h4>
+                    
+                    {/* Jira Comparison */}
+                    <div className="mb-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Wrench className="text-teal-400" size={16} />
+                        <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">Day 1 vs Now</span>
+                      </div>
+                      <p className="text-cream-300/80 text-sm leading-relaxed">
+                        {selectedIntern.part2.jiraComparison}
+                      </p>
                     </div>
-                    <p className="text-cream-200/90 text-sm leading-relaxed italic pl-4 border-l-2 border-emerald-400/30">
-                      "{selectedIntern.shippedLearning}"
-                    </p>
+
+                    {/* Myth Busted */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <AlertCircle className="text-amber-400" size={16} />
+                        <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">Myth Busted</span>
+                      </div>
+                      <p className="text-cream-300/80 text-sm leading-relaxed">
+                        {selectedIntern.part2.mythBusted}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Part 3: Rapid Fire */}
+                  <div className="pt-4 border-t border-cream-100/10">
+                    <h4 className="text-lg font-bold text-emerald-400 mb-4">Part 3: Rapid Fire</h4>
+                    
+                    <div className="grid grid-cols-1 gap-3">
+                      <div className="flex items-center gap-3">
+                        <span className="text-cream-400/60 text-xs uppercase w-24">Intern Vibe:</span>
+                        <span className="text-cream-100 text-sm">{selectedIntern.part3.internSong}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-cream-400/60 text-xs uppercase w-24">APM Vibe:</span>
+                        <span className="text-cream-100 text-sm">{selectedIntern.part3.apmSong}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="text-cream-400/60 text-xs uppercase w-24">Culture:</span>
+                        <span className="text-2xl">{selectedIntern.part3.cultureEmojis}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
