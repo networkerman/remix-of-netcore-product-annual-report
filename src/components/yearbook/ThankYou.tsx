@@ -12,10 +12,10 @@ export function ThankYou() {
     <section
       id="thank-you"
       ref={ref}
-      className="py-32 bg-gradient-to-br from-navy-800 via-navy-900 to-navy-800 text-cream-100 relative overflow-hidden min-h-screen flex items-center"
+      className="py-32 bg-cream-100 relative overflow-hidden min-h-screen flex items-center"
     >
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       {/* Animated Background */}
       <div className="absolute inset-0">
         <motion.div
@@ -40,7 +40,7 @@ export function ThankYou() {
             className="mb-8"
           >
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-teal-500 to-coral-400">
-              <Heart className="text-cream-50" size={36} />
+              <Heart className="text-white" size={36} />
             </div>
           </motion.div>
 
@@ -49,7 +49,7 @@ export function ThankYou() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-foreground"
           >
             Thank You,
             <br />
@@ -62,7 +62,7 @@ export function ThankYou() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-cream-300/80 leading-relaxed mb-12"
+            className="text-xl text-foreground/70 leading-relaxed mb-12"
           >
             To everyone who shipped, designed, documented, debated, and cared enough 
             to make 2025 remarkable—this yearbook is for you. Every feature, every fix, 
@@ -76,7 +76,7 @@ export function ThankYou() {
             transition={{ delay: 0.8 }}
             className="mb-12"
           >
-            <p className="text-cream-400 italic mb-8">
+            <p className="text-foreground/60 italic mb-8">
               "Take a moment to reflect on your journey this year. What are you most proud of?"
             </p>
           </motion.div>
@@ -90,8 +90,8 @@ export function ThankYou() {
             disabled={celebrated}
             className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all duration-500 ${
               celebrated
-                ? "bg-gradient-to-r from-teal-500 to-coral-400 text-cream-50 scale-110"
-                : "bg-cream-100 text-navy-800 hover:scale-105"
+                ? "bg-gradient-to-r from-teal-500 to-coral-400 text-white scale-110"
+                : "bg-foreground text-background hover:scale-105"
             }`}
           >
             {celebrated ? (
@@ -112,9 +112,9 @@ export function ThankYou() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mt-8 p-6 rounded-2xl bg-teal-500/20 border border-teal-500/30"
+              className="mt-8 p-6 rounded-2xl bg-primary/10 border border-primary/20"
             >
-              <p className="text-teal-300 font-medium">
+              <p className="text-primary font-medium">
                 🎊 Congratulations on exploring the entire 2025 Product Yearbook! 
                 Here's to an even better 2026.
               </p>
@@ -126,12 +126,12 @@ export function ThankYou() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 1.2 }}
-            className="mt-20 pt-8 border-t border-cream-100/10"
+            className="mt-20 pt-8 border-t border-border"
           >
-            <p className="text-cream-500 text-sm">
+            <p className="text-foreground/50 text-sm">
               Made with ❤️ by the Product Team
             </p>
-            <p className="text-cream-600 text-xs mt-2">
+            <p className="text-foreground/40 text-xs mt-2">
               Netcore Product Yearbook 2025 • Internal Use Only
             </p>
           </motion.div>
@@ -139,7 +139,7 @@ export function ThankYou() {
       </div>
 
       {/* Corner Decorations */}
-      <div className="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-teal-500/20" />
+      <div className="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-primary/20" />
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-coral-400/20" />
     </section>
   );

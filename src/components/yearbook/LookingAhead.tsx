@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Telescope, Lock, Sparkles } from "lucide-react";
+import { Telescope, Lock } from "lucide-react";
 
 const themes = [
   {
@@ -39,10 +39,10 @@ export function LookingAhead() {
     <section
       id="looking-ahead"
       ref={ref}
-      className="py-32 bg-cream-100 relative overflow-hidden"
+      className="py-32 bg-gradient-dark text-cream-100 relative overflow-hidden"
     >
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-teal-500/5 to-transparent" />
       
@@ -55,11 +55,11 @@ export function LookingAhead() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Telescope className="text-primary" size={32} />
+            <Telescope className="text-teal-400" size={32} />
           </div>
-          <span className="caption text-primary mb-4 block">A Glimpse of Tomorrow</span>
-          <h2 className="section-heading text-foreground mb-6">Looking Ahead to 2026</h2>
-          <p className="body-large text-foreground/60 max-w-2xl mx-auto">
+          <span className="caption text-teal-400 mb-4 block">A Glimpse of Tomorrow</span>
+          <h2 className="section-heading text-cream-100 mb-6">Looking Ahead to 2026</h2>
+          <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
             The future is autonomous: systems that marketers can trust, delegate to, and scale with—without increasing human effort.
           </p>
         </motion.div>
@@ -71,7 +71,7 @@ export function LookingAhead() {
           transition={{ delay: 0.2 }}
           className="max-w-md mx-auto mb-16"
         >
-          <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-primary/10 border border-primary/20 text-primary">
+          <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-400">
             <Lock size={16} />
             <span className="text-sm font-medium">Internal Preview • Subject to Change</span>
           </div>
@@ -85,11 +85,11 @@ export function LookingAhead() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="group p-8 rounded-3xl bg-card border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-500"
+              className="group p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:border-teal-500/30 hover:shadow-xl transition-all duration-500"
             >
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{theme.icon}</div>
-              <h3 className="text-xl font-bold text-foreground mb-3">{theme.title}</h3>
-              <p className="text-foreground/60 leading-relaxed">{theme.description}</p>
+              <h3 className="text-xl font-bold text-cream-100 mb-3">{theme.title}</h3>
+              <p className="text-cream-300/70 leading-relaxed">{theme.description}</p>
             </motion.div>
           ))}
         </div>
@@ -99,7 +99,7 @@ export function LookingAhead() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.7 }}
-          className="text-center text-foreground/50 mt-12 max-w-xl mx-auto"
+          className="text-center text-cream-300/50 mt-12 max-w-xl mx-auto"
         >
           Strategy evolves. What you see here reflects our current thinking—expect surprises, 
           pivots, and discoveries along the way. That's what makes this work exciting.
