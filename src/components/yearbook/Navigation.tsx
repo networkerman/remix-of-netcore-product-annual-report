@@ -19,6 +19,26 @@ export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("cover");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const checkScrollPosition = () => {
+    if (containerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScrollPosition);
+      checkScrollPosition();
+      return () => container.removeEventListener('scroll', checkScrollPosition);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +61,6 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -54,6 +73,7 @@ export function Navigation() {
   const scrollContainer = (offset: number) => {
     if (containerRef.current) {
       containerRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+      setTimeout(checkScrollPosition, 300);
     }
   };
 
@@ -64,48 +84,57 @@ export function Navigation() {
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 py-4"
       >
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          {/* Empty div for spacing on mobile */}
-          <div className="lg:hidden w-10" />
-          
-          {/* Desktop Navigation - With Arrow Controls */}
-          <div className="hidden lg:flex items-center justify-center gap-2">
-            {/* Left Arrow */}
-            <button
-              onClick={() => scrollContainer(-200)}
-              className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/70 transition-colors"
-            >
-              <ChevronLeft size={16} />
-            </button>
+        {/* Desktop Navigation - Full Width */}
+        <div className="hidden lg:flex w-full px-4 items-center justify-between gap-2">
+          {/* Left Arrow */}
+          <button
+            onClick={() => scrollContainer(-200)}
+            disabled={!canScrollLeft}
+            className={`p-1.5 rounded-lg transition-colors flex-shrink-0 ${
+              canScrollLeft 
+                ? "bg-black/60 text-white hover:bg-black/70" 
+                : "bg-black/30 text-white/40 cursor-not-allowed"
+            }`}
+          >
+            <ChevronLeft size={16} />
+          </button>
 
-            {/* Nav Items Container */}
-            <div 
-              ref={containerRef}
-              className="flex items-center gap-3 overflow-x-auto max-w-[70vw] scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-            >
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
-                    activeSection === item.id
-                      ? "bg-[hsl(15,85%,60%)] text-white"
-                      : "bg-black/60 text-white hover:bg-black/70 backdrop-blur-sm"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={() => scrollContainer(200)}
-              className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/70 transition-colors"
-            >
-              <ChevronRight size={16} />
-            </button>
+          {/* Nav Items Container */}
+          <div 
+            ref={containerRef}
+            className="flex items-center justify-center gap-3 overflow-x-auto flex-1 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
+                  activeSection === item.id
+                    ? "bg-[hsl(15,85%,60%)] text-white"
+                    : "bg-black/60 text-white hover:bg-black/70 backdrop-blur-sm"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => scrollContainer(200)}
+            disabled={!canScrollRight}
+            className={`p-1.5 rounded-lg transition-colors flex-shrink-0 ${
+              canScrollRight 
+                ? "bg-black/60 text-white hover:bg-black/70" 
+                : "bg-black/30 text-white/40 cursor-not-allowed"
+            }`}
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="lg:hidden w-full px-4 flex items-center justify-end">
 
           {/* Mobile Menu Button */}
           <button
