@@ -70,10 +70,10 @@ export function Navigation() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
                   activeSection === item.id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
+                    ? "bg-[hsl(15,85%,60%)] text-white"
+                    : "bg-black/60 text-white hover:bg-black/70 backdrop-blur-sm"
                 }`}
               >
                 {item.label}
@@ -111,7 +111,7 @@ export function Navigation() {
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left px-4 py-3 text-lg font-medium rounded-xl transition-colors ${
                       activeSection === item.id
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-[hsl(15,85%,60%)] text-white"
                         : "text-foreground/70 hover:bg-foreground/5"
                     }`}
                   >
