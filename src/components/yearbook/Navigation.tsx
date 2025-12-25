@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const navItems = [
   { id: "cover", label: "Cover" },
@@ -41,6 +41,8 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -49,36 +51,60 @@ export function Navigation() {
     setMobileOpen(false);
   };
 
+  const scrollContainer = (offset: number) => {
+    if (containerRef.current) {
+      containerRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "backdrop-blur-xl border-b border-border/50 py-3"
-            : "backdrop-blur-md py-4"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 py-4"
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Empty div for spacing on mobile */}
           <div className="lg:hidden w-10" />
           
-          {/* Desktop Navigation - Centered & Scrollable */}
-          <div className="hidden lg:flex items-center gap-3 overflow-x-auto max-w-[90vw] scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
-                  activeSection === item.id
-                    ? "bg-[hsl(15,85%,60%)] text-white"
-                    : "bg-black/60 text-white hover:bg-black/70 backdrop-blur-sm"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+          {/* Desktop Navigation - With Arrow Controls */}
+          <div className="hidden lg:flex items-center justify-center gap-2">
+            {/* Left Arrow */}
+            <button
+              onClick={() => scrollContainer(-200)}
+              className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/70 transition-colors"
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            {/* Nav Items Container */}
+            <div 
+              ref={containerRef}
+              className="flex items-center gap-3 overflow-x-auto max-w-[70vw] scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
+                    activeSection === item.id
+                      ? "bg-[hsl(15,85%,60%)] text-white"
+                      : "bg-black/60 text-white hover:bg-black/70 backdrop-blur-sm"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={() => scrollContainer(200)}
+              className="p-1.5 rounded-lg bg-black/60 text-white hover:bg-black/70 transition-colors"
+            >
+              <ChevronRight size={16} />
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
