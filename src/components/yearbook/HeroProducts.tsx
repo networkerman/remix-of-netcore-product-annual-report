@@ -617,14 +617,14 @@ export function HeroProducts() {
     <section
       id="heroes"
       ref={ref}
-      className="py-32 bg-gradient-dark text-cream-100 relative overflow-hidden"
+      className="py-32 bg-cream-100 relative overflow-hidden"
     >
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-coral-400/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-coral-400/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -638,9 +638,9 @@ export function HeroProducts() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <Award className="text-accent" size={32} />
           </div>
-          <span className="caption text-accent mb-4 block">Excellence Recognized</span>
-          <h2 className="section-heading mb-6">Hero of the Year</h2>
-          <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
+          <span className="caption text-primary mb-4 block">Excellence Recognized</span>
+          <h2 className="section-heading text-foreground mb-6">Hero of the Year</h2>
+          <p className="body-large text-foreground/60 max-w-2xl mx-auto">
             Every year, certain projects stand out. These are the heroes that defined 2025, 
             each a testament to what focused excellence can achieve.
           </p>
@@ -659,8 +659,8 @@ export function HeroProducts() {
               onClick={() => setActiveSection(section.function)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeSection === section.function
-                  ? "bg-cream-100 text-navy-900"
-                  : "bg-cream-100/10 text-cream-300 hover:bg-cream-100/20"
+                  ? "bg-foreground text-background"
+                  : "bg-foreground/5 text-foreground/70 hover:bg-foreground/10"
               }`}
             >
               <span>{section.icon}</span>
@@ -682,23 +682,23 @@ export function HeroProducts() {
               >
                 {/* Scroll Navigation */}
                 <div className="flex items-center justify-between mb-6">
-                  <span className="px-3 py-1 rounded-full bg-cream-100/10 text-cream-300 text-sm">
+                  <span className="px-3 py-1 rounded-full bg-foreground/5 text-foreground/70 text-sm">
                     {section.heroes.length} heroes
                   </span>
                   <div className="flex gap-2">
                     <button
                       onClick={() => scrollContainer("left")}
-                      className="p-2 rounded-full bg-cream-100/10 hover:bg-cream-100/20 transition-colors"
+                      className="p-2 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors"
                       aria-label="Scroll left"
                     >
-                      <ChevronLeft size={20} className="text-cream-300" />
+                      <ChevronLeft size={20} className="text-foreground/70" />
                     </button>
                     <button
                       onClick={() => scrollContainer("right")}
-                      className="p-2 rounded-full bg-cream-100/10 hover:bg-cream-100/20 transition-colors"
+                      className="p-2 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors"
                       aria-label="Scroll right"
                     >
-                      <ChevronRight size={20} className="text-cream-300" />
+                      <ChevronRight size={20} className="text-foreground/70" />
                     </button>
                   </div>
                 </div>
@@ -729,11 +729,11 @@ export function HeroProducts() {
                         {/* Card */}
                         <div className="relative h-full rounded-2xl overflow-hidden">
                           {/* Gradient Background */}
-                          <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
+                          <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                           
                           {/* Hover Overlay for Documentation Story Cards Only */}
                           {isDocumentation && hero.story && (
-                            <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
+                            <div className="absolute inset-0 bg-foreground/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
                               <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-navy-900 font-semibold text-sm">
                                 <Eye size={18} />
                                 <span>VIEW FULL STORY</span>
@@ -742,7 +742,7 @@ export function HeroProducts() {
                           )}
                           
                           {/* Content */}
-                          <div className="relative p-6 h-full flex flex-col bg-navy-800/80 backdrop-blur-sm border border-cream-100/10 rounded-2xl min-h-[360px]">
+                          <div className="relative p-6 h-full flex flex-col bg-card backdrop-blur-sm border border-border rounded-2xl min-h-[360px]">
                             {/* Hero Label / Tags */}
                             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
                               <div className="flex items-center gap-2 flex-wrap">
@@ -809,10 +809,10 @@ export function HeroProducts() {
                             
                             {/* Expand prompt for Hero Documents and Hero Videos */}
                             {(hero.title === "Hero Documents" || hero.title === "Hero Videos") && (
-                              <div className="pt-4 border-t border-cream-100/10">
+                              <div className="pt-4 border-t border-border">
                                 <button
                                   onClick={() => setSelectedHero(hero)}
-                                  className="flex items-center gap-2 text-sm text-teal-400 hover:text-teal-300 transition-colors"
+                                  className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
                                 >
                                   <Eye size={14} />
                                   <span>Click to view all links</span>

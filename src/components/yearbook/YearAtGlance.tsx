@@ -126,9 +126,9 @@ const yearData: MonthData[] = [
 ];
 
 const productColors = {
-  CE: { bg: "bg-teal-500/10", text: "text-teal-500", border: "border-teal-500/30" },
-  CPaaS: { bg: "bg-coral-400/10", text: "text-coral-500", border: "border-coral-400/30" },
-  Unbxd: { bg: "bg-accent/20", text: "text-amber-600", border: "border-accent/40" },
+  CE: { bg: "bg-teal-500/10", text: "text-teal-400", border: "border-teal-500/30" },
+  CPaaS: { bg: "bg-coral-400/10", text: "text-coral-400", border: "border-coral-400/30" },
+  Unbxd: { bg: "bg-accent/20", text: "text-amber-400", border: "border-accent/40" },
 };
 
 // Calculate metrics dynamically
@@ -164,10 +164,10 @@ export function YearAtGlance() {
     <section
       id="year-glance"
       ref={ref}
-      className="py-32 bg-cream-100 relative overflow-hidden"
+      className="py-32 bg-gradient-dark text-cream-100 relative overflow-hidden"
     >
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
@@ -176,12 +176,12 @@ export function YearAtGlance() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="caption text-primary mb-4 block">Everything We Shipped</span>
-          <h2 className="section-heading text-foreground mb-6">Year at a Glance</h2>
-          <p className="body-large text-foreground/60 max-w-2xl mx-auto mb-4">
+          <span className="caption text-teal-400 mb-4 block">Everything We Shipped</span>
+          <h2 className="section-heading text-cream-100 mb-6">Year at a Glance</h2>
+          <p className="body-large text-cream-300/70 max-w-2xl mx-auto mb-4">
             A chronological view of the features, launches, and platform bets that shaped our product year.
           </p>
-          <p className="text-sm text-foreground/40 flex items-center justify-center gap-2">
+          <p className="text-sm text-cream-300/40 flex items-center justify-center gap-2">
             <ChevronRight size={14} />
             Click on a month to see features
           </p>
@@ -200,8 +200,8 @@ export function YearAtGlance() {
               onClick={() => setProductFilter(product as typeof productFilter)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 productFilter === product
-                  ? "bg-foreground text-background"
-                  : "bg-foreground/5 text-foreground/70 hover:bg-foreground/10"
+                  ? "bg-cream-100 text-navy-900"
+                  : "bg-cream-100/10 text-cream-300 hover:bg-cream-100/20"
               }`}
             >
               {product}
@@ -212,7 +212,7 @@ export function YearAtGlance() {
         {/* Timeline */}
         <div className="relative max-w-6xl mx-auto">
           {/* Timeline Line */}
-          <div className="absolute top-8 left-0 right-0 h-0.5 bg-border hidden lg:block" />
+          <div className="absolute top-8 left-0 right-0 h-0.5 bg-cream-100/20 hidden lg:block" />
 
           {/* Months */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
@@ -228,8 +228,8 @@ export function YearAtGlance() {
                 <div 
                   className={`relative z-10 w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center cursor-pointer transition-all duration-300 ${
                     selectedMonth === month.month 
-                      ? "bg-primary text-primary-foreground scale-110" 
-                      : "bg-card border-2 border-border hover:border-primary/50"
+                      ? "bg-teal-500 text-navy-900 scale-110" 
+                      : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
                   }`}
                   onClick={() => setSelectedMonth(selectedMonth === month.month ? null : month.month)}
                 >
@@ -237,7 +237,7 @@ export function YearAtGlance() {
                 </div>
 
                 {/* Feature Count */}
-                <p className="text-center text-sm text-foreground/60 mb-4">
+                <p className="text-center text-sm text-cream-300/60 mb-4">
                   {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
                 </p>
 
@@ -261,9 +261,9 @@ export function YearAtGlance() {
                       >
                         <div className="flex items-start gap-2">
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-foreground leading-tight flex items-center gap-1">
+                            <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
                               {feature.name}
-                              <ExternalLink size={10} className="text-foreground/40 flex-shrink-0" />
+                              <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
                             </p>
                             <span className={`text-xs ${productColors[feature.product].text}`}>
                               {feature.product}
@@ -291,9 +291,9 @@ export function YearAtGlance() {
             { label: "Cross-Product Launches", value: `${crossProductLaunches}` },
             { label: "Major Releases", value: "12" },
           ].map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-2xl bg-card border border-border">
-              <p className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</p>
-              <p className="text-sm text-foreground/60">{stat.label}</p>
+            <div key={index} className="text-center p-6 rounded-2xl bg-navy-700/50 border border-cream-100/10">
+              <p className="text-3xl md:text-4xl font-bold text-teal-400 mb-2">{stat.value}</p>
+              <p className="text-sm text-cream-300/60">{stat.label}</p>
             </div>
           ))}
         </motion.div>

@@ -364,10 +364,10 @@ export function PMStories() {
     <section
       id="stories"
       ref={ref}
-      className="py-32 bg-gradient-dark text-cream-100 relative overflow-hidden"
+      className="py-32 bg-cream-100 relative overflow-hidden"
     >
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
@@ -377,9 +377,9 @@ export function PMStories() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <span className="caption text-coral-400 mb-4 block">The Real Stories</span>
-          <h2 className="section-heading mb-6">PM Stories & Culture</h2>
-          <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
+          <span className="caption text-primary mb-4 block">The Real Stories</span>
+          <h2 className="section-heading text-foreground mb-6">PM Stories & Culture</h2>
+          <p className="body-large text-foreground/60 max-w-2xl mx-auto">
             The fun, the chaos, the late nights, and the wins. This is what it's really like 
             to be part of the Product team at Netcore.
           </p>
@@ -393,8 +393,8 @@ export function PMStories() {
           className="mb-24"
         >
           <div className="flex items-center gap-3 mb-8">
-            <Sparkles className="text-teal-400" size={24} />
-            <h3 className="text-xl font-bold">Product Leaders Speak</h3>
+            <Sparkles className="text-primary" size={24} />
+            <h3 className="text-xl font-bold text-foreground">Product Leaders Speak</h3>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6 max-w-7xl mx-auto">
@@ -407,7 +407,7 @@ export function PMStories() {
                 className="group relative cursor-pointer"
                 onClick={() => handleLeaderClick(leader)}
               >
-                <div className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden border border-cream-100/10 hover:border-teal-500/30 transition-all duration-300">
+                <div className="aspect-[3/4] rounded-2xl bg-card relative overflow-hidden border border-border hover:border-primary/30 transition-all duration-300">
                   {/* Full-bleed image */}
                   <img
                     src={leader.image}
@@ -426,7 +426,7 @@ export function PMStories() {
 
                   {/* Hover CTA Overlay */}
                   <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="px-4 py-2 bg-teal-500 text-navy-900 font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                    <span className="px-4 py-2 bg-primary text-primary-foreground font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
                       View Story →
                     </span>
                   </div>
@@ -536,10 +536,10 @@ export function PMStories() {
         >
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Rocket className="text-teal-400" size={28} />
-              <h3 className="text-2xl font-bold text-cream-100">Deployed to Production</h3>
+              <Rocket className="text-primary" size={28} />
+              <h3 className="text-2xl font-bold text-foreground">Deployed to Production</h3>
             </div>
-            <p className="text-cream-300/80 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-foreground/70 max-w-2xl mx-auto leading-relaxed">
               A look at how our interns moved from first-day confusion to shipping with confidence in real production environments.
             </p>
           </div>
@@ -554,8 +554,8 @@ export function PMStories() {
                 className="group relative cursor-pointer"
               >
                 <div 
-                  className="aspect-[3/4] rounded-2xl bg-navy-700 relative overflow-hidden 
-                    border border-cream-100/10 transition-all duration-300"
+                  className="aspect-[3/4] rounded-2xl bg-card relative overflow-hidden 
+                    border border-border transition-all duration-300"
                 >
                   {/* Full-bleed image or initial fallback */}
                   {intern.image ? (
@@ -591,7 +591,7 @@ export function PMStories() {
                     onClick={() => setSelectedIntern(intern)}
                     className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                   >
-                    <span className="px-4 py-2 bg-teal-500 text-navy-900 font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                    <span className="px-4 py-2 bg-primary text-primary-foreground font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
                       View Story
                     </span>
                   </div>
@@ -750,10 +750,10 @@ export function PMStories() {
         >
           {/* Section Title & Subtitle - MUST KEEP */}
           <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-cream-100 mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
               Life in the Product Team
             </h3>
-            <p className="text-cream-300/80 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-foreground/70 max-w-2xl mx-auto leading-relaxed">
               Not everything we shipped was code. Some of it was culture, which we discovered when we stepped away from the backlog.
             </p>
           </div>

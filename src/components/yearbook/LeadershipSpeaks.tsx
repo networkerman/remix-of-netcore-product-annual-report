@@ -381,13 +381,13 @@ export function LeadershipSpeaks() {
     <section
       id="leadership-speaks"
       ref={ref}
-      className="py-24 bg-gradient-dark text-cream-100 relative overflow-hidden"
+      className="py-24 bg-cream-100 relative overflow-hidden"
     >
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
 
       {/* Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
@@ -397,9 +397,9 @@ export function LeadershipSpeaks() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <span className="caption text-teal-400 mb-4 block">Outcomes & Recognition</span>
-          <h2 className="section-heading mb-6">Leadership Speaks</h2>
-          <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
+          <span className="caption text-primary mb-4 block">Outcomes & Recognition</span>
+          <h2 className="section-heading text-foreground mb-6">Leadership Speaks</h2>
+          <p className="body-large text-foreground/60 max-w-2xl mx-auto">
             We asked leaders across the company to share their honest reflections on the Product Team this year.
           </p>
         </motion.div>
@@ -419,36 +419,36 @@ export function LeadershipSpeaks() {
                 className="flex-[0_0_100%] min-w-0 md:flex-[0_0_80%] lg:flex-[0_0_60%] px-4"
               >
                 <div
-                  className={`bg-navy-700/50 backdrop-blur-sm border border-cream-100/10 rounded-3xl p-8 md:p-12 transition-all duration-500 ${
+                  className={`bg-card backdrop-blur-sm border border-border rounded-3xl p-8 md:p-12 transition-all duration-500 ${
                     selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
                   }`}
                 >
                   {/* Quote Icon */}
-                  <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
-                    <Quote className="w-6 h-6 text-teal-400" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                    <Quote className="w-6 h-6 text-primary" />
                   </div>
 
                   {/* Quote Text */}
-                  <blockquote className="text-xl md:text-2xl text-cream-100 leading-relaxed mb-4 font-light">
+                  <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-4 font-light">
                     "{testimonial.collapsedQuote}"
                   </blockquote>
 
                   {/* View Full Testimonial CTA */}
                   <button
                     onClick={() => setOpenTestimonial(testimonial)}
-                    className="text-teal-400 hover:text-teal-300 text-sm font-medium mb-6 transition-colors"
+                    className="text-primary hover:text-primary/80 text-sm font-medium mb-6 transition-colors"
                   >
                     View full testimonial →
                   </button>
 
                   {/* Author Info */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-cream-100">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-white">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-semibold text-cream-100">{testimonial.name}</p>
-                      <p className="text-cream-300/60 text-sm">{testimonial.role}</p>
+                      <p className="font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-foreground/60 text-sm">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
@@ -470,8 +470,8 @@ export function LeadershipSpeaks() {
               onClick={() => emblaApi?.scrollTo(index)}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 selectedIndex === index
-                  ? "bg-teal-400 w-8"
-                  : "bg-cream-100/30 hover:bg-cream-100/50"
+                  ? "bg-primary w-8"
+                  : "bg-foreground/30 hover:bg-foreground/50"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -481,42 +481,42 @@ export function LeadershipSpeaks() {
 
       {/* Full Testimonial Dialog */}
       <Dialog open={!!openTestimonial} onOpenChange={() => setOpenTestimonial(null)}>
-        <DialogContent className="bg-navy-800 border-cream-100/10 text-cream-100 max-w-2xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="bg-card border-border text-foreground max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-cream-100 text-xl">Full Testimonial</DialogTitle>
+            <DialogTitle className="text-foreground text-xl">Full Testimonial</DialogTitle>
           </DialogHeader>
           {openTestimonial && (
             <div className="mt-4">
-              <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Quote className="w-6 h-6 text-teal-400" />
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                <Quote className="w-6 h-6 text-primary" />
               </div>
 
               {/* Q&A Content */}
               <div className="space-y-6 mb-8">
                 {openTestimonial.expandedContent.map((qa, idx) => (
                   <div key={idx}>
-                    <p className="text-teal-400 font-medium mb-2">Q: {qa.question}</p>
+                    <p className="text-primary font-medium mb-2">Q: {qa.question}</p>
                     {Array.isArray(qa.answer) ? (
-                      <ul className="text-cream-200/90 space-y-2 pl-4">
+                      <ul className="text-foreground/80 space-y-2 pl-4">
                         {qa.answer.map((item, i) => (
                           <li key={i} className="list-disc">{item}</li>
                         ))}
                       </ul>
                     ) : (
-                      <p className="text-cream-200/90">A: {qa.answer}</p>
+                      <p className="text-foreground/80">A: {qa.answer}</p>
                     )}
                   </div>
                 ))}
               </div>
 
               {/* Author Info */}
-              <div className="flex items-center gap-4 pt-6 border-t border-cream-100/10">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-cream-100">
+              <div className="flex items-center gap-4 pt-6 border-t border-border">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-white">
                   {openTestimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-semibold text-cream-100">{openTestimonial.name}</p>
-                  <p className="text-cream-300/60 text-sm">{openTestimonial.role}</p>
+                  <p className="font-semibold text-foreground">{openTestimonial.name}</p>
+                  <p className="text-foreground/60 text-sm">{openTestimonial.role}</p>
                 </div>
               </div>
             </div>
