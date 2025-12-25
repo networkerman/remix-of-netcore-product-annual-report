@@ -56,16 +56,16 @@ export function Navigation() {
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? "bg-background/90 backdrop-blur-xl border-b border-border/50 py-3"
-            : "bg-background/70 backdrop-blur-md py-4"
+            ? "backdrop-blur-xl border-b border-border/50 py-3"
+            : "backdrop-blur-md py-4"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Empty div for spacing on mobile */}
           <div className="lg:hidden w-10" />
           
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden lg:flex items-center gap-1">
+          {/* Desktop Navigation - Centered & Scrollable */}
+          <div className="hidden lg:flex items-center gap-3 overflow-x-auto max-w-[90vw] scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {navItems.map((item) => (
               <button
                 key={item.id}
