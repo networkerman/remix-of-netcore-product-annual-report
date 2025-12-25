@@ -46,6 +46,8 @@ export function LearningsSection() {
       ref={ref}
       className="py-32 bg-cream-100 relative overflow-hidden"
     >
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       {/* Subtle Background */}
       <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-cream-200/50 to-transparent" />
 

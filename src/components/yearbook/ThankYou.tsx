@@ -14,6 +14,8 @@ export function ThankYou() {
       ref={ref}
       className="py-32 bg-gradient-to-br from-navy-800 via-navy-900 to-navy-800 text-cream-100 relative overflow-hidden min-h-screen flex items-center"
     >
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       {/* Animated Background */}
       <div className="absolute inset-0">
         <motion.div

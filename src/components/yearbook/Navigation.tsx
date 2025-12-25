@@ -102,7 +102,7 @@ export function Navigation() {
           {/* Nav Items Container */}
           <div 
             ref={containerRef}
-            className="flex items-center justify-center gap-3 overflow-x-auto flex-1 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="flex items-center gap-3 overflow-x-auto flex-1 scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {navItems.map((item) => (
               <button
