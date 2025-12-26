@@ -114,8 +114,8 @@ export function TestimonialsCarousel() {
         className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-coral-400/10 via-transparent to-transparent blur-3xl pointer-events-none"
       />
 
+      {/* Header */}
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -128,66 +128,68 @@ export function TestimonialsCarousel() {
             Real feedback from the people we build for every day.
           </p>
         </motion.div>
+      </div>
 
-        {/* Carousel */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="overflow-hidden"
-          ref={emblaRef}
-        >
-          <div className="flex">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className="flex-[0_0_100%] min-w-0 md:flex-[0_0_80%] lg:flex-[0_0_60%] px-4"
+      {/* Full-Width Carousel */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="overflow-hidden w-full relative z-10"
+        ref={emblaRef}
+      >
+        <div className="flex items-center">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={testimonial.id}
+              className="flex-[0_0_90%] min-w-0 md:flex-[0_0_70%] lg:flex-[0_0_50%] px-4 flex justify-center"
+            >
+              <div 
+                className={`w-full max-w-2xl bg-navy-700/50 backdrop-blur-sm border border-cream-100/10 rounded-3xl p-8 md:p-12 transition-all duration-500 ${
+                  selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
+                }`}
               >
-                <div 
-                  className={`bg-navy-700/50 backdrop-blur-sm border border-cream-100/10 rounded-3xl p-8 md:p-12 transition-all duration-500 ${
-                    selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
-                  }`}
-                >
-                  {/* Quote Icon */}
-                  <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
-                    <Quote className="w-6 h-6 text-teal-400" />
+                {/* Quote Icon */}
+                <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
+                  <Quote className="w-6 h-6 text-teal-400" />
+                </div>
+
+                {/* Quote Text */}
+                <blockquote className="text-xl md:text-2xl text-cream-100 leading-relaxed mb-4 font-light">
+                  "{testimonial.quote}"
+                </blockquote>
+
+                {/* View Full Testimonial CTA */}
+                {testimonial.fullQuote && (
+                  <button
+                    onClick={() => setOpenTestimonial(testimonial)}
+                    className="text-teal-400 hover:text-teal-300 text-sm font-medium mb-6 transition-colors"
+                  >
+                    View full testimonial →
+                  </button>
+                )}
+                {!testimonial.fullQuote && <div className="mb-4" />}
+
+                {/* Author Info */}
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 flex items-center justify-center text-lg font-bold text-cream-100">
+                    {testimonial.author.charAt(0)}
                   </div>
-
-                  {/* Quote Text */}
-                  <blockquote className="text-xl md:text-2xl text-cream-100 leading-relaxed mb-4 font-light">
-                    "{testimonial.quote}"
-                  </blockquote>
-
-                  {/* View Full Testimonial CTA */}
-                  {testimonial.fullQuote && (
-                    <button
-                      onClick={() => setOpenTestimonial(testimonial)}
-                      className="text-teal-400 hover:text-teal-300 text-sm font-medium mb-6 transition-colors"
-                    >
-                      View full testimonial →
-                    </button>
-                  )}
-                  {!testimonial.fullQuote && <div className="mb-4" />}
-
-                  {/* Author Info */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-cream-100">
-                      {testimonial.author.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-cream-100">{testimonial.author}</p>
-                      <p className="text-cream-300/60 text-sm">
-                        {testimonial.role ? `${testimonial.role}, ${testimonial.company}` : testimonial.company}
-                      </p>
-                    </div>
+                  <div>
+                    <p className="font-semibold text-cream-100">{testimonial.author}</p>
+                    <p className="text-cream-300/60 text-sm">
+                      {testimonial.role ? `${testimonial.role}, ${testimonial.company}` : testimonial.company}
+                    </p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </motion.div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
 
-        {/* Dots Indicator */}
+      {/* Dots Indicator */}
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -224,7 +226,7 @@ export function TestimonialsCarousel() {
                 "{openTestimonial.fullQuote}"
               </blockquote>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-cream-100">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-500 flex items-center justify-center text-lg font-bold text-cream-100">
                   {openTestimonial.author.charAt(0)}
                 </div>
                 <div>
