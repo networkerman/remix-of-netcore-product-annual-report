@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Award, ExternalLink, Star, ChevronLeft, ChevronRight, BookOpen, Eye, Code, Play, Clock, Shield, FileText, Zap, RefreshCw, Target } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { Award, ExternalLink, Star, BookOpen, Eye, Code, Play, Clock, Shield, FileText, Zap, RefreshCw, Target } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Dialog,
   DialogContent,
@@ -604,14 +606,38 @@ export function HeroProducts() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeSection, setActiveSection] = useState<SectionType>("Product");
   const [selectedHero, setSelectedHero] = useState<HeroItem | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const scrollContainer = (direction: "left" | "right") => {
-    const container = document.getElementById(`scroll-${activeSection}`);
-    if (container) {
-      const scrollAmount = direction === "left" ? -340 : 340;
-      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "center" },
+    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+  );
+
+  // Get current active section's heroes
+  const currentSection = heroSections.find((s) => s.function === activeSection);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on("select", onSelect);
+    onSelect();
+
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
+
+  // Reset carousel when section changes
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.scrollTo(0);
+      setSelectedIndex(0);
     }
-  };
+  }, [activeSection, emblaApi]);
 
   return (
     <section
@@ -642,8 +668,8 @@ export function HeroProducts() {
         className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-coral-400/10 via-transparent to-transparent blur-3xl pointer-events-none"
       />
 
+      {/* Header - stays in container */}
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -683,170 +709,170 @@ export function HeroProducts() {
             </button>
           ))}
         </motion.div>
+      </div>
 
-        {/* Active Section Content */}
-        <div className="max-w-7xl mx-auto">
-          {heroSections
-            .filter((section) => section.function === activeSection)
-            .map((section) => (
-              <motion.div
-                key={section.function}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {/* Scroll Navigation */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="px-3 py-1 rounded-full bg-cream-100/15 text-cream-100/80 text-sm">
-                    {section.heroes.length} heroes
-                  </span>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => scrollContainer("left")}
-                      className="p-2 rounded-full bg-cream-100/15 hover:bg-cream-100/25 transition-colors"
-                      aria-label="Scroll left"
-                    >
-                      <ChevronLeft size={20} className="text-cream-100/80" />
-                    </button>
-                    <button
-                      onClick={() => scrollContainer("right")}
-                      className="p-2 rounded-full bg-cream-100/15 hover:bg-cream-100/25 transition-colors"
-                      aria-label="Scroll right"
-                    >
-                      <ChevronRight size={20} className="text-cream-100/80" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Horizontally Scrollable Cards */}
+      {/* Carousel - FULL WIDTH outside container */}
+      {currentSection && (
+        <motion.div
+          key={activeSection}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="overflow-hidden w-full relative z-10"
+          ref={emblaRef}
+        >
+          <div className="flex items-center">
+            {currentSection.heroes.map((hero, heroIndex) => {
+              const isDocumentation = currentSection.function === "Documentation";
+              const isClickable = isDocumentation && hero.story;
+              
+              return (
                 <div
-                  id={`scroll-${section.function}`}
-                  className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
-                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                  key={heroIndex}
+                  className="flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_50%] min-w-0 px-4 flex justify-center"
                 >
-                  {section.heroes.map((hero, heroIndex) => {
-                    const isDocumentation = section.function === "Documentation";
-                    const isClickable = isDocumentation && hero.story;
-                    
-                    return (
-                      <motion.div
-                        key={heroIndex}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.4, delay: heroIndex * 0.1 }}
-                        className={`group relative flex-shrink-0 snap-start w-80 ${isClickable ? "cursor-pointer" : ""}`}
-                        onClick={() => {
-                          if (isClickable) {
-                            setSelectedHero(hero);
-                          }
-                        }}
-                      >
-                        {/* Card */}
-                        <div className="relative h-full rounded-2xl overflow-hidden">
-                          {/* Gradient Background */}
-                          <div className={`absolute inset-0 bg-gradient-to-br ${section.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
-                          
-                          {/* Hover Overlay for Documentation Story Cards Only */}
-                          {isDocumentation && hero.story && (
-                            <div className="absolute inset-0 bg-navy-900/90 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
-                              <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500 text-white font-semibold text-sm">
-                                <Eye size={18} />
-                                <span>VIEW FULL STORY</span>
-                              </div>
-                            </div>
-                          )}
-                          
-                          {/* Content */}
-                          <div className="relative p-6 h-full flex flex-col bg-card backdrop-blur-sm border border-border rounded-2xl min-h-[360px]">
-                            {/* Hero Label / Tags */}
-                            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                              <div className="flex items-center gap-2 flex-wrap">
-                                {section.function === "Product" && hero.tags && hero.tags.length > 0 ? (
-                                  hero.tags.map((tag, tagIndex) => (
-                                    <span
-                                      key={tagIndex}
-                                      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
-                                        tag === "Netcore CE"
-                                          ? "bg-gradient-to-r from-teal-500 to-teal-600 text-navy-900"
-                                          : tag === "Netcore Unbxd"
-                                          ? "bg-gradient-to-r from-coral-400 to-coral-500 text-navy-900"
-                                          : "bg-gradient-to-r from-purple-500 to-purple-600 text-white"
-                                      }`}
-                                    >
-                                      {tag}
-                                    </span>
-                                  ))
-                                ) : hero.displayTag ? (
-                                  <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-semibold">
-                                    {hero.displayTag}
-                                  </span>
-                                ) : hero.heroLabel ? (
-                                  <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${hero.tagColor || section.gradient} text-navy-900 text-xs font-semibold`}>
-                                    <BookOpen size={12} />
-                                    {hero.heroLabel}
-                                  </span>
-                                ) : (
-                                  <span className="text-navy-600 text-sm">{hero.month}</span>
-                                )}
-                              </div>
-                            </div>
-
-                            {/* Title */}
-                            <h4 className="text-xl font-bold text-navy-900 mb-3">{hero.title}</h4>
-
-                            {/* Why It Matters */}
-                            <div className="mb-6 flex-grow">
-                              <div className="flex items-center gap-2 text-teal-600 mb-2">
-                                <Star size={14} />
-                                <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
-                              </div>
-                              <p className="text-navy-700 leading-relaxed text-sm">
-                                {hero.why}
-                              </p>
-                            </div>
-
-                            {/* Links - hidden for Hero Documents and Hero Videos */}
-                            {hero.title !== "Hero Documents" && hero.title !== "Hero Videos" && (
-                              <div className="space-y-2 pt-4 border-t border-navy-900/10">
-                                {hero.links.map((link, lIndex) => (
-                                  <a
-                                    key={lIndex}
-                                    href={link.url}
-                                    onClick={(e) => e.stopPropagation()}
-                                    className="flex items-center justify-between text-sm text-navy-700 hover:text-teal-600 transition-colors py-1"
-                                  >
-                                    <span>{link.label}</span>
-                                    <ExternalLink size={14} />
-                                  </a>
-                                ))}
-                              </div>
-                            )}
-                            
-                            {/* Expand prompt for Hero Documents and Hero Videos */}
-                            {(hero.title === "Hero Documents" || hero.title === "Hero Videos") && (
-                              <div className="pt-4 border-t border-border">
-                                <button
-                                  onClick={() => setSelectedHero(hero)}
-                                  className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className={`group relative w-full max-w-md transition-all duration-500 ${
+                      selectedIndex === heroIndex ? "scale-100 opacity-100" : "scale-95 opacity-50"
+                    } ${isClickable ? "cursor-pointer" : ""}`}
+                    onClick={() => {
+                      if (isClickable) {
+                        setSelectedHero(hero);
+                      }
+                    }}
+                  >
+                    {/* Card */}
+                    <div className="relative h-full rounded-2xl overflow-hidden">
+                      {/* Gradient Background */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${currentSection.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
+                      
+                      {/* Hover Overlay for Documentation Story Cards Only */}
+                      {isDocumentation && hero.story && (
+                        <div className="absolute inset-0 bg-navy-900/90 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
+                          <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500 text-white font-semibold text-sm">
+                            <Eye size={18} />
+                            <span>VIEW FULL STORY</span>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Content */}
+                      <div className="relative p-6 h-full flex flex-col bg-card backdrop-blur-sm border border-border rounded-2xl min-h-[360px]">
+                        {/* Hero Label / Tags */}
+                        <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            {currentSection.function === "Product" && hero.tags && hero.tags.length > 0 ? (
+                              hero.tags.map((tag, tagIndex) => (
+                                <span
+                                  key={tagIndex}
+                                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
+                                    tag === "Netcore CE"
+                                      ? "bg-gradient-to-r from-teal-500 to-teal-600 text-navy-900"
+                                      : tag === "Netcore Unbxd"
+                                      ? "bg-gradient-to-r from-coral-400 to-coral-500 text-navy-900"
+                                      : "bg-gradient-to-r from-purple-500 to-purple-600 text-white"
+                                  }`}
                                 >
-                                  <Eye size={14} />
-                                  <span>Click to view all links</span>
-                                </button>
-                              </div>
+                                  {tag}
+                                </span>
+                              ))
+                            ) : hero.displayTag ? (
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-semibold">
+                                {hero.displayTag}
+                              </span>
+                            ) : hero.heroLabel ? (
+                              <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${hero.tagColor || currentSection.gradient} text-navy-900 text-xs font-semibold`}>
+                                <BookOpen size={12} />
+                                {hero.heroLabel}
+                              </span>
+                            ) : (
+                              <span className="text-navy-600 text-sm">{hero.month}</span>
                             )}
                           </div>
                         </div>
 
-                        {/* Glow Effect on Hover */}
-                        <div className={`absolute -inset-0.5 bg-gradient-to-br ${section.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`} />
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            ))}
-        </div>
+                        {/* Title */}
+                        <h4 className="text-xl font-bold text-navy-900 mb-3">{hero.title}</h4>
 
+                        {/* Why It Matters */}
+                        <div className="mb-6 flex-grow">
+                          <div className="flex items-center gap-2 text-teal-600 mb-2">
+                            <Star size={14} />
+                            <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
+                          </div>
+                          <p className="text-navy-700 leading-relaxed text-sm">
+                            {hero.why}
+                          </p>
+                        </div>
+
+                        {/* Links - hidden for Hero Documents and Hero Videos */}
+                        {hero.title !== "Hero Documents" && hero.title !== "Hero Videos" && (
+                          <div className="space-y-2 pt-4 border-t border-navy-900/10">
+                            {hero.links.map((link, lIndex) => (
+                              <a
+                                key={lIndex}
+                                href={link.url}
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex items-center justify-between text-sm text-navy-700 hover:text-teal-600 transition-colors py-1"
+                              >
+                                <span>{link.label}</span>
+                                <ExternalLink size={14} />
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                        
+                        {/* Expand prompt for Hero Documents and Hero Videos */}
+                        {(hero.title === "Hero Documents" || hero.title === "Hero Videos") && (
+                          <div className="pt-4 border-t border-border">
+                            <button
+                              onClick={() => setSelectedHero(hero)}
+                              className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors"
+                            >
+                              <Eye size={14} />
+                              <span>Click to view all links</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Glow Effect on Hover */}
+                    <div className={`absolute -inset-0.5 bg-gradient-to-br ${currentSection.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`} />
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
+      )}
+
+      {/* Dots Indicator - back in container */}
+      <div className="container mx-auto px-6 relative z-10">
+        {currentSection && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex justify-center gap-2 mt-8"
+          >
+            {currentSection.heroes.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  selectedIndex === index
+                    ? "bg-cream-100 w-8"
+                    : "bg-cream-100/30 hover:bg-cream-100/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </motion.div>
+        )}
       </div>
 
       {/* Full Story Dialog */}
