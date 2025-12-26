@@ -608,10 +608,25 @@ export function HeroProducts() {
   const [selectedHero, setSelectedHero] = useState<HeroItem | null>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false })
+  );
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: "center" },
-    [Autoplay({ delay: 4000, stopOnInteraction: false })]
+    [autoplayPlugin.current]
   );
+
+  // Pause autoplay when modal is open
+  useEffect(() => {
+    if (!autoplayPlugin.current) return;
+    
+    if (selectedHero) {
+      autoplayPlugin.current.stop();
+    } else {
+      autoplayPlugin.current.play();
+    }
+  }, [selectedHero]);
 
   // Get current active section's heroes
   const currentSection = heroSections.find((s) => s.function === activeSection);
@@ -1051,15 +1066,13 @@ export function HeroProducts() {
                     >
                       {/* Metrics Strip */}
                       {section.metrics && (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 p-8 bg-gradient-to-br from-amber-500/10 via-amber-600/5 to-navy-700/50 rounded-xl border border-amber-400/20">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                           {section.metrics.map((metric, metricIndex) => {
                             const IconComponent = iconMap[metric.icon];
                             return (
                               <div
                                 key={metricIndex}
-                                className={`flex flex-col items-center text-center py-2 ${
-                                  metricIndex < section.metrics!.length - 1 ? "md:border-r md:border-amber-400/15" : ""
-                                }`}
+                                className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-amber-500/10 via-amber-600/5 to-navy-700/50 rounded-xl border border-amber-400/20"
                               >
                                 {IconComponent && (
                                   <IconComponent className="w-5 h-5 text-amber-400 mb-3" />
@@ -1084,7 +1097,7 @@ export function HeroProducts() {
                         </h4>
                       )}
                       {section.isClosingLine && section.heading && (
-                        <p className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-accent text-center">
+                        <p className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-300 text-center">
                           {section.heading}
                         </p>
                       )}
