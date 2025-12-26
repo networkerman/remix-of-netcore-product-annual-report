@@ -1051,23 +1051,23 @@ export function HeroProducts() {
                     >
                       {/* Metrics Strip */}
                       {section.metrics && (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 p-6 bg-gradient-to-br from-teal-900/20 to-accent/10 rounded-xl border border-cream-100/10">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 p-8 bg-gradient-to-br from-amber-500/10 via-amber-600/5 to-navy-700/50 rounded-xl border border-amber-400/20">
                           {section.metrics.map((metric, metricIndex) => {
                             const IconComponent = iconMap[metric.icon];
                             return (
                               <div
                                 key={metricIndex}
-                                className={`flex flex-col items-center text-center ${
-                                  metricIndex < section.metrics!.length - 1 ? "md:border-r md:border-cream-100/10" : ""
+                                className={`flex flex-col items-center text-center py-2 ${
+                                  metricIndex < section.metrics!.length - 1 ? "md:border-r md:border-amber-400/15" : ""
                                 }`}
                               >
                                 {IconComponent && (
-                                  <IconComponent className="w-6 h-6 text-teal-400 mb-2" />
+                                  <IconComponent className="w-5 h-5 text-amber-400 mb-3" />
                                 )}
-                                <span className="text-2xl md:text-3xl font-bold text-cream-100 mb-1">
+                                <span className="text-xl md:text-2xl font-bold text-cream-100 mb-2">
                                   {metric.number}
                                 </span>
-                                <div className="text-xs text-cream-300/60 leading-tight">
+                                <div className="text-xs text-cream-300/70 leading-relaxed">
                                   {metric.label.map((line, lineIndex) => (
                                     <div key={lineIndex}>{line}</div>
                                   ))}
