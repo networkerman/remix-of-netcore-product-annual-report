@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, Award, Users, TrendingUp } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { ExternalLink, Award, Users, TrendingUp, Heart } from "lucide-react";
 import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
 import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
 import martechAwardImg from "@/assets/awards/martech-ai-award.jpg";
@@ -9,6 +9,28 @@ import martechAwardImg from "@/assets/awards/martech-ai-award.jpg";
 export function ProductCraft() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  // Like button state
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(47);
+
+  useEffect(() => {
+    const hasLiked = localStorage.getItem('martechAwardLiked') === 'true';
+    const storedCount = localStorage.getItem('martechAwardLikeCount');
+    if (storedCount) {
+      setLikeCount(parseInt(storedCount, 10));
+    }
+    setLiked(hasLiked);
+  }, []);
+
+  const handleLike = () => {
+    const newLikedState = !liked;
+    const newCount = newLikedState ? likeCount + 1 : likeCount - 1;
+    setLiked(newLikedState);
+    setLikeCount(newCount);
+    localStorage.setItem('martechAwardLiked', String(newLikedState));
+    localStorage.setItem('martechAwardLikeCount', String(newCount));
+  };
 
   return (
     <section
@@ -61,10 +83,15 @@ export function ProductCraft() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="w-full p-6 md:p-8 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/50 border-2 border-amber-500/30 shadow-lg flex flex-col md:flex-row items-center gap-6 md:gap-10"
+            className="relative w-full p-6 md:p-8 rounded-2xl bg-gradient-to-br from-amber-100 via-amber-50 to-yellow-100 border-2 border-amber-400 shadow-[0_0_40px_rgba(245,158,11,0.25)] flex flex-col md:flex-row items-center gap-6 md:gap-10 overflow-hidden"
           >
+            {/* Featured Badge */}
+            <div className="absolute top-4 right-4 md:top-6 md:right-6 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+              <span>🏆</span> Featured Achievement
+            </div>
+
             {/* Left: Award Image */}
-            <div className="w-full md:w-2/5 aspect-square rounded-xl overflow-hidden bg-amber-100 shrink-0">
+            <div className="w-full md:w-2/5 aspect-[4/3] rounded-xl overflow-hidden bg-amber-200 shrink-0 shadow-lg border border-amber-300">
               <img 
                 src={martechAwardImg} 
                 alt="MartechAI Award Trophy" 
@@ -73,11 +100,47 @@ export function ProductCraft() {
             </div>
             
             {/* Right: Award Details */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left flex-grow">
-              <Award className="text-amber-500 mb-3" size={40} />
-              <h4 className="font-bold text-2xl md:text-3xl text-amber-700 mb-2">MartechAI Award</h4>
-              <p className="text-amber-600 font-semibold text-lg mb-2">Best Use of Analytics</p>
-              <p className="text-amber-600/70">Recognized with early adopter Pepe Jeans</p>
+            <div className="flex flex-col items-center md:items-start text-center md:text-left flex-grow pt-6 md:pt-0">
+              <div className="flex items-center gap-3 mb-3">
+                <Award className="text-amber-600" size={36} />
+                <h4 className="font-bold text-2xl md:text-3xl text-amber-900">MartechAI Award</h4>
+              </div>
+              
+              <p className="text-amber-800 font-semibold text-lg md:text-xl mb-3">
+                Best Use of Analytics. Proven by results.
+              </p>
+              
+              <p className="text-amber-900/80 text-sm md:text-base mb-5 max-w-md">
+                Powered Pepe Jeans to shift from broad campaigns to precision journeys with clear revenue impact.
+              </p>
+              
+              {/* Metrics Highlight Box */}
+              <div className="bg-amber-200/60 border border-amber-400/50 rounded-xl px-4 py-3 mb-5 w-full md:w-auto">
+                <p className="text-amber-900 font-bold text-base md:text-lg">
+                  2.6X Conversion Growth & 12.8X ROI
+                </p>
+                <p className="text-amber-800 text-xs md:text-sm">
+                  with Netcore's RFM and AI Segments, Funnel Analytics & STO
+                </p>
+              </div>
+
+              {/* Like Button */}
+              <motion.button 
+                onClick={handleLike}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 hover:bg-white border border-amber-300 shadow-sm transition-all duration-200 hover:shadow-md"
+              >
+                <motion.div
+                  animate={liked ? { scale: [1, 1.3, 1] } : {}}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Heart 
+                    className={`transition-colors duration-200 ${liked ? "fill-red-500 text-red-500" : "text-amber-700"}`} 
+                    size={20} 
+                  />
+                </motion.div>
+                <span className="font-semibold text-amber-900">{likeCount}</span>
+              </motion.button>
             </div>
           </motion.div>
 
