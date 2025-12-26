@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Quote } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -475,26 +475,44 @@ export function LeadershipSpeaks() {
         </div>
       </motion.div>
 
-      {/* Dots Indicator - back in container */}
+      {/* Navigation Controls - back in container */}
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex justify-center gap-2 mt-8"
+          className="flex justify-center items-center gap-4 mt-8"
         >
-          {leaderTestimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                selectedIndex === index
-                  ? "bg-primary w-8"
-                  : "bg-foreground/30 hover:bg-foreground/50"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+          <button
+            onClick={() => emblaApi?.scrollPrev()}
+            className="p-2 rounded-full bg-foreground/10 hover:bg-foreground/15 transition-colors"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft size={20} className="text-foreground/70" />
+          </button>
+          
+          <div className="flex gap-2">
+            {leaderTestimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  selectedIndex === index
+                    ? "bg-primary w-8"
+                    : "bg-foreground/30 hover:bg-foreground/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          
+          <button
+            onClick={() => emblaApi?.scrollNext()}
+            className="p-2 rounded-full bg-foreground/10 hover:bg-foreground/15 transition-colors"
+            aria-label="Next slide"
+          >
+            <ChevronRight size={20} className="text-foreground/70" />
+          </button>
         </motion.div>
       </div>
 

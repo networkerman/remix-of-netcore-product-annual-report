@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Award, ExternalLink, Star, BookOpen, Eye, Code, Play, Clock, Shield, FileText, Zap, RefreshCw, Target } from "lucide-react";
+import { Award, ExternalLink, Star, BookOpen, Eye, Code, Play, Clock, Shield, FileText, Zap, RefreshCw, Target, ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -735,7 +735,7 @@ export function HeroProducts() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
-                    className={`group relative w-full max-w-md transition-all duration-500 ${
+                    className={`group relative w-full max-w-2xl transition-all duration-500 ${
                       selectedIndex === heroIndex ? "scale-100 opacity-100" : "scale-95 opacity-50"
                     } ${isClickable ? "cursor-pointer" : ""}`}
                     onClick={() => {
@@ -850,27 +850,45 @@ export function HeroProducts() {
         </motion.div>
       )}
 
-      {/* Dots Indicator - back in container */}
+      {/* Navigation Controls - back in container */}
       <div className="container mx-auto px-6 relative z-10">
         {currentSection && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center gap-2 mt-8"
+            className="flex justify-center items-center gap-4 mt-8"
           >
-            {currentSection.heroes.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => emblaApi?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  selectedIndex === index
-                    ? "bg-cream-100 w-8"
-                    : "bg-cream-100/30 hover:bg-cream-100/50"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+            <button
+              onClick={() => emblaApi?.scrollPrev()}
+              className="p-2 rounded-full bg-cream-100/15 hover:bg-cream-100/25 transition-colors"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} className="text-cream-100/80" />
+            </button>
+            
+            <div className="flex gap-2">
+              {currentSection.heroes.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    selectedIndex === index
+                      ? "bg-teal-400 w-8"
+                      : "bg-cream-100/30 hover:bg-cream-100/50"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            <button
+              onClick={() => emblaApi?.scrollNext()}
+              className="p-2 rounded-full bg-cream-100/15 hover:bg-cream-100/25 transition-colors"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} className="text-cream-100/80" />
+            </button>
           </motion.div>
         )}
       </div>
