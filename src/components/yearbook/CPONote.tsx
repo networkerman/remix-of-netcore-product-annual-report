@@ -60,7 +60,7 @@ export function CPONote() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid lg:grid-cols-[auto_1fr] gap-6 items-start max-w-5xl mx-auto"
+              className="grid lg:grid-cols-[auto_1fr] gap-12 items-start max-w-5xl mx-auto"
             >
               {/* Left: Visual */}
               <motion.div
