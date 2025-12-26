@@ -44,7 +44,7 @@ export function CPONote() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="caption text-primary mb-4 block">Leadership</span>
           <h2 className="section-heading text-foreground mb-6">A Note from the CPO</h2>
@@ -79,8 +79,8 @@ export function CPONote() {
                 </div>
 
                 {/* Quote Decoration */}
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-coral-400 rounded-2xl flex items-center justify-center">
-                  <Quote className="w-10 h-10 text-coral-50" />
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-coral-400 rounded-2xl flex items-center justify-center">
+                  <Quote className="w-8 h-8 text-coral-50" />
                 </div>
               </motion.div>
 
@@ -91,7 +91,7 @@ export function CPONote() {
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 
-                <h2 className="section-heading text-foreground mb-8">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-foreground mb-6">
                   "In 2025, AI at Netcore moved beyond analysis to actively drive decisions and outcomes for marketers."
                 </h2>
 
