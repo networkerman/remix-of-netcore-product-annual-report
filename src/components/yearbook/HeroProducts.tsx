@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Award, ExternalLink, Star, BookOpen, Eye, Code, Play, Clock, Shield, FileText, Zap, RefreshCw, Target, ChevronLeft, ChevronRight } from "lucide-react";
+import { Award, ExternalLink, Star, BookOpen, Eye, Code, Play, Clock, Shield, FileText, Zap, RefreshCw, Target, ChevronLeft, ChevronRight, Trophy } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -676,12 +676,58 @@ export function HeroProducts() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Award className="text-accent" size={32} />
+          {/* Celebratory Trophy Section */}
+          <div className="relative flex flex-col items-center justify-center mb-6">
+            {/* Golden Glow Background */}
+            <div className="absolute w-40 h-40 bg-gradient-radial from-amber-400/40 via-amber-500/15 to-transparent blur-3xl" />
+            <div className="absolute w-24 h-24 bg-gradient-radial from-amber-300/50 to-transparent blur-xl" />
+            
+            {/* Animated Sparkles */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute"
+                style={{
+                  top: `${20 + Math.sin(i * 0.8) * 35}%`,
+                  left: `${50 + Math.cos(i * 0.8) * 40}%`,
+                }}
+                animate={{ 
+                  scale: [0.6, 1.2, 0.6], 
+                  opacity: [0.3, 1, 0.3],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ 
+                  duration: 2 + i * 0.2, 
+                  repeat: Infinity, 
+                  delay: i * 0.25,
+                  ease: "easeInOut"
+                }}
+              >
+                <Star className="text-amber-400 w-2 h-2 fill-amber-400" />
+              </motion.div>
+            ))}
+            
+            {/* Trophy Icon with Gold Styling */}
+            <motion.div 
+              className="relative z-10 p-5 rounded-full bg-gradient-to-b from-amber-400/25 to-amber-600/10 border border-amber-400/40 shadow-lg shadow-amber-500/20"
+              animate={{ 
+                boxShadow: [
+                  "0 0 20px rgba(251, 191, 36, 0.2)",
+                  "0 0 40px rgba(251, 191, 36, 0.4)",
+                  "0 0 20px rgba(251, 191, 36, 0.2)"
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Trophy className="text-amber-400 w-10 h-10" />
+            </motion.div>
           </div>
-          <span className="caption text-primary mb-4 block">Excellence Recognized</span>
+          
+          <span className="caption text-amber-400 mb-4 block tracking-widest uppercase">
+            Excellence Recognized
+          </span>
           <h2 className="section-heading text-cream-100 mb-6">Hero of the Year</h2>
-          <p className="body-large text-cream-200/80 max-w-2xl mx-auto">
+          <p className="body-large text-cream-200/80 max-w-3xl mx-auto">
             Every year, certain projects stand out. These are the heroes that defined 2025, 
             each a testament to what focused excellence can achieve.
           </p>
