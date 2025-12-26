@@ -406,8 +406,8 @@ export function LeadershipSpeaks() {
         className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-gradient-radial from-coral-300/15 via-transparent to-transparent blur-3xl pointer-events-none"
       />
 
+      {/* Header - stays in container */}
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -420,61 +420,63 @@ export function LeadershipSpeaks() {
             We asked leaders across the company to share their honest reflections on the Product Team this year.
           </p>
         </motion.div>
+      </div>
 
-        {/* Carousel */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="overflow-hidden"
-          ref={emblaRef}
-        >
-          <div className="flex">
-            {leaderTestimonials.map((testimonial, index) => (
+      {/* Carousel - FULL WIDTH outside container */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="overflow-hidden w-full relative z-10"
+        ref={emblaRef}
+      >
+        <div className="flex items-center">
+          {leaderTestimonials.map((testimonial, index) => (
+            <div
+              key={testimonial.id}
+              className="flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_50%] min-w-0 px-4 flex justify-center"
+            >
               <div
-                key={testimonial.id}
-                className="flex-[0_0_100%] min-w-0 md:flex-[0_0_80%] lg:flex-[0_0_60%] px-4"
+                className={`bg-card backdrop-blur-sm border border-border rounded-3xl p-8 md:p-12 transition-all duration-500 w-full max-w-2xl ${
+                  selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
+                }`}
               >
-                <div
-                  className={`bg-card backdrop-blur-sm border border-border rounded-3xl p-8 md:p-12 transition-all duration-500 ${
-                    selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
-                  }`}
+                {/* Quote Icon */}
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                  <Quote className="w-6 h-6 text-primary" />
+                </div>
+
+                {/* Quote Text */}
+                <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-4 font-light">
+                  "{testimonial.collapsedQuote}"
+                </blockquote>
+
+                {/* View Full Testimonial CTA */}
+                <button
+                  onClick={() => setOpenTestimonial(testimonial)}
+                  className="text-primary hover:text-primary/80 text-sm font-medium mb-6 transition-colors"
                 >
-                  {/* Quote Icon */}
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                    <Quote className="w-6 h-6 text-primary" />
+                  View full testimonial →
+                </button>
+
+                {/* Author Info */}
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 flex items-center justify-center text-lg font-bold text-white">
+                    {testimonial.name.charAt(0)}
                   </div>
-
-                  {/* Quote Text */}
-                  <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-4 font-light">
-                    "{testimonial.collapsedQuote}"
-                  </blockquote>
-
-                  {/* View Full Testimonial CTA */}
-                  <button
-                    onClick={() => setOpenTestimonial(testimonial)}
-                    className="text-primary hover:text-primary/80 text-sm font-medium mb-6 transition-colors"
-                  >
-                    View full testimonial →
-                  </button>
-
-                  {/* Author Info */}
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-white">
-                      {testimonial.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-foreground">{testimonial.name}</p>
-                      <p className="text-foreground/60 text-sm">{testimonial.role}</p>
-                    </div>
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-foreground/60 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </motion.div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
 
-        {/* Dots Indicator */}
+      {/* Dots Indicator - back in container */}
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
@@ -528,7 +530,7 @@ export function LeadershipSpeaks() {
 
               {/* Author Info */}
               <div className="flex items-center gap-4 pt-6 border-t border-border">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center text-lg font-bold text-white">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 flex items-center justify-center text-lg font-bold text-white">
                   {openTestimonial.name.charAt(0)}
                 </div>
                 <div>
