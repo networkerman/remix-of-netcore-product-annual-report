@@ -790,7 +790,7 @@ export function HeroProducts() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="overflow-hidden w-full relative z-10"
+          className="w-full relative z-10"
           ref={emblaRef}
         >
           <div className="flex items-center">
@@ -832,31 +832,38 @@ export function HeroProducts() {
                       )}
                       
                       {/* Content */}
-                      <div className="relative p-6 h-full flex flex-col bg-card backdrop-blur-sm border border-border group-hover:border-amber-400/40 rounded-2xl min-h-[360px] transition-colors duration-300">
+                      <div className="relative p-6 h-full flex flex-col bg-card backdrop-blur-sm border border-border rounded-2xl min-h-[360px] transition-all duration-300 group-hover:ring-2 group-hover:ring-amber-400/80">
                         {/* Hero Label / Tags */}
                         <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
                           <div className="flex items-center gap-2 flex-wrap">
+                            {/* Original tag colors preserved for revert:
+                             * Netcore CE: bg-gradient-to-r from-teal-500 to-teal-600 text-navy-900
+                             * Netcore Unbxd: bg-gradient-to-r from-coral-400 to-coral-500 text-navy-900
+                             * Other: bg-gradient-to-r from-purple-500 to-purple-600 text-white
+                             * displayTag: bg-gradient-to-r from-teal-500 to-teal-600 text-white
+                             * heroLabel: ${hero.tagColor || currentSection.gradient} text-navy-900
+                             */}
                             {currentSection.function === "Product" && hero.tags && hero.tags.length > 0 ? (
                               hero.tags.map((tag, tagIndex) => (
                                 <span
                                   key={tagIndex}
                                   className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
                                     tag === "Netcore CE"
-                                      ? "bg-gradient-to-r from-teal-500 to-teal-600 text-navy-900"
+                                      ? "bg-gradient-to-r from-amber-400 to-amber-500 text-navy-900"
                                       : tag === "Netcore Unbxd"
-                                      ? "bg-gradient-to-r from-coral-400 to-coral-500 text-navy-900"
-                                      : "bg-gradient-to-r from-purple-500 to-purple-600 text-white"
+                                      ? "bg-gradient-to-r from-amber-500 to-amber-600 text-navy-900"
+                                      : "bg-gradient-to-r from-amber-600 to-amber-700 text-white"
                                   }`}
                                 >
                                   {tag}
                                 </span>
                               ))
                             ) : hero.displayTag ? (
-                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-semibold">
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-navy-900 text-xs font-semibold">
                                 {hero.displayTag}
                               </span>
                             ) : hero.heroLabel ? (
-                              <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r ${hero.tagColor || currentSection.gradient} text-navy-900 text-xs font-semibold`}>
+                              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-navy-900 text-xs font-semibold">
                                 <BookOpen size={12} />
                                 {hero.heroLabel}
                               </span>
@@ -915,14 +922,6 @@ export function HeroProducts() {
                     {/* Glow Effect on Hover */}
                     <div className="absolute -inset-0.5 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 rounded-2xl opacity-0 group-hover:opacity-25 blur-xl transition-opacity duration-500 -z-10" />
                     
-                    {/* Hover Sparkle Effect */}
-                    <motion.div 
-                      className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
-                      animate={{ rotate: [0, 15, -15, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-                    </motion.div>
                   </motion.div>
                 </div>
               );
