@@ -223,29 +223,29 @@ export function ProductCraft() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
-              className="p-6 rounded-2xl bg-gradient-to-br from-navy-800 to-navy-900 text-cream-100 flex flex-col"
+              className="p-6 rounded-2xl bg-gradient-to-br from-teal-50 via-teal-100/80 to-cream-50 border border-teal-200/60 flex flex-col"
             >
               <div className="flex items-center gap-3 mb-4">
-                <Users className="text-teal-400" size={28} />
-                <h4 className="font-bold text-xl text-cream-100">Customer Adoption</h4>
+                <Users className="text-teal-600" size={28} />
+                <h4 className="font-bold text-xl text-foreground">Customer Adoption</h4>
               </div>
               
-              <div className="space-y-4 flex-grow">
-                <div className="flex justify-between items-center py-2 border-b border-cream-100/10">
-                  <span className="text-cream-300">Funnel Active</span>
-                  <span className="font-bold text-teal-400 text-lg">100+</span>
+              <div className="space-y-3 flex-grow">
+                <div className="flex justify-between items-center py-2 border-b border-teal-200/40">
+                  <span className="text-foreground/70">Funnel Active</span>
+                  <span className="font-bold text-teal-600 text-lg">100+</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-cream-100/10">
-                  <span className="text-cream-300">RFM Active</span>
-                  <span className="font-bold text-teal-400 text-lg">70+</span>
+                <div className="flex justify-between items-center py-2 border-b border-teal-200/40">
+                  <span className="text-foreground/70">RFM Active</span>
+                  <span className="font-bold text-teal-600 text-lg">70+</span>
                 </div>
-                <div className="flex justify-between items-center py-2 border-b border-cream-100/10">
-                  <span className="text-cream-300">Cohort Active</span>
-                  <span className="font-bold text-teal-400 text-lg">78+</span>
+                <div className="flex justify-between items-center py-2 border-b border-teal-200/40">
+                  <span className="text-foreground/70">Cohort Active</span>
+                  <span className="font-bold text-teal-600 text-lg">78+</span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-cream-300">User Path Active</span>
-                  <span className="font-bold text-teal-400 text-lg">48+</span>
+                  <span className="text-foreground/70">User Path Active</span>
+                  <span className="font-bold text-teal-600 text-lg">48+</span>
                 </div>
               </div>
             </motion.div>
@@ -255,21 +255,21 @@ export function ProductCraft() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 }}
-              className="p-6 rounded-2xl bg-gradient-to-br from-teal-500/20 via-primary/10 to-teal-600/20 border-2 border-teal-500/30 flex flex-col"
+              className="p-6 rounded-2xl bg-gradient-to-br from-coral-50 via-coral-100/80 to-cream-50 border border-coral-200/60 flex flex-col"
             >
               <div className="flex items-center gap-3 mb-4">
-                <TrendingUp className="text-teal-600" size={28} />
+                <TrendingUp className="text-coral-600" size={28} />
                 <h4 className="font-bold text-xl text-foreground">NPS Score Improved</h4>
               </div>
               
               <div className="space-y-4 flex-grow">
-                <div className="flex justify-between items-center py-3 px-4 bg-teal-500/10 rounded-xl">
-                  <span className="text-foreground/80">RFM & Cohort NPS</span>
-                  <span className="font-bold text-2xl text-teal-600">+63%</span>
+                <div className="flex justify-between items-center py-3 px-4 bg-coral-100/50 rounded-xl">
+                  <span className="text-foreground/70">RFM & Cohort NPS</span>
+                  <span className="font-bold text-2xl text-coral-600">+63%</span>
                 </div>
-                <div className="flex justify-between items-center py-3 px-4 bg-teal-500/10 rounded-xl">
-                  <span className="text-foreground/80">Funnel NPS</span>
-                  <span className="font-bold text-2xl text-teal-600">+44%</span>
+                <div className="flex justify-between items-center py-3 px-4 bg-coral-100/50 rounded-xl">
+                  <span className="text-foreground/70">Funnel NPS</span>
+                  <span className="font-bold text-2xl text-coral-600">+44%</span>
                 </div>
               </div>
             </motion.div>
