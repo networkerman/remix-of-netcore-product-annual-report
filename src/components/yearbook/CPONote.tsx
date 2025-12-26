@@ -44,7 +44,7 @@ export function CPONote() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-20"
         >
           <span className="caption text-primary mb-4 block">Leadership</span>
           <h2 className="section-heading text-foreground mb-6">A Note from the CPO</h2>
@@ -67,20 +67,21 @@ export function CPONote() {
                 initial={{ opacity: 0, x: -40 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8 }}
-                className="relative"
               >
-                {/* CPO Photo */}
-                <div className="aspect-[3/4] max-w-sm rounded-3xl overflow-hidden">
-                  <img 
-                    src={kedarCpoPhoto} 
-                    alt="Kedar Parikh - Chief Product Officer" 
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
+                {/* CPO Photo with Quote Decoration */}
+                <div className="relative max-w-sm">
+                  <div className="aspect-[3/4] rounded-3xl overflow-hidden">
+                    <img 
+                      src={kedarCpoPhoto} 
+                      alt="Kedar Parikh - Chief Product Officer" 
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
 
-                {/* Quote Decoration */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-coral-400 rounded-2xl flex items-center justify-center">
-                  <Quote className="w-8 h-8 text-coral-50" />
+                  {/* Quote Decoration - overlaps top-right corner */}
+                  <div className="absolute -top-4 -right-4 w-20 h-20 bg-coral-400 rounded-2xl flex items-center justify-center z-10">
+                    <Quote className="w-8 h-8 text-coral-50" />
+                  </div>
                 </div>
               </motion.div>
 
@@ -108,7 +109,7 @@ export function CPONote() {
                     onClick={() => setExpanded(true)}
                     className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
                   >
-                    Continue reading <ChevronDown size={18} />
+                    Show more <ChevronDown size={18} />
                   </button>
                 </div>
               </motion.div>
@@ -123,8 +124,7 @@ export function CPONote() {
             >
               {/* Expanded Header */}
               <div className="text-center mb-12">
-                <span className="caption text-primary mb-4 block">A Note from the CPO</span>
-                <h2 className="section-heading text-foreground mb-4">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-foreground mb-4">
                   "In 2025, AI at Netcore moved beyond analysis to actively drive decisions and outcomes for marketers."
                 </h2>
                 <div className="flex items-center justify-center gap-4 mt-6">
@@ -170,7 +170,7 @@ export function CPONote() {
                   onClick={() => setExpanded(false)}
                   className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary/80 transition-colors"
                 >
-                  <ChevronUp size={18} /> Collapse article
+                  <ChevronUp size={18} /> Show less
                 </button>
               </div>
             </motion.div>
