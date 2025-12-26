@@ -1066,28 +1066,35 @@ export function HeroProducts() {
                     >
                       {/* Metrics Strip */}
                       {section.metrics && (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                          {section.metrics.map((metric, metricIndex) => {
-                            const IconComponent = iconMap[metric.icon];
-                            return (
-                              <div
-                                key={metricIndex}
-                                className="flex flex-col items-center text-center p-6 bg-gradient-to-br from-amber-500/10 via-amber-600/5 to-navy-700/50 rounded-xl border border-amber-400/20"
-                              >
-                                {IconComponent && (
-                                  <IconComponent className="w-5 h-5 text-amber-400 mb-3" />
-                                )}
-                                <span className="text-xl md:text-2xl font-bold text-cream-100 mb-2">
-                                  {metric.number}
-                                </span>
-                                <div className="text-xs text-cream-300/70 leading-relaxed">
-                                  {metric.label.map((line, lineIndex) => (
-                                    <div key={lineIndex}>{line}</div>
-                                  ))}
+                        <div className="mb-8">
+                          <h4 className="text-xl font-bold text-cream-100 mb-4">
+                            Documentation Impact at Scale
+                          </h4>
+                          <div className="grid grid-cols-2 md:grid-cols-4 p-6 bg-gradient-to-br from-amber-500/10 via-amber-600/5 to-navy-700/50 rounded-xl border border-amber-400/20">
+                            {section.metrics.map((metric, metricIndex) => {
+                              const IconComponent = iconMap[metric.icon];
+                              return (
+                                <div
+                                  key={metricIndex}
+                                  className={`flex flex-col items-center text-center py-2 ${
+                                    metricIndex < section.metrics!.length - 1 ? "md:border-r md:border-amber-400/15" : ""
+                                  }`}
+                                >
+                                  {IconComponent && (
+                                    <IconComponent className="w-5 h-5 text-amber-400 mb-2" />
+                                  )}
+                                  <span className="text-lg md:text-xl font-bold text-cream-100 mb-1">
+                                    {metric.number}
+                                  </span>
+                                  <div className="text-xs text-cream-300/70 leading-relaxed">
+                                    {metric.label.map((line, lineIndex) => (
+                                      <div key={lineIndex}>{line}</div>
+                                    ))}
+                                  </div>
                                 </div>
-                              </div>
-                            );
-                          })}
+                              );
+                            })}
+                          </div>
                         </div>
                       )}
                       
