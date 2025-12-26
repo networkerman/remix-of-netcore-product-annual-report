@@ -16,19 +16,26 @@ export function ThankYou() {
     >
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-radial from-teal-500/10 via-transparent to-transparent blur-3xl"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-radial from-coral-400/10 via-transparent to-transparent blur-3xl"
-        />
-      </div>
+      
+      {/* Floating Blob Animations */}
+      <motion.div
+        animate={{
+          x: [0, 250, -200, 280, -150, 200, 0],
+          y: [0, -200, 180, -120, 250, -180, 0],
+          scale: [1, 1.06, 0.94, 1.05, 0.97, 1.03, 1],
+        }}
+        transition={{ duration: 45, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-radial from-teal-300/20 via-transparent to-transparent blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          x: [0, -200, 180, -250, 150, -180, 0],
+          y: [0, 200, -150, 180, -200, 150, 0],
+          scale: [1, 0.95, 1.04, 0.96, 1.05, 0.98, 1],
+        }}
+        transition={{ duration: 50, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-gradient-radial from-coral-300/15 via-transparent to-transparent blur-3xl pointer-events-none"
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
