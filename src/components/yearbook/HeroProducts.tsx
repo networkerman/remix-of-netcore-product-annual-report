@@ -668,6 +668,32 @@ export function HeroProducts() {
         className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-coral-400/10 via-transparent to-transparent blur-3xl pointer-events-none"
       />
 
+      {/* Background Sparkles - spread across section */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={`bg-sparkle-${i}`}
+            className="absolute"
+            style={{
+              top: `${5 + Math.random() * 50}%`,
+              left: `${5 + (i * 4.5)}%`,
+            }}
+            animate={{ 
+              scale: [0.5, 1, 0.5], 
+              opacity: [0.15, 0.5, 0.15],
+            }}
+            transition={{ 
+              duration: 3 + Math.random() * 2, 
+              repeat: Infinity, 
+              delay: i * 0.15,
+              ease: "easeInOut"
+            }}
+          >
+            <Star className="text-amber-400/50 w-1.5 h-1.5 fill-amber-400/50" />
+          </motion.div>
+        ))}
+      </div>
+
       {/* Header - stays in container */}
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -806,7 +832,7 @@ export function HeroProducts() {
                       )}
                       
                       {/* Content */}
-                      <div className="relative p-6 h-full flex flex-col bg-card backdrop-blur-sm border border-border rounded-2xl min-h-[360px]">
+                      <div className="relative p-6 h-full flex flex-col bg-card backdrop-blur-sm border border-border group-hover:border-amber-400/40 rounded-2xl min-h-[360px] transition-colors duration-300">
                         {/* Hero Label / Tags */}
                         <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
                           <div className="flex items-center gap-2 flex-wrap">
@@ -845,8 +871,8 @@ export function HeroProducts() {
 
                         {/* Why It Matters */}
                         <div className="mb-6 flex-grow">
-                          <div className="flex items-center gap-2 text-teal-600 mb-2">
-                            <Star size={14} />
+                          <div className="flex items-center gap-2 text-amber-500 mb-2">
+                            <Star size={14} className="fill-amber-500" />
                             <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
                           </div>
                           <p className="text-navy-700 leading-relaxed text-sm">
@@ -887,7 +913,16 @@ export function HeroProducts() {
                     </div>
 
                     {/* Glow Effect on Hover */}
-                    <div className={`absolute -inset-0.5 bg-gradient-to-br ${currentSection.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`} />
+                    <div className="absolute -inset-0.5 bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 rounded-2xl opacity-0 group-hover:opacity-25 blur-xl transition-opacity duration-500 -z-10" />
+                    
+                    {/* Hover Sparkle Effect */}
+                    <motion.div 
+                      className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
+                      animate={{ rotate: [0, 15, -15, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                    </motion.div>
                   </motion.div>
                 </div>
               );
@@ -920,8 +955,8 @@ export function HeroProducts() {
                   onClick={() => emblaApi?.scrollTo(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     selectedIndex === index
-                      ? "bg-teal-400 w-8"
-                      : "bg-cream-100/30 hover:bg-cream-100/50"
+                      ? "bg-amber-400 w-8"
+                      : "bg-cream-100/30 hover:bg-amber-400/50"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
