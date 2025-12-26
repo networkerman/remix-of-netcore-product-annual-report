@@ -807,10 +807,15 @@ export function HeroProducts() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4 }}
-                    className={`group relative w-full max-w-2xl transition-all duration-500 ${
+                    className={`group relative w-full max-w-2xl transition-all duration-500 cursor-pointer ${
                       selectedIndex === heroIndex ? "scale-100 opacity-100" : "scale-95 opacity-50"
-                    } ${isClickable ? "cursor-pointer" : ""}`}
+                    }`}
                     onClick={() => {
+                      // First scroll to this card if not already selected
+                      if (emblaApi && selectedIndex !== heroIndex) {
+                        emblaApi.scrollTo(heroIndex);
+                      }
+                      // Then open the modal if it's a clickable documentation card
                       if (isClickable) {
                         setSelectedHero(hero);
                       }
@@ -821,10 +826,14 @@ export function HeroProducts() {
                       {/* Gradient Background */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${currentSection.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-500`} />
                       
-                      {/* Hover Overlay for Documentation Story Cards Only */}
+                      {/* Hover Overlay for Documentation Story Cards Only - Blur Effect */}
                       {isDocumentation && hero.story && (
-                        <div className="absolute inset-0 bg-navy-900/90 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
-                          <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500 text-white font-semibold text-sm">
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
+                          {/* Blur backdrop instead of dark overlay */}
+                          <div className="absolute inset-0 backdrop-blur-md bg-white/20 rounded-2xl" />
+                          
+                          {/* Primary Orange CTA Button */}
+                          <div className="relative flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm shadow-lg">
                             <Eye size={18} />
                             <span>VIEW FULL STORY</span>
                           </div>
