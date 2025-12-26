@@ -654,8 +654,8 @@ export function HeroProducts() {
             <Award className="text-accent" size={32} />
           </div>
           <span className="caption text-primary mb-4 block">Excellence Recognized</span>
-          <h2 className="section-heading text-foreground mb-6">Hero of the Year</h2>
-          <p className="body-large text-foreground/60 max-w-2xl mx-auto">
+          <h2 className="section-heading text-cream-100 mb-6">Hero of the Year</h2>
+          <p className="body-large text-cream-200/80 max-w-2xl mx-auto">
             Every year, certain projects stand out. These are the heroes that defined 2025, 
             each a testament to what focused excellence can achieve.
           </p>
@@ -674,8 +674,8 @@ export function HeroProducts() {
               onClick={() => setActiveSection(section.function)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeSection === section.function
-                  ? "bg-foreground text-background"
-                  : "bg-foreground/5 text-foreground/70 hover:bg-foreground/10"
+                  ? "bg-cream-100 text-navy-900"
+                  : "bg-cream-100/15 text-cream-100/90 hover:bg-cream-100/25"
               }`}
             >
               <span>{section.icon}</span>
@@ -697,23 +697,23 @@ export function HeroProducts() {
               >
                 {/* Scroll Navigation */}
                 <div className="flex items-center justify-between mb-6">
-                  <span className="px-3 py-1 rounded-full bg-foreground/5 text-foreground/70 text-sm">
+                  <span className="px-3 py-1 rounded-full bg-cream-100/15 text-cream-100/80 text-sm">
                     {section.heroes.length} heroes
                   </span>
                   <div className="flex gap-2">
                     <button
                       onClick={() => scrollContainer("left")}
-                      className="p-2 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors"
+                      className="p-2 rounded-full bg-cream-100/15 hover:bg-cream-100/25 transition-colors"
                       aria-label="Scroll left"
                     >
-                      <ChevronLeft size={20} className="text-foreground/70" />
+                      <ChevronLeft size={20} className="text-cream-100/80" />
                     </button>
                     <button
                       onClick={() => scrollContainer("right")}
-                      className="p-2 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors"
+                      className="p-2 rounded-full bg-cream-100/15 hover:bg-cream-100/25 transition-colors"
                       aria-label="Scroll right"
                     >
-                      <ChevronRight size={20} className="text-foreground/70" />
+                      <ChevronRight size={20} className="text-cream-100/80" />
                     </button>
                   </div>
                 </div>
@@ -748,8 +748,8 @@ export function HeroProducts() {
                           
                           {/* Hover Overlay for Documentation Story Cards Only */}
                           {isDocumentation && hero.story && (
-                            <div className="absolute inset-0 bg-foreground/80 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
-                              <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-navy-900 font-semibold text-sm">
+                            <div className="absolute inset-0 bg-navy-900/90 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10 flex items-center justify-center rounded-2xl">
+                              <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500 text-white font-semibold text-sm">
                                 <Eye size={18} />
                                 <span>VIEW FULL STORY</span>
                               </div>
@@ -786,34 +786,34 @@ export function HeroProducts() {
                                     {hero.heroLabel}
                                   </span>
                                 ) : (
-                                  <span className="text-cream-400 text-sm">{hero.month}</span>
+                                  <span className="text-navy-600 text-sm">{hero.month}</span>
                                 )}
                               </div>
                             </div>
 
                             {/* Title */}
-                            <h4 className="text-xl font-bold text-cream-100 mb-3">{hero.title}</h4>
+                            <h4 className="text-xl font-bold text-navy-900 mb-3">{hero.title}</h4>
 
                             {/* Why It Matters */}
                             <div className="mb-6 flex-grow">
-                              <div className="flex items-center gap-2 text-teal-400 mb-2">
+                              <div className="flex items-center gap-2 text-teal-600 mb-2">
                                 <Star size={14} />
                                 <span className="text-xs font-semibold uppercase tracking-wider">Why It Matters</span>
                               </div>
-                              <p className="text-cream-300/80 leading-relaxed text-sm">
+                              <p className="text-navy-700 leading-relaxed text-sm">
                                 {hero.why}
                               </p>
                             </div>
 
                             {/* Links - hidden for Hero Documents and Hero Videos */}
                             {hero.title !== "Hero Documents" && hero.title !== "Hero Videos" && (
-                              <div className="space-y-2 pt-4 border-t border-cream-100/10">
+                              <div className="space-y-2 pt-4 border-t border-navy-900/10">
                                 {hero.links.map((link, lIndex) => (
                                   <a
                                     key={lIndex}
                                     href={link.url}
                                     onClick={(e) => e.stopPropagation()}
-                                    className="flex items-center justify-between text-sm text-cream-300 hover:text-teal-400 transition-colors py-1"
+                                    className="flex items-center justify-between text-sm text-navy-700 hover:text-teal-600 transition-colors py-1"
                                   >
                                     <span>{link.label}</span>
                                     <ExternalLink size={14} />
