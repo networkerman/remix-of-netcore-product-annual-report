@@ -104,40 +104,22 @@ export function HeroSection() {
             2025 product journey memorable.
           </motion.p>
 
-          {/* Decorative Element */}
+          {/* Product Names with Dot Separators */}
           <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0.8,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-            }}
-            transition={{
-              duration: 1,
-              delay: 0.6,
-            }}
-            className="flex justify-center gap-8 mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex items-center justify-center gap-4 mb-16"
           >
             {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
-              <motion.div
-                key={product}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 0.8 + index * 0.1,
-                }}
-                className="px-6 py-3 rounded-full border border-border text-foreground/70 font-medium"
-              >
-                {product}
-              </motion.div>
+              <span key={product} className="flex items-center gap-4">
+                <span className="text-foreground/70 font-medium text-lg">
+                  {product}
+                </span>
+                {index < 3 && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
+                )}
+              </span>
             ))}
           </motion.div>
         </div>
