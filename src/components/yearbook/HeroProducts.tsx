@@ -619,14 +619,14 @@ export function HeroProducts() {
 
   // Pause autoplay when modal is open
   useEffect(() => {
-    if (!autoplayPlugin.current) return;
+    if (!autoplayPlugin.current || !emblaApi) return;
     
     if (selectedHero) {
       autoplayPlugin.current.stop();
     } else {
       autoplayPlugin.current.play();
     }
-  }, [selectedHero]);
+  }, [selectedHero, emblaApi]);
 
   // Get current active section's heroes
   const currentSection = heroSections.find((s) => s.function === activeSection);
