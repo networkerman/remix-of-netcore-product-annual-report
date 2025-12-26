@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ExternalLink, Award, Users, TrendingUp, Heart } from "lucide-react";
+import { ExternalLink, Trophy, Users, TrendingUp, Heart } from "lucide-react";
 import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
 import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
 import martechAwardImg from "@/assets/awards/martech-ai-award.jpg";
@@ -83,15 +83,31 @@ export function ProductCraft() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="relative w-full p-6 md:p-8 rounded-2xl bg-gradient-to-br from-amber-100 via-amber-50 to-yellow-100 border-2 border-amber-400 shadow-[0_0_40px_rgba(245,158,11,0.25)] flex flex-col md:flex-row items-center gap-6 md:gap-10 overflow-hidden"
+            whileHover={{ boxShadow: "0 0 50px rgba(245,158,11,0.4)" }}
+            className="group relative w-full p-6 md:p-8 rounded-2xl bg-cream-50 border-2 border-amber-400/60 flex flex-col md:flex-row items-center gap-6 md:gap-10 overflow-hidden transition-shadow duration-300"
           >
-            {/* Featured Badge */}
-            <div className="absolute top-4 right-4 md:top-6 md:right-6 bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
-              <span>🏆</span> Featured Achievement
-            </div>
+            {/* Animated Golden Blobs */}
+            <motion.div
+              animate={{
+                x: [0, 30, -20, 25, 0],
+                y: [0, -20, 15, -15, 0],
+                scale: [1, 1.1, 0.95, 1.05, 1],
+              }}
+              transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-radial from-amber-400/30 via-amber-300/15 to-transparent blur-3xl pointer-events-none"
+            />
+            <motion.div
+              animate={{
+                x: [0, -25, 20, -30, 0],
+                y: [0, 20, -15, 25, 0],
+                scale: [1, 0.95, 1.08, 0.97, 1],
+              }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-0 right-1/4 w-72 h-72 bg-gradient-radial from-amber-500/25 via-amber-400/10 to-transparent blur-3xl pointer-events-none"
+            />
 
-            {/* Left: Award Image */}
-            <div className="w-full md:w-2/5 aspect-[4/3] rounded-xl overflow-hidden bg-amber-200 shrink-0 shadow-lg border border-amber-300">
+            {/* Left: Award Image - 1:1 aspect ratio */}
+            <div className="relative z-10 w-full md:w-2/5 aspect-square rounded-xl overflow-hidden bg-amber-100/50 shrink-0 shadow-lg border border-amber-300/50">
               <img 
                 src={martechAwardImg} 
                 alt="MartechAI Award Trophy" 
@@ -100,9 +116,25 @@ export function ProductCraft() {
             </div>
             
             {/* Right: Award Details */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left flex-grow pt-6 md:pt-0">
-              <div className="flex items-center gap-3 mb-3">
-                <Award className="text-amber-600" size={36} />
+            <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left flex-grow">
+              {/* Trophy with Golden Glow - Hero of the Year style */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative">
+                  <div className="absolute inset-0 w-16 h-16 bg-gradient-radial from-amber-400/40 via-amber-500/15 to-transparent blur-xl" />
+                  <motion.div 
+                    className="relative z-10 p-3 rounded-full bg-gradient-to-b from-amber-400/25 to-amber-600/10 border border-amber-400/40 shadow-lg shadow-amber-500/20"
+                    animate={{ 
+                      boxShadow: [
+                        "0 0 15px rgba(251, 191, 36, 0.2)",
+                        "0 0 30px rgba(251, 191, 36, 0.4)",
+                        "0 0 15px rgba(251, 191, 36, 0.2)"
+                      ]
+                    }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Trophy className="text-amber-500 w-8 h-8" />
+                  </motion.div>
+                </div>
                 <h4 className="font-bold text-2xl md:text-3xl text-amber-900">MartechAI Award</h4>
               </div>
               
@@ -115,7 +147,7 @@ export function ProductCraft() {
               </p>
               
               {/* Metrics Highlight Box */}
-              <div className="bg-amber-200/60 border border-amber-400/50 rounded-xl px-4 py-3 mb-5 w-full md:w-auto">
+              <div className="bg-amber-100/80 border border-amber-400/40 rounded-xl px-4 py-3 mb-5 w-full md:w-auto">
                 <p className="text-amber-900 font-bold text-base md:text-lg">
                   2.6X Conversion Growth & 12.8X ROI
                 </p>
