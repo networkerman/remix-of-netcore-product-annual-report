@@ -13,29 +13,25 @@ export function HeroSection() {
         <img src={netcoreLogo} alt="Netcore" className="h-10 w-auto" />
       </div>
 
-      {/* Animated Background Elements */}
+      {/* Floating Blob Animations */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
-            rotate: 360,
+            x: [0, 250, -200, 280, -150, 200, 0],
+            y: [0, -200, 180, -120, 250, -180, 0],
+            scale: [1, 1.06, 0.94, 1.05, 0.97, 1.03, 1],
           }}
-          transition={{
-            duration: 100,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-radial from-teal-500/10 via-transparent to-transparent blur-3xl"
+          transition={{ duration: 45, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-radial from-teal-300/20 via-transparent to-transparent blur-3xl pointer-events-none"
         />
         <motion.div
           animate={{
-            rotate: -360,
+            x: [0, -200, 180, -250, 150, -180, 0],
+            y: [0, 200, -150, 180, -200, 150, 0],
+            scale: [1, 0.95, 1.04, 0.96, 1.05, 0.98, 1],
           }}
-          transition={{
-            duration: 80,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-radial from-coral-400/10 via-transparent to-transparent blur-3xl"
+          transition={{ duration: 50, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-gradient-radial from-coral-300/15 via-transparent to-transparent blur-3xl pointer-events-none"
         />
 
         {/* Grid Pattern */}

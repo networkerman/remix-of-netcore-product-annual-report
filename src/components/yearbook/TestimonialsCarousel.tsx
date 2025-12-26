@@ -94,8 +94,25 @@ export function TestimonialsCarousel() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
       
-      {/* Decorative Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-3xl" />
+      {/* Floating Blob Animations */}
+      <motion.div
+        animate={{
+          x: [0, 250, -200, 280, -150, 200, 0],
+          y: [0, -200, 180, -120, 250, -180, 0],
+          scale: [1, 1.06, 0.94, 1.05, 0.97, 1.03, 1],
+        }}
+        transition={{ duration: 45, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-teal-500/15 via-transparent to-transparent blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          x: [0, -200, 180, -250, 150, -180, 0],
+          y: [0, 200, -150, 180, -200, 150, 0],
+          scale: [1, 0.95, 1.04, 0.96, 1.05, 0.98, 1],
+        }}
+        transition={{ duration: 50, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-gradient-radial from-coral-400/10 via-transparent to-transparent blur-3xl pointer-events-none"
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
