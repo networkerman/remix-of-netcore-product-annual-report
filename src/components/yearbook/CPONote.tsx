@@ -39,6 +39,20 @@ export function CPONote() {
       />
       
       <div className="container mx-auto px-6">
+        {/* Section Header - Centered */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <span className="caption text-primary mb-4 block">Leadership</span>
+          <h2 className="section-heading text-foreground mb-6">A Note from the CPO</h2>
+          <p className="body-large text-foreground/60 max-w-2xl mx-auto">
+            Reflections on how AI transformed our approach to marketing technology in 2025.
+          </p>
+        </motion.div>
+
         <AnimatePresence mode="wait">
           {!expanded ? (
             <motion.div
@@ -56,7 +70,7 @@ export function CPONote() {
                 className="relative"
               >
                 {/* CPO Photo */}
-                <div className="aspect-[4/5] rounded-3xl overflow-hidden">
+                <div className="aspect-[3/4] max-w-sm rounded-3xl overflow-hidden">
                   <img 
                     src={kedarCpoPhoto} 
                     alt="Kedar Parikh - Chief Product Officer" 
@@ -76,7 +90,6 @@ export function CPONote() {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <span className="caption text-primary mb-4 block">A Note from the CPO</span>
                 
                 <h2 className="section-heading text-foreground mb-8">
                   "In 2025, AI at Netcore moved beyond analysis to actively drive decisions and outcomes for marketers."
