@@ -272,7 +272,6 @@ const internCards: InternCard[] = [
     name: "Hardikya",
     image: hardikyaImg,
     persona: "UX Guardian",
-    role: "Product Designer",
     part1: {
       ohShitMoment: "I was most terrified of overlooking a discrepancy during the UX verification process. I wanted to make sure everything was as close to the design as possible, so the thought of a UI inconsistency slipping through to production was my biggest fear.",
       learningCurve: "My biggest challenge was minimizing design inconsistency. I had to learn to stop 'reinventing the wheel' and instead master the existing component library to ensure every new feature felt like a native part of the product.",
@@ -713,16 +712,18 @@ export function PMStories() {
                   <div className="pt-4 border-t border-cream-100/10">
                     <h4 className="text-lg font-bold text-teal-400 mb-4">Part 2: Full-Time</h4>
                     
-                    {/* Jira Comparison */}
-                    <div className="mb-4">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Wrench className="text-teal-400" size={16} />
-                        <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">Day 1 vs Now</span>
+                    {/* Day 1 vs Now - Hide for Parth */}
+                    {selectedIntern.name !== "Parth" && (
+                      <div className="mb-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Wrench className="text-teal-400" size={16} />
+                          <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">Day 1 vs Now</span>
+                        </div>
+                        <p className="text-cream-300/80 text-sm leading-relaxed">
+                          {selectedIntern.part2.jiraComparison}
+                        </p>
                       </div>
-                      <p className="text-cream-300/80 text-sm leading-relaxed">
-                        {selectedIntern.part2.jiraComparison}
-                      </p>
-                    </div>
+                    )}
 
                     {/* Myth Busted */}
                     <div>
@@ -736,7 +737,8 @@ export function PMStories() {
                     </div>
                   </div>
 
-                  {/* Part 3: Rapid Fire */}
+                  {/* Part 3: Rapid Fire - Hide for Parth */}
+                  {selectedIntern.name !== "Parth" && (
                   <div className="pt-4 border-t border-cream-100/10">
                     <h4 className="text-lg font-bold text-emerald-400 mb-4">Part 3: Rapid Fire</h4>
                     
@@ -746,7 +748,11 @@ export function PMStories() {
                         <span className="text-cream-100 text-sm">{selectedIntern.part3.internSong}</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-cream-400/60 text-xs uppercase w-24">APM Vibe:</span>
+                        <span className="text-cream-400/60 text-xs uppercase w-24">
+                          {selectedIntern.name === "Dhairya" || selectedIntern.name === "Hardikya" 
+                            ? "Designer Vibe:" 
+                            : "APM Vibe:"}
+                        </span>
                         <span className="text-cream-100 text-sm">{selectedIntern.part3.apmSong}</span>
                       </div>
                       <div className="flex items-center gap-3">
@@ -755,6 +761,7 @@ export function PMStories() {
                       </div>
                     </div>
                   </div>
+                  )}
                 </div>
               </div>
             )}
