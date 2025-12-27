@@ -236,7 +236,7 @@ export function YearAtGlance() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8"
         >
           <span className="caption text-teal-400 mb-4 block">Everything We Shipped</span>
           <h2 className="section-heading text-cream-100 mb-6">Year at a Glance</h2>
@@ -245,30 +245,11 @@ export function YearAtGlance() {
           </p>
         </motion.div>
 
-        {/* Summary Stats - MOVED UP */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-16 grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
-        >
-          {[
-            { label: "Total Features", value: `${totalFeatures}+` },
-            { label: "Cross-Product Launches", value: `${crossProductLaunches}` },
-            { label: "Major Releases", value: "12" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center p-4 md:p-6 rounded-2xl bg-navy-700/50 border border-amber-400/30">
-              <p className="text-2xl md:text-4xl font-bold text-amber-400 mb-1 md:mb-2">{stat.value}</p>
-              <p className="text-xs md:text-sm text-cream-300/60">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Product Filter */}
+        {/* Product Filter - Now before timeline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center gap-2 mb-8"
         >
           {["All", "CE", "CPaaS", "Unbxd"].map((product) => (
@@ -302,19 +283,19 @@ export function YearAtGlance() {
                     {/* Three Months Row with Timeline */}
                     <div className="relative pt-4">
                       {/* Line segment: Month 1 to Month 2 */}
-                      <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+14px)] md:top-[calc(1rem+16px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Line segment: Month 2 to Month 3 */}
-                      <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+14px)] md:top-[calc(1rem+16px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Cross-quarter connector: extends right from Month 3 (except Q4) */}
                       {qIndex < 3 && (
-                        <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+14px)] md:top-[calc(1rem+16px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       {/* Cross-quarter connector: extends left to Month 1 (except Q1) */}
                       {qIndex > 0 && (
-                        <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+14px)] md:top-[calc(1rem+16px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
@@ -325,14 +306,14 @@ export function YearAtGlance() {
                             <div key={month.month} className="text-center">
                               {/* Month Marker - Compact rounded rectangle with gradient */}
                               <div 
-                                className={`relative z-10 px-4 py-2 md:px-6 md:py-3 rounded-xl min-w-[90px] md:min-w-[120px] mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
+                                className={`relative z-10 px-3 py-1.5 md:px-4 md:py-2 rounded-lg mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
                                     ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
                                     : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
                                 }`}
                                 onClick={() => setSelectedMonth(isSelected ? null : month.month)}
                               >
-                                <span className="font-bold text-sm md:text-base whitespace-nowrap">{fullMonthNames[month.month]}</span>
+                                <span className="font-bold text-xs md:text-sm whitespace-nowrap">{fullMonthNames[month.month]}</span>
                               </div>
 
                               {/* Feature Count */}
@@ -433,6 +414,25 @@ export function YearAtGlance() {
             </button>
           </div>
         </div>
+
+        {/* Summary Stats - Now below timeline */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-16 grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
+        >
+          {[
+            { label: "Total Features", value: `${totalFeatures}+` },
+            { label: "Cross-Product Launches", value: `${crossProductLaunches}` },
+            { label: "Major Releases", value: "12" },
+          ].map((stat, index) => (
+            <div key={index} className="text-center p-4 md:p-6 rounded-2xl bg-navy-700/50 border border-amber-400/30">
+              <p className="text-2xl md:text-4xl font-bold text-amber-400 mb-1 md:mb-2">{stat.value}</p>
+              <p className="text-xs md:text-sm text-cream-300/60">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
