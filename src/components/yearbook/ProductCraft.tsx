@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ExternalLink, Trophy, Users, TrendingUp, Heart } from "lucide-react";
+import { ExternalLink, Trophy, Users, TrendingUp, Heart, Activity, PieChart, Route, BarChart3 } from "lucide-react";
 import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
 import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
 import martechAwardImg from "@/assets/awards/martech-ai-award.jpg";
@@ -139,13 +139,82 @@ export function ProductCraft() {
             </div>
           </motion.div>
 
-          {/* Row 2: Case Studies - Pepe Jeans + Plum */}
+          {/* Row 2: Metrics - Customer Adoption + NPS Score (Icon-based layout) */}
+          <div className="grid md:grid-cols-2 gap-12 py-8">
+            {/* Customer Adoption */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.3 }}
+              className="text-center"
+            >
+              <h4 className="font-bold text-xl text-foreground mb-8">Customer Adoption</h4>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <Activity className="text-primary w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-3xl text-primary">100+</span>
+                  <span className="text-foreground/70 text-sm mt-1">Funnel Active</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <PieChart className="text-primary w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-3xl text-primary">70+</span>
+                  <span className="text-foreground/70 text-sm mt-1">RFM Active</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <Users className="text-primary w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-3xl text-primary">78+</span>
+                  <span className="text-foreground/70 text-sm mt-1">Cohort Active</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <Route className="text-primary w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-3xl text-primary">48+</span>
+                  <span className="text-foreground/70 text-sm mt-1">User Path Active</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* NPS Score Improved */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.4 }}
+              className="text-center"
+            >
+              <h4 className="font-bold text-xl text-foreground mb-8">NPS Score Improved</h4>
+              <div className="grid grid-cols-2 gap-6 max-w-xs mx-auto">
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <TrendingUp className="text-primary w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-3xl text-primary">+63%</span>
+                  <span className="text-foreground/70 text-sm mt-1">RFM & Cohort NPS</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <BarChart3 className="text-primary w-6 h-6" />
+                  </div>
+                  <span className="font-bold text-3xl text-primary">+44%</span>
+                  <span className="text-foreground/70 text-sm mt-1">Funnel NPS</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Row 3: Case Studies - Pepe Jeans + Plum (moved below metrics) */}
           <div className="grid md:grid-cols-2 gap-8">
             {/* Pepe Jeans Case Study */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.5 }}
               className="p-6 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow flex flex-col"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -182,7 +251,7 @@ export function ProductCraft() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.6 }}
               className="p-6 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow flex flex-col"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -213,65 +282,6 @@ export function ProductCraft() {
               >
                 View Case Study <ExternalLink size={14} />
               </a>
-            </motion.div>
-          </div>
-
-          {/* Row 3: Metrics - Customer Adoption + NPS */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Customer Adoption */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5 }}
-              className="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <Users className="text-teal-600" size={28} />
-                <h4 className="font-bold text-xl text-foreground">Customer Adoption</h4>
-              </div>
-              
-              <div className="space-y-3 flex-grow">
-                <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="text-foreground/70">Funnel Active</span>
-                  <span className="font-bold text-teal-600 text-lg">100+</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="text-foreground/70">RFM Active</span>
-                  <span className="font-bold text-teal-600 text-lg">70+</span>
-                </div>
-                <div className="flex justify-between items-center py-2 border-b border-gray-200">
-                  <span className="text-foreground/70">Cohort Active</span>
-                  <span className="font-bold text-teal-600 text-lg">78+</span>
-                </div>
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-foreground/70">User Path Active</span>
-                  <span className="font-bold text-teal-600 text-lg">48+</span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* NPS Score Improved */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.6 }}
-              className="p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex flex-col"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <TrendingUp className="text-teal-600" size={28} />
-                <h4 className="font-bold text-xl text-foreground">NPS Score Improved</h4>
-              </div>
-              
-              <div className="space-y-4 flex-grow">
-                <div className="flex justify-between items-center py-3 px-4 bg-gray-50 rounded-xl">
-                  <span className="text-foreground/70">RFM & Cohort NPS</span>
-                  <span className="font-bold text-2xl text-teal-600">+63%</span>
-                </div>
-                <div className="flex justify-between items-center py-3 px-4 bg-gray-50 rounded-xl">
-                  <span className="text-foreground/70">Funnel NPS</span>
-                  <span className="font-bold text-2xl text-teal-600">+44%</span>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
