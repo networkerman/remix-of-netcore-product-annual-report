@@ -306,7 +306,7 @@ export function YearAtGlance() {
                             <div key={month.month} className="text-center">
                               {/* Month Marker - Dynamic width rounded rectangle with gradient */}
                               <div 
-                                className={`relative z-10 w-fit px-3 py-3 md:px-4 md:py-4 rounded-xl mx-auto mb-3 inline-flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
+                                className={`relative z-10 w-fit min-w-[70px] md:min-w-[90px] px-3 py-3 md:px-4 md:py-4 rounded-xl mx-auto mb-3 inline-flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
                                     ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
                                     : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
