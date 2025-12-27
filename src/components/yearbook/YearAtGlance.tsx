@@ -167,9 +167,11 @@ export function YearAtGlance() {
 
   useEffect(() => {
     if (!emblaApi) return;
-    const onSelect = () => setSelectedQuarterIndex(emblaApi.selectedScrollSnap());
+    const onSelect = () => {
+      setSelectedQuarterIndex(emblaApi.selectedScrollSnap());
+      setSelectedMonth(null); // Clear selected month when switching quarters
+    };
     emblaApi.on("select", onSelect);
-    onSelect();
     return () => { emblaApi.off("select", onSelect); };
   }, [emblaApi]);
 
@@ -272,7 +274,7 @@ export function YearAtGlance() {
         {/* Carousel for Months */}
         <div className="relative max-w-5xl mx-auto">
           {/* Carousel */}
-          <div className="overflow-hidden" ref={emblaRef}>
+          <div className="overflow-hidden py-4" ref={emblaRef}>
             <div className="flex">
               {quarters.map((quarter, qIndex) => (
                 <div key={quarter.label} className="flex-[0_0_100%] min-w-0">
@@ -282,32 +284,37 @@ export function YearAtGlance() {
                     transition={{ duration: 0.5, delay: qIndex * 0.1 }}
                     className="px-4"
                   >
-                    {/* Three Months in Row */}
-                    <div className="grid grid-cols-3 gap-4 md:gap-8">
-                      {quarter.months.map((month) => {
-                        const isSelected = selectedMonth === month.month;
-                        
-                        return (
-                          <div key={month.month} className="text-center">
-                            {/* Month Marker */}
-                            <div 
-                              className={`relative z-10 w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                                isSelected 
-                                  ? "bg-teal-500 text-navy-900 scale-110" 
-                                  : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
-                              }`}
-                              onClick={() => setSelectedMonth(isSelected ? null : month.month)}
-                            >
-                              <span className="font-bold text-base md:text-lg">{month.month}</span>
-                            </div>
+                    {/* Three Months Row with Timeline */}
+                    <div className="relative pt-4">
+                      {/* Timeline Line - Behind circles */}
+                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[16.67%] right-[16.67%] h-0.5 bg-cream-100/20" />
+                      
+                      <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
+                        {quarter.months.map((month) => {
+                          const isSelected = selectedMonth === month.month;
+                          
+                          return (
+                            <div key={month.month} className="text-center">
+                              {/* Month Marker */}
+                              <div 
+                                className={`relative z-10 w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+                                  isSelected 
+                                    ? "bg-teal-500 text-navy-900 scale-110" 
+                                    : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
+                                }`}
+                                onClick={() => setSelectedMonth(isSelected ? null : month.month)}
+                              >
+                                <span className="font-bold text-base md:text-lg">{month.month}</span>
+                              </div>
 
-                            {/* Feature Count */}
-                            <p className="text-xs md:text-sm text-cream-300/60">
-                              {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
-                            </p>
-                          </div>
-                        );
-                      })}
+                              {/* Feature Count */}
+                              <p className="text-xs md:text-sm text-cream-300/60">
+                                {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
 
                     {/* Features Grid - Full Width Below All Months */}
