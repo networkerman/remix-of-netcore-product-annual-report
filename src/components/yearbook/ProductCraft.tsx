@@ -139,8 +139,8 @@ export function ProductCraft() {
             </div>
           </motion.div>
 
-          {/* Row 2: Metrics - Customer Adoption + NPS Score (Icon-based layout) */}
-          <div className="grid md:grid-cols-2 gap-12 py-8">
+          {/* Row 2: Metrics - Customer Adoption + NPS Score (Stacked vertically) */}
+          <div className="flex flex-col gap-16 py-8">
             {/* Customer Adoption */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -151,31 +151,31 @@ export function ProductCraft() {
               <h4 className="font-bold text-xl text-foreground mb-8">Customer Adoption</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <Activity className="text-primary w-6 h-6" />
+                  <div className="w-14 h-14 rounded-full bg-coral-100 flex items-center justify-center mb-3">
+                    <Activity className="text-coral-500 w-6 h-6" />
                   </div>
-                  <span className="font-bold text-3xl text-primary">100+</span>
+                  <span className="font-bold text-3xl text-coral-500">100+</span>
                   <span className="text-foreground/70 text-sm mt-1">Funnel Active</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <PieChart className="text-primary w-6 h-6" />
+                  <div className="w-14 h-14 rounded-full bg-coral-100 flex items-center justify-center mb-3">
+                    <PieChart className="text-coral-500 w-6 h-6" />
                   </div>
-                  <span className="font-bold text-3xl text-primary">70+</span>
+                  <span className="font-bold text-3xl text-coral-500">70+</span>
                   <span className="text-foreground/70 text-sm mt-1">RFM Active</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <Users className="text-primary w-6 h-6" />
+                  <div className="w-14 h-14 rounded-full bg-coral-100 flex items-center justify-center mb-3">
+                    <Users className="text-coral-500 w-6 h-6" />
                   </div>
-                  <span className="font-bold text-3xl text-primary">78+</span>
+                  <span className="font-bold text-3xl text-coral-500">78+</span>
                   <span className="text-foreground/70 text-sm mt-1">Cohort Active</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <Route className="text-primary w-6 h-6" />
+                  <div className="w-14 h-14 rounded-full bg-coral-100 flex items-center justify-center mb-3">
+                    <Route className="text-coral-500 w-6 h-6" />
                   </div>
-                  <span className="font-bold text-3xl text-primary">48+</span>
+                  <span className="font-bold text-3xl text-coral-500">48+</span>
                   <span className="text-foreground/70 text-sm mt-1">User Path Active</span>
                 </div>
               </div>
@@ -191,22 +191,32 @@ export function ProductCraft() {
               <h4 className="font-bold text-xl text-foreground mb-8">NPS Score Improved</h4>
               <div className="grid grid-cols-2 gap-6 max-w-xs mx-auto">
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <TrendingUp className="text-primary w-6 h-6" />
+                  <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-3">
+                    <TrendingUp className="text-green-600 w-6 h-6" />
                   </div>
-                  <span className="font-bold text-3xl text-primary">+63%</span>
+                  <span className="font-bold text-3xl text-green-600">+63%</span>
                   <span className="text-foreground/70 text-sm mt-1">RFM & Cohort NPS</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
-                    <BarChart3 className="text-primary w-6 h-6" />
+                  <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-3">
+                    <BarChart3 className="text-green-600 w-6 h-6" />
                   </div>
-                  <span className="font-bold text-3xl text-primary">+44%</span>
+                  <span className="font-bold text-3xl text-green-600">+44%</span>
                   <span className="text-foreground/70 text-sm mt-1">Funnel NPS</span>
                 </div>
               </div>
             </motion.div>
           </div>
+
+          {/* Success Stories Title */}
+          <motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.45 }}
+            className="text-2xl md:text-3xl font-bold text-foreground text-center mb-8"
+          >
+            Success Stories
+          </motion.h3>
 
           {/* Row 3: Case Studies - Pepe Jeans + Plum (moved below metrics) */}
           <div className="grid md:grid-cols-2 gap-8">
