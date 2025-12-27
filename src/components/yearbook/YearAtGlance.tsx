@@ -286,8 +286,21 @@ export function YearAtGlance() {
                   >
                     {/* Three Months Row with Timeline */}
                     <div className="relative pt-4">
-                      {/* Timeline Line - Extends beyond edges for continuity across quarters */}
-                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] -left-full -right-full h-0.5 bg-cream-100/20" />
+                      {/* Line segment: Month 1 to Month 2 */}
+                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      
+                      {/* Line segment: Month 2 to Month 3 */}
+                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      
+                      {/* Cross-quarter connector: extends right from Month 3 (except Q4) */}
+                      {qIndex < 3 && (
+                        <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                      )}
+                      
+                      {/* Cross-quarter connector: extends left to Month 1 (except Q1) */}
+                      {qIndex > 0 && (
+                        <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                      )}
                       
                       <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
                         {quarter.months.map((month) => {
@@ -295,12 +308,12 @@ export function YearAtGlance() {
                           
                           return (
                             <div key={month.month} className="text-center">
-                              {/* Month Marker */}
+                              {/* Month Marker - Opaque background to cover timeline */}
                               <div 
-                                className={`relative z-10 w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+                                className={`relative z-10 w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
                                     ? "bg-teal-500 text-navy-900 scale-110" 
-                                    : "bg-navy-800 border-2 border-teal-500/30 hover:border-teal-500/60 hover:bg-navy-700"
+                                    : "bg-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:bg-navy-700 text-cream-100"
                                 }`}
                                 onClick={() => setSelectedMonth(isSelected ? null : month.month)}
                               >
