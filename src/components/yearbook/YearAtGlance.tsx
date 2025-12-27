@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 interface FeatureItem {
   name: string;
@@ -144,11 +145,33 @@ const getCrossProductLaunches = () => {
   }).length;
 };
 
+// Group months into quarters
+const getQuarters = (data: MonthData[]) => [
+  { label: "Q1", months: data.slice(0, 3) },
+  { label: "Q2", months: data.slice(3, 6) },
+  { label: "Q3", months: data.slice(6, 9) },
+  { label: "Q4", months: data.slice(9, 12) },
+];
+
 export function YearAtGlance() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
   const [productFilter, setProductFilter] = useState<"All" | "CE" | "CPaaS" | "Unbxd">("All");
+  const [selectedQuarterIndex, setSelectedQuarterIndex] = useState(0);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelectedQuarterIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi]);
 
   const filteredData = yearData.map(month => ({
     ...month,
@@ -157,8 +180,14 @@ export function YearAtGlance() {
       : month.features.filter(f => f.product === productFilter)
   }));
 
+  const quarters = getQuarters(filteredData);
   const totalFeatures = getTotalFeatures();
   const crossProductLaunches = getCrossProductLaunches();
+
+  // Get selected month's features for display below carousel
+  const selectedMonthData = selectedMonth 
+    ? filteredData.find(m => m.month === selectedMonth) 
+    : null;
 
   return (
     <section
@@ -194,31 +223,46 @@ export function YearAtGlance() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="caption text-teal-400 mb-4 block">Everything We Shipped</span>
           <h2 className="section-heading text-cream-100 mb-6">Year at a Glance</h2>
-          <p className="body-large text-cream-300/70 max-w-2xl mx-auto mb-4">
+          <p className="body-large text-cream-300/70 max-w-2xl mx-auto">
             A chronological view of the features, launches, and platform bets that shaped our product year.
           </p>
-          <p className="text-sm text-cream-300/40 flex items-center justify-center gap-2">
-            <ChevronRight size={14} />
-            Click on a month to see features
-          </p>
+        </motion.div>
+
+        {/* Summary Stats - MOVED UP */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-12 grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
+        >
+          {[
+            { label: "Total Features", value: `${totalFeatures}+` },
+            { label: "Cross-Product Launches", value: `${crossProductLaunches}` },
+            { label: "Major Releases", value: "12" },
+          ].map((stat, index) => (
+            <div key={index} className="text-center p-4 md:p-6 rounded-2xl bg-navy-700/50 border border-cream-100/10">
+              <p className="text-2xl md:text-4xl font-bold text-teal-400 mb-1 md:mb-2">{stat.value}</p>
+              <p className="text-xs md:text-sm text-cream-300/60">{stat.label}</p>
+            </div>
+          ))}
         </motion.div>
 
         {/* Product Filter */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="flex justify-center gap-2 mb-12"
         >
           {["All", "CE", "CPaaS", "Unbxd"].map((product) => (
             <button
               key={product}
               onClick={() => setProductFilter(product as typeof productFilter)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-4 md:px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 productFilter === product
                   ? "bg-cream-100 text-navy-900"
                   : "bg-cream-100/10 text-cream-300 hover:bg-cream-100/20"
@@ -229,94 +273,132 @@ export function YearAtGlance() {
           ))}
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Timeline Line */}
-          <div className="absolute top-8 left-0 right-0 h-0.5 bg-cream-100/20 hidden lg:block" />
+        {/* Carousel for Months */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Navigation Buttons */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 w-10 h-10 rounded-full bg-navy-700/80 border border-cream-100/20 flex items-center justify-center text-cream-100 hover:bg-navy-600 transition-colors"
+            aria-label="Previous quarter"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 w-10 h-10 rounded-full bg-navy-700/80 border border-cream-100/20 flex items-center justify-center text-cream-100 hover:bg-navy-600 transition-colors"
+            aria-label="Next quarter"
+          >
+            <ChevronRight size={20} />
+          </button>
 
-          {/* Months */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {filteredData.map((month, index) => (
-              <motion.div
-                key={month.month}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="relative"
-              >
-                {/* Month Marker */}
-                <div 
-                  className={`relative z-10 w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                    selectedMonth === month.month 
-                      ? "bg-teal-500 text-navy-900 scale-110" 
-                      : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
-                  }`}
-                  onClick={() => setSelectedMonth(selectedMonth === month.month ? null : month.month)}
-                >
-                  <span className="font-bold text-sm">{month.month}</span>
-                </div>
-
-                {/* Feature Count */}
-                <p className="text-center text-sm text-cream-300/60 mb-4">
-                  {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
-                </p>
-
-                {/* Expanded Features */}
-                <motion.div
-                  initial={false}
-                  animate={{ 
-                    height: selectedMonth === month.month ? "auto" : 0,
-                    opacity: selectedMonth === month.month ? 1 : 0
-                  }}
-                  className="overflow-hidden"
-                >
-                  <div className="space-y-2 pt-2">
-                    {month.features.map((feature, fIndex) => (
-                      <a
-                        key={fIndex}
-                        href={feature.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`block p-3 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200`}
-                      >
-                        <div className="flex items-start gap-2">
-                          <div className="flex-1">
-                            <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
-                              {feature.name}
-                              <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
-                            </p>
-                            <span className={`text-xs ${productColors[feature.product].text}`}>
-                              {feature.product}
-                            </span>
+          {/* Carousel */}
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {quarters.map((quarter, qIndex) => (
+                <div key={quarter.label} className="flex-[0_0_100%] min-w-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: qIndex * 0.1 }}
+                    className="px-4"
+                  >
+                    {/* Quarter Label */}
+                    <p className="text-center text-sm font-medium text-teal-400 mb-6">{quarter.label}</p>
+                    
+                    {/* Three Months in Row */}
+                    <div className="grid grid-cols-3 gap-4 md:gap-8">
+                      {quarter.months.map((month) => (
+                        <div key={month.month} className="text-center">
+                          {/* Month Marker */}
+                          <div 
+                            className={`relative z-10 w-14 h-14 md:w-20 md:h-20 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+                              selectedMonth === month.month 
+                                ? "bg-teal-500 text-navy-900 scale-110" 
+                                : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
+                            }`}
+                            onClick={() => setSelectedMonth(selectedMonth === month.month ? null : month.month)}
+                          >
+                            <span className="font-bold text-sm md:text-base">{month.month}</span>
                           </div>
+
+                          {/* Feature Count */}
+                          <p className="text-xs md:text-sm text-cream-300/60">
+                            {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
+                          </p>
                         </div>
-                      </a>
-                    ))}
-                  </div>
-                </motion.div>
-              </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Hint Text - Below Carousel */}
+          <p className="text-sm text-cream-300/40 flex items-center justify-center gap-2 mt-6">
+            <ChevronRight size={14} />
+            Click on a month to see features
+          </p>
+
+          {/* Pagination Dots */}
+          <div className="flex justify-center gap-2 mt-4">
+            {quarters.map((quarter, index) => (
+              <button
+                key={quarter.label}
+                onClick={() => emblaApi?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  selectedQuarterIndex === index 
+                    ? "bg-teal-400 w-6" 
+                    : "bg-cream-100/30 hover:bg-cream-100/50"
+                }`}
+                aria-label={`Go to ${quarter.label}`}
+              />
             ))}
           </div>
         </div>
 
-        {/* Summary Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-20 grid grid-cols-3 gap-6 max-w-3xl mx-auto"
-        >
-          {[
-            { label: "Total Features", value: `${totalFeatures}+` },
-            { label: "Cross-Product Launches", value: `${crossProductLaunches}` },
-            { label: "Major Releases", value: "12" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center p-6 rounded-2xl bg-navy-700/50 border border-cream-100/10">
-              <p className="text-3xl md:text-4xl font-bold text-teal-400 mb-2">{stat.value}</p>
-              <p className="text-sm text-cream-300/60">{stat.label}</p>
+        {/* Expanded Features Section - Below Carousel */}
+        {selectedMonthData && selectedMonthData.features.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="mt-12 max-w-6xl mx-auto"
+          >
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-cream-100 text-center">
+                {selectedMonth} Features
+              </h3>
             </div>
-          ))}
-        </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {selectedMonthData.features.map((feature, fIndex) => (
+                <motion.a
+                  key={fIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: fIndex * 0.05 }}
+                  href={feature.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block p-4 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200`}
+                >
+                  <div className="flex items-start gap-2">
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
+                        {feature.name}
+                        <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
+                      </p>
+                      <span className={`text-xs ${productColors[feature.product].text}`}>
+                        {feature.product}
+                      </span>
+                    </div>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
