@@ -323,9 +323,9 @@ export function YearAtGlance() {
                           
                           return (
                             <div key={month.month} className="text-center">
-                              {/* Month Marker - Rounded rectangle with gradient */}
+                              {/* Month Marker - Compact rounded rectangle with gradient */}
                               <div 
-                                className={`relative z-10 px-3 py-3 md:px-5 md:py-4 rounded-2xl mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
+                                className={`relative z-10 px-4 py-2 md:px-6 md:py-3 rounded-xl w-fit mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
                                     ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
                                     : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
@@ -361,7 +361,7 @@ export function YearAtGlance() {
                         >
                           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {monthFeatures.map((feature, fIndex) => (
-                              <motion.a
+                            <motion.a
                                 key={fIndex}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -369,11 +369,15 @@ export function YearAtGlance() {
                                 href={feature.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`block p-4 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200 text-left`}
+                                className={`relative block p-4 pr-10 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200 text-left group`}
                               >
-                                <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
+                                {/* External link icon - top right corner */}
+                                <ExternalLink 
+                                  size={18} 
+                                  className={`absolute top-3 right-3 ${productColors[feature.product].text} opacity-70 group-hover:opacity-100 transition-opacity`} 
+                                />
+                                <p className="text-sm font-medium text-cream-100 leading-tight pr-2">
                                   {feature.name}
-                                  <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
                                 </p>
                                 <span className={`text-xs ${productColors[feature.product].text}`}>
                                   {feature.product}
