@@ -434,7 +434,7 @@ export function LeadershipSpeaks() {
           {leaderTestimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className="flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_50%] min-w-0 px-4 flex justify-center"
+              className="flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_50%] min-w-0 px-6 py-4 flex justify-center"
             >
               <div
                 onClick={() => setOpenTestimonial(testimonial)}

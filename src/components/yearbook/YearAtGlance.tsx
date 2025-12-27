@@ -257,7 +257,7 @@ export function YearAtGlance() {
             { label: "Cross-Product Launches", value: `${crossProductLaunches}` },
             { label: "Major Releases", value: "12" },
           ].map((stat, index) => (
-            <div key={index} className="text-center p-4 md:p-6 rounded-2xl bg-navy-700/50 border border-cream-100/10">
+            <div key={index} className="text-center p-4 md:p-6 rounded-2xl bg-navy-700/50 border border-amber-400/30">
               <p className="text-2xl md:text-4xl font-bold text-amber-400 mb-1 md:mb-2">{stat.value}</p>
               <p className="text-xs md:text-sm text-cream-300/60">{stat.label}</p>
             </div>
@@ -269,7 +269,7 @@ export function YearAtGlance() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-center gap-2 mb-12"
+          className="flex justify-center gap-2 mb-8"
         >
           {["All", "CE", "CPaaS", "Unbxd"].map((product) => (
             <button
@@ -302,19 +302,19 @@ export function YearAtGlance() {
                     {/* Three Months Row with Timeline */}
                     <div className="relative pt-4">
                       {/* Line segment: Month 1 to Month 2 */}
-                      <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Line segment: Month 2 to Month 3 */}
-                      <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Cross-quarter connector: extends right from Month 3 (except Q4) */}
                       {qIndex < 3 && (
-                        <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       {/* Cross-quarter connector: extends left to Month 1 (except Q1) */}
                       {qIndex > 0 && (
-                        <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
@@ -325,7 +325,7 @@ export function YearAtGlance() {
                             <div key={month.month} className="text-center">
                               {/* Month Marker - Compact rounded rectangle with gradient */}
                               <div 
-                                className={`relative z-10 px-5 py-2 md:px-8 md:py-3 rounded-xl min-w-[110px] md:min-w-[140px] mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
+                                className={`relative z-10 px-4 py-2 md:px-6 md:py-3 rounded-xl min-w-[90px] md:min-w-[120px] mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
                                     ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
                                     : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
