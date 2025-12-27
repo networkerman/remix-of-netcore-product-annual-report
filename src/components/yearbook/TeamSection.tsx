@@ -94,19 +94,21 @@ const teamColors = {
 };
 
 const teamBadgeColors = {
-  Product: "bg-teal-500/10 text-teal-600 border-teal-500/20",
-  Design: "bg-coral-400/10 text-coral-600 border-coral-400/20",
-  Documentation: "bg-accent/20 text-amber-700 border-accent/30",
+  Product: "bg-teal-500/30 text-teal-300 border-teal-400/40",
+  Design: "bg-coral-400/30 text-coral-200 border-coral-300/40",
+  Documentation: "bg-amber-500/30 text-amber-200 border-amber-400/40",
 };
 
 export function TeamSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [filter, setFilter] = useState<"Product" | "Design" | "Documentation">("Product");
+  const [filter, setFilter] = useState<"All" | "Product" | "Design" | "Documentation">("All");
   
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  const filteredMembers = teamMembers.filter(m => m.team === filter);
+  const filteredMembers = filter === "All" 
+    ? teamMembers 
+    : teamMembers.filter(m => m.team === filter);
 
   return (
     <section
@@ -160,7 +162,7 @@ export function TeamSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center gap-2 mb-12"
         >
-          {["Product", "Design", "Documentation"].map((team) => (
+          {["All", "Product", "Design", "Documentation"].map((team) => (
             <button
               key={team}
               onClick={() => setFilter(team as typeof filter)}
