@@ -184,10 +184,6 @@ export function YearAtGlance() {
   const totalFeatures = getTotalFeatures();
   const crossProductLaunches = getCrossProductLaunches();
 
-  // Get selected month's features for display below carousel
-  const selectedMonthData = selectedMonth 
-    ? filteredData.find(m => m.month === selectedMonth) 
-    : null;
 
   return (
     <section
@@ -275,22 +271,6 @@ export function YearAtGlance() {
 
         {/* Carousel for Months */}
         <div className="relative max-w-5xl mx-auto">
-          {/* Navigation Buttons */}
-          <button
-            onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 w-10 h-10 rounded-full bg-navy-700/80 border border-cream-100/20 flex items-center justify-center text-cream-100 hover:bg-navy-600 transition-colors"
-            aria-label="Previous quarter"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-20 w-10 h-10 rounded-full bg-navy-700/80 border border-cream-100/20 flex items-center justify-center text-cream-100 hover:bg-navy-600 transition-colors"
-            aria-label="Next quarter"
-          >
-            <ChevronRight size={20} />
-          </button>
-
           {/* Carousel */}
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -302,31 +282,67 @@ export function YearAtGlance() {
                     transition={{ duration: 0.5, delay: qIndex * 0.1 }}
                     className="px-4"
                   >
-                    {/* Quarter Label */}
-                    <p className="text-center text-sm font-medium text-teal-400 mb-6">{quarter.label}</p>
-                    
                     {/* Three Months in Row */}
                     <div className="grid grid-cols-3 gap-4 md:gap-8">
-                      {quarter.months.map((month) => (
-                        <div key={month.month} className="text-center">
-                          {/* Month Marker */}
-                          <div 
-                            className={`relative z-10 w-14 h-14 md:w-20 md:h-20 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 ${
-                              selectedMonth === month.month 
-                                ? "bg-teal-500 text-navy-900 scale-110" 
-                                : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
-                            }`}
-                            onClick={() => setSelectedMonth(selectedMonth === month.month ? null : month.month)}
-                          >
-                            <span className="font-bold text-sm md:text-base">{month.month}</span>
-                          </div>
+                      {quarter.months.map((month) => {
+                        const isSelected = selectedMonth === month.month;
+                        const monthFeatures = month.features;
+                        
+                        return (
+                          <div key={month.month} className="text-center">
+                            {/* Month Marker */}
+                            <div 
+                              className={`relative z-10 w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+                                isSelected 
+                                  ? "bg-teal-500 text-navy-900 scale-110" 
+                                  : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
+                              }`}
+                              onClick={() => setSelectedMonth(isSelected ? null : month.month)}
+                            >
+                              <span className="font-bold text-base md:text-lg">{month.month}</span>
+                            </div>
 
-                          {/* Feature Count */}
-                          <p className="text-xs md:text-sm text-cream-300/60">
-                            {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
-                          </p>
-                        </div>
-                      ))}
+                            {/* Feature Count */}
+                            <p className="text-xs md:text-sm text-cream-300/60">
+                              {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
+                            </p>
+
+                            {/* Features Grid - Below Selected Month */}
+                            {isSelected && monthFeatures.length > 0 && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="mt-6"
+                              >
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                                  {monthFeatures.map((feature, fIndex) => (
+                                    <motion.a
+                                      key={fIndex}
+                                      initial={{ opacity: 0, y: 10 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      transition={{ duration: 0.3, delay: fIndex * 0.05 }}
+                                      href={feature.link}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className={`block p-3 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200 text-left`}
+                                    >
+                                      <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
+                                        {feature.name}
+                                        <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
+                                      </p>
+                                      <span className={`text-xs ${productColors[feature.product].text}`}>
+                                        {feature.product}
+                                      </span>
+                                    </motion.a>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </motion.div>
                 </div>
@@ -335,70 +351,44 @@ export function YearAtGlance() {
           </div>
 
           {/* Hint Text - Below Carousel */}
-          <p className="text-sm text-cream-300/40 flex items-center justify-center gap-2 mt-6">
-            <ChevronRight size={14} />
+          <p className="text-sm text-cream-300/40 text-center mt-6">
             Click on a month to see features
           </p>
 
-          {/* Pagination Dots */}
-          <div className="flex justify-center gap-2 mt-4">
-            {quarters.map((quarter, index) => (
-              <button
-                key={quarter.label}
-                onClick={() => emblaApi?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  selectedQuarterIndex === index 
-                    ? "bg-teal-400 w-6" 
-                    : "bg-cream-100/30 hover:bg-cream-100/50"
-                }`}
-                aria-label={`Go to ${quarter.label}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Expanded Features Section - Below Carousel */}
-        {selectedMonthData && selectedMonthData.features.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-12 max-w-6xl mx-auto"
-          >
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-cream-100 text-center">
-                {selectedMonth} Features
-              </h3>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {selectedMonthData.features.map((feature, fIndex) => (
-                <motion.a
-                  key={fIndex}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: fIndex * 0.05 }}
-                  href={feature.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block p-4 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200`}
-                >
-                  <div className="flex items-start gap-2">
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
-                        {feature.name}
-                        <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
-                      </p>
-                      <span className={`text-xs ${productColors[feature.product].text}`}>
-                        {feature.product}
-                      </span>
-                    </div>
-                  </div>
-                </motion.a>
+          {/* Navigation + Pagination */}
+          <div className="flex justify-center items-center gap-4 mt-4">
+            <button
+              onClick={scrollPrev}
+              className="w-10 h-10 rounded-full bg-navy-700/80 border border-cream-100/20 flex items-center justify-center text-cream-100 hover:bg-navy-600 transition-colors"
+              aria-label="Previous quarter"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            
+            <div className="flex gap-2">
+              {quarters.map((quarter, index) => (
+                <button
+                  key={quarter.label}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    selectedQuarterIndex === index 
+                      ? "bg-teal-400 w-6" 
+                      : "bg-cream-100/30 hover:bg-cream-100/50"
+                  }`}
+                  aria-label={`Go to quarter ${index + 1}`}
+                />
               ))}
             </div>
-          </motion.div>
-        )}
+            
+            <button
+              onClick={scrollNext}
+              className="w-10 h-10 rounded-full bg-navy-700/80 border border-cream-100/20 flex items-center justify-center text-cream-100 hover:bg-navy-600 transition-colors"
+              aria-label="Next quarter"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
