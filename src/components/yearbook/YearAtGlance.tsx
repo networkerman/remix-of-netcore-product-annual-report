@@ -283,19 +283,19 @@ export function YearAtGlance() {
                     {/* Three Months Row with Timeline */}
                     <div className="relative pt-4">
                       {/* Line segment: Month 1 to Month 2 */}
-                      <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Line segment: Month 2 to Month 3 */}
-                      <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Cross-quarter connector: extends right from Month 3 (except Q4) */}
                       {qIndex < 3 && (
-                        <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       {/* Cross-quarter connector: extends left to Month 1 (except Q1) */}
                       {qIndex > 0 && (
-                        <div className="absolute top-[calc(1rem+20px)] md:top-[calc(1rem+22px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
@@ -304,9 +304,9 @@ export function YearAtGlance() {
                           
                           return (
                             <div key={month.month} className="text-center">
-                              {/* Month Marker - Compact rounded rectangle with gradient */}
+                              {/* Month Marker - Dynamic width rounded rectangle with gradient */}
                               <div 
-                                className={`relative z-10 px-2 py-2 md:px-3 md:py-3 rounded-xl mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
+                                className={`relative z-10 w-fit px-3 py-3 md:px-4 md:py-4 rounded-xl mx-auto mb-3 inline-flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
                                     ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
                                     : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
