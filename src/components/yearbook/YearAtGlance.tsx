@@ -286,8 +286,8 @@ export function YearAtGlance() {
                   >
                     {/* Three Months Row with Timeline */}
                     <div className="relative pt-4">
-                      {/* Timeline Line - Behind circles */}
-                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[16.67%] right-[16.67%] h-0.5 bg-cream-100/20" />
+                      {/* Timeline Line - Extends beyond edges for continuity across quarters */}
+                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] -left-full -right-full h-0.5 bg-cream-100/20" />
                       
                       <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
                         {quarter.months.map((month) => {
@@ -300,7 +300,7 @@ export function YearAtGlance() {
                                 className={`relative z-10 w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 ${
                                   isSelected 
                                     ? "bg-teal-500 text-navy-900 scale-110" 
-                                    : "bg-navy-700/50 border-2 border-cream-100/10 hover:border-teal-500/50"
+                                    : "bg-navy-800 border-2 border-teal-500/30 hover:border-teal-500/60 hover:bg-navy-700"
                                 }`}
                                 onClick={() => setSelectedMonth(isSelected ? null : month.month)}
                               >
