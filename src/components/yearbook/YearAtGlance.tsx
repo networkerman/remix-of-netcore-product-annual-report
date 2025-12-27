@@ -128,8 +128,23 @@ const yearData: MonthData[] = [
 
 const productColors = {
   CE: { bg: "bg-teal-500/10", text: "text-teal-400", border: "border-teal-500/30" },
-  CPaaS: { bg: "bg-coral-400/10", text: "text-coral-400", border: "border-coral-400/30" },
-  Unbxd: { bg: "bg-accent/20", text: "text-amber-400", border: "border-accent/40" },
+  CPaaS: { bg: "bg-violet-500/10", text: "text-violet-400", border: "border-violet-500/30" },
+  Unbxd: { bg: "bg-sky-500/10", text: "text-sky-400", border: "border-sky-500/30" },
+};
+
+const fullMonthNames: Record<string, string> = {
+  "Jan": "January",
+  "Feb": "February",
+  "Mar": "March",
+  "Apr": "April",
+  "May": "May",
+  "Jun": "June",
+  "Jul": "July",
+  "Aug": "August",
+  "Sep": "September",
+  "Oct": "October",
+  "Nov": "November",
+  "Dec": "December"
 };
 
 // Calculate metrics dynamically
@@ -287,19 +302,19 @@ export function YearAtGlance() {
                     {/* Three Months Row with Timeline */}
                     <div className="relative pt-4">
                       {/* Line segment: Month 1 to Month 2 */}
-                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[16.67%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Line segment: Month 2 to Month 3 */}
-                      <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
+                      <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[50%] w-[33.33%] h-0.5 bg-cream-100/20 z-0" />
                       
                       {/* Cross-quarter connector: extends right from Month 3 (except Q4) */}
                       {qIndex < 3 && (
-                        <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] left-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       {/* Cross-quarter connector: extends left to Month 1 (except Q1) */}
                       {qIndex > 0 && (
-                        <div className="absolute top-[calc(1rem+40px)] md:top-[calc(1rem+56px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
+                        <div className="absolute top-[calc(1rem+28px)] md:top-[calc(1rem+32px)] right-[83.33%] w-[16.67%] h-0.5 bg-cream-100/20 z-0" />
                       )}
                       
                       <div className="grid grid-cols-3 gap-4 md:gap-8 relative z-10">
@@ -308,16 +323,16 @@ export function YearAtGlance() {
                           
                           return (
                             <div key={month.month} className="text-center">
-                              {/* Month Marker - Opaque background to cover timeline */}
+                              {/* Month Marker - Rounded rectangle with gradient */}
                               <div 
-                                className={`relative z-10 w-20 h-20 md:w-28 md:h-28 rounded-full mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
+                                className={`relative z-10 px-3 py-3 md:px-5 md:py-4 rounded-2xl mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
-                                    ? "bg-teal-500 text-navy-900 scale-110" 
-                                    : "bg-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:bg-navy-700 text-cream-100"
+                                    ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
+                                    : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
                                 }`}
                                 onClick={() => setSelectedMonth(isSelected ? null : month.month)}
                               >
-                                <span className="font-bold text-base md:text-lg">{month.month}</span>
+                                <span className="font-bold text-sm md:text-base whitespace-nowrap">{fullMonthNames[month.month]}</span>
                               </div>
 
                               {/* Feature Count */}
