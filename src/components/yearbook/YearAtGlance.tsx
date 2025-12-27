@@ -250,7 +250,7 @@ export function YearAtGlance() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-12 grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
+          className="mb-16 grid grid-cols-3 gap-4 md:gap-6 max-w-3xl mx-auto"
         >
           {[
             { label: "Total Features", value: `${totalFeatures}+` },
@@ -258,7 +258,7 @@ export function YearAtGlance() {
             { label: "Major Releases", value: "12" },
           ].map((stat, index) => (
             <div key={index} className="text-center p-4 md:p-6 rounded-2xl bg-navy-700/50 border border-cream-100/10">
-              <p className="text-2xl md:text-4xl font-bold text-teal-400 mb-1 md:mb-2">{stat.value}</p>
+              <p className="text-2xl md:text-4xl font-bold text-amber-400 mb-1 md:mb-2">{stat.value}</p>
               <p className="text-xs md:text-sm text-cream-300/60">{stat.label}</p>
             </div>
           ))}
@@ -325,7 +325,7 @@ export function YearAtGlance() {
                             <div key={month.month} className="text-center">
                               {/* Month Marker - Compact rounded rectangle with gradient */}
                               <div 
-                                className={`relative z-10 px-4 py-2 md:px-6 md:py-3 rounded-xl w-fit mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
+                                className={`relative z-10 px-5 py-2 md:px-8 md:py-3 rounded-xl min-w-[110px] md:min-w-[140px] mx-auto mb-3 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg ${
                                   isSelected 
                                     ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
                                     : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
