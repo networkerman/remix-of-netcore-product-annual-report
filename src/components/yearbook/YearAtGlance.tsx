@@ -37,7 +37,7 @@ const yearData: MonthData[] = [
     { name: "Dynamic & Static Product Picker", product: "CE", link: "https://cedocs.netcorecloud.com/docs/product-picker" },
     { name: "Segmentation Autosuggest", product: "CE", link: "https://cedocs.netcorecloud.com/docs/segments#create-a-segment" },
     { name: "WhatsApp Template", product: "CE", link: "https://cedocs.netcorecloud.com/docs/whatsapp-template#link-tracking" },
-    { name: "WhatsApp Template Management", product: "CE", link: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/branches/main/w6j0vuk1n77t8-whats-app-template-management#link-tracking" },
+    { name: "WhatsApp Template Management", product: "CPaaS", link: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/branches/main/w6j0vuk1n77t8-whats-app-template-management#link-tracking" },
     { name: "WhatsApp in Unified Campaign Flow", product: "CE", link: "https://cedocs.netcorecloud.com/docs/whatsapp-in-unified-campaign-flow#link-tracking-in-whatsapp" },
     { name: "Brand Kit", product: "CE", link: "https://cedocs.netcorecloud.com/docs/brand-kit-1" },
   ]},
@@ -90,7 +90,7 @@ const yearData: MonthData[] = [
   { month: "Sep", features: [
     { name: "Global Widgets for Reusable Content", product: "CE", link: "https://cedocs.netcorecloud.com/docs/create-email-template-with-uce#saved-blocks" },
     { name: "My Boards", product: "CE", link: "https://cedocs.netcorecloud.com/docs/analytics-custom-board" },
-    { name: "Campaign Insight Generator", product: "CE", link: "#" },
+    { name: "Campaign Insight Generator", product: "CE", link: "https://cedocs.netcorecloud.com/docs/campaign-insight-generator#content-category" },
     { name: "Event Tracking with Analytics", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/user-profile#/activity-history" },
     { name: "Product Badging", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/product-badges#/" },
     { name: "Shopping Agent", product: "Unbxd", link: "https://docs.netcoreunbxd.com/docs/shopping-assistant" },
@@ -98,7 +98,7 @@ const yearData: MonthData[] = [
   { month: "Oct", features: [
     { name: "Enhanced Custom Push Notification Layouts", product: "CE", link: "https://cedocs.netcorecloud.com/docs/campaign-insight-generator" },
     { name: "Doc Bot", product: "CE", link: "https://cedocs.netcorecloud.com/" },
-    { name: "Journey Path Optimizer", product: "CE", link: "#" },
+    { name: "Journey Path Optimizer", product: "CE", link: "https://cedocs.netcorecloud.com/docs/journey-path-optimizer" },
     { name: "Inline Widgets (Web Personalisation)", product: "CE", link: "https://cedocs.netcorecloud.com/docs/inline-widgets" },
     { name: "WhatsApp Product Carousel Template", product: "CPaaS", link: "https://netcorecloud.stoplight.io/docs/whatsappapidoc/iwcg4ar30nmgw-product-card-carousel-templates" },
   ]},
@@ -122,7 +122,7 @@ const yearData: MonthData[] = [
     { name: "WhatsApp Limited-Time Offer Templates", product: "CE", link: "https://cedocs.netcorecloud.com/docs/whatsapp-limited-time-offer" },
     { name: "Dynamic Blocks in UCE", product: "CE", link: "https://cedocs.netcorecloud.com/docs/email-dynamic-block-in-unified-content-editor" },
     { name: "Segment on Segment", product: "CE", link: "https://cedocs.netcorecloud.com/docs/segment-inclusion-exclusion" },
-    { name: "Set Limit", product: "CPaaS", link: "https://cedocs.netcorecloud.com/docs/create-rcs-campaign-copy#contact-limit" },
+    { name: "Set Limit", product: "CPaaS", link: "https://cedocs.netcorecloud.com/docs/create-whatsapp-campaign#contact-limit" },
   ]},
 ];
 
