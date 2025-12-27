@@ -286,7 +286,6 @@ export function YearAtGlance() {
                     <div className="grid grid-cols-3 gap-4 md:gap-8">
                       {quarter.months.map((month) => {
                         const isSelected = selectedMonth === month.month;
-                        const monthFeatures = month.features;
                         
                         return (
                           <div key={month.month} className="text-center">
@@ -306,44 +305,50 @@ export function YearAtGlance() {
                             <p className="text-xs md:text-sm text-cream-300/60">
                               {month.features.length} feature{month.features.length !== 1 ? "s" : ""}
                             </p>
-
-                            {/* Features Grid - Below Selected Month */}
-                            {isSelected && monthFeatures.length > 0 && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="mt-6"
-                              >
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                                  {monthFeatures.map((feature, fIndex) => (
-                                    <motion.a
-                                      key={fIndex}
-                                      initial={{ opacity: 0, y: 10 }}
-                                      animate={{ opacity: 1, y: 0 }}
-                                      transition={{ duration: 0.3, delay: fIndex * 0.05 }}
-                                      href={feature.link}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className={`block p-3 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200 text-left`}
-                                    >
-                                      <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
-                                        {feature.name}
-                                        <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
-                                      </p>
-                                      <span className={`text-xs ${productColors[feature.product].text}`}>
-                                        {feature.product}
-                                      </span>
-                                    </motion.a>
-                                  ))}
-                                </div>
-                              </motion.div>
-                            )}
                           </div>
                         );
                       })}
                     </div>
+
+                    {/* Features Grid - Full Width Below All Months */}
+                    {quarter.months.map((month) => {
+                      const isSelected = selectedMonth === month.month;
+                      const monthFeatures = month.features;
+                      
+                      return isSelected && monthFeatures.length > 0 ? (
+                        <motion.div
+                          key={`features-${month.month}`}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="mt-8"
+                        >
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {monthFeatures.map((feature, fIndex) => (
+                              <motion.a
+                                key={fIndex}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3, delay: fIndex * 0.05 }}
+                                href={feature.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`block p-4 rounded-xl border ${productColors[feature.product].border} ${productColors[feature.product].bg} hover:scale-[1.02] transition-transform duration-200 text-left`}
+                              >
+                                <p className="text-sm font-medium text-cream-100 leading-tight flex items-center gap-1">
+                                  {feature.name}
+                                  <ExternalLink size={10} className="text-cream-100/40 flex-shrink-0" />
+                                </p>
+                                <span className={`text-xs ${productColors[feature.product].text}`}>
+                                  {feature.product}
+                                </span>
+                              </motion.a>
+                            ))}
+                          </div>
+                        </motion.div>
+                      ) : null;
+                    })}
                   </motion.div>
                 </div>
               ))}
