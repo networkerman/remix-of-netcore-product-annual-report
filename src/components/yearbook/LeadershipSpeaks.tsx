@@ -437,7 +437,8 @@ export function LeadershipSpeaks() {
               className="flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_50%] min-w-0 px-4 flex justify-center"
             >
               <div
-                className={`bg-card backdrop-blur-sm border border-border rounded-3xl p-8 md:p-12 transition-all duration-500 w-full max-w-2xl ${
+                onClick={() => setOpenTestimonial(testimonial)}
+                className={`bg-card backdrop-blur-sm border border-border rounded-3xl p-8 md:p-12 transition-all duration-500 w-full max-w-2xl cursor-pointer hover:border-primary/50 hover:shadow-xl ${
                   selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
                 }`}
               >
@@ -451,13 +452,10 @@ export function LeadershipSpeaks() {
                   "{testimonial.collapsedQuote}"
                 </blockquote>
 
-                {/* View Full Testimonial CTA */}
-                <button
-                  onClick={() => setOpenTestimonial(testimonial)}
-                  className="text-primary hover:text-primary/80 text-sm font-medium mb-6 transition-colors"
-                >
-                  View full testimonial →
-                </button>
+                {/* Click to read hint */}
+                <span className="text-primary text-sm font-medium mb-6 block">
+                  Click to read full testimonial →
+                </span>
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4">
