@@ -196,12 +196,15 @@ export default {
 					transform: 'translateX(-50%)'
 				}
 			},
-			'shimmer-glow': {
-				'0%, 100%': {
-					boxShadow: '0 0 15px 2px hsla(45, 90%, 55%, 0.3), 0 0 30px 4px hsla(45, 90%, 55%, 0.15)'
+			'border-shimmer': {
+				'0%': {
+					borderColor: 'hsla(45, 90%, 55%, 0.4)'
 				},
 				'50%': {
-					boxShadow: '0 0 25px 4px hsla(45, 90%, 55%, 0.5), 0 0 50px 8px hsla(45, 90%, 55%, 0.25)'
+					borderColor: 'hsla(45, 90%, 55%, 0.8)'
+				},
+				'100%': {
+					borderColor: 'hsla(45, 90%, 55%, 0.4)'
 				}
 			}
   		},
@@ -211,7 +214,7 @@ export default {
 			'float': 'float 6s ease-in-out infinite',
 			'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
 			'marquee': 'marquee 30s linear infinite',
-			'shimmer-glow': 'shimmer-glow 2.5s ease-in-out infinite'
+			'border-shimmer': 'border-shimmer 2s ease-in-out infinite'
   		},
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
