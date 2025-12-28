@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Heart, PartyPopper, Sparkles } from "lucide-react";
+import { useRef } from "react";
+import { Heart } from "lucide-react";
 
 export function ThankYou() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [celebrated, setCelebrated] = useState(false);
 
   return (
     <section
@@ -87,46 +86,6 @@ export function ThankYou() {
               "Take a moment to reflect on your journey this year. What are you most proud of?"
             </p>
           </motion.div>
-
-          {/* Celebration Button */}
-          <motion.button
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 1 }}
-            onClick={() => setCelebrated(true)}
-            disabled={celebrated}
-            className={`inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg transition-all duration-500 ${
-              celebrated
-                ? "bg-gradient-to-r from-teal-500 to-coral-400 text-white scale-110"
-                : "bg-foreground text-background hover:scale-105"
-            }`}
-          >
-            {celebrated ? (
-              <>
-                <PartyPopper size={24} />
-                You Made It! 🎉
-              </>
-            ) : (
-              <>
-                <Sparkles size={24} />
-                Celebrate Completing the Yearbook
-              </>
-            )}
-          </motion.button>
-
-          {/* Celebration Message */}
-          {celebrated && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-8 p-6 rounded-2xl bg-primary/10 border border-primary/20"
-            >
-              <p className="text-primary font-medium">
-                🎊 Congratulations on exploring the entire 2025 Product Yearbook! 
-                Here's to an even better 2026.
-              </p>
-            </motion.div>
-          )}
 
           {/* Footer */}
           <motion.div
