@@ -397,7 +397,7 @@ export function PMStories() {
           className="text-center mb-20"
         >
           <span className="caption text-primary mb-4 block">The Real Stories</span>
-          <h2 className="section-heading text-foreground mb-6">PM Stories & Culture</h2>
+          <h2 className="section-heading text-foreground mb-6">Stories & Culture</h2>
           <p className="body-large text-foreground/60 max-w-2xl mx-auto">
             The fun, the chaos, the late nights, and the wins. This is what it's really like 
             to be part of the Product team at Netcore.
@@ -411,7 +411,7 @@ export function PMStories() {
           transition={{ delay: 0.2 }}
           className="mb-24"
         >
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex items-center justify-center gap-3 mb-8">
             <Sparkles className="text-primary" size={24} />
             <h3 className="text-xl font-bold text-foreground">Product Leaders Speak</h3>
           </div>
@@ -438,7 +438,7 @@ export function PMStories() {
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 -z-10" />
 
                   {/* Gradient overlay with content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
+                  <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent h-1/2">
                     <h4 className="font-bold text-lg text-cream-100 mb-1">{leader.name}</h4>
                     <p className="text-teal-400/90 text-sm font-medium">{leader.title}</p>
                   </div>
@@ -446,7 +446,7 @@ export function PMStories() {
                   {/* Hover CTA Overlay */}
                   <div className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <span className="px-4 py-2 bg-primary text-primary-foreground font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                      View Story →
+                      View story
                     </span>
                   </div>
                 </div>
@@ -597,7 +597,7 @@ export function PMStories() {
                   <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-600/30 to-navy-600 -z-10" />
                   
                   {/* Gradient overlay with name & one-liner */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent">
+                  <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-5 bg-gradient-to-t from-navy-900/90 via-navy-900/40 to-transparent h-1/2">
                     <h4 className="font-bold text-lg text-cream-100 mb-1">{intern.name}</h4>
                     <p className="text-teal-400/90 text-sm font-medium">{intern.persona}</p>
                     {intern.role && (
@@ -611,7 +611,7 @@ export function PMStories() {
                     className="absolute inset-0 bg-navy-900/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                   >
                     <span className="px-4 py-2 bg-primary text-primary-foreground font-semibold rounded-full text-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                      View Story
+                      View story
                     </span>
                   </div>
                 </div>
@@ -622,23 +622,23 @@ export function PMStories() {
 
         {/* Intern Modal */}
         <Dialog open={!!selectedIntern} onOpenChange={(open) => !open && setSelectedIntern(null)}>
-          <DialogContent className="bg-navy-800 border-cream-100/10 text-cream-100 max-w-lg p-0 overflow-hidden">
+          <DialogContent className="bg-navy-800 border-cream-100/10 text-cream-100 max-w-2xl p-0 overflow-hidden [&>button]:hidden">
             <DialogTitle className="sr-only">
               {selectedIntern?.name} - {selectedIntern?.persona}
             </DialogTitle>
             
             {selectedIntern && (
-              <div className="relative max-h-[80vh] overflow-y-auto">
-                {/* Close button */}
+              <div className="relative max-h-[80vh] flex flex-col">
+                {/* Close button - outside scrollable area */}
                 <button
                   onClick={() => setSelectedIntern(null)}
-                  className="absolute top-4 right-4 z-10 p-1.5 rounded-full bg-navy-700/80 hover:bg-navy-600 transition-colors"
+                  className="absolute top-4 right-4 z-20 p-1.5 rounded-full bg-navy-700/80 hover:bg-navy-600 transition-colors"
                 >
                   <X size={18} className="text-cream-300" />
                 </button>
 
-                {/* Header with image */}
-                <div className="p-6 pb-4 border-b border-cream-100/10 bg-gradient-to-br from-navy-700/50 to-navy-800">
+                {/* Sticky Header with image */}
+                <div className="sticky top-0 z-10 p-6 pb-4 border-b border-cream-100/10 bg-gradient-to-br from-navy-700/50 to-navy-800">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-teal-500/40 flex-shrink-0 bg-gradient-to-br from-teal-500 to-coral-400 flex items-center justify-center">
                       {selectedIntern.image ? (
@@ -661,8 +661,8 @@ export function PMStories() {
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 space-y-6">
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto p-8 space-y-8 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-navy-900 [&::-webkit-scrollbar-thumb]:bg-navy-600 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-navy-500">
                   {/* Part 1: The Intern Days */}
                   <div>
                     <h4 className="text-lg font-bold text-coral-400 mb-4">Part 1: The Intern Days</h4>
@@ -709,7 +709,7 @@ export function PMStories() {
                   </div>
 
                   {/* Part 2: Full-Time */}
-                  <div className="pt-4 border-t border-cream-100/10">
+                  <div className="pt-6 border-t border-cream-100/10">
                     <h4 className="text-lg font-bold text-teal-400 mb-4">Part 2: Full-Time</h4>
                     
                     {/* Day 1 vs Now - Hide for Parth */}
@@ -739,7 +739,7 @@ export function PMStories() {
 
                   {/* Part 3: Rapid Fire - Hide for Parth */}
                   {selectedIntern.name !== "Parth" && (
-                  <div className="pt-4 border-t border-cream-100/10">
+                  <div className="pt-6 border-t border-cream-100/10">
                     <h4 className="text-lg font-bold text-emerald-400 mb-4">Part 3: Rapid Fire</h4>
                     
                     <div className="grid grid-cols-1 gap-3">

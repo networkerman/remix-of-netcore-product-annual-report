@@ -15,10 +15,8 @@ export function ProductCraft() {
   // Celebrate button state - resets on page refresh
   const [celebrated, setCelebrated] = useState(false);
   
-  // Fireworks state
-  const [fireworksShown, setFireworksShown] = useState(() => {
-    return localStorage.getItem('martechAwardFireworksShown') === 'true';
-  });
+  // Fireworks state - resets on page refresh
+  const [fireworksShown, setFireworksShown] = useState(false);
 
   const triggerConfetti = () => {
     confetti({
@@ -75,7 +73,6 @@ export function ProductCraft() {
             timer = setTimeout(() => {
               triggerFireworks();
               setFireworksShown(true);
-              localStorage.setItem('martechAwardFireworksShown', 'true');
             }, 1000);
           } else {
             if (timer) {
