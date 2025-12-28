@@ -347,33 +347,14 @@ export function PMStories() {
   const [highestZIndex, setHighestZIndex] = useState(10);
   const [isDragging, setIsDragging] = useState(false);
 
-  // Generate zone-based positions for polaroids on mount
+  // Generate random positions for polaroids on mount
   useEffect(() => {
-    // Create a grid of zones to scatter photos across the entire container
-    const zones = [
-      { xMin: 0, xMax: 18, yMin: 0, yMax: 25 },     // Top-left
-      { xMin: 38, xMax: 55, yMin: 0, yMax: 20 },    // Top-center
-      { xMin: 75, xMax: 92, yMin: 0, yMax: 25 },    // Top-right
-      { xMin: 0, xMax: 18, yMin: 35, yMax: 55 },    // Middle-left
-      { xMin: 40, xMax: 58, yMin: 30, yMax: 50 },   // Middle-center
-      { xMin: 78, xMax: 95, yMin: 35, yMax: 55 },   // Middle-right
-      { xMin: 0, xMax: 18, yMin: 70, yMax: 88 },    // Bottom-left
-      { xMin: 38, xMax: 55, yMin: 75, yMax: 92 },   // Bottom-center
-      { xMin: 75, xMax: 92, yMin: 70, yMax: 88 },   // Bottom-right
-      { xMin: 20, xMax: 35, yMin: 15, yMax: 35 },   // Extra zone 1
-      { xMin: 60, xMax: 75, yMin: 50, yMax: 70 },   // Extra zone 2
-      { xMin: 18, xMax: 35, yMin: 55, yMax: 72 },   // Extra zone 3
-    ];
-    
-    const positions = lifePhotos.map((_, index) => {
-      const zone = zones[index % zones.length];
-      return {
-        x: zone.xMin + Math.random() * (zone.xMax - zone.xMin),
-        y: zone.yMin + Math.random() * (zone.yMax - zone.yMin),
-        rotation: Math.random() * 24 - 12,
-        zIndex: index + 1
-      };
-    });
+    const positions = lifePhotos.map((_, index) => ({
+      x: Math.random() * 140 - 70,
+      y: Math.random() * 80 - 40,
+      rotation: Math.random() * 30 - 15,
+      zIndex: index + 1
+    }));
     setPhotoPositions(positions);
   }, []);
 
@@ -820,8 +801,8 @@ export function PMStories() {
           </div>
 
           {/* Desktop: Polaroid Scatter Board */}
-          <div className="hidden md:block relative w-full h-[900px] overflow-visible">
-            <div className="absolute inset-0">
+          <div className="hidden md:block relative w-full h-[700px]">
+            <div className="absolute inset-0 flex items-center justify-center">
               {lifePhotos.map((photo, index) => (
                 photoPositions[index] && (
                   <motion.div
@@ -841,29 +822,29 @@ export function PMStories() {
                       }
                     }}
                     initial={{ 
+                      x: `${photoPositions[index].x}%`, 
+                      y: `${photoPositions[index].y}%`,
+                      rotate: photoPositions[index].rotation,
                       opacity: 0,
-                      scale: 0.8,
-                      rotate: photoPositions[index].rotation
+                      scale: 0.8
                     }}
                     animate={{
+                      x: `${photoPositions[index].x}%`, 
+                      y: `${photoPositions[index].y}%`,
+                      rotate: photoPositions[index].rotation,
                       opacity: 1,
-                      scale: 1,
-                      rotate: photoPositions[index].rotation
+                      scale: 1
                     }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
                     whileHover={{ scale: 1.05, rotate: 0, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
                     whileDrag={{ scale: 1.08, cursor: 'grabbing', boxShadow: "0 25px 50px rgba(0,0,0,0.35)" }}
-                    style={{ 
-                      zIndex: photoPositions[index].zIndex,
-                      left: `${photoPositions[index].x}%`,
-                      top: `${photoPositions[index].y}%`
-                    }}
+                    style={{ zIndex: photoPositions[index].zIndex }}
                     className="absolute cursor-grab active:cursor-grabbing bg-white p-4 pb-16 rounded-sm shadow-xl hover:shadow-2xl transition-shadow"
                   >
                     <img 
                       src={photo} 
                       alt={scrapbookCaptions[index]}
-                      className="w-80 h-60 object-cover rounded-sm pointer-events-none"
+                      className="w-72 h-52 object-cover rounded-sm pointer-events-none"
                       draggable={false}
                     />
                     <p 
