@@ -222,6 +222,10 @@ export default {
 			'slideUp': {
 				'0%': { transform: 'translateY(100%)' },
 				'100%': { transform: 'translateY(-100%)' }
+			},
+			'border-dash': {
+				'0%': { strokeDashoffset: '0' },
+				'100%': { strokeDashoffset: '-600' }
 			}
   		},
 		animation: {
@@ -230,7 +234,8 @@ export default {
 			'float': 'float 6s ease-in-out infinite',
 			'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
 			'marquee': 'marquee 30s linear infinite',
-			'border-shimmer': 'border-shimmer 2s ease-in-out infinite'
+			'border-shimmer': 'border-shimmer 2s ease-in-out infinite',
+			'border-dash': 'border-dash 2.5s linear infinite'
   		},
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
