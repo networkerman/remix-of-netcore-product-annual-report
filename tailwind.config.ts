@@ -188,21 +188,30 @@ export default {
   					opacity: '1'
   				}
   			},
-  			'marquee': {
-  				'0%': {
-  					transform: 'translateX(0%)'
-  				},
-  				'100%': {
-  					transform: 'translateX(-50%)'
-  				}
-  			}
+			'marquee': {
+				'0%': {
+					transform: 'translateX(0%)'
+				},
+				'100%': {
+					transform: 'translateX(-50%)'
+				}
+			},
+			'shimmer-glow': {
+				'0%, 100%': {
+					boxShadow: '0 0 15px 2px hsla(45, 90%, 55%, 0.3), 0 0 30px 4px hsla(45, 90%, 55%, 0.15)'
+				},
+				'50%': {
+					boxShadow: '0 0 25px 4px hsla(45, 90%, 55%, 0.5), 0 0 50px 8px hsla(45, 90%, 55%, 0.25)'
+				}
+			}
   		},
-  		animation: {
-  			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out',
-  			'float': 'float 6s ease-in-out infinite',
-  			'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
-  			'marquee': 'marquee 30s linear infinite'
+		animation: {
+			'accordion-down': 'accordion-down 0.2s ease-out',
+			'accordion-up': 'accordion-up 0.2s ease-out',
+			'float': 'float 6s ease-in-out infinite',
+			'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+			'marquee': 'marquee 30s linear infinite',
+			'shimmer-glow': 'shimmer-glow 2.5s ease-in-out infinite'
   		},
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

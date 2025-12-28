@@ -12,10 +12,8 @@ export function ProductCraft() {
   const awardCardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   
-  // Celebrate button state
-  const [celebrated, setCelebrated] = useState(() => {
-    return localStorage.getItem('martechAwardCelebrated') === 'true';
-  });
+  // Celebrate button state - resets on page refresh
+  const [celebrated, setCelebrated] = useState(false);
   
   // Fireworks state
   const [fireworksShown, setFireworksShown] = useState(() => {
@@ -62,7 +60,6 @@ export function ProductCraft() {
     
     triggerConfetti();
     setCelebrated(true);
-    localStorage.setItem('martechAwardCelebrated', 'true');
   };
 
   // Auto-fireworks when card is in view for 1+ second
@@ -153,10 +150,10 @@ export function ProductCraft() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="group relative w-full p-6 md:p-8 rounded-2xl bg-cream-50 border-2 border-amber-400/60 flex flex-col md:flex-row items-center gap-6 md:gap-10 overflow-hidden"
+            className="group relative w-full p-5 md:p-6 rounded-2xl bg-cream-50 border-2 border-amber-400/60 flex flex-col md:flex-row items-stretch gap-5 md:gap-8 overflow-hidden animate-shimmer-glow"
           >
             {/* Left: Award Image - 1:1 aspect ratio */}
-            <div className="relative z-10 w-full md:w-2/5 aspect-square rounded-xl overflow-hidden bg-amber-100/50 shrink-0 shadow-lg">
+            <div className="relative z-10 w-full md:w-[32%] aspect-square rounded-xl overflow-hidden bg-amber-100/50 shrink-0 shadow-lg">
               <img 
                 src={martechAwardImg} 
                 alt="MartechAI Award Trophy" 
@@ -165,26 +162,26 @@ export function ProductCraft() {
             </div>
             
             {/* Right: Award Details */}
-            <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left flex-grow">
-              <div className="flex items-center gap-3 mb-4">
-                <Trophy className="text-amber-500 w-8 h-8" />
-                <h4 className="font-bold text-2xl md:text-3xl text-amber-900">MartechAI Award</h4>
+            <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left flex-grow justify-center py-2">
+              <div className="flex items-center gap-2 mb-2">
+                <Trophy className="text-amber-500 w-7 h-7" />
+                <h4 className="font-bold text-xl md:text-2xl text-amber-900">MartechAI Award</h4>
               </div>
               
-              <p className="text-amber-800 font-semibold text-lg md:text-xl mb-3">
+              <p className="text-amber-800 font-semibold text-base md:text-lg mb-2">
                 Best Use of Analytics. Proven by results.
               </p>
               
-              <p className="text-amber-900/80 text-sm md:text-base mb-5 max-w-md">
+              <p className="text-amber-900/80 text-sm mb-3 max-w-md leading-relaxed">
                 Powered Pepe Jeans to shift from broad campaigns to precision journeys with clear revenue impact.
               </p>
               
               {/* Metrics Highlight Box */}
-              <div className="bg-amber-100/80 border border-amber-400/40 rounded-xl px-4 py-3 mb-5 w-full md:w-auto">
-                <p className="text-amber-900 font-bold text-base md:text-lg">
+              <div className="bg-amber-100/80 border border-amber-400/40 rounded-lg px-3 py-2 mb-3 w-full md:w-auto">
+                <p className="text-amber-900 font-bold text-sm md:text-base">
                   2.6X Conversion Growth & 12.8X ROI
                 </p>
-                <p className="text-amber-800 text-xs md:text-sm">
+                <p className="text-amber-800 text-xs">
                   with Netcore's RFM and AI Segments, Funnel Analytics & STO
                 </p>
               </div>
@@ -194,9 +191,9 @@ export function ProductCraft() {
                 onClick={handleCelebrate}
                 disabled={celebrated}
                 whileTap={celebrated ? {} : { scale: 0.95 }}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm transition-all duration-200 ${
                   celebrated 
-                    ? 'bg-green-500/20 text-green-700 cursor-default border border-green-400/40' 
+                    ? 'bg-white text-amber-800 cursor-default border border-amber-300 shadow-sm' 
                     : 'bg-white/80 hover:bg-white border border-amber-300 shadow-sm hover:shadow-md hover:scale-105 text-amber-900'
                 }`}
               >
