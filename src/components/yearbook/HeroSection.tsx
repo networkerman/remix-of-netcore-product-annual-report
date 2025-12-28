@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles } from "lucide-react";
-import netcoreLogo from "@/assets/netcore-logo.png";
+import netcoreNameLogo from "@/assets/netcore-name-logo.png";
 
 export function HeroSection() {
   return (
@@ -8,9 +8,11 @@ export function HeroSection() {
       id="cover"
       className="min-h-screen relative flex items-center justify-center overflow-hidden bg-cream-100"
     >
-      {/* Netcore Logo - Top Center */}
-      <div className="absolute top-32 left-1/2 -translate-x-1/2 z-20">
-        <img src={netcoreLogo} alt="Netcore" className="h-10 w-auto" />
+      {/* Giant 2025 Watermark in Background */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <span className="font-playfair text-[18rem] md:text-[28rem] lg:text-[35rem] font-bold text-foreground/[0.04] select-none leading-none">
+          2025
+        </span>
       </div>
 
       {/* Floating Blob Animations */}
@@ -40,7 +42,20 @@ export function HeroSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Main Title */}
+          {/* New Netcore Logo - Above Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <img 
+              src={netcoreNameLogo} 
+              alt="Netcore" 
+              className="h-8 md:h-10 mx-auto mb-8" 
+            />
+          </motion.div>
+
+          {/* Main Title - Product on line 1, Wrapped on line 2 */}
           <motion.h1
             initial={{
               opacity: 0,
@@ -56,11 +71,9 @@ export function HeroSection() {
             }}
             className="editorial-heading text-foreground mb-6"
           >
-            Product Wrapped
+            Product
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
-              2025
-            </span>
+            Wrapped
           </motion.h1>
 
           {/* Subtitle */}
