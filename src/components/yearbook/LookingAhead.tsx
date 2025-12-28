@@ -91,46 +91,16 @@ export function LookingAhead() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="group relative p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:bg-navy-600/70 transition-all duration-300 cursor-default overflow-hidden"
+              className="group relative p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:bg-navy-600/70 hover:border-cyan-500/20 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300 cursor-default"
             >
-              {/* Animated traveling line border on hover - SVG approach */}
-              <svg
-                className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{ filter: 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.6))' }}
-              >
-                <rect
-                  x="1"
-                  y="1"
-                  width="calc(100% - 2px)"
-                  height="calc(100% - 2px)"
-                  rx="24"
-                  ry="24"
-                  fill="none"
-                  stroke="url(#cyan-gradient)"
-                  strokeWidth="2"
-                  strokeDasharray="60 540"
-                  className="animate-border-dash"
-                />
-                <defs>
-                  <linearGradient id="cyan-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#22d3ee" />
-                    <stop offset="50%" stopColor="#06b6d4" />
-                    <stop offset="100%" stopColor="#22d3ee" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="text-4xl mb-4">{theme.icon}</div>
-                <h3 className="text-xl font-bold text-cream-100 mb-3">{theme.title}</h3>
-                <p className="text-cream-300/70 leading-relaxed">{theme.description}</p>
-              </div>
+              <div className="text-4xl mb-4">{theme.icon}</div>
+              <h3 className="text-xl font-bold text-cream-100 mb-3">{theme.title}</h3>
+              <p className="text-cream-300/70 leading-relaxed">{theme.description}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Closing Quote */}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
