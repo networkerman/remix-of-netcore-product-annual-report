@@ -225,11 +225,11 @@ export function ProductCraft() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
-              className="p-6 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow flex flex-col"
+              className="p-6 rounded-2xl bg-card border-2 border-gray-200 hover:shadow-lg transition-shadow flex flex-col"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-10 flex items-center">
-                  <img src={pepeJeansLogo} alt="Pepe Jeans" className="h-8 w-auto object-contain" />
+                  <img src={pepeJeansLogo} alt="Pepe Jeans" className="h-12 w-auto object-contain" />
                 </div>
               </div>
               
@@ -262,11 +262,11 @@ export function ProductCraft() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 }}
-              className="p-6 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow flex flex-col"
+              className="p-6 rounded-2xl bg-card border-2 border-gray-200 hover:shadow-lg transition-shadow flex flex-col"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-10 flex items-center">
-                  <img src={plumGoodnessLogo} alt="Plum Goodness" className="h-8 w-auto object-contain" />
+                  <img src={plumGoodnessLogo} alt="Plum Goodness" className="h-12 w-auto object-contain" />
                 </div>
               </div>
               
