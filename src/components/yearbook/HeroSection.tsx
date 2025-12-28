@@ -17,7 +17,7 @@ export function HeroSection() {
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-coral-400/20" />
 
       {/* Container 1: Netcore Logo */}
-      <div className="pt-20 md:pt-24 text-center relative z-10">
+      <div className="pt-28 md:pt-32 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,11 +37,11 @@ export function HeroSection() {
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
           style={{
-            maskImage: 'linear-gradient(to top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%)',
-            WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 70%)'
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 90%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 90%)'
           }}
         >
-          <span className="font-nunito text-[18rem] md:text-[28rem] lg:text-[35rem] font-extrabold text-coral-300 select-none leading-none">
+          <span className="font-nunito text-[15rem] md:text-[24rem] lg:text-[30rem] font-extrabold text-coral-300 select-none leading-none">
             2025
           </span>
         </div>
@@ -58,7 +58,7 @@ export function HeroSection() {
       </div>
 
       {/* Container 3: Subtitle */}
-      <div className="text-center px-6 py-2 relative z-10">
+      <div className="text-center px-6 pt-2 relative z-10">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="pb-4 text-center relative z-10"
+        className="mt-6 pb-4 text-center relative z-10"
       >
         {/* Product Names with Dot Separators */}
         <div className="flex items-center justify-center gap-6 mb-4">
