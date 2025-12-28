@@ -37,8 +37,8 @@ export function HeroSection() {
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
           style={{
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 90%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 90%)'
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 90%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 90%)'
           }}
         >
           <span className="font-nunito text-[15rem] md:text-[24rem] lg:text-[30rem] font-extrabold text-coral-300 select-none leading-none">
@@ -76,7 +76,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="mt-6 pb-4 text-center relative z-10"
+        className="mt-0 pb-4 text-center relative z-10"
       >
         {/* Product Names with Dot Separators */}
         <div className="flex items-center justify-center gap-6 mb-8">
