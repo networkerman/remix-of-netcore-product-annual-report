@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import netcoreNameLogo from "@/assets/netcore-name-logo.png";
-import productWrappedTitle from "@/assets/product-wrapped-title.png";
+import productWrappedCombined from "@/assets/product-wrapped-2.png";
 
 export function HeroSection() {
   return (
@@ -31,31 +31,17 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Container 2: Product Wrapped Title + 2025 Watermark + Subtitle */}
+      {/* Container 2: Combined Title + Watermark Image + Subtitle */}
       <div className="flex-1 relative flex flex-col items-center justify-center px-6">
-        {/* 2025 Watermark - z-0 with gradient fade */}
-        <div 
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
-          style={{
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 90%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 90%)'
-          }}
-        >
-          <span className="font-nunito text-[15rem] md:text-[24rem] lg:text-[30rem] font-extrabold text-coral-300 select-none leading-none">
-            2025
-          </span>
-        </div>
-
-        {/* Content wrapper with flex column for easy spacing */}
-        <div className="relative z-10 flex flex-col items-center">
-          {/* Product Wrapped Title */}
+        <div className="relative flex flex-col items-center">
+          {/* Combined Product Wrapped + 2025 Image */}
           <motion.img
-            src={productWrappedTitle}
+            src={productWrappedCombined}
             alt="Product Wrapped 2025"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full max-w-2xl md:max-w-3xl"
+            className="w-full max-w-3xl md:max-w-4xl"
           />
 
           {/* Subtitle */}
