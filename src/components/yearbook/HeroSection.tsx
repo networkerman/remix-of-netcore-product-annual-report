@@ -10,7 +10,7 @@ export function HeroSection() {
     >
       {/* Giant 2025 Watermark in Background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <span className="font-nunito text-[18rem] md:text-[28rem] lg:text-[35rem] font-extrabold text-foreground/[0.04] select-none leading-none">
+        <span className="font-nunito text-[18rem] md:text-[28rem] lg:text-[35rem] font-extrabold text-teal-400/[0.08] select-none leading-none">
           2025
         </span>
       </div>
@@ -55,26 +55,38 @@ export function HeroSection() {
             />
           </motion.div>
 
-          {/* Main Title - Product on line 1, Wrapped on line 2 */}
-          <motion.h1
-            initial={{
-              opacity: 0,
-              y: 40,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2,
-            }}
-            className="editorial-heading text-foreground mb-6"
+          {/* Main Title - New Typography Style */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-6"
           >
-            Product
-            <br />
-            Wrapped 2025
-          </motion.h1>
+            {/* Product - filled italic with line extending right */}
+            <div className="flex items-center justify-center gap-4 md:gap-6">
+              <span className="font-nunito text-5xl md:text-7xl lg:text-8xl font-extrabold italic text-foreground">
+                Product
+              </span>
+              <div className="hidden md:block w-24 lg:w-40 h-0.5 bg-foreground/60" />
+            </div>
+
+            {/* Wrapped - outlined italic with line extending from left */}
+            <div className="flex items-center justify-center gap-4 md:gap-6 -mt-1 md:-mt-2">
+              <div className="hidden md:block w-24 lg:w-40 h-0.5 bg-foreground/30" />
+              <span className="font-nunito text-5xl md:text-7xl lg:text-8xl font-extrabold italic text-outlined text-foreground/70">
+                Wrapped
+              </span>
+            </div>
+
+            {/* 2025 with orange dots */}
+            <div className="flex items-center justify-center gap-3 mt-4 md:mt-6">
+              <span className="w-2 h-2 rounded-full bg-coral-500" />
+              <span className="font-nunito text-xl md:text-2xl lg:text-3xl font-bold text-foreground">
+                2025
+              </span>
+              <span className="w-2 h-2 rounded-full bg-coral-500" />
+            </div>
+          </motion.div>
 
           {/* Subtitle */}
           <motion.p
@@ -99,25 +111,15 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom Section - Scroll Indicator + Product Names */}
+      {/* Bottom Section - Product Names + Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-foreground/50"
       >
-        <span className="text-sm font-medium tracking-wide">
-          Scroll to explore the year
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <ChevronDown size={24} />
-        </motion.div>
-        
-        {/* Product Names with Dot Separators */}
-        <div className="flex items-center justify-center gap-4 mt-4">
+        {/* Product Names with Dot Separators - Now on top */}
+        <div className="flex items-center justify-center gap-4">
           {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
             <span key={product} className="flex items-center gap-4">
               <span className="text-foreground/60 font-medium text-sm">
@@ -129,6 +131,16 @@ export function HeroSection() {
             </span>
           ))}
         </div>
+
+        <span className="text-sm font-medium tracking-wide mt-2">
+          Scroll to explore the year
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <ChevronDown size={24} />
+        </motion.div>
       </motion.div>
 
       {/* Corner Decorations */}
