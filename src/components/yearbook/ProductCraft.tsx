@@ -1,36 +1,105 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ExternalLink, Trophy, Users, TrendingUp, Heart, Activity, PieChart, Route, BarChart3 } from "lucide-react";
+import { ExternalLink, Trophy, Users, TrendingUp, Activity, PieChart, Route, BarChart3, Sparkles, PartyPopper } from "lucide-react";
+import confetti from "canvas-confetti";
 import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
 import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
 import martechAwardImg from "@/assets/awards/martech-ai-award.jpg";
 
 export function ProductCraft() {
   const ref = useRef(null);
+  const awardCardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   
-  // Like button state
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(47);
+  // Celebrate button state
+  const [celebrated, setCelebrated] = useState(() => {
+    return localStorage.getItem('martechAwardCelebrated') === 'true';
+  });
+  
+  // Fireworks state
+  const [fireworksShown, setFireworksShown] = useState(() => {
+    return localStorage.getItem('martechAwardFireworksShown') === 'true';
+  });
 
-  useEffect(() => {
-    const hasLiked = localStorage.getItem('martechAwardLiked') === 'true';
-    const storedCount = localStorage.getItem('martechAwardLikeCount');
-    if (storedCount) {
-      setLikeCount(parseInt(storedCount, 10));
-    }
-    setLiked(hasLiked);
-  }, []);
-
-  const handleLike = () => {
-    const newLikedState = !liked;
-    const newCount = newLikedState ? likeCount + 1 : likeCount - 1;
-    setLiked(newLikedState);
-    setLikeCount(newCount);
-    localStorage.setItem('martechAwardLiked', String(newLikedState));
-    localStorage.setItem('martechAwardLikeCount', String(newCount));
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
   };
+
+  const triggerFireworks = () => {
+    const duration = 2000;
+    const end = Date.now() + duration;
+
+    const interval = setInterval(() => {
+      if (Date.now() > end) {
+        clearInterval(interval);
+        return;
+      }
+
+      confetti({
+        particleCount: 30,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.6 },
+        colors: ['#FFD700', '#FF6B35', '#4ECDC4']
+      });
+      confetti({
+        particleCount: 30,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.6 },
+        colors: ['#FFD700', '#FF6B35', '#4ECDC4']
+      });
+    }, 250);
+  };
+
+  const handleCelebrate = () => {
+    if (celebrated) return;
+    
+    triggerConfetti();
+    setCelebrated(true);
+    localStorage.setItem('martechAwardCelebrated', 'true');
+  };
+
+  // Auto-fireworks when card is in view for 1+ second
+  useEffect(() => {
+    if (fireworksShown) return;
+
+    let timer: ReturnType<typeof setTimeout> | null = null;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            timer = setTimeout(() => {
+              triggerFireworks();
+              setFireworksShown(true);
+              localStorage.setItem('martechAwardFireworksShown', 'true');
+            }, 1000);
+          } else {
+            if (timer) {
+              clearTimeout(timer);
+              timer = null;
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (awardCardRef.current) {
+      observer.observe(awardCardRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (timer) clearTimeout(timer);
+    };
+  }, [fireworksShown]);
 
   return (
     <section
@@ -80,6 +149,7 @@ export function ProductCraft() {
           
           {/* Row 1: MartechAI Award - Full Width Horizontal Hero */}
           <motion.div
+            ref={awardCardRef}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
@@ -119,22 +189,28 @@ export function ProductCraft() {
                 </p>
               </div>
 
-              {/* Like Button */}
+              {/* Celebrate Button */}
               <motion.button 
-                onClick={handleLike}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/80 hover:bg-white border border-amber-300 shadow-sm transition-all duration-200 hover:shadow-md"
+                onClick={handleCelebrate}
+                disabled={celebrated}
+                whileTap={celebrated ? {} : { scale: 0.95 }}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all duration-200 ${
+                  celebrated 
+                    ? 'bg-green-500/20 text-green-700 cursor-default border border-green-400/40' 
+                    : 'bg-white/80 hover:bg-white border border-amber-300 shadow-sm hover:shadow-md hover:scale-105 text-amber-900'
+                }`}
               >
-                <motion.div
-                  animate={liked ? { scale: [1, 1.3, 1] } : {}}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Heart 
-                    className={`transition-colors duration-200 ${liked ? "fill-red-500 text-red-500" : "text-amber-700"}`} 
-                    size={20} 
-                  />
-                </motion.div>
-                <span className="font-semibold text-amber-900">{likeCount}</span>
+                {celebrated ? (
+                  <>
+                    <Sparkles className="w-5 h-5" />
+                    <span>Celebrated!</span>
+                  </>
+                ) : (
+                  <>
+                    <PartyPopper className="w-5 h-5" />
+                    <span>Celebrate!</span>
+                  </>
+                )}
               </motion.button>
             </div>
           </motion.div>
