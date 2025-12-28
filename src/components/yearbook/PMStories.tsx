@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Sparkles, Rocket, AlertCircle, Wrench, TrendingUp, Lightbulb, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Sparkles, Rocket, AlertCircle, Wrench, TrendingUp, Lightbulb, X, ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 
 // Intern images
 import parthImg from "@/assets/team/interns/parth.png";
@@ -339,19 +340,31 @@ export function PMStories() {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedLeader, setSelectedLeader] = useState<ProductLeader | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  
+  // Polaroid scatter state
+  const [expandedPhoto, setExpandedPhoto] = useState<number | null>(null);
+  const [photoPositions, setPhotoPositions] = useState<{x: number, y: number, rotation: number, zIndex: number}[]>([]);
+  const [highestZIndex, setHighestZIndex] = useState(10);
 
-  // Auto-flip every 3 seconds
+  // Generate random positions for polaroids on mount
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentPage((prev) => (prev + 1) % lifePhotos.length);
-    }, 3000);
-    return () => clearInterval(timer);
+    const positions = lifePhotos.map((_, index) => ({
+      x: Math.random() * 70 - 35,
+      y: Math.random() * 50 - 25,
+      rotation: Math.random() * 24 - 12,
+      zIndex: index + 1
+    }));
+    setPhotoPositions(positions);
   }, []);
 
-  // Click to flip
-  const handleFlip = () => {
-    setCurrentPage((prev) => (prev + 1) % lifePhotos.length);
+  const handlePolaroidDragStart = (index: number) => {
+    const newZIndex = highestZIndex + 1;
+    setHighestZIndex(newZIndex);
+    setPhotoPositions(prev => prev.map((pos, i) => 
+      i === index ? { ...pos, zIndex: newZIndex } : pos
+    ));
   };
+
 
   // Handle leader card click
   const handleLeaderClick = (leader: ProductLeader) => {
@@ -777,7 +790,8 @@ export function PMStories() {
         >
           {/* Section Title & Subtitle - MUST KEEP */}
           <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 flex items-center justify-center gap-3">
+              <Heart className="text-rose-500 fill-rose-500" size={28} />
               Life in the Product Team
             </h3>
             <p className="text-foreground/70 max-w-2xl mx-auto leading-relaxed">
@@ -785,94 +799,118 @@ export function PMStories() {
             </p>
           </div>
 
-          {/* Scrapbook Container - Wide for landscape photos */}
-          <div 
-            onClick={handleFlip}
-            className="relative w-full max-w-5xl mx-auto cursor-pointer select-none px-4 md:px-8"
-          >
-            {/* Textured Paper Background */}
-            <div 
-              className="relative rounded-lg overflow-hidden shadow-2xl"
-              style={{
-                background: 'linear-gradient(135deg, #faf6f1 0%, #f5ebe0 50%, #ebe3d5 100%)',
-                padding: '20px',
-              }}
-            >
-              {/* Paper texture overlay */}
-              <div 
-                className="absolute inset-0 opacity-30 pointer-events-none"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-                }}
-              />
-
-              {/* Photo container - auto height, no fixed aspect ratio */}
-              <div 
-                className="relative rounded overflow-hidden shadow-lg transform rotate-[-0.3deg]"
-                style={{ 
-                  minHeight: '280px',
-                  maxHeight: '500px',
-                }}
-              >
-                {/* Background for letterboxing */}
-                <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-300" />
-                
-                <AnimatePresence mode="wait">
+          {/* Desktop: Polaroid Scatter Board */}
+          <div className="hidden md:block relative w-full h-[550px]">
+            <div className="absolute inset-0 flex items-center justify-center">
+              {lifePhotos.map((photo, index) => (
+                photoPositions[index] && (
                   <motion.div
-                    key={currentPage}
-                    initial={{ rotateY: -90, opacity: 0 }}
-                    animate={{ rotateY: 0, opacity: 1 }}
-                    exit={{ rotateY: 90, opacity: 0 }}
-                    transition={{ 
-                      duration: 0.5, 
-                      ease: [0.4, 0, 0.2, 1]
+                    key={index}
+                    drag
+                    dragMomentum={false}
+                    onDragStart={() => handlePolaroidDragStart(index)}
+                    onClick={() => setExpandedPhoto(index)}
+                    initial={{ 
+                      x: `${photoPositions[index].x}%`, 
+                      y: `${photoPositions[index].y}%`,
+                      rotate: photoPositions[index].rotation,
+                      opacity: 0,
+                      scale: 0.8
                     }}
-                    className="relative w-full h-full flex items-center justify-center"
-                    style={{ 
-                      transformStyle: 'preserve-3d',
-                      minHeight: '280px',
-                      maxHeight: '500px',
+                    animate={{
+                      x: `${photoPositions[index].x}%`, 
+                      y: `${photoPositions[index].y}%`,
+                      rotate: photoPositions[index].rotation,
+                      opacity: 1,
+                      scale: 1
                     }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    whileHover={{ scale: 1.08, rotate: 0, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
+                    whileDrag={{ scale: 1.1, cursor: 'grabbing', boxShadow: "0 25px 50px rgba(0,0,0,0.35)" }}
+                    style={{ zIndex: photoPositions[index].zIndex }}
+                    className="absolute cursor-grab active:cursor-grabbing bg-white p-3 pb-14 rounded-sm shadow-xl hover:shadow-2xl transition-shadow"
                   >
-                    {/* Image with object-fit: contain - NO CROPPING */}
-                    <img
-                      src={lifePhotos[currentPage]}
-                      alt={`Team memory ${currentPage + 1}`}
-                      className="w-full h-auto max-h-[500px] object-contain"
+                    <img 
+                      src={photo} 
+                      alt={scrapbookCaptions[index]}
+                      className="w-44 h-32 object-cover rounded-sm pointer-events-none"
+                      draggable={false}
                     />
-                    
-                    {/* Soft shadow under photo */}
-                    <div className="absolute inset-0 shadow-inner pointer-events-none" />
+                    <p 
+                      className="absolute bottom-3 left-3 right-3 text-center text-navy-700/80"
+                      style={{ fontFamily: "'Caveat', cursive", fontSize: '0.95rem' }}
+                    >
+                      {scrapbookCaptions[index % scrapbookCaptions.length]}
+                    </p>
                   </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Handwritten Caption */}
-              <motion.p
-                key={`caption-${currentPage}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                className="mt-4 text-center text-navy-700/80 text-sm italic"
-                style={{
-                  fontFamily: "'Caveat', 'Segoe Script', 'Bradley Hand', cursive",
-                  fontSize: '1.25rem',
-                }}
-              >
-                "{scrapbookCaptions[currentPage % scrapbookCaptions.length]}"
-              </motion.p>
+                )
+              ))}
             </div>
-
-            {/* Subtle paper depth effect */}
-            <div 
-              className="absolute -bottom-1 left-2 right-2 h-2 rounded-b-lg -z-10"
-              style={{ background: 'rgba(0,0,0,0.08)' }}
-            />
-            <div 
-              className="absolute -bottom-2 left-4 right-4 h-2 rounded-b-lg -z-20"
-              style={{ background: 'rgba(0,0,0,0.04)' }}
-            />
           </div>
+
+          {/* Mobile: Simple Carousel */}
+          <div className="md:hidden px-4">
+            <Carousel className="w-full max-w-sm mx-auto">
+              <CarouselContent>
+                {lifePhotos.map((photo, index) => (
+                  <CarouselItem key={index}>
+                    <div 
+                      className="relative bg-white p-3 pb-12 rounded-sm shadow-xl mx-2 cursor-pointer"
+                      onClick={() => setExpandedPhoto(index)}
+                    >
+                      <img 
+                        src={photo} 
+                        alt={scrapbookCaptions[index]}
+                        className="w-full h-48 object-cover rounded-sm"
+                      />
+                      <p 
+                        className="absolute bottom-3 left-5 right-5 text-center text-navy-700/80"
+                        style={{ fontFamily: "'Caveat', cursive", fontSize: '1rem' }}
+                      >
+                        {scrapbookCaptions[index % scrapbookCaptions.length]}
+                      </p>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="-left-2" />
+              <CarouselNext className="-right-2" />
+            </Carousel>
+          </div>
+
+          {/* Expanded Photo Modal */}
+          <AnimatePresence>
+            {expandedPhoto !== null && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                onClick={() => setExpandedPhoto(null)}
+              >
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.8, opacity: 0 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative max-w-4xl max-h-[90vh]"
+                >
+                  <img
+                    src={lifePhotos[expandedPhoto]}
+                    alt={scrapbookCaptions[expandedPhoto]}
+                    className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                  />
+                  <button
+                    onClick={() => setExpandedPhoto(null)}
+                    className="absolute -top-3 -right-3 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+                  >
+                    <X size={20} className="text-navy-800" />
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>
