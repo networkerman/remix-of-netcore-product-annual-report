@@ -345,13 +345,14 @@ export function PMStories() {
   const [expandedPhoto, setExpandedPhoto] = useState<number | null>(null);
   const [photoPositions, setPhotoPositions] = useState<{x: number, y: number, rotation: number, zIndex: number}[]>([]);
   const [highestZIndex, setHighestZIndex] = useState(10);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Generate random positions for polaroids on mount
   useEffect(() => {
     const positions = lifePhotos.map((_, index) => ({
-      x: Math.random() * 70 - 35,
-      y: Math.random() * 50 - 25,
-      rotation: Math.random() * 24 - 12,
+      x: Math.random() * 140 - 70,
+      y: Math.random() * 80 - 40,
+      rotation: Math.random() * 30 - 15,
       zIndex: index + 1
     }));
     setPhotoPositions(positions);
@@ -800,7 +801,7 @@ export function PMStories() {
           </div>
 
           {/* Desktop: Polaroid Scatter Board */}
-          <div className="hidden md:block relative w-full h-[550px]">
+          <div className="hidden md:block relative w-full h-[700px]">
             <div className="absolute inset-0 flex items-center justify-center">
               {lifePhotos.map((photo, index) => (
                 photoPositions[index] && (
@@ -808,8 +809,18 @@ export function PMStories() {
                     key={index}
                     drag
                     dragMomentum={false}
-                    onDragStart={() => handlePolaroidDragStart(index)}
-                    onClick={() => setExpandedPhoto(index)}
+                    onDragStart={() => {
+                      setIsDragging(true);
+                      handlePolaroidDragStart(index);
+                    }}
+                    onDragEnd={() => {
+                      setTimeout(() => setIsDragging(false), 100);
+                    }}
+                    onClick={() => {
+                      if (!isDragging) {
+                        setExpandedPhoto(index);
+                      }
+                    }}
                     initial={{ 
                       x: `${photoPositions[index].x}%`, 
                       y: `${photoPositions[index].y}%`,
@@ -825,20 +836,20 @@ export function PMStories() {
                       scale: 1
                     }}
                     transition={{ delay: index * 0.1, duration: 0.4 }}
-                    whileHover={{ scale: 1.08, rotate: 0, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
-                    whileDrag={{ scale: 1.1, cursor: 'grabbing', boxShadow: "0 25px 50px rgba(0,0,0,0.35)" }}
+                    whileHover={{ scale: 1.05, rotate: 0, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
+                    whileDrag={{ scale: 1.08, cursor: 'grabbing', boxShadow: "0 25px 50px rgba(0,0,0,0.35)" }}
                     style={{ zIndex: photoPositions[index].zIndex }}
-                    className="absolute cursor-grab active:cursor-grabbing bg-white p-3 pb-14 rounded-sm shadow-xl hover:shadow-2xl transition-shadow"
+                    className="absolute cursor-grab active:cursor-grabbing bg-white p-4 pb-16 rounded-sm shadow-xl hover:shadow-2xl transition-shadow"
                   >
                     <img 
                       src={photo} 
                       alt={scrapbookCaptions[index]}
-                      className="w-44 h-32 object-cover rounded-sm pointer-events-none"
+                      className="w-72 h-52 object-cover rounded-sm pointer-events-none"
                       draggable={false}
                     />
                     <p 
-                      className="absolute bottom-3 left-3 right-3 text-center text-navy-700/80"
-                      style={{ fontFamily: "'Caveat', cursive", fontSize: '0.95rem' }}
+                      className="absolute bottom-4 left-4 right-4 text-center text-navy-700/80"
+                      style={{ fontFamily: "'Caveat', cursive", fontSize: '1.1rem' }}
                     >
                       {scrapbookCaptions[index % scrapbookCaptions.length]}
                     </p>
@@ -894,13 +905,16 @@ export function PMStories() {
                   exit={{ scale: 0.8, opacity: 0 }}
                   transition={{ type: "spring", damping: 25, stiffness: 300 }}
                   onClick={(e) => e.stopPropagation()}
-                  className="relative max-w-4xl max-h-[90vh]"
+                  className="relative max-w-4xl max-h-[90vh] flex flex-col items-center"
                 >
                   <img
                     src={lifePhotos[expandedPhoto]}
                     alt={scrapbookCaptions[expandedPhoto]}
-                    className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+                    className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl"
                   />
+                  <p className="mt-4 text-white text-lg text-center px-4 max-w-2xl">
+                    {scrapbookCaptions[expandedPhoto % scrapbookCaptions.length]}
+                  </p>
                   <button
                     onClick={() => setExpandedPhoto(null)}
                     className="absolute -top-3 -right-3 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
