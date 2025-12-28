@@ -61,6 +61,13 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Auto-scroll navigation to show active section
+  useEffect(() => {
+    const activeButton = document.querySelector(`[data-nav-id="${activeSection}"]`);
+    if (activeButton && containerRef.current) {
+      activeButton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [activeSection]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -107,6 +114,7 @@ export function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.id}
+                data-nav-id={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`px-3 py-1.5 text-xs font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
                   activeSection === item.id

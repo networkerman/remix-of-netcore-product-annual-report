@@ -352,18 +352,18 @@ export function PMStories() {
     // Define zones across an 1100px wide × 650px tall area
     // Each photo gets assigned to a different zone to prevent clustering
     const zones = [
-      { xMin: 0, xMax: 150, yMin: 0, yMax: 120 },       // Top-left
-      { xMin: 400, xMax: 550, yMin: 0, yMax: 100 },     // Top-center
-      { xMin: 800, xMax: 950, yMin: 0, yMax: 120 },     // Top-right
-      { xMin: 50, xMax: 200, yMin: 220, yMax: 340 },    // Middle-left
-      { xMin: 450, xMax: 600, yMin: 200, yMax: 320 },   // Middle-center
-      { xMin: 850, xMax: 1000, yMin: 220, yMax: 340 },  // Middle-right
-      { xMin: 0, xMax: 150, yMin: 420, yMax: 540 },     // Bottom-left
-      { xMin: 400, xMax: 550, yMin: 440, yMax: 560 },   // Bottom-center
-      { xMin: 800, xMax: 950, yMin: 420, yMax: 540 },   // Bottom-right
-      { xMin: 220, xMax: 370, yMin: 100, yMax: 220 },   // Extra zone 1
-      { xMin: 620, xMax: 770, yMin: 320, yMax: 440 },   // Extra zone 2
-      { xMin: 250, xMax: 400, yMin: 380, yMax: 500 },   // Extra zone 3
+      { xMin: 0, xMax: 100, yMin: 0, yMax: 120 },       // Top-left
+      { xMin: 300, xMax: 400, yMin: 0, yMax: 100 },     // Top-center
+      { xMin: 550, xMax: 650, yMin: 0, yMax: 120 },     // Top-right
+      { xMin: 50, xMax: 150, yMin: 220, yMax: 340 },    // Middle-left
+      { xMin: 350, xMax: 450, yMin: 200, yMax: 320 },   // Middle-center
+      { xMin: 600, xMax: 700, yMin: 220, yMax: 340 },   // Middle-right
+      { xMin: 0, xMax: 100, yMin: 420, yMax: 540 },     // Bottom-left
+      { xMin: 300, xMax: 400, yMin: 440, yMax: 560 },   // Bottom-center
+      { xMin: 550, xMax: 650, yMin: 420, yMax: 540 },   // Bottom-right
+      { xMin: 170, xMax: 270, yMin: 100, yMax: 220 },   // Extra zone 1
+      { xMin: 470, xMax: 570, yMin: 320, yMax: 440 },   // Extra zone 2
+      { xMin: 200, xMax: 300, yMin: 380, yMax: 500 },   // Extra zone 3
     ];
     
     const positions = lifePhotos.map((_, index) => {
@@ -821,7 +821,7 @@ export function PMStories() {
           </div>
 
           {/* Desktop: Polaroid Scatter Board */}
-          <div className="hidden md:block relative w-full h-[750px] overflow-visible">
+          <div className="hidden md:block relative w-full h-[750px] overflow-hidden">
             <div className="absolute inset-0">
               {lifePhotos.map((photo, index) => (
                 photoPositions[index] && (
