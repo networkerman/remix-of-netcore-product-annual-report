@@ -45,7 +45,7 @@ export function ThankYou() {
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 via-violet-500 to-rose-500">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-coral-500 shadow-lg">
               <Heart className="text-white" size={36} />
             </div>
           </motion.div>
@@ -59,7 +59,7 @@ export function ThankYou() {
           >
             Thank You,
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-violet-500 to-rose-400">
+            <span className="text-coral-500">
               Netcorians
             </span>
           </motion.h2>
@@ -94,10 +94,10 @@ export function ThankYou() {
             transition={{ delay: 1.2 }}
             className="mt-20 pt-8 border-t border-border"
           >
-            <p className="text-foreground/50 text-sm">
+            <p className="text-foreground/80 text-sm font-medium">
               Made with ❤️ by the Product Team
             </p>
-            <p className="text-foreground/40 text-xs mt-2">
+            <p className="text-foreground/60 text-xs mt-2">
               Netcore Product Yearbook 2025 • Internal Use Only
             </p>
           </motion.div>
@@ -106,7 +106,7 @@ export function ThankYou() {
 
       {/* Corner Decorations */}
       <div className="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-primary/20" />
-      <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-rose-400/20" />
+      <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-coral-400/20" />
     </section>
   );
 }

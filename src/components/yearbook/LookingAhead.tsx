@@ -93,17 +93,32 @@ export function LookingAhead() {
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               className="group relative p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:bg-navy-600/70 transition-all duration-300 cursor-default overflow-hidden"
             >
-              {/* Animated traveling line border on hover */}
-              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none overflow-hidden">
-                {/* Top edge - left to right */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-[slideRight_2s_linear_infinite]" />
-                {/* Right edge - top to bottom */}
-                <div className="absolute top-0 right-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-cyan-400 to-transparent animate-[slideDown_2s_linear_infinite_0.5s]" />
-                {/* Bottom edge - right to left */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-l from-transparent via-cyan-400 to-transparent animate-[slideLeft_2s_linear_infinite_1s]" />
-                {/* Left edge - bottom to top */}
-                <div className="absolute top-0 left-0 bottom-0 w-[2px] bg-gradient-to-t from-transparent via-cyan-400 to-transparent animate-[slideUp_2s_linear_infinite_1.5s]" />
-              </div>
+              {/* Animated traveling line border on hover - SVG approach */}
+              <svg
+                className="absolute inset-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{ filter: 'drop-shadow(0 0 6px rgba(34, 211, 238, 0.6))' }}
+              >
+                <rect
+                  x="1"
+                  y="1"
+                  width="calc(100% - 2px)"
+                  height="calc(100% - 2px)"
+                  rx="24"
+                  ry="24"
+                  fill="none"
+                  stroke="url(#cyan-gradient)"
+                  strokeWidth="2"
+                  strokeDasharray="60 540"
+                  className="animate-border-dash"
+                />
+                <defs>
+                  <linearGradient id="cyan-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#22d3ee" />
+                    <stop offset="50%" stopColor="#06b6d4" />
+                    <stop offset="100%" stopColor="#22d3ee" />
+                  </linearGradient>
+                </defs>
+              </svg>
               
               {/* Content */}
               <div className="relative z-10">
