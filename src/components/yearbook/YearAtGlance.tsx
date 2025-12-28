@@ -171,7 +171,7 @@ const getQuarters = (data: MonthData[]) => [
 export function YearAtGlance() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+  const [selectedMonth, setSelectedMonth] = useState<string>("Jan");
   const [productFilter, setProductFilter] = useState<"All" | "CE" | "CPaaS" | "Unbxd">("All");
   const [selectedQuarterIndex, setSelectedQuarterIndex] = useState(0);
 
@@ -183,8 +183,11 @@ export function YearAtGlance() {
   useEffect(() => {
     if (!emblaApi) return;
     const onSelect = () => {
-      setSelectedQuarterIndex(emblaApi.selectedScrollSnap());
-      setSelectedMonth(null); // Clear selected month when switching quarters
+      const newIndex = emblaApi.selectedScrollSnap();
+      setSelectedQuarterIndex(newIndex);
+      // Auto-select first month of the new quarter
+      const firstMonthOfQuarter = ["Jan", "Apr", "Jul", "Oct"][newIndex];
+      setSelectedMonth(firstMonthOfQuarter);
     };
     emblaApi.on("select", onSelect);
     return () => { emblaApi.off("select", onSelect); };
@@ -311,7 +314,7 @@ export function YearAtGlance() {
                                     ? "bg-gradient-to-br from-teal-400 to-teal-600 text-navy-900 scale-105" 
                                     : "bg-gradient-to-br from-navy-700 to-navy-800 border-2 border-teal-500/40 hover:border-teal-500/70 hover:from-navy-600 hover:to-navy-700 text-cream-100"
                                 }`}
-                                onClick={() => setSelectedMonth(isSelected ? null : month.month)}
+                                onClick={() => setSelectedMonth(month.month)}
                               >
                                 <span className="font-bold text-xs md:text-sm whitespace-nowrap">{fullMonthNames[month.month]}</span>
                               </div>
@@ -377,7 +380,7 @@ export function YearAtGlance() {
 
           {/* Hint Text - Below Carousel */}
           <p className="text-sm text-cream-300/40 text-center mt-6">
-            Click on a month to see features
+            Click on a month to switch
           </p>
 
           {/* Navigation + Pagination */}
