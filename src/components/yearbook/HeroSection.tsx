@@ -31,14 +31,14 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Container 2: Product Wrapped Title + 2025 Watermark */}
-      <div className="flex-1 relative flex items-center justify-center px-6">
+      {/* Container 2: Product Wrapped Title + 2025 Watermark + Subtitle */}
+      <div className="flex-1 relative flex flex-col items-center justify-center px-6">
         {/* 2025 Watermark - z-0 with gradient fade */}
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
           style={{
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 90%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 90%)'
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 90%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 90%)'
           }}
         >
           <span className="font-nunito text-[15rem] md:text-[24rem] lg:text-[30rem] font-extrabold text-coral-300 select-none leading-none">
@@ -46,28 +46,29 @@ export function HeroSection() {
           </span>
         </div>
 
-        {/* Product Wrapped Title - z-10 */}
-        <motion.img
-          src={productWrappedTitle}
-          alt="Product Wrapped 2025"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-10 w-full max-w-2xl md:max-w-3xl"
-        />
-      </div>
+        {/* Content wrapper with flex column for easy spacing */}
+        <div className="relative z-10 flex flex-col items-center">
+          {/* Product Wrapped Title */}
+          <motion.img
+            src={productWrappedTitle}
+            alt="Product Wrapped 2025"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-full max-w-2xl md:max-w-3xl"
+          />
 
-      {/* Container 3: Subtitle */}
-      <div className="text-center px-6 pt-2 relative z-10">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="body-large text-foreground/60 max-w-2xl mx-auto"
-        >
-          The stories behind the launches, lessons, and wins that made our
-          2025 product journey memorable.
-        </motion.p>
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-6 body-large text-foreground/60 max-w-2xl mx-auto text-center"
+          >
+            The stories behind the launches, lessons, and wins that made our
+            2025 product journey memorable.
+          </motion.p>
+        </div>
       </div>
 
       {/* Container 4: Modules + Scroll Indicator */}
