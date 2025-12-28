@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ExternalLink, Trophy, Users, TrendingUp, Activity, PieChart, Route, BarChart3, Sparkles, PartyPopper } from "lucide-react";
+import { ExternalLink, Trophy, Users, TrendingUp, Activity, PieChart, Route, BarChart3, ThumbsUp, PartyPopper } from "lucide-react";
 import confetti from "canvas-confetti";
 import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
 import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
@@ -163,25 +163,25 @@ export function ProductCraft() {
             
             {/* Right: Award Details */}
             <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left flex-grow">
-              <div className="flex items-center gap-2 mb-4">
-                <Trophy className="text-amber-500 w-7 h-7" />
+              <div className="flex items-center gap-3 mb-6">
+                <Trophy className="text-amber-500 w-8 h-8" />
                 <h4 className="font-bold text-2xl md:text-3xl text-amber-900">MartechAI Award</h4>
               </div>
               
-              <p className="text-amber-800 font-semibold text-lg md:text-xl mb-3">
+              <p className="text-amber-800 font-semibold text-lg md:text-xl mb-5">
                 Best Use of Analytics. Proven by results.
               </p>
               
-              <p className="text-amber-900/80 text-base mb-5 max-w-md leading-relaxed">
+              <p className="text-amber-900/80 text-base md:text-lg mb-7 max-w-md leading-relaxed">
                 Powered Pepe Jeans to shift from broad campaigns to precision journeys with clear revenue impact.
               </p>
               
               {/* Metrics Highlight Box */}
-              <div className="bg-amber-100/80 border border-amber-400/40 rounded-lg px-4 py-3 mb-5 w-full md:w-auto">
-                <p className="text-amber-900 font-bold text-sm md:text-base">
+              <div className="bg-amber-100/80 border border-amber-400/40 rounded-lg px-5 py-4 mb-7 w-full md:w-auto">
+                <p className="text-amber-900 font-bold text-base md:text-lg">
                   2.6X Conversion Growth & 12.8X ROI
                 </p>
-                <p className="text-amber-800 text-xs">
+                <p className="text-amber-800/70 text-sm">
                   with Netcore's RFM and AI Segments, Funnel Analytics & STO
                 </p>
               </div>
@@ -197,12 +197,12 @@ export function ProductCraft() {
                     : 'bg-white/80 hover:bg-white border border-amber-300 shadow-sm hover:shadow-md hover:scale-105 text-amber-900'
                 }`}
               >
-                {celebrated ? (
-                  <>
-                    <Sparkles className="w-5 h-5" />
-                    <span>Celebrated!</span>
-                  </>
-                ) : (
+              {celebrated ? (
+                <>
+                  <ThumbsUp className="w-5 h-5" />
+                  <span>Celebrated!</span>
+                </>
+              ) : (
                   <>
                     <PartyPopper className="w-5 h-5" />
                     <span>Celebrate!</span>
