@@ -38,9 +38,9 @@ export function HeroSection() {
           <motion.img
             src={productWrappedCombined}
             alt="Product Wrapped 2025"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
             className="w-full max-w-4xl md:max-w-5xl"
           />
 
