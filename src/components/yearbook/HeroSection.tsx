@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import netcoreNameLogo from "@/assets/netcore-name-logo.png";
-import productWrappedCombined from "@/assets/product-wrapped-2.png";
+import productWrappedCombined from "@/assets/product-wrapped-3.png";
 
 export function HeroSection() {
   return (
