@@ -103,7 +103,7 @@ export function LookingAhead() {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="group p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:border-teal-500/30 hover:shadow-xl transition-all duration-500"
+              className="group p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:border-teal-500/50 hover:bg-navy-600/70 hover:shadow-2xl hover:shadow-teal-500/10 hover:scale-[1.02] hover:ring-1 hover:ring-teal-500/30 transition-all duration-300 cursor-default"
             >
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{theme.icon}</div>
               <h3 className="text-xl font-bold text-cream-100 mb-3">{theme.title}</h3>
