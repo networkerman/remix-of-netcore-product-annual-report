@@ -11,7 +11,7 @@ const navItems = [
   { id: "year-glance", label: "Year at a Glance" },
   { id: "leadership-speaks", label: "Leadership Speaks" },
   { id: "team", label: "Meet the Team" },
-  { id: "stories", label: "PM Stories" },
+  { id: "stories", label: "Stories & Culture" },
   { id: "looking-ahead", label: "Looking Ahead" },
 ];
 
