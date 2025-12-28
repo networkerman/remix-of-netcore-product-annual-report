@@ -25,7 +25,7 @@ export function HeroSection() {
             scale: [1, 1.06, 0.94, 1.05, 0.97, 1.03, 1],
           }}
           transition={{ duration: 45, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-teal-300/20 via-transparent to-transparent blur-3xl pointer-events-none"
+          className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-coral-400/20 via-transparent to-transparent blur-3xl pointer-events-none"
         />
         <motion.div
           animate={{
@@ -34,7 +34,7 @@ export function HeroSection() {
             scale: [1, 0.95, 1.04, 0.96, 1.05, 0.98, 1],
           }}
           transition={{ duration: 50, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-coral-300/15 via-transparent to-transparent blur-3xl pointer-events-none"
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-coral-400/20 via-transparent to-transparent blur-3xl pointer-events-none"
         />
 
         {/* Grid Pattern */}
@@ -63,7 +63,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mx-auto mb-6 w-full max-w-2xl md:max-w-3xl"
+            className="mx-auto mb-3 w-full max-w-2xl md:max-w-3xl"
           />
 
           {/* Subtitle */}
@@ -80,7 +80,7 @@ export function HeroSection() {
               duration: 0.8,
               delay: 0.4,
             }}
-            className="body-large text-foreground/60 max-w-2xl mx-auto mb-12"
+            className="body-large text-foreground/60 max-w-2xl mx-auto mb-6"
           >
             The stories behind the launches, lessons, and wins that made our
             2025 product journey memorable.
@@ -94,7 +94,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-foreground/50"
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-foreground/50"
       >
         {/* Product Names with Dot Separators - ABOVE scroll indicator */}
         <div className="flex items-center justify-center gap-6">
