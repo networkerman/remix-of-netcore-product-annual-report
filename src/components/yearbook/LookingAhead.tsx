@@ -1,33 +1,38 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Telescope, Lock } from "lucide-react";
+import { Telescope } from "lucide-react";
 
 const themes = [
   {
     title: "Autonomous by Design",
     description: "AI evolves from recommending actions to autonomously executing decisions, enabling marketers to operate at machine speed with confidence.",
     icon: "🤖",
+    animation: "group-hover:animate-bounce",
   },
   {
     title: "Multi-Agent Intelligence",
     description: "A coordinated system of agents—Segment, Decision, and more—working together to deliver true 1:1 hyper-personalised experiences at scale.",
     icon: "🧠",
+    animation: "group-hover:animate-pulse group-hover:scale-110",
   },
   {
     title: "Netcore × Unbxd Synergy",
     description: "Deeper platform integration to drive measurable impact across the full commerce funnel, from discovery to conversion.",
     icon: "🔗",
+    animation: "group-hover:animate-spin",
   },
   {
     title: "Agentic Commerce",
     description: "Shopping and Merchandising Agents autonomously optimise discovery and merchandising, redefining how customers find and engage with products.",
     icon: "🛍️",
+    animation: "group-hover:scale-125 group-hover:-rotate-12",
   },
   {
     title: "Design 3.0",
     description: "An AI-first UI/UX that reduces complexity, embeds intelligence by default, and elevates marketer outcomes without added effort.",
     icon: "✨",
+    animation: "group-hover:animate-pulse group-hover:rotate-12 group-hover:scale-110",
   },
 ];
 
@@ -82,18 +87,6 @@ export function LookingAhead() {
           </p>
         </motion.div>
 
-        {/* Confidential Notice */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2 }}
-          className="max-w-md mx-auto mb-16"
-        >
-          <div className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-teal-500/20 border border-teal-500/30 text-teal-400">
-            <Lock size={16} />
-            <span className="text-sm font-medium">Internal Preview • Subject to Change</span>
-          </div>
-        </motion.div>
 
         {/* Strategic Themes */}
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-20">
@@ -105,23 +98,36 @@ export function LookingAhead() {
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               className="group p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:border-teal-500/50 hover:bg-navy-600/70 hover:shadow-2xl hover:shadow-teal-500/10 hover:scale-[1.02] hover:ring-1 hover:ring-teal-500/30 transition-all duration-300 cursor-default"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{theme.icon}</div>
+              <div className={`text-4xl mb-4 transition-all duration-300 ${theme.animation}`}>{theme.icon}</div>
               <h3 className="text-xl font-bold text-cream-100 mb-3">{theme.title}</h3>
               <p className="text-cream-300/70 leading-relaxed">{theme.description}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Closing Note */}
-        <motion.p
+        {/* Closing Quote */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.7 }}
-          className="text-center text-cream-300/50 mt-12 max-w-xl mx-auto"
+          className="text-center mt-16 max-w-2xl mx-auto relative px-12"
         >
-          Strategy evolves. What you see here reflects our current thinking—expect surprises, 
-          pivots, and discoveries along the way. That's what makes this work exciting.
-        </motion.p>
+          {/* Opening Quote Mark */}
+          <span className="absolute top-0 left-0 text-7xl text-teal-500/30 font-serif leading-none select-none">"</span>
+          
+          <p className="text-xl md:text-2xl text-cream-100/80 italic leading-relaxed">
+            Strategy evolves. What you see here reflects our current thinking—expect surprises, 
+            pivots, and discoveries along the way. That's what makes this work exciting.
+          </p>
+          
+          {/* Closing Quote Mark */}
+          <span className="absolute bottom-4 right-0 text-7xl text-teal-500/30 font-serif leading-none select-none">"</span>
+          
+          {/* Attribution */}
+          <p className="mt-8 text-cream-300/50 text-sm tracking-wide">
+            — Someone wise from the Product Team
+          </p>
+        </motion.div>
       </div>
     </section>
   );

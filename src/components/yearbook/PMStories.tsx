@@ -821,7 +821,7 @@ export function PMStories() {
           </div>
 
           {/* Desktop: Polaroid Scatter Board */}
-          <div className="hidden md:block relative w-full h-[750px] overflow-hidden">
+          <div className="hidden md:block relative w-full h-[750px] overflow-visible">
             <div className="absolute inset-0">
               {lifePhotos.map((photo, index) => (
                 photoPositions[index] && (
