@@ -215,7 +215,7 @@ const internCards: InternCard[] = [
     part1: {
       ohShitMoment: "I was shit scared of missing out on deadlines once I knew how many stakeholders are involved. I was also scared of doing something incredibly stupid - like triggering the fire alarm for example (which totally didn't happen btw). I didn't want to be called the fire guy.",
       learningCurve: "I kept adding new design components and deviated from our existing design system. I was nightmare for my manager for doing this.",
-      firstImpression: "I thought these guys are pretty cool.",
+      firstImpression: "I thought these guys are pretty cool. LOUD, chatty though — but cool",
       currentImpression: "Still pretty cool.",
     },
     part2: {
@@ -223,9 +223,9 @@ const internCards: InternCard[] = [
       mythBusted: "I want to laugh when people say \"Figma hi to banana hai. Shouldn't take much time no?\"",
     },
     part3: {
-      internSong: "🔥",
+      internSong: "🤓",
       apmSong: "😎",
-      cultureEmojis: "🎨✨🔥",
+      cultureEmojis: "🌴💻🍺",
     },
   },
   {
@@ -655,7 +655,7 @@ export function PMStories() {
                       <h3 className="font-bold text-xl text-cream-100">{selectedIntern.name}</h3>
                       <p className="text-sm text-teal-400 font-medium">{selectedIntern.persona}</p>
                       {selectedIntern.role && (
-                        <p className="text-xs text-cream-300/60">{selectedIntern.role}</p>
+                        <p className="text-xs text-cream-200">{selectedIntern.role}</p>
                       )}
                     </div>
                   </div>
@@ -673,7 +673,7 @@ export function PMStories() {
                         <AlertCircle className="text-coral-400" size={16} />
                         <span className="text-sm font-semibold text-coral-400 uppercase tracking-wide">The "Oh S#t" Moment</span>
                       </div>
-                      <p className="text-cream-300/80 text-sm leading-relaxed">
+                      <p className="text-cream-100 text-sm leading-relaxed">
                         {selectedIntern.part1.ohShitMoment}
                       </p>
                     </div>
@@ -684,7 +684,7 @@ export function PMStories() {
                         <TrendingUp className="text-amber-400" size={16} />
                         <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">The Learning Curve</span>
                       </div>
-                      <p className="text-cream-300/80 text-sm leading-relaxed">
+                      <p className="text-cream-100 text-sm leading-relaxed">
                         {selectedIntern.part1.learningCurve}
                       </p>
                     </div>
@@ -693,15 +693,15 @@ export function PMStories() {
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <Lightbulb className="text-teal-400" size={16} />
-                        <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">First Impression vs Reality</span>
+                        <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">First Impression of the Product Team vs Reality</span>
                       </div>
-                      <div className="text-cream-300/80 text-sm leading-relaxed space-y-2">
+                      <div className="text-cream-100 text-sm leading-relaxed space-y-2">
                         <div>
-                          <span className="text-cream-400/60 text-xs uppercase">First impression: </span>
+                          <span className="text-cream-300 text-xs uppercase">First impression: </span>
                           <span>{selectedIntern.part1.firstImpression}</span>
                         </div>
                         <div>
-                          <span className="text-cream-400/60 text-xs uppercase">Reality: </span>
+                          <span className="text-cream-300 text-xs uppercase">Reality: </span>
                           <span className="text-cream-100">{selectedIntern.part1.currentImpression}</span>
                         </div>
                       </div>
@@ -719,7 +719,7 @@ export function PMStories() {
                           <Wrench className="text-teal-400" size={16} />
                           <span className="text-sm font-semibold text-teal-400 uppercase tracking-wide">Day 1 vs Now</span>
                         </div>
-                        <p className="text-cream-300/80 text-sm leading-relaxed">
+                        <p className="text-cream-100 text-sm leading-relaxed">
                           {selectedIntern.part2.jiraComparison}
                         </p>
                       </div>
@@ -731,7 +731,7 @@ export function PMStories() {
                         <AlertCircle className="text-amber-400" size={16} />
                         <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">Myth Busted</span>
                       </div>
-                      <p className="text-cream-300/80 text-sm leading-relaxed">
+                      <p className="text-cream-100 text-sm leading-relaxed">
                         {selectedIntern.part2.mythBusted}
                       </p>
                     </div>
@@ -744,11 +744,11 @@ export function PMStories() {
                     
                     <div className="grid grid-cols-1 gap-3">
                       <div className="flex items-center gap-3">
-                        <span className="text-cream-400/60 text-xs uppercase w-24">Intern Vibe:</span>
+                        <span className="text-cream-300 text-xs uppercase w-24">Intern Vibe:</span>
                         <span className="text-cream-100 text-sm">{selectedIntern.part3.internSong}</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-cream-400/60 text-xs uppercase w-24">
+                        <span className="text-cream-300 text-xs uppercase w-24">
                           {selectedIntern.name === "Dhairya" || selectedIntern.name === "Hardikya" 
                             ? "Designer Vibe:" 
                             : "APM Vibe:"}
@@ -756,7 +756,7 @@ export function PMStories() {
                         <span className="text-cream-100 text-sm">{selectedIntern.part3.apmSong}</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-cream-400/60 text-xs uppercase w-24">Culture:</span>
+                        <span className="text-cream-300 text-xs uppercase w-24">Culture:</span>
                         <span className="text-2xl">{selectedIntern.part3.cultureEmojis}</span>
                       </div>
                     </div>
