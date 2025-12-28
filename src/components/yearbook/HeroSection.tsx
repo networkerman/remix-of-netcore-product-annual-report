@@ -17,7 +17,7 @@ export function HeroSection() {
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-coral-400/20" />
 
       {/* Container 1: Netcore Logo */}
-      <div className="pt-28 md:pt-32 text-center relative z-10">
+      <div className="pt-36 md:pt-40 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,8 +37,8 @@ export function HeroSection() {
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
           style={{
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 90%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0) 90%)'
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 90%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 90%)'
           }}
         >
           <span className="font-nunito text-[15rem] md:text-[24rem] lg:text-[30rem] font-extrabold text-coral-300 select-none leading-none">
@@ -63,7 +63,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 body-large text-foreground/60 max-w-2xl mx-auto text-center"
+            className="mt-10 body-large text-foreground/60 max-w-2xl mx-auto text-center"
           >
             The stories behind the launches, lessons, and wins that made our
             2025 product journey memorable.
@@ -79,7 +79,7 @@ export function HeroSection() {
         className="mt-6 pb-4 text-center relative z-10"
       >
         {/* Product Names with Dot Separators */}
-        <div className="flex items-center justify-center gap-6 mb-4">
+        <div className="flex items-center justify-center gap-6 mb-8">
           {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
             <span key={product} className="flex items-center gap-6">
               <span className="text-foreground/70 font-semibold text-xl md:text-2xl">
