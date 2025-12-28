@@ -9,7 +9,7 @@ export function HeroSection() {
       className="min-h-screen relative flex items-center justify-center overflow-hidden bg-cream-100"
     >
       {/* Netcore Logo - Top Center */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-20">
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 z-20">
         <img src={netcoreLogo} alt="Netcore" className="h-10 w-auto" />
       </div>
 
@@ -40,27 +40,6 @@ export function HeroSection() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-8"
-          >
-            <Sparkles size={16} />
-            <span className="text-sm font-medium">
-              Internal Edition • For Netcorians Only
-            </span>
-          </motion.div>
-
           {/* Main Title */}
           <motion.h1
             initial={{
@@ -125,30 +104,27 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Bottom Section - Badge + Scroll Indicator */}
       <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-        }}
-        transition={{
-          delay: 1.2,
-        }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-foreground/50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-foreground/50"
       >
+        {/* Internal Edition Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary">
+          <Sparkles size={16} />
+          <span className="text-sm font-medium">
+            Internal Edition • For Netcorians Only
+          </span>
+        </div>
+        
         <span className="text-sm font-medium tracking-wide">
           Scroll to explore the year
         </span>
         <motion.div
-          animate={{
-            y: [0, 8, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-          }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
         >
           <ChevronDown size={24} />
         </motion.div>
