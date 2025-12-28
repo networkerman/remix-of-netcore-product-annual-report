@@ -37,8 +37,8 @@ export function HeroSection() {
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
           style={{
-            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 95%, rgba(0,0,0,0) 100%)'
+            maskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 90%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 90%)'
           }}
         >
           <span className="font-nunito text-[15rem] md:text-[24rem] lg:text-[30rem] font-extrabold text-coral-300 select-none leading-none">
@@ -58,7 +58,7 @@ export function HeroSection() {
       </div>
 
       {/* Container 3: Subtitle */}
-      <div className="text-center px-6 pt-2 -mt-[60px] relative z-10">
+      <div className="text-center px-6 pt-2 relative z-10">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="-mt-[40px] pb-4 text-center relative z-10"
+        className="mt-6 pb-4 text-center relative z-10"
       >
         {/* Product Names with Dot Separators */}
         <div className="flex items-center justify-center gap-6 mb-4">
