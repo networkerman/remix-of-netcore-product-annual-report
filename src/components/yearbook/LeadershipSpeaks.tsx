@@ -427,18 +427,18 @@ export function LeadershipSpeaks() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="overflow-hidden w-full relative z-10"
+        className="overflow-visible w-full relative z-10"
         ref={emblaRef}
       >
         <div className="flex items-center">
           {leaderTestimonials.map((testimonial, index) => (
             <div
               key={testimonial.id}
-              className="flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_50%] min-w-0 px-6 py-4 flex justify-center"
+              className="flex-[0_0_90%] md:flex-[0_0_70%] lg:flex-[0_0_50%] min-w-0 px-6 py-8 flex justify-center"
             >
               <div
                 onClick={() => setOpenTestimonial(testimonial)}
-                className={`bg-card backdrop-blur-sm border border-border rounded-3xl p-8 md:p-12 transition-all duration-500 w-full max-w-2xl cursor-pointer hover:border-primary/50 hover:shadow-xl ${
+                className={`bg-card backdrop-blur-sm border-2 border-gray-200 rounded-3xl p-8 md:p-12 transition-all duration-500 w-full max-w-2xl cursor-pointer hover:border-primary/50 hover:shadow-xl ${
                   selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
                 }`}
               >
@@ -448,17 +448,12 @@ export function LeadershipSpeaks() {
                 </div>
 
                 {/* Quote Text */}
-                <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-4 font-light">
+                <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-6 font-light">
                   "{testimonial.collapsedQuote}"
                 </blockquote>
 
-                {/* Click to read hint */}
-                <span className="text-primary text-sm font-medium mb-6 block">
-                  Click to read full testimonial →
-                </span>
-
                 {/* Author Info */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 flex items-center justify-center text-lg font-bold text-white">
                     {testimonial.name.charAt(0)}
                   </div>
@@ -467,6 +462,11 @@ export function LeadershipSpeaks() {
                     <p className="text-foreground/60 text-sm">{testimonial.role}</p>
                   </div>
                 </div>
+
+                {/* CTA - Below Author Info */}
+                <span className="text-primary text-sm font-medium block">
+                  Read more →
+                </span>
               </div>
             </div>
           ))}
