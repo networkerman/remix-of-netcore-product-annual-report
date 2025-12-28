@@ -93,10 +93,15 @@ export function LookingAhead() {
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               className="group relative p-8 rounded-3xl bg-navy-700/50 border border-cream-100/10 hover:bg-navy-600/70 transition-all duration-300 cursor-default overflow-hidden"
             >
-              {/* Animated gradient border on hover */}
-              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-[-2px] rounded-3xl bg-gradient-to-r from-teal-500 via-cyan-400 to-teal-500 animate-[spin_4s_linear_infinite]" />
-                <div className="absolute inset-[1px] rounded-3xl bg-navy-700" />
+              {/* Animated single-line border on hover */}
+              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div 
+                  className="absolute inset-[-1px] rounded-3xl animate-[spin_3s_linear_infinite]"
+                  style={{
+                    background: 'conic-gradient(from 0deg, transparent 0deg, transparent 340deg, #14b8a6 350deg, #22d3ee 360deg)',
+                  }}
+                />
+                <div className="absolute inset-[2px] rounded-3xl bg-navy-700" />
               </div>
               
               {/* Content */}

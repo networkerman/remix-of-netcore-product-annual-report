@@ -45,7 +45,7 @@ export function ThankYou() {
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-teal-500 to-coral-400">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-teal-500 via-cyan-500 to-coral-500">
               <Heart className="text-white" size={36} />
             </div>
           </motion.div>
@@ -59,7 +59,7 @@ export function ThankYou() {
           >
             Thank You,
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-coral-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-500 via-cyan-400 to-coral-500">
               Netcorians
             </span>
           </motion.h2>
