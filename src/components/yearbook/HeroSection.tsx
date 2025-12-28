@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import netcoreNameLogo from "@/assets/netcore-name-logo.png";
 
 export function HeroSection() {
@@ -10,7 +10,7 @@ export function HeroSection() {
     >
       {/* Giant 2025 Watermark in Background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <span className="font-playfair text-[18rem] md:text-[28rem] lg:text-[35rem] font-bold text-foreground/[0.04] select-none leading-none">
+        <span className="font-nunito text-[18rem] md:text-[28rem] lg:text-[35rem] font-extrabold text-foreground/[0.04] select-none leading-none">
           2025
         </span>
       </div>
@@ -51,7 +51,7 @@ export function HeroSection() {
             <img 
               src={netcoreNameLogo} 
               alt="Netcore" 
-              className="h-8 md:h-10 mx-auto mb-8" 
+              className="h-8 md:h-10 mx-auto mb-4" 
             />
           </motion.div>
 
@@ -73,7 +73,7 @@ export function HeroSection() {
           >
             Product
             <br />
-            Wrapped
+            Wrapped 2025
           </motion.h1>
 
           {/* Subtitle */}
@@ -96,42 +96,16 @@ export function HeroSection() {
             2025 product journey memorable.
           </motion.p>
 
-          {/* Product Names with Dot Separators */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex items-center justify-center gap-4 mb-16"
-          >
-            {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
-              <span key={product} className="flex items-center gap-4">
-                <span className="text-foreground/70 font-medium text-lg">
-                  {product}
-                </span>
-                {index < 3 && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/40" />
-                )}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </div>
 
-      {/* Bottom Section - Badge + Scroll Indicator */}
+      {/* Bottom Section - Scroll Indicator + Product Names */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-foreground/50"
       >
-        {/* Internal Edition Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary">
-          <Sparkles size={16} />
-          <span className="text-sm font-medium">
-            Internal Edition • For Netcorians Only
-          </span>
-        </div>
-        
         <span className="text-sm font-medium tracking-wide">
           Scroll to explore the year
         </span>
@@ -141,6 +115,20 @@ export function HeroSection() {
         >
           <ChevronDown size={24} />
         </motion.div>
+        
+        {/* Product Names with Dot Separators */}
+        <div className="flex items-center justify-center gap-4 mt-4">
+          {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
+            <span key={product} className="flex items-center gap-4">
+              <span className="text-foreground/60 font-medium text-sm">
+                {product}
+              </span>
+              {index < 3 && (
+                <span className="w-1 h-1 rounded-full bg-foreground/40" />
+              )}
+            </span>
+          ))}
+        </div>
       </motion.div>
 
       {/* Corner Decorations */}

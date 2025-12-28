@@ -115,17 +115,18 @@ export default {
   		},
   		fontFamily: {
   			sans: [
+  				'Nunito Sans',
   				'Inter',
   				'ui-sans-serif',
   				'system-ui',
-  				'sans-serif',
-  				'Apple Color Emoji',
-  				'Segoe UI Emoji',
-  				'Segoe UI Symbol',
-  				'Noto Color Emoji'
+  				'sans-serif'
+  			],
+  			nunito: [
+  				'Nunito Sans',
+  				'sans-serif'
   			],
   			display: [
-  				'Inter',
+  				'Nunito Sans',
   				'system-ui',
   				'sans-serif'
   			],
