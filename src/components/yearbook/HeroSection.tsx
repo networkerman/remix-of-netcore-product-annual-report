@@ -17,7 +17,7 @@ export function HeroSection() {
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-coral-400/20" />
 
       {/* Container 1: Netcore Logo */}
-      <div className="pt-36 md:pt-40 text-center relative z-10">
+      <div className="pt-32 md:pt-36 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,9 +31,9 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Container 2: Combined Title + Watermark Image + Subtitle */}
+      {/* Container 2: Title Image + Subtitle + Modules */}
       <div className="flex-1 relative flex flex-col items-center justify-center px-6">
-        <div className="relative flex flex-col items-center">
+        <div className="relative flex flex-col items-center gap-10">
           {/* Combined Product Wrapped + 2025 Image */}
           <motion.img
             src={productWrappedCombined}
@@ -41,7 +41,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full max-w-3xl md:max-w-4xl"
+            className="w-full max-w-4xl md:max-w-5xl"
           />
 
           {/* Subtitle */}
@@ -49,36 +49,40 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-10 body-large text-foreground/60 max-w-2xl mx-auto text-center"
+            className="body-large text-foreground/60 max-w-2xl mx-auto text-center"
           >
             The stories behind the launches, lessons, and wins that made our
             2025 product journey memorable.
           </motion.p>
+
+          {/* Product Modules */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="flex items-center justify-center gap-6"
+          >
+            {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
+              <span key={product} className="flex items-center gap-6">
+                <span className="text-foreground/70 font-semibold text-xl md:text-2xl">
+                  {product}
+                </span>
+                {index < 3 && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/50" />
+                )}
+              </span>
+            ))}
+          </motion.div>
         </div>
       </div>
 
-      {/* Container 4: Modules + Scroll Indicator */}
+      {/* Container 3: Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="mt-0 pb-4 text-center relative z-10"
+        className="pb-4 text-center relative z-10"
       >
-        {/* Product Names with Dot Separators */}
-        <div className="flex items-center justify-center gap-6 mb-8">
-          {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
-            <span key={product} className="flex items-center gap-6">
-              <span className="text-foreground/70 font-semibold text-xl md:text-2xl">
-                {product}
-              </span>
-              {index < 3 && (
-                <span className="w-1.5 h-1.5 rounded-full bg-foreground/50" />
-              )}
-            </span>
-          ))}
-        </div>
-
-        {/* Scroll Indicator */}
         <span className="text-sm font-medium tracking-wide text-foreground/50">
           Scroll to explore the year
         </span>
