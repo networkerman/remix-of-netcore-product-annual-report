@@ -206,6 +206,22 @@ export default {
 				'100%': {
 					borderColor: 'hsla(45, 90%, 55%, 0.4)'
 				}
+			},
+			'slideRight': {
+				'0%': { transform: 'translateX(-100%)' },
+				'100%': { transform: 'translateX(100%)' }
+			},
+			'slideDown': {
+				'0%': { transform: 'translateY(-100%)' },
+				'100%': { transform: 'translateY(100%)' }
+			},
+			'slideLeft': {
+				'0%': { transform: 'translateX(100%)' },
+				'100%': { transform: 'translateX(-100%)' }
+			},
+			'slideUp': {
+				'0%': { transform: 'translateY(100%)' },
+				'100%': { transform: 'translateY(-100%)' }
 			}
   		},
 		animation: {
