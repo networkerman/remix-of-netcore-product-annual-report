@@ -129,6 +129,11 @@ export default {
   				'system-ui',
   				'sans-serif'
   			],
+  			playfair: [
+  				'Playfair Display',
+  				'Georgia',
+  				'serif'
+  			],
   			serif: [
   				'ui-serif',
   				'Georgia',

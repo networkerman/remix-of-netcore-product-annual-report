@@ -9,7 +9,7 @@ export function HeroSection() {
       className="min-h-screen relative flex items-center justify-center overflow-hidden bg-cream-100"
     >
       {/* Netcore Logo - Top Center */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 z-20">
+      <div className="absolute top-32 left-1/2 -translate-x-1/2 z-20">
         <img src={netcoreLogo} alt="Netcore" className="h-10 w-auto" />
       </div>
 
@@ -58,7 +58,7 @@ export function HeroSection() {
           >
             Product Wrapped
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-teal-300 to-coral-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500">
               2025
             </span>
           </motion.h1>

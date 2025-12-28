@@ -818,7 +818,7 @@ export function PMStories() {
             <p className="text-foreground/70 max-w-2xl mx-auto leading-relaxed">
               Not everything we shipped was code. Some of it was culture, which we discovered when we stepped away from the backlog.
             </p>
-            <p className="text-foreground/50 text-xs mt-3">Click to expand the image</p>
+            <p className="text-foreground/50 text-xs mt-8">Click to expand the image</p>
           </div>
 
           {/* Desktop: Polaroid Scatter Board */}
