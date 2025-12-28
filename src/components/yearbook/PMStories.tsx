@@ -347,14 +347,34 @@ export function PMStories() {
   const [highestZIndex, setHighestZIndex] = useState(10);
   const [isDragging, setIsDragging] = useState(false);
 
-  // Generate random positions for polaroids on mount
+  // Generate random positions for polaroids on mount using zone-based scattering
   useEffect(() => {
-    const positions = lifePhotos.map((_, index) => ({
-      x: Math.random() * 140 - 70,
-      y: Math.random() * 80 - 40,
-      rotation: Math.random() * 30 - 15,
-      zIndex: index + 1
-    }));
+    // Define zones across an 1100px wide × 650px tall area
+    // Each photo gets assigned to a different zone to prevent clustering
+    const zones = [
+      { xMin: 0, xMax: 150, yMin: 0, yMax: 120 },       // Top-left
+      { xMin: 400, xMax: 550, yMin: 0, yMax: 100 },     // Top-center
+      { xMin: 800, xMax: 950, yMin: 0, yMax: 120 },     // Top-right
+      { xMin: 50, xMax: 200, yMin: 220, yMax: 340 },    // Middle-left
+      { xMin: 450, xMax: 600, yMin: 200, yMax: 320 },   // Middle-center
+      { xMin: 850, xMax: 1000, yMin: 220, yMax: 340 },  // Middle-right
+      { xMin: 0, xMax: 150, yMin: 420, yMax: 540 },     // Bottom-left
+      { xMin: 400, xMax: 550, yMin: 440, yMax: 560 },   // Bottom-center
+      { xMin: 800, xMax: 950, yMin: 420, yMax: 540 },   // Bottom-right
+      { xMin: 220, xMax: 370, yMin: 100, yMax: 220 },   // Extra zone 1
+      { xMin: 620, xMax: 770, yMin: 320, yMax: 440 },   // Extra zone 2
+      { xMin: 250, xMax: 400, yMin: 380, yMax: 500 },   // Extra zone 3
+    ];
+    
+    const positions = lifePhotos.map((_, index) => {
+      const zone = zones[index % zones.length];
+      return {
+        x: zone.xMin + Math.random() * (zone.xMax - zone.xMin),
+        y: zone.yMin + Math.random() * (zone.yMax - zone.yMin),
+        rotation: Math.random() * 20 - 10,
+        zIndex: index + 1
+      };
+    });
     setPhotoPositions(positions);
   }, []);
 
@@ -801,8 +821,8 @@ export function PMStories() {
           </div>
 
           {/* Desktop: Polaroid Scatter Board */}
-          <div className="hidden md:block relative w-full h-[700px]">
-            <div className="absolute inset-0 flex items-center justify-center">
+          <div className="hidden md:block relative w-full h-[750px] overflow-visible">
+            <div className="absolute inset-0">
               {lifePhotos.map((photo, index) => (
                 photoPositions[index] && (
                   <motion.div
@@ -822,15 +842,15 @@ export function PMStories() {
                       }
                     }}
                     initial={{ 
-                      x: `${photoPositions[index].x}%`, 
-                      y: `${photoPositions[index].y}%`,
+                      x: photoPositions[index].x, 
+                      y: photoPositions[index].y,
                       rotate: photoPositions[index].rotation,
                       opacity: 0,
                       scale: 0.8
                     }}
                     animate={{
-                      x: `${photoPositions[index].x}%`, 
-                      y: `${photoPositions[index].y}%`,
+                      x: photoPositions[index].x, 
+                      y: photoPositions[index].y,
                       rotate: photoPositions[index].rotation,
                       opacity: 1,
                       scale: 1
@@ -844,7 +864,7 @@ export function PMStories() {
                     <img 
                       src={photo} 
                       alt={scrapbookCaptions[index]}
-                      className="w-72 h-52 object-cover rounded-sm pointer-events-none"
+                      className="w-80 h-56 object-cover rounded-sm pointer-events-none"
                       draggable={false}
                     />
                     <p 
