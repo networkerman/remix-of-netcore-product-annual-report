@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import netcoreNameLogo from "@/assets/netcore-name-logo.png";
+import productWrappedTitle from "@/assets/product-wrapped-title.png";
 
 export function HeroSection() {
   return (
@@ -19,21 +20,21 @@ export function HeroSection() {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
-            x: [0, 250, -200, 280, -150, 200, 0],
-            y: [0, -200, 180, -120, 250, -180, 0],
+            x: [0, 150, -100, 180, -80, 120, 0],
+            y: [0, -80, -40, -100, -60, -120, 0],
             scale: [1, 1.06, 0.94, 1.05, 0.97, 1.03, 1],
           }}
           transition={{ duration: 45, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-gradient-radial from-teal-300/20 via-transparent to-transparent blur-3xl pointer-events-none"
+          className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-teal-300/20 via-transparent to-transparent blur-3xl pointer-events-none"
         />
         <motion.div
           animate={{
-            x: [0, -200, 180, -250, 150, -180, 0],
-            y: [0, 200, -150, 180, -200, 150, 0],
+            x: [0, -150, 100, -180, 80, -120, 0],
+            y: [0, 80, 40, 100, 60, 120, 0],
             scale: [1, 0.95, 1.04, 0.96, 1.05, 0.98, 1],
           }}
           transition={{ duration: 50, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-gradient-radial from-coral-300/15 via-transparent to-transparent blur-3xl pointer-events-none"
+          className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-coral-300/15 via-transparent to-transparent blur-3xl pointer-events-none"
         />
 
         {/* Grid Pattern */}
@@ -55,26 +56,15 @@ export function HeroSection() {
             />
           </motion.div>
 
-          {/* Main Title - Product on line 1, Wrapped on line 2 */}
-          <motion.h1
-            initial={{
-              opacity: 0,
-              y: 40,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.2,
-            }}
-            className="editorial-heading text-foreground mb-6"
-          >
-            Product
-            <br />
-            Wrapped 2025
-          </motion.h1>
+          {/* Main Title - Image */}
+          <motion.img
+            src={productWrappedTitle}
+            alt="Product Wrapped 2025"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mx-auto mb-6 w-full max-w-2xl md:max-w-3xl"
+          />
 
           {/* Subtitle */}
           <motion.p
@@ -99,14 +89,28 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom Section - Scroll Indicator + Product Names */}
+      {/* Bottom Section - Product Names + Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-foreground/50"
       >
-        <span className="text-sm font-medium tracking-wide">
+        {/* Product Names with Dot Separators - ABOVE scroll indicator */}
+        <div className="flex items-center justify-center gap-6">
+          {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
+            <span key={product} className="flex items-center gap-6">
+              <span className="text-foreground/70 font-semibold text-lg md:text-xl">
+                {product}
+              </span>
+              {index < 3 && (
+                <span className="w-1.5 h-1.5 rounded-full bg-foreground/50" />
+              )}
+            </span>
+          ))}
+        </div>
+        
+        <span className="text-sm font-medium tracking-wide mt-2">
           Scroll to explore the year
         </span>
         <motion.div
@@ -115,20 +119,6 @@ export function HeroSection() {
         >
           <ChevronDown size={24} />
         </motion.div>
-        
-        {/* Product Names with Dot Separators */}
-        <div className="flex items-center justify-center gap-4 mt-4">
-          {["CE", "CPaaS", "Unbxd", "PX"].map((product, index) => (
-            <span key={product} className="flex items-center gap-4">
-              <span className="text-foreground/60 font-medium text-sm">
-                {product}
-              </span>
-              {index < 3 && (
-                <span className="w-1 h-1 rounded-full bg-foreground/40" />
-              )}
-            </span>
-          ))}
-        </div>
       </motion.div>
 
       {/* Corner Decorations */}
