@@ -16,6 +16,7 @@ import monuGoyalImg from "@/assets/team/monu-goyal.png";
 import arpitKhuranaImg from "@/assets/team/arpit-khurana.png";
 import deepthiNagarajanImg from "@/assets/team/deepthi-nagarajan.png";
 import mayankTomarImg from "@/assets/team/mayank-tomar.png";
+import praveenSridharImg from "@/assets/team/praveen-sridhar.png";
 
 interface QA {
   question: string;
@@ -74,6 +75,7 @@ const leaderTestimonials: LeaderTestimonial[] = [
     id: 2,
     name: "Praveen Sridhar",
     role: "Chief Delivery and Experience Officer",
+    image: praveenSridharImg,
     collapsedQuote: "They simplified the platform while improving outcomes.",
     expandedContent: [
       {
