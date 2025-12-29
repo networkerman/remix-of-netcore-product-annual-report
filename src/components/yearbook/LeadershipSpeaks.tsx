@@ -12,6 +12,7 @@ import {
 
 // Leader images
 import sudhaamshuImg from "@/assets/team/sudhaamshu.png";
+import monuGoyalImg from "@/assets/team/monu-goyal.png";
 
 interface QA {
   question: string;
@@ -215,6 +216,7 @@ const leaderTestimonials: LeaderTestimonial[] = [
     id: 6,
     name: "Monu Goyal",
     role: "Senior Manager – Customer Success",
+    image: monuGoyalImg,
     collapsedQuote: "Personalization upgrades made a visible impact.",
     expandedContent: [
       {
