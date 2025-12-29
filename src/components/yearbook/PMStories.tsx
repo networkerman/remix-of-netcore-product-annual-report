@@ -52,7 +52,7 @@ interface ProductLeader {
 const productLeaders: ProductLeader[] = [
   {
     id: "yogesh",
-    name: "Yogesh",
+    name: "Yogesh Kulkarni",
     title: "Vice President - Product",
     image: yogeshImg,
     emoji: "🧠",
@@ -83,7 +83,7 @@ const productLeaders: ProductLeader[] = [
   },
   {
     id: "satish",
-    name: "Satish",
+    name: "Satish Kokate",
     title: "AVP - Product Management",
     image: satishImg,
     emoji: "🚀",
@@ -114,7 +114,7 @@ const productLeaders: ProductLeader[] = [
   },
   {
     id: "jibran",
-    name: "Jibran",
+    name: "Jibran Dalvi",
     title: "AVP - Product Management",
     image: jibranImg,
     emoji: "🔍",
@@ -141,7 +141,7 @@ const productLeaders: ProductLeader[] = [
   },
   {
     id: "kirit",
-    name: "Kirit",
+    name: "Kirit Lakhani",
     title: "Head of Product Design",
     image: kiritImg,
     emoji: "🎨",
@@ -164,7 +164,7 @@ const productLeaders: ProductLeader[] = [
   },
   {
     id: "deepesh",
-    name: "Deepesh",
+    name: "Deepesh Lakhera",
     title: "AVP - Product Operations",
     image: deepeshImg,
     emoji: "⚙️",
