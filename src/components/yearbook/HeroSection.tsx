@@ -17,7 +17,7 @@ export function HeroSection() {
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-coral-400/20" />
 
       {/* Container 1: Netcore Logo */}
-      <div className="pt-16 md:pt-20 mb-[40px] text-center relative z-10">
+      <div className="pt-16 md:pt-20 mb-[20px] text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
