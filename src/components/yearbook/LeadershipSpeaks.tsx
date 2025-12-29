@@ -17,6 +17,7 @@ import arpitKhuranaImg from "@/assets/team/arpit-khurana.png";
 import deepthiNagarajanImg from "@/assets/team/deepthi-nagarajan.png";
 import mayankTomarImg from "@/assets/team/mayank-tomar.png";
 import praveenSridharImg from "@/assets/team/praveen-sridhar.png";
+import avadhootRevankarImg from "@/assets/team/avadhoot-revankar.png";
 
 interface QA {
   question: string;
@@ -37,6 +38,7 @@ const leaderTestimonials: LeaderTestimonial[] = [
     id: 1,
     name: "Avadhoot Revankar",
     role: "Chief of Growth",
+    image: avadhootRevankarImg,
     collapsedQuote: "The pace and accuracy with which analytics was built stood out.",
     expandedContent: [
       {
