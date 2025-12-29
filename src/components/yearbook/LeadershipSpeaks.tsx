@@ -10,6 +10,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+// Leader images
+import sudhaamshuImg from "@/assets/team/sudhaamshu.png";
+
 interface QA {
   question: string;
   answer: string | string[];
@@ -19,6 +22,7 @@ interface LeaderTestimonial {
   id: number;
   name: string;
   role: string;
+  image?: string;
   collapsedQuote: string;
   expandedContent: QA[];
 }
@@ -138,6 +142,7 @@ const leaderTestimonials: LeaderTestimonial[] = [
     id: 4,
     name: "Sudhaamshu",
     role: "Global Head – IIT",
+    image: sudhaamshuImg,
     collapsedQuote: "Ease of use became a real differentiator.",
     expandedContent: [
       {
@@ -454,9 +459,17 @@ export function LeadershipSpeaks() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 flex items-center justify-center text-lg font-bold text-white">
-                    {testimonial.name.charAt(0)}
-                  </div>
+                  {testimonial.image ? (
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-slate-700 via-slate-600 to-slate-500 flex items-center justify-center text-lg font-bold text-white">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                  )}
                   <div>
                     <p className="font-semibold text-foreground">{testimonial.name}</p>
                     <p className="text-foreground/60 text-sm">{testimonial.role}</p>
