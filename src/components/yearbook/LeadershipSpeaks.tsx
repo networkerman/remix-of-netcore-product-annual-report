@@ -18,6 +18,7 @@ import deepthiNagarajanImg from "@/assets/team/deepthi-nagarajan.png";
 import mayankTomarImg from "@/assets/team/mayank-tomar.png";
 import praveenSridharImg from "@/assets/team/praveen-sridhar.png";
 import avadhootRevankarImg from "@/assets/team/avadhoot-revankar.png";
+import tanmaySinhaImg from "@/assets/team/tanmay-sinha.png";
 
 interface QA {
   question: string;
@@ -334,6 +335,7 @@ const leaderTestimonials: LeaderTestimonial[] = [
     id: 9,
     name: "Tanmay Sinha",
     role: "Associate Product Marketing Manager – Netcore UNBXD",
+    image: tanmaySinhaImg,
     collapsedQuote: "Gartner recognition validated the product and the people.",
     expandedContent: [
       {
