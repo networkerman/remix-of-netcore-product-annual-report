@@ -15,9 +15,9 @@ import hardikyaImg from "@/assets/team/interns/hardikya.png";
 // Leader images
 import yogeshImg from "@/assets/team/leaders/yogesh.png";
 import satishImg from "@/assets/team/leaders/satish.png";
-
 import jibranImg from "@/assets/team/leaders/jibran.png";
 import kiritImg from "@/assets/team/leaders/kirit.png";
+import deepeshImg from "@/assets/team/leaders/deepesh.png";
 
 // Life in Product Team images - new photos
 import lifeImg1 from "@/assets/team/life/team-event.jpg";
@@ -159,6 +159,33 @@ const productLeaders: ProductLeader[] = [
       {
         question: "How is the design team preparing for an agentic AI future across channels?",
         answer: "Netcore's design team is preparing for an agentic AI future by building systems that are channel-aware yet experience-consistent across Email, WhatsApp, SMS, and in-app journeys. The goal is to enable intelligence that adapts by channel without fragmenting the user experience.\n\nCore design principles guiding this shift include:\n• Outcome-centricity\n• Human-in-the-loop control\n• Transparency by default\n• Seamless cross-channel intelligence\n\nBy designing for trust, autonomy, and scale, Netcore aims to differentiate through experiences where AI feels less like a tool and more like a capable growth partner.",
+      },
+    ],
+  },
+  {
+    id: "deepesh",
+    name: "Deepesh",
+    title: "AVP - Product Operations",
+    image: deepeshImg,
+    emoji: "⚙️",
+    headline: "Enablement, Not Overhead",
+    teaserQuote: "We take operational complexity off their plate so PMs can spend time owning strategy, outcomes, and tradeoffs.",
+    questions: [
+      {
+        question: "How has Product Ops empowered PMs to be more 'CEO of their product'?",
+        answer: "We take operational complexity off their plate so PMs can spend time owning strategy, outcomes, and tradeoffs.",
+      },
+      {
+        question: "How has Product Ops maintained velocity without breaking things at scale?",
+        answer: "We pair speed with guardrails—moving fast by default, with controls that catch risk early.",
+      },
+      {
+        question: "How are you using AI to predict roadmap risks?",
+        answer: "AI tools help flag early warning signals across delivery, dependencies, and customer feedback so risks are addressed before they become blockers.",
+      },
+      {
+        question: "Product Ops in three words?",
+        answer: "Enablement, not overhead.",
       },
     ],
   },
