@@ -13,6 +13,7 @@ import {
 // Leader images
 import sudhaamshuImg from "@/assets/team/sudhaamshu.png";
 import monuGoyalImg from "@/assets/team/monu-goyal.png";
+import arpitKhuranaImg from "@/assets/team/arpit-khurana.png";
 
 interface QA {
   question: string;
@@ -289,6 +290,7 @@ const leaderTestimonials: LeaderTestimonial[] = [
     id: 8,
     name: "Arpit Khurana",
     role: "PSS Lead – India",
+    image: arpitKhuranaImg,
     collapsedQuote: "Documentation quality changed customer conversations.",
     expandedContent: [
       {
