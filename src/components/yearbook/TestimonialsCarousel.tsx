@@ -168,7 +168,7 @@ export function TestimonialsCarousel() {
                     <img 
                       src={testimonial.logo} 
                       alt={testimonial.company} 
-                      className="h-12 w-auto object-contain brightness-0 invert opacity-80" 
+                      className="h-12 w-auto object-contain" 
                     />
                   ) : (
                     <div className="h-12 w-24 bg-cream-100/10 rounded-lg flex items-center justify-center">
