@@ -17,7 +17,7 @@ export function HeroSection() {
       <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-coral-400/20" />
 
       {/* Container 1: Netcore Logo */}
-      <div className="pt-32 md:pt-36 text-center relative z-10">
+      <div className="pt-16 md:pt-20 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="pb-4 text-center relative z-10"
+        className="pb-16 md:pb-20 text-center relative z-10"
       >
         <span className="text-sm font-medium tracking-wide text-foreground/50">
           Scroll to explore the year
