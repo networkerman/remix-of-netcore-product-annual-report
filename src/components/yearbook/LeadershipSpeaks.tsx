@@ -14,6 +14,7 @@ import {
 import sudhaamshuImg from "@/assets/team/sudhaamshu.png";
 import monuGoyalImg from "@/assets/team/monu-goyal.png";
 import arpitKhuranaImg from "@/assets/team/arpit-khurana.png";
+import deepthiNagarajanImg from "@/assets/team/deepthi-nagarajan.png";
 
 interface QA {
   question: string;
@@ -181,6 +182,7 @@ const leaderTestimonials: LeaderTestimonial[] = [
     id: 5,
     name: "Deepthi Nagarajan",
     role: "VP – Marketing",
+    image: deepthiNagarajanImg,
     collapsedQuote: "Analytics and demos helped us win confidence.",
     expandedContent: [
       {
