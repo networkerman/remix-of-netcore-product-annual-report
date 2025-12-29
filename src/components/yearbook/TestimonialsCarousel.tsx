@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -177,11 +177,6 @@ export function TestimonialsCarousel() {
                   )}
                 </div>
 
-                {/* Quote Icon */}
-                <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
-                  <Quote className="w-6 h-6 text-teal-400" />
-                </div>
-
                 {/* Quote Text */}
                 <blockquote className="text-xl md:text-2xl text-cream-100 leading-relaxed mb-4 font-light">
                   "{testimonial.quote}"
@@ -265,9 +260,6 @@ export function TestimonialsCarousel() {
           </DialogHeader>
           {openTestimonial && (
             <div className="mt-4">
-              <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
-                <Quote className="w-6 h-6 text-teal-400" />
-              </div>
               <blockquote className="text-lg text-cream-100 leading-relaxed mb-6 font-light">
                 "{openTestimonial.fullQuote}"
               </blockquote>
