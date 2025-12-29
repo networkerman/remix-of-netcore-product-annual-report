@@ -11,6 +11,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+// Brand logos
+import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
+import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
+
 interface Testimonial {
   id: number;
   quote: string;
@@ -18,6 +22,7 @@ interface Testimonial {
   author: string;
   role: string;
   company: string;
+  logo?: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -35,6 +40,7 @@ const testimonials: Testimonial[] = [
     author: "Ashutosh Patkar",
     role: "Sr. Manager Ecommerce",
     company: "Pepe Jeans",
+    logo: pepeJeansLogo,
   },
   {
     id: 3,
@@ -42,6 +48,7 @@ const testimonials: Testimonial[] = [
     author: "Aditi Choudhary",
     role: "Assistant CRM Manager",
     company: "Plum Goodness",
+    logo: plumGoodnessLogo,
   },
   {
     id: 4,
@@ -149,6 +156,21 @@ export function TestimonialsCarousel() {
                   selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
                 }`}
               >
+                {/* Brand Logo */}
+                <div className="h-12 flex items-center mb-6">
+                  {testimonial.logo ? (
+                    <img 
+                      src={testimonial.logo} 
+                      alt={testimonial.company} 
+                      className="h-12 w-auto object-contain brightness-0 invert opacity-80" 
+                    />
+                  ) : (
+                    <div className="h-12 w-24 bg-cream-100/10 rounded-lg flex items-center justify-center">
+                      <span className="text-cream-100/40 text-xs font-medium">{testimonial.company}</span>
+                    </div>
+                  )}
+                </div>
+
                 {/* Quote Icon */}
                 <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center mb-6">
                   <Quote className="w-6 h-6 text-teal-400" />
