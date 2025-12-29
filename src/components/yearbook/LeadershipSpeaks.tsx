@@ -15,6 +15,7 @@ import sudhaamshuImg from "@/assets/team/sudhaamshu.png";
 import monuGoyalImg from "@/assets/team/monu-goyal.png";
 import arpitKhuranaImg from "@/assets/team/arpit-khurana.png";
 import deepthiNagarajanImg from "@/assets/team/deepthi-nagarajan.png";
+import mayankTomarImg from "@/assets/team/mayank-tomar.png";
 
 interface QA {
   question: string;
@@ -254,8 +255,9 @@ const leaderTestimonials: LeaderTestimonial[] = [
   },
   {
     id: 7,
-    name: "Mayank",
+    name: "Mayank Tomar",
     role: "AVP – PSS",
+    image: mayankTomarImg,
     collapsedQuote: "Agentic AI became a strong customer story.",
     expandedContent: [
       {
