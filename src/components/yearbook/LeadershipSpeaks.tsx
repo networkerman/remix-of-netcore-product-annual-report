@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -461,11 +461,6 @@ export function LeadershipSpeaks() {
                   selectedIndex === index ? "scale-100 opacity-100" : "scale-95 opacity-50"
                 }`}
               >
-                {/* Quote Icon */}
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                  <Quote className="w-6 h-6 text-primary" />
-                </div>
-
                 {/* Quote Text */}
                 <blockquote className="text-xl md:text-2xl text-foreground leading-relaxed mb-6 font-light">
                   "{testimonial.collapsedQuote}"
@@ -549,10 +544,6 @@ export function LeadershipSpeaks() {
           </DialogHeader>
           {openTestimonial && (
             <div className="mt-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
-                <Quote className="w-6 h-6 text-primary" />
-              </div>
-
               {/* Q&A Content */}
               <div className="space-y-6 mb-8">
                 {openTestimonial.expandedContent.map((qa, idx) => (
