@@ -14,6 +14,9 @@ import {
 // Brand logos
 import pepeJeansLogo from "@/assets/brands/pepe-jeans-logo.png";
 import plumGoodnessLogo from "@/assets/brands/plum-goodness-logo.webp";
+import jewelleryGroupLogo from "@/assets/brands/jewellery-group-logo.png";
+import fiservLogo from "@/assets/brands/fiserv-logo.png";
+import bighaatLogo from "@/assets/brands/bighaat-logo.png";
 
 interface Testimonial {
   id: number;
@@ -33,6 +36,7 @@ const testimonials: Testimonial[] = [
     author: "Abhishek Arora",
     role: "CRM, Loyalty & Omni-Channel Customer Acquisition Lead",
     company: "The Jewellery Group",
+    logo: jewelleryGroupLogo,
   },
   {
     id: 2,
@@ -56,6 +60,7 @@ const testimonials: Testimonial[] = [
     author: "Rupali Nagvanshi",
     role: "",
     company: "Fiserv",
+    logo: fiservLogo,
   },
   {
     id: 5,
@@ -63,6 +68,7 @@ const testimonials: Testimonial[] = [
     author: "Deepika M Mohan",
     role: "",
     company: "BigHaat",
+    logo: bighaatLogo,
   },
 ];
 
