@@ -118,10 +118,6 @@ export function LookingAhead() {
           {/* Closing Quote Mark */}
           <span className="absolute bottom-4 right-0 text-7xl text-teal-500/30 font-serif leading-none select-none">"</span>
           
-          {/* Attribution */}
-          <p className="mt-8 text-cream-300/50 text-sm tracking-wide">
-            — Someone wise from the Product Team
-          </p>
         </motion.div>
       </div>
     </section>
