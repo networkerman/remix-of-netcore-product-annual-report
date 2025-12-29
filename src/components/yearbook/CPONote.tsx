@@ -157,11 +157,6 @@ export function CPONote() {
                 <p className="mb-6">
                   What stood out most was not just adoption, but trust. The Insights Agent is now increasingly used for Monday reviews and QBRs, signalling a meaningful shift: customers and CSMs now rely on AI as a credible decision partner.
                 </p>
-
-                <p className="text-right font-semibold text-foreground mt-8">
-                  — Kedar Parikh<br />
-                  <span className="font-normal text-foreground/60">Chief Product Officer</span>
-                </p>
               </article>
 
               {/* Collapse Button */}
