@@ -5,11 +5,6 @@ import { Telescope } from "lucide-react";
 
 const themes = [
   {
-    title: "Autonomous by Design",
-    description: "AI evolves from recommending actions to autonomously executing decisions, enabling marketers to operate at machine speed with confidence.",
-    icon: "🤖",
-  },
-  {
     title: "Multi-Agent Intelligence",
     description: "A coordinated system of agents—Segment, Decision, and more—working together to deliver true 1:1 hyper-personalised experiences at scale.",
     icon: "🧠",
