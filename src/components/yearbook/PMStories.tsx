@@ -18,6 +18,7 @@ import satishImg from "@/assets/team/leaders/satish.png";
 import jibranImg from "@/assets/team/leaders/jibran.png";
 import kiritImg from "@/assets/team/leaders/kirit.png";
 import deepeshImg from "@/assets/team/leaders/deepesh.png";
+import raviImg from "@/assets/team/leaders/ravi.png";
 
 // Life in Product Team images - new photos
 import lifeImg1 from "@/assets/team/life/team-event.jpg";
@@ -186,6 +187,33 @@ const productLeaders: ProductLeader[] = [
       {
         question: "Product Ops in three words?",
         answer: "Enablement, not overhead.",
+      },
+    ],
+  },
+  {
+    id: "ravi",
+    name: "Ravi Shankar Mishra",
+    title: "Director, Business Analytics & Product",
+    image: raviImg,
+    emoji: "📊",
+    headline: "AI-Driven Merchandising Revolution",
+    teaserQuote: "The Shopping Agent stood out because it resonated with the changing behaviour of how users search on websites.",
+    questions: [
+      {
+        question: "Which shift this year most strengthened how merchants control and scale merchandising decisions?",
+        answer: "The shift that most strengthened merchant control this year was the move to AI suggested / enabled merchandising.\n\nWe saw a lot of adoption of:\n• AI suggested redirects\n• AI suggested similar queries\n\nAs the next step, we are working on:\n• Merchandising insights\n• Merchandising agents",
+      },
+      {
+        question: "What made the Shopping Agent stand out as a clear hero in real customer conversations?",
+        answer: "The Shopping Agent stood out as a hero because it resonated with the changing behaviour of how users search on websites.\n\nIn real customer conversations, it excelled because of Multi-turn Intent Persistence. If a shopper asked for \"blue running shoes,\" then followed up with \"do you have these in waterproof?\", the agent didn't reset; it understood the technical requirements of the second query within the context of the first.\n\nWhy it resonated:\n\nNatural Language discovery: It handled \"vibe-based\" queries (e.g., \"I need an outfit for a rainy wedding in Tuscany\") that traditional search bars failed.\n\nFlexible and inclusive: It understood multiple languages, was multi-modal, and could be integrated anywhere on the site.\n\nFriction removal: It shortened the path to purchase by allowing Add to Cart directly within the chat interface, leading to 3X higher engagement and conversions compared to standard site search.",
+      },
+      {
+        question: "How did feedback from Sales and CS validate the direction you took on AI-led merchandising?",
+        answer: "Feedback from our Sales and Customer Success teams provided the critical gut check we needed. The \"Agentic & Personalisation\" pitch shifted our positioning from a \"search vendor\" to a true partner, with prospects offering very positive feedback on the product.\n\nCS insights around AI—particularly suggested redirects, the Debugging Agent, and customer adoption of several features—were instrumental in shaping our direction.",
+      },
+      {
+        question: "Where did recommendations and enrichment fall short, and what did those gaps teach you about building smarter relevance?",
+        answer: "Recommendation: We had to rebuild the whole backend stack to ensure we could build features on top of our current system, which took a lot of time.\n\nEnrichment: We had to pivot a couple of times. Scaling and normalisation were the challenges we faced, but the output was always appreciated by stakeholders.\n\nHopefully, we will be able to change the velocity on these products this year.",
       },
     ],
   },
