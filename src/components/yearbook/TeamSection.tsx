@@ -32,7 +32,7 @@ import yashImg from "@/assets/team/Yash_Zendekar.jpg";
 import taiyubImg from "@/assets/team/Taiyub.png";
 import dhairyaImg from "@/assets/team/Dhairya_Vora-3.jpg";
 import harshitaImg from "@/assets/team/Harshita.jpg";
-import amitImg from "@/assets/team/Amit_Sharma-2.png";
+import amitImg from "@/assets/team/Amit_Sharma-3.png";
 import joydeepImg from "@/assets/team/Joydeep_Kumar.jpg";
 import kiritImg from "@/assets/team/Kirit_lakhani.jpg";
 
