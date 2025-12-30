@@ -205,7 +205,7 @@ const productLeaders: ProductLeader[] = [
       },
       {
         question: "What made the Shopping Agent stand out as a clear hero in real customer conversations?",
-        answer: "The Shopping Agent stood out because it matched how users naturally search today.\n\nIn real customer conversations, it excelled due to Multi-turn Intent Persistence. When a shopper searched for \"blue running shoes\" and followed up with \"do you have these in waterproof?\", the agent retained context instead of resetting the query.\n\nWhy it resonated:\n• It handled vibe-based queries (e.g., \"outfit for a rainy wedding in Tuscany\") that traditional search couldn't.\n• It supported multiple languages, was multi-modal, and could be embedded anywhere on the site.\n• Shoppers could add products to cart directly from the chat, driving 3X higher engagement and conversions compared to standard search.",
+        answer: "The Shopping Agent stood out because it matched how users naturally search today.\n\nIn real customer conversations, it excelled due to Multi-turn Intent Persistence. When a shopper searched for \"blue running shoes\" and followed up with \"do you have these in waterproof?\", the agent retained context instead of resetting the query.",
       },
       {
         question: "How did feedback from Sales and CS validate the direction you took on AI-led merchandising?",
